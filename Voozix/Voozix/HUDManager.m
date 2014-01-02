@@ -10,4 +10,21 @@
 
 @implementation HUDManager
 
+- (void)update:(id)sender
+{
+    //if (!self.m_score) {
+        SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+        
+        myLabel.text = @"Hello, World!";
+        myLabel.fontSize = 30;
+        CGPoint testPos = CGPointMake(200.f, 200.f);
+        myLabel.position = testPos;
+        
+        
+        if ([sender isKindOfClass:[SKScene class]]) {
+            [sender addChild:myLabel];
+        }
+    //}
+}
+
 @end

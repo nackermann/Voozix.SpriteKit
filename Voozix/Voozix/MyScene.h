@@ -7,7 +7,8 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "HUDManager.h"
 
 @interface MyScene : SKScene
-
+@property (nonatomic,strong) HUDManager *myHUDManager;
 @end

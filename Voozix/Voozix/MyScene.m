@@ -14,20 +14,13 @@
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
         
-        SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-        
-        myLabel.text = @"Hello, World!";
-        myLabel.fontSize = 30;
-        myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                       CGRectGetMidY(self.frame));
-        
         SKSpriteNode *backgroundSprite = [SKSpriteNode spriteNodeWithImageNamed:@"background.png"];
         CGPoint myPoint = CGPointMake(0.f, 0.f);
         backgroundSprite.anchorPoint = myPoint;
         backgroundSprite.position = myPoint;
         
         [self addChild:backgroundSprite];
-        [self addChild:myLabel];
+        
     }
     return self;
 }
@@ -38,7 +31,7 @@
     // An einen Input Manager weitergeben?
     
     for (UITouch *touch in touches) {
-        CGPoint location = [touch locationInNode:self];
+        /*CGPoint location = [touch locationInNode:self];
         
         SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
         
@@ -48,13 +41,25 @@
         
         [sprite runAction:[SKAction repeatActionForever:action]];
         
-        [self addChild:sprite];
+        [self addChild:sprite];*/
+        [self.myHUDManager update:self];
+        NSLog(@"%@", @"test");
     }
 }
+
+- (HUDManager*)myHUDManager
+{
+    if (_myHUDManager == nil) {
+        _myHUDManager = [[HUDManager alloc] init];
+    }
+    return _myHUDManager;
+}
+
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
     // Manager updaten
+    //[self.myHUDManager update:self];
 }
 
 @end
