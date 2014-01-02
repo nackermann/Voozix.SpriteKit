@@ -33,6 +33,7 @@
 		15A344F11875AD120046B117 /* StarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A344F01875AD120046B117 /* StarManager.m */; };
 		15A344F41875AD310046B117 /* ObstacleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A344F31875AD310046B117 /* ObstacleManager.m */; };
 		15A344F71875AD5A0046B117 /* PowerUpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A344F61875AD5A0046B117 /* PowerUpManager.m */; };
+		15A344FA1875BAD80046B117 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 15A344F91875BAD80046B117 /* background.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		15A344F31875AD310046B117 /* ObstacleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObstacleManager.m; sourceTree = "<group>"; };
 		15A344F51875AD5A0046B117 /* PowerUpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PowerUpManager.h; sourceTree = "<group>"; };
 		15A344F61875AD5A0046B117 /* PowerUpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PowerUpManager.m; sourceTree = "<group>"; };
+		15A344F91875BAD80046B117 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,7 +158,7 @@
 				15A344BB1875A52B0046B117 /* MyScene.h */,
 				15A344BC1875A52B0046B117 /* MyScene.m */,
 				15A344F81875AD9B0046B117 /* Managers */,
-				15A344BE1875A52B0046B117 /* Spaceship.png */,
+				15A344FB1875BB900046B117 /* Data */,
 				15A344C01875A52B0046B117 /* Images.xcassets */,
 				15A344AA1875A52B0046B117 /* Supporting Files */,
 			);
@@ -215,6 +217,23 @@
 				15A344F61875AD5A0046B117 /* PowerUpManager.m */,
 			);
 			name = Managers;
+			sourceTree = "<group>";
+		};
+		15A344FB1875BB900046B117 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				15A344FC1875BB960046B117 /* Images */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		15A344FC1875BB960046B117 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				15A344BE1875A52B0046B117 /* Spaceship.png */,
+				15A344F91875BAD80046B117 /* background.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,6 +313,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15A344AE1875A52B0046B117 /* InfoPlist.strings in Resources */,
+				15A344FA1875BAD80046B117 /* background.png in Resources */,
 				15A344C11875A52B0046B117 /* Images.xcassets in Resources */,
 				15A344BF1875A52B0046B117 /* Spaceship.png in Resources */,
 				15A344B71875A52B0046B117 /* Main.storyboard in Resources */,

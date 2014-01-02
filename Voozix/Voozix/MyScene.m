@@ -23,6 +23,11 @@
         myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
                                        CGRectGetMidY(self.frame));
         
+        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"background.png"];
+        CGPoint myPoint = CGPointMake(0.f, 0.f);
+        sprite.position = myPoint;
+        
+        [self addChild:sprite];
         [self addChild:myLabel];
     }
     return self;
