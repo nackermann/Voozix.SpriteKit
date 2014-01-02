@@ -8,6 +8,18 @@
 
 #import "Player.h"
 
+@interface Player()
+@property (nonatomic, assign) NSNumber *myScore;
+@end
+
 @implementation Player
+
+- (NSNumber*)myScore
+{
+    if (_myScore == nil) {
+        _myScore = [NSNumber numberWithInt:0];
+    }
+    return _myScore;
+}
 
 @end

@@ -8,14 +8,13 @@
 
 #import "HUDManager.h"
 
+#define FONTSIZE 30
+#define LABELXOFFSET 100
+#define LABELYOFFSET 30
+
 @interface HUDManager()
-// View
-@property (nonatomic, strong) SKLabelNode *myScoreLabel;
-// Model - Muss in Player!
-@property (nonatomic, assign) int myScore;
-
 @property (nonatomic, weak) SKScene *myScene;
-
+@property (nonatomic, strong) SKLabelNode *myScoreLabel;
 @end
 
 @implementation HUDManager
@@ -33,13 +32,17 @@
 {
     if (_myScoreLabel == nil) {
         _myScoreLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-        _myScoreLabel.fontSize = 30;
-        CGPoint testPos = CGPointMake(CGRectGetMinX(self.myScene.frame)+100, CGRectGetMinY(self.myScene.frame)+30); // aus dem frame spaeter berechnen
+        _myScoreLabel.fontSize = FONTSIZE;
+        CGPoint testPos = CGPointMake(CGRectGetMinX(self.myScene.frame)+LABELXOFFSET, CGRectGetMinY(self.myScene.frame)+LABELYOFFSET);
         _myScoreLabel.position = testPos;
-        [self.myScene addChild:self.myScoreLabel];
         
-        // rausmachen !
-        self.myScore = 0;
+        if (self.myScene) {
+            [self.myScene addChild:self.myScoreLabel];
+        }
+        else
+        {
+            NSLog(@"%@", @"HUDManager: There is no scene where I can render");
+        }
         
     }
     return _myScoreLabel;
@@ -52,8 +55,10 @@
     // self.myScore updaten
     
     // LabelView updaten, nur updaten bei Veraenderung, aendern !!!!!
-    self.myScoreLabel.text = [NSString stringWithFormat:@"%@%d", @"Score: ", self.myScore];
-
+    //if (das was ich hab != das was der player hat) {
+        self.myScoreLabel.text = [NSString stringWithFormat:@"%@%d", @"Score: ", 30]; // 30 ist stub bis richtig Kommuniziert wird
+    //}
+    
 }
 
 @end
