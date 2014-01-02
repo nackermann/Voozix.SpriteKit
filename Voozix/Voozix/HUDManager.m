@@ -10,10 +10,12 @@
 
 @interface HUDManager()
 // View
-@property (nonatomic,strong) SKLabelNode *myScoreLabel;
+@property (nonatomic, strong) SKLabelNode *myScoreLabel;
+// Model - Muss in Player!
+@property (nonatomic, assign) int myScore;
 
 @property (nonatomic, weak) SKScene *myScene;
-@property (nonatomic,assign) int myScore;
+
 @end
 
 @implementation HUDManager
@@ -36,7 +38,7 @@
         _myScoreLabel.position = testPos;
         [self.myScene addChild:self.myScoreLabel];
         
-        // Score belongs to the label
+        // rausmachen !
         self.myScore = 0;
         
     }
@@ -49,7 +51,7 @@
     
     // self.myScore updaten
     
-    // LabelView updaten, nur updaten bei Veraenderung, aendern !
+    // LabelView updaten, nur updaten bei Veraenderung, aendern !!!!!
     self.myScoreLabel.text = [NSString stringWithFormat:@"%@%d", @"Score: ", self.myScore];
 
 }

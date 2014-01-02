@@ -8,6 +8,6 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface CollisionManager : SKScene
+@interface CollisionManager : NSObject
 
 @end

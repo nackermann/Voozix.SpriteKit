@@ -8,6 +8,6 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface ParticleManager : SKScene
+@interface ParticleManager : NSObject
 
 @end

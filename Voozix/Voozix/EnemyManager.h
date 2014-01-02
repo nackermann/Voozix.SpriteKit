@@ -8,6 +8,6 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface EnemyManager : SKScene
+@interface EnemyManager : NSObject
 
 @end

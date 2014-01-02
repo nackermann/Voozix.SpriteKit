@@ -8,6 +8,6 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface Star : SKScene
+@interface Star : NSObject
 
 @end

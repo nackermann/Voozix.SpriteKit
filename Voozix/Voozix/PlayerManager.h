@@ -8,6 +8,6 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface PlayerManager : SKScene
+@interface PlayerManager : NSObject
 
 @end

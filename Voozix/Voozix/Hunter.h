@@ -8,6 +8,6 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface Hunter : SKScene
+@interface Hunter : NSObject
 
 @end
