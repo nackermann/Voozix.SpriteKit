@@ -24,6 +24,15 @@
 		15A344CA1875A52B0046B117 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A344A51875A52B0046B117 /* UIKit.framework */; };
 		15A344D21875A52B0046B117 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 15A344D01875A52B0046B117 /* InfoPlist.strings */; };
 		15A344D41875A52B0046B117 /* VoozixTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A344D31875A52B0046B117 /* VoozixTests.m */; };
+		15A344DF1875ABFF0046B117 /* CollisionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A344DE1875ABFF0046B117 /* CollisionManager.m */; };
+		15A344E21875AC3B0046B117 /* ParticleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A344E11875AC3B0046B117 /* ParticleManager.m */; };
+		15A344E51875AC550046B117 /* SoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A344E41875AC550046B117 /* SoundManager.m */; };
+		15A344E81875AC870046B117 /* HUDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A344E71875AC870046B117 /* HUDManager.m */; };
+		15A344EB1875ACD50046B117 /* PlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A344EA1875ACD50046B117 /* PlayerManager.m */; };
+		15A344EE1875ACE50046B117 /* EnemyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A344ED1875ACE50046B117 /* EnemyManager.m */; };
+		15A344F11875AD120046B117 /* StarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A344F01875AD120046B117 /* StarManager.m */; };
+		15A344F41875AD310046B117 /* ObstacleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A344F31875AD310046B117 /* ObstacleManager.m */; };
+		15A344F71875AD5A0046B117 /* PowerUpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A344F61875AD5A0046B117 /* PowerUpManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +69,24 @@
 		15A344CF1875A52B0046B117 /* VoozixTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VoozixTests-Info.plist"; sourceTree = "<group>"; };
 		15A344D11875A52B0046B117 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		15A344D31875A52B0046B117 /* VoozixTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VoozixTests.m; sourceTree = "<group>"; };
+		15A344DD1875ABFF0046B117 /* CollisionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollisionManager.h; sourceTree = "<group>"; };
+		15A344DE1875ABFF0046B117 /* CollisionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollisionManager.m; sourceTree = "<group>"; };
+		15A344E01875AC3B0046B117 /* ParticleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleManager.h; sourceTree = "<group>"; };
+		15A344E11875AC3B0046B117 /* ParticleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticleManager.m; sourceTree = "<group>"; };
+		15A344E31875AC550046B117 /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundManager.h; sourceTree = "<group>"; };
+		15A344E41875AC550046B117 /* SoundManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundManager.m; sourceTree = "<group>"; };
+		15A344E61875AC870046B117 /* HUDManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDManager.h; sourceTree = "<group>"; };
+		15A344E71875AC870046B117 /* HUDManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUDManager.m; sourceTree = "<group>"; };
+		15A344E91875ACD50046B117 /* PlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerManager.h; sourceTree = "<group>"; };
+		15A344EA1875ACD50046B117 /* PlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerManager.m; sourceTree = "<group>"; };
+		15A344EC1875ACE50046B117 /* EnemyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyManager.h; sourceTree = "<group>"; };
+		15A344ED1875ACE50046B117 /* EnemyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnemyManager.m; sourceTree = "<group>"; };
+		15A344EF1875AD120046B117 /* StarManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarManager.h; sourceTree = "<group>"; };
+		15A344F01875AD120046B117 /* StarManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarManager.m; sourceTree = "<group>"; };
+		15A344F21875AD310046B117 /* ObstacleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObstacleManager.h; sourceTree = "<group>"; };
+		15A344F31875AD310046B117 /* ObstacleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObstacleManager.m; sourceTree = "<group>"; };
+		15A344F51875AD5A0046B117 /* PowerUpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PowerUpManager.h; sourceTree = "<group>"; };
+		15A344F61875AD5A0046B117 /* PowerUpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PowerUpManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +155,7 @@
 				15A344B91875A52B0046B117 /* ViewController.m */,
 				15A344BB1875A52B0046B117 /* MyScene.h */,
 				15A344BC1875A52B0046B117 /* MyScene.m */,
+				15A344F81875AD9B0046B117 /* Managers */,
 				15A344BE1875A52B0046B117 /* Spaceship.png */,
 				15A344C01875A52B0046B117 /* Images.xcassets */,
 				15A344AA1875A52B0046B117 /* Supporting Files */,
@@ -162,6 +190,31 @@
 				15A344D01875A52B0046B117 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		15A344F81875AD9B0046B117 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				15A344DD1875ABFF0046B117 /* CollisionManager.h */,
+				15A344DE1875ABFF0046B117 /* CollisionManager.m */,
+				15A344E01875AC3B0046B117 /* ParticleManager.h */,
+				15A344E11875AC3B0046B117 /* ParticleManager.m */,
+				15A344E31875AC550046B117 /* SoundManager.h */,
+				15A344E41875AC550046B117 /* SoundManager.m */,
+				15A344E61875AC870046B117 /* HUDManager.h */,
+				15A344E71875AC870046B117 /* HUDManager.m */,
+				15A344E91875ACD50046B117 /* PlayerManager.h */,
+				15A344EA1875ACD50046B117 /* PlayerManager.m */,
+				15A344EC1875ACE50046B117 /* EnemyManager.h */,
+				15A344ED1875ACE50046B117 /* EnemyManager.m */,
+				15A344EF1875AD120046B117 /* StarManager.h */,
+				15A344F01875AD120046B117 /* StarManager.m */,
+				15A344F21875AD310046B117 /* ObstacleManager.h */,
+				15A344F31875AD310046B117 /* ObstacleManager.m */,
+				15A344F51875AD5A0046B117 /* PowerUpManager.h */,
+				15A344F61875AD5A0046B117 /* PowerUpManager.m */,
+			);
+			name = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,9 +316,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				15A344BD1875A52B0046B117 /* MyScene.m in Sources */,
+				15A344F71875AD5A0046B117 /* PowerUpManager.m in Sources */,
 				15A344BA1875A52B0046B117 /* ViewController.m in Sources */,
+				15A344DF1875ABFF0046B117 /* CollisionManager.m in Sources */,
+				15A344E81875AC870046B117 /* HUDManager.m in Sources */,
+				15A344F41875AD310046B117 /* ObstacleManager.m in Sources */,
+				15A344F11875AD120046B117 /* StarManager.m in Sources */,
+				15A344EE1875ACE50046B117 /* EnemyManager.m in Sources */,
 				15A344B41875A52B0046B117 /* AppDelegate.m in Sources */,
+				15A344EB1875ACD50046B117 /* PlayerManager.m in Sources */,
 				15A344B01875A52B0046B117 /* main.m in Sources */,
+				15A344E51875AC550046B117 /* SoundManager.m in Sources */,
+				15A344E21875AC3B0046B117 /* ParticleManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -31,6 +31,8 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
     
+    // An einen Input Manager weitergeben?
+    
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
         
@@ -48,6 +50,7 @@
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
+    // Manager updaten
 }
 
 @end
