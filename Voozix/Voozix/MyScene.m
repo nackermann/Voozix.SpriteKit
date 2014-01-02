@@ -14,8 +14,6 @@
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
         
-        self.backgroundColor = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
-        
         SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
         
         myLabel.text = @"Hello, World!";
@@ -23,11 +21,12 @@
         myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
                                        CGRectGetMidY(self.frame));
         
-        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"background.png"];
+        SKSpriteNode *backgroundSprite = [SKSpriteNode spriteNodeWithImageNamed:@"background.png"];
         CGPoint myPoint = CGPointMake(0.f, 0.f);
-        sprite.position = myPoint;
+        backgroundSprite.anchorPoint = myPoint;
+        backgroundSprite.position = myPoint;
         
-        [self addChild:sprite];
+        [self addChild:backgroundSprite];
         [self addChild:myLabel];
     }
     return self;
