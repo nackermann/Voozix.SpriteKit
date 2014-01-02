@@ -34,6 +34,11 @@
 		15A344F41875AD310046B117 /* ObstacleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A344F31875AD310046B117 /* ObstacleManager.m */; };
 		15A344F71875AD5A0046B117 /* PowerUpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A344F61875AD5A0046B117 /* PowerUpManager.m */; };
 		15A344FA1875BAD80046B117 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 15A344F91875BAD80046B117 /* background.png */; };
+		15A344FF1875C2430046B117 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A344FE1875C2430046B117 /* Player.m */; };
+		15A345021875C28E0046B117 /* Enemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A345011875C28E0046B117 /* Enemy.m */; };
+		15A345051875C2C20046B117 /* EnemyBall.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A345041875C2C20046B117 /* EnemyBall.m */; };
+		15A345081875C2DC0046B117 /* Hunter.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A345071875C2DC0046B117 /* Hunter.m */; };
+		15A3450B1875C3050046B117 /* Star.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A3450A1875C3050046B117 /* Star.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +94,16 @@
 		15A344F51875AD5A0046B117 /* PowerUpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PowerUpManager.h; sourceTree = "<group>"; };
 		15A344F61875AD5A0046B117 /* PowerUpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PowerUpManager.m; sourceTree = "<group>"; };
 		15A344F91875BAD80046B117 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		15A344FD1875C2430046B117 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		15A344FE1875C2430046B117 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		15A345001875C28E0046B117 /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enemy.h; sourceTree = "<group>"; };
+		15A345011875C28E0046B117 /* Enemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Enemy.m; sourceTree = "<group>"; };
+		15A345031875C2C20046B117 /* EnemyBall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyBall.h; sourceTree = "<group>"; };
+		15A345041875C2C20046B117 /* EnemyBall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnemyBall.m; sourceTree = "<group>"; };
+		15A345061875C2DC0046B117 /* Hunter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hunter.h; sourceTree = "<group>"; };
+		15A345071875C2DC0046B117 /* Hunter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hunter.m; sourceTree = "<group>"; };
+		15A345091875C3050046B117 /* Star.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Star.h; sourceTree = "<group>"; };
+		15A3450A1875C3050046B117 /* Star.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Star.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +172,7 @@
 				15A344B91875A52B0046B117 /* ViewController.m */,
 				15A344BB1875A52B0046B117 /* MyScene.h */,
 				15A344BC1875A52B0046B117 /* MyScene.m */,
+				15A3450C1875C3830046B117 /* Objects */,
 				15A344F81875AD9B0046B117 /* Managers */,
 				15A344FB1875BB900046B117 /* Data */,
 				15A344C01875A52B0046B117 /* Images.xcassets */,
@@ -234,6 +250,23 @@
 				15A344F91875BAD80046B117 /* background.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		15A3450C1875C3830046B117 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				15A344FD1875C2430046B117 /* Player.h */,
+				15A344FE1875C2430046B117 /* Player.m */,
+				15A345001875C28E0046B117 /* Enemy.h */,
+				15A345011875C28E0046B117 /* Enemy.m */,
+				15A345031875C2C20046B117 /* EnemyBall.h */,
+				15A345041875C2C20046B117 /* EnemyBall.m */,
+				15A345061875C2DC0046B117 /* Hunter.h */,
+				15A345071875C2DC0046B117 /* Hunter.m */,
+				15A345091875C3050046B117 /* Star.h */,
+				15A3450A1875C3050046B117 /* Star.m */,
+			);
+			name = Objects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -336,18 +369,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				15A344BD1875A52B0046B117 /* MyScene.m in Sources */,
+				15A3450B1875C3050046B117 /* Star.m in Sources */,
 				15A344F71875AD5A0046B117 /* PowerUpManager.m in Sources */,
 				15A344BA1875A52B0046B117 /* ViewController.m in Sources */,
 				15A344DF1875ABFF0046B117 /* CollisionManager.m in Sources */,
 				15A344E81875AC870046B117 /* HUDManager.m in Sources */,
 				15A344F41875AD310046B117 /* ObstacleManager.m in Sources */,
+				15A345081875C2DC0046B117 /* Hunter.m in Sources */,
+				15A345021875C28E0046B117 /* Enemy.m in Sources */,
 				15A344F11875AD120046B117 /* StarManager.m in Sources */,
 				15A344EE1875ACE50046B117 /* EnemyManager.m in Sources */,
 				15A344B41875A52B0046B117 /* AppDelegate.m in Sources */,
 				15A344EB1875ACD50046B117 /* PlayerManager.m in Sources */,
 				15A344B01875A52B0046B117 /* main.m in Sources */,
 				15A344E51875AC550046B117 /* SoundManager.m in Sources */,
+				15A344FF1875C2430046B117 /* Player.m in Sources */,
 				15A344E21875AC3B0046B117 /* ParticleManager.m in Sources */,
+				15A345051875C2C20046B117 /* EnemyBall.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
