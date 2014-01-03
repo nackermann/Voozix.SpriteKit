@@ -6,16 +6,14 @@
 //  Copyright (c) 2014 Norman Ackermann. All rights reserved.
 //
 
+#define MAX_SCALE 1.2
+#define MIN_SCALE 0.8
+#define MAX_ROTATION 0.5
+#define MIN_ROTATION -0.5
+#define SCALE_DURATION 0.5
+#define ROTATE_DURATION 1
+
 #import "Star.h"
-@interface Star()
-@property float scale;
-@property float maxScale;
-@property float minScale;
-@property float maxRotation;
-@property float minRotation;
-@property float scaleIncrement;
-@property float rotationIncrement;
-@end
 
 @implementation Star
 
@@ -31,70 +29,48 @@
 - (void) setup {
     
     self.name = @"star";
-    self.scale = 1.0;
-    self.maxScale = 1.2;
-    self.minScale = 0.8;
-    self.maxRotation = 0.5;
-    self.minRotation = -0.5;
-    self.scaleIncrement = 0.02;
-    self.rotationIncrement = 0.01;
+    
+    self.zRotation = MIN_ROTATION;
+    self.xScale = MIN_SCALE;
+    self.yScale = MIN_SCALE;
+    
+    SKAction *rotateRight = [SKAction rotateToAngle:MAX_ROTATION duration:ROTATE_DURATION];
+    SKAction *rotateLeft = [SKAction rotateToAngle:MIN_ROTATION duration:ROTATE_DURATION];
+    SKAction *rotateSequence = [SKAction sequence:[[NSArray alloc] initWithObjects:rotateRight, rotateLeft, nil]];
+    
+    SKAction *scaleLarge = [SKAction scaleTo:MAX_SCALE duration:SCALE_DURATION];
+    SKAction *scaleSmall = [SKAction scaleTo:MIN_SCALE duration:SCALE_DURATION];
+    SKAction *scaleSequence = [SKAction sequence:[[NSArray alloc] initWithObjects:scaleLarge, scaleSmall, nil]];
+    
+    [self runAction:[SKAction repeatActionForever:rotateSequence]];
+    [self runAction:[SKAction repeatActionForever:scaleSequence]];
+    
 }
 
 -(void)update:(CFTimeInterval)currentTime {
     
-    [self scale:currentTime];
-    [self rotate:currentTime];
-
-}
-
-- (void)scale:(CFTimeInterval)currentTime {
-    
-    if (self.scale >= self.maxScale) {
-        self.scaleIncrement = -0.02;
-    }
-    
-    if (self.scale <= self.minScale) {
-        self.scaleIncrement = 0.02;
-    }
-    
-    SKAction *scale = [SKAction scaleTo:self.scale duration:0.1/currentTime];
-    self.scale += self.scaleIncrement;
-    [self runAction:scale];
-}
-
-- (void)rotate:(CFTimeInterval)currentTime {
-    
-    if (self.zRotation >= self.maxRotation) {
-        self.rotationIncrement = -0.01;
-    }
-    
-    if (self.zRotation <= self.minRotation) {
-        self.rotationIncrement = 0.01;
-    }
-    
-    SKAction *rotate = [SKAction rotateByAngle:self.rotationIncrement duration:0.1/currentTime];
-    self.zRotation += self.rotationIncrement;
-    [self runAction:rotate];
 }
 
 - (void)changePosition:(CGRect)rect {
 
+    /* Get random coordinates that are within the screen bounds */
     float x = (arc4random() % (int)rect.size.width);
     float y = (arc4random() % (int)rect.size.height);
     
+    /*Take object width into consideration */
     if (x + self.frame.size.width/2 > rect.size.width)
         x -= self.frame.size.width/2;
     else if (x - self.frame.size.width/2 < 0)
         x += self.frame.size.width/2;
     
+    /* Take object height into consideration */
     if (y + self.frame.size.height/2 > rect.size.height )
         y -= self.frame.size.height/2;
     else if (y - self.frame.size.height/2 < 0)
         y += self.frame.size.width/2;
     
-    
+    /* Create and set new position */
     CGPoint newPosiion = CGPointMake(x, y);
-    
     self.position = newPosiion;
     
 }
