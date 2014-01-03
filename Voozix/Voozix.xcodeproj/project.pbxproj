@@ -28,9 +28,7 @@
 		15A344E21875AC3B0046B117 /* ParticleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A344E11875AC3B0046B117 /* ParticleManager.m */; };
 		15A344E51875AC550046B117 /* SoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A344E41875AC550046B117 /* SoundManager.m */; };
 		15A344E81875AC870046B117 /* HUDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A344E71875AC870046B117 /* HUDManager.m */; };
-		15A344EB1875ACD50046B117 /* PlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A344EA1875ACD50046B117 /* PlayerManager.m */; };
 		15A344EE1875ACE50046B117 /* EnemyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A344ED1875ACE50046B117 /* EnemyManager.m */; };
-		15A344F11875AD120046B117 /* StarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A344F01875AD120046B117 /* StarManager.m */; };
 		15A344F41875AD310046B117 /* ObstacleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A344F31875AD310046B117 /* ObstacleManager.m */; };
 		15A344F71875AD5A0046B117 /* PowerUpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A344F61875AD5A0046B117 /* PowerUpManager.m */; };
 		15A344FA1875BAD80046B117 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 15A344F91875BAD80046B117 /* background.png */; };
@@ -83,12 +81,8 @@
 		15A344E41875AC550046B117 /* SoundManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundManager.m; sourceTree = "<group>"; };
 		15A344E61875AC870046B117 /* HUDManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDManager.h; sourceTree = "<group>"; };
 		15A344E71875AC870046B117 /* HUDManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUDManager.m; sourceTree = "<group>"; };
-		15A344E91875ACD50046B117 /* PlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerManager.h; sourceTree = "<group>"; };
-		15A344EA1875ACD50046B117 /* PlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerManager.m; sourceTree = "<group>"; };
 		15A344EC1875ACE50046B117 /* EnemyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyManager.h; sourceTree = "<group>"; };
 		15A344ED1875ACE50046B117 /* EnemyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnemyManager.m; sourceTree = "<group>"; };
-		15A344EF1875AD120046B117 /* StarManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarManager.h; sourceTree = "<group>"; };
-		15A344F01875AD120046B117 /* StarManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarManager.m; sourceTree = "<group>"; };
 		15A344F21875AD310046B117 /* ObstacleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObstacleManager.h; sourceTree = "<group>"; };
 		15A344F31875AD310046B117 /* ObstacleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObstacleManager.m; sourceTree = "<group>"; };
 		15A344F51875AD5A0046B117 /* PowerUpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PowerUpManager.h; sourceTree = "<group>"; };
@@ -221,12 +215,8 @@
 				15A344E41875AC550046B117 /* SoundManager.m */,
 				15A344E61875AC870046B117 /* HUDManager.h */,
 				15A344E71875AC870046B117 /* HUDManager.m */,
-				15A344E91875ACD50046B117 /* PlayerManager.h */,
-				15A344EA1875ACD50046B117 /* PlayerManager.m */,
 				15A344EC1875ACE50046B117 /* EnemyManager.h */,
 				15A344ED1875ACE50046B117 /* EnemyManager.m */,
-				15A344EF1875AD120046B117 /* StarManager.h */,
-				15A344F01875AD120046B117 /* StarManager.m */,
 				15A344F21875AD310046B117 /* ObstacleManager.h */,
 				15A344F31875AD310046B117 /* ObstacleManager.m */,
 				15A344F51875AD5A0046B117 /* PowerUpManager.h */,
@@ -377,10 +367,8 @@
 				15A344F41875AD310046B117 /* ObstacleManager.m in Sources */,
 				15A345081875C2DC0046B117 /* Hunter.m in Sources */,
 				15A345021875C28E0046B117 /* Enemy.m in Sources */,
-				15A344F11875AD120046B117 /* StarManager.m in Sources */,
 				15A344EE1875ACE50046B117 /* EnemyManager.m in Sources */,
 				15A344B41875A52B0046B117 /* AppDelegate.m in Sources */,
-				15A344EB1875ACD50046B117 /* PlayerManager.m in Sources */,
 				15A344B01875A52B0046B117 /* main.m in Sources */,
 				15A344E51875AC550046B117 /* SoundManager.m in Sources */,
 				15A344FF1875C2430046B117 /* Player.m in Sources */,
