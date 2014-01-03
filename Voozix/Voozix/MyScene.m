@@ -7,6 +7,7 @@
 //
 
 #import "MyScene.h"
+#import "Star.h"
 
 @implementation MyScene
 
@@ -19,8 +20,14 @@
         backgroundSprite.anchorPoint = myPoint;
         backgroundSprite.position = myPoint;
         
-        [self addChild:backgroundSprite];
+        Star *star = [[Star alloc] init];
+        star.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+    
         
+        
+        
+        [self addChild:backgroundSprite];
+        [self addChild:star];
     }
     return self;
 }
@@ -42,6 +49,19 @@
         [sprite runAction:[SKAction repeatActionForever:action]];
         
         [self addChild:sprite];*/
+        
+        CGPoint position = [touch locationInNode:self];
+        
+        Star *star = (Star *)[self nodeAtPoint:position];
+        if ([star.name isEqualToString:@"star"]) {
+            [star changePosition:self.frame];
+        }
+        
+        
+        
+        
+        
+        
         [self.myHUDManager update:self];
         NSLog(@"%@", @"test");
     }
@@ -57,6 +77,10 @@
 
 
 -(void)update:(CFTimeInterval)currentTime {
+    
+    Star *star = (Star *)[self childNodeWithName:@"star"];
+    [star update:currentTime];
+    
     /* Called before each frame is rendered */
     // Manager updaten
     //[self.myHUDManager update:self];
