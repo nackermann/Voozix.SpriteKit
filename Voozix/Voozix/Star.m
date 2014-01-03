@@ -64,11 +64,11 @@
 
 - (void)rotate:(CFTimeInterval)currentTime {
     
-    if (self.zRotation >= 0.5) {
+    if (self.zRotation >= self.maxRotation) {
         self.rotationIncrement = -0.01;
     }
     
-    if (self.zRotation <= -0.5) {
+    if (self.zRotation <= self.minRotation) {
         self.rotationIncrement = 0.01;
     }
     
