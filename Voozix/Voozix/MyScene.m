@@ -50,22 +50,14 @@
         
         [self addChild:sprite];*/
         
-<<<<<<< HEAD
+
         CGPoint position = [touch locationInNode:self];
         
         Star *star = (Star *)[self nodeAtPoint:position];
         if ([star.name isEqualToString:@"star"]) {
             [star changePosition:self.frame];
         }
-        
-        
-        
-        
-        
-        
-        [self.myHUDManager update:self];
-=======
->>>>>>> master
+
         NSLog(@"%@", @"test");
     }
 }

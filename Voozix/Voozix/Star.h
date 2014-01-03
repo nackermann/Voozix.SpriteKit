@@ -8,12 +8,9 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-<<<<<<< HEAD
+
 @interface Star : SKSpriteNode
 -(void)update:(CFTimeInterval)currentTime;
 -(void)changePosition:(CGRect)rect;
-=======
-@interface Star : NSObject
 
->>>>>>> master
 @end

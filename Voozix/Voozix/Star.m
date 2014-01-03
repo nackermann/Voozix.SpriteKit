@@ -59,7 +59,6 @@
     
     SKAction *scale = [SKAction scaleTo:self.scale duration:0.1/currentTime];
     self.scale += self.scaleIncrement;
-    //NSLog(@"%g, %g", self.xScale, self.scale);
     [self runAction:scale];
 }
 
@@ -75,8 +74,6 @@
     
     SKAction *rotate = [SKAction rotateByAngle:self.rotationIncrement duration:0.1/currentTime];
     self.zRotation += self.rotationIncrement;
-    //NSLog(@"%g", self.zRotation);
-    
     [self runAction:rotate];
 }
 
@@ -84,11 +81,17 @@
 
     float x = (arc4random() % (int)rect.size.width);
     float y = (arc4random() % (int)rect.size.height);
-
     
-//    NSLog(@"%g, %g", self.position.x, self.position.y);
-//    float y = 1024;
-//    float x = 768;
+    if (x + self.frame.size.width/2 > rect.size.width)
+        x -= self.frame.size.width/2;
+    else if (x - self.frame.size.width/2 < 0)
+        x += self.frame.size.width/2;
+    
+    if (y + self.frame.size.height/2 > rect.size.height )
+        y -= self.frame.size.height/2;
+    else if (y - self.frame.size.height/2 < 0)
+        y += self.frame.size.width/2;
+    
     
     CGPoint newPosiion = CGPointMake(x, y);
     

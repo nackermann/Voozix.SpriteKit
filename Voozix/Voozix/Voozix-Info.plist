@@ -35,11 +35,6 @@
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
-<<<<<<< HEAD
-		<string>UIInterfaceOrientationPortrait</string>
-=======
-		<string>UIInterfaceOrientationLandscapeRight</string>
->>>>>>> master
 	</array>
 </dict>
 </plist>
