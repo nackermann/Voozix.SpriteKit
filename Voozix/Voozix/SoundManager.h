@@ -8,6 +8,6 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface SoundManager : SKScene
+@interface SoundManager : NSObject
 
 @end

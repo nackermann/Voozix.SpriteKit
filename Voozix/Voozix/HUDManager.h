@@ -9,6 +9,6 @@
 #import <SpriteKit/SpriteKit.h>
 
 @interface HUDManager : NSObject
-@property (nonatomic,assign) NSInteger *m_score;
-- (void)update:(id)sender;
+- (id)initWithScene:(SKScene*)scene;
+- (void)update;
 @end

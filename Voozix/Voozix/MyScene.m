@@ -11,7 +11,7 @@
 
 @implementation MyScene
 
--(id)initWithSize:(CGSize)size {    
+-(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
         
@@ -50,6 +50,7 @@
         
         [self addChild:sprite];*/
         
+<<<<<<< HEAD
         CGPoint position = [touch locationInNode:self];
         
         Star *star = (Star *)[self nodeAtPoint:position];
@@ -63,6 +64,8 @@
         
         
         [self.myHUDManager update:self];
+=======
+>>>>>>> master
         NSLog(@"%@", @"test");
     }
 }
@@ -70,7 +73,7 @@
 - (HUDManager*)myHUDManager
 {
     if (_myHUDManager == nil) {
-        _myHUDManager = [[HUDManager alloc] init];
+        _myHUDManager = [[HUDManager alloc] initWithScene:self];
     }
     return _myHUDManager;
 }
@@ -82,8 +85,8 @@
     [star update:currentTime];
     
     /* Called before each frame is rendered */
-    // Manager updaten
-    //[self.myHUDManager update:self];
+    // Update all managers
+    [self.myHUDManager update];
 }
 
 @end

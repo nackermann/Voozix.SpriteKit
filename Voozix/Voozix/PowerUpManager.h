@@ -8,6 +8,6 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface PowerUpManager : SKScene
+@interface PowerUpManager : NSObject
 
 @end
