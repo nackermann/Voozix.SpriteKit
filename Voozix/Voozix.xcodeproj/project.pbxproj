@@ -31,7 +31,6 @@
 		15A344EE1875ACE50046B117 /* EnemyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A344ED1875ACE50046B117 /* EnemyManager.m */; };
 		15A344F41875AD310046B117 /* ObstacleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A344F31875AD310046B117 /* ObstacleManager.m */; };
 		15A344F71875AD5A0046B117 /* PowerUpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A344F61875AD5A0046B117 /* PowerUpManager.m */; };
-		15A344FA1875BAD80046B117 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 15A344F91875BAD80046B117 /* background.png */; };
 		15A344FF1875C2430046B117 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A344FE1875C2430046B117 /* Player.m */; };
 		15A345021875C28E0046B117 /* Enemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A345011875C28E0046B117 /* Enemy.m */; };
 		15A345051875C2C20046B117 /* EnemyBall.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A345041875C2C20046B117 /* EnemyBall.m */; };
@@ -93,7 +92,6 @@
 		15A344F31875AD310046B117 /* ObstacleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObstacleManager.m; sourceTree = "<group>"; };
 		15A344F51875AD5A0046B117 /* PowerUpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PowerUpManager.h; sourceTree = "<group>"; };
 		15A344F61875AD5A0046B117 /* PowerUpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PowerUpManager.m; sourceTree = "<group>"; };
-		15A344F91875BAD80046B117 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		15A344FD1875C2430046B117 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		15A344FE1875C2430046B117 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		15A345001875C28E0046B117 /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enemy.h; sourceTree = "<group>"; };
@@ -250,7 +248,6 @@
 			isa = PBXGroup;
 			children = (
 				15A344BE1875A52B0046B117 /* Spaceship.png */,
-				15A344F91875BAD80046B117 /* background.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -367,7 +364,6 @@
 				3FAEAED61876EA5D00FC7EFF /* player.png in Resources */,
 				3FAEAED51876EA5D00FC7EFF /* enemy.png in Resources */,
 				3FAEAED31876EA5D00FC7EFF /* background.png in Resources */,
-				15A344FA1875BAD80046B117 /* background.png in Resources */,
 				15A344C11875A52B0046B117 /* Images.xcassets in Resources */,
 				15A344BF1875A52B0046B117 /* Spaceship.png in Resources */,
 				15A344B71875A52B0046B117 /* Main.storyboard in Resources */,

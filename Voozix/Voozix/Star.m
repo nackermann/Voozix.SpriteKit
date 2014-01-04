@@ -6,12 +6,12 @@
 //  Copyright (c) 2014 Norman Ackermann. All rights reserved.
 //
 
-#define MAX_SCALE 1.2
-#define MIN_SCALE 0.8
-#define MAX_ROTATION 0.5
-#define MIN_ROTATION -0.5
-#define SCALE_DURATION 0.5
-#define ROTATE_DURATION 1
+const float MAX_SCALE = 1.2;
+const float MIN_SCALE = 0.8;
+const float MAX_ROTATION = 0.5;
+const float MIN_ROTATION = -0.5;
+const float SCALE_DURATION = 0.5;
+const float ROTATE_DURATION = 1.0;
 
 #import "Star.h"
 
@@ -36,14 +36,11 @@
     
     SKAction *rotateRight = [SKAction rotateToAngle:MAX_ROTATION duration:ROTATE_DURATION];
     SKAction *rotateLeft = [SKAction rotateToAngle:MIN_ROTATION duration:ROTATE_DURATION];
-    SKAction *rotateSequence = [SKAction sequence:[[NSArray alloc] initWithObjects:rotateRight, rotateLeft, nil]];
-    
     SKAction *scaleLarge = [SKAction scaleTo:MAX_SCALE duration:SCALE_DURATION];
     SKAction *scaleSmall = [SKAction scaleTo:MIN_SCALE duration:SCALE_DURATION];
-    SKAction *scaleSequence = [SKAction sequence:[[NSArray alloc] initWithObjects:scaleLarge, scaleSmall, nil]];
     
-    [self runAction:[SKAction repeatActionForever:rotateSequence]];
-    [self runAction:[SKAction repeatActionForever:scaleSequence]];
+    [self runAction:[SKAction repeatActionForever:[SKAction sequence:@[rotateRight, rotateLeft]]]];
+    [self runAction:[SKAction repeatActionForever:[SKAction sequence:@[scaleLarge, scaleSmall]]]];
     
 }
 
