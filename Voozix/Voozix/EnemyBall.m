@@ -9,5 +9,32 @@
 #import "EnemyBall.h"
 
 @implementation EnemyBall
+- (id)init {
+    
+    if (self = [super init]) {
+        self.texture = [SKTexture textureWithImageNamed:@"enemy"];
+        self.size = self.texture.size;
+        [self setup];
+    }
+    
+    return self;
+}
+
+- (void)setup {
+    
+    self.name = @"enemy";
+}
+
+
+
+- (void)update:(CFTimeInterval)currentTime {
+    
+    CGPoint newPosition = self.position;
+    newPosition.x += self.velocity.dx;
+    newPosition.y += self.velocity.dy;
+    
+    self.position = newPosition;
+    
+}
 
 @end

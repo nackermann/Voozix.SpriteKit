@@ -18,6 +18,7 @@
 
 @end
 
+
 @implementation MyScene
 
 -(id)initWithSize:(CGSize)size {
@@ -60,11 +61,13 @@
         [self addChild:sprite];*/
 
         
+
         CGPoint location = [touch locationInNode:self];
         
         if ([self nodeAtPoint:location] == self.myStar)
         {
             [self.myStar changePosition];
+            [self.enemyManager createEnemy];
         }
         else
         {
@@ -81,11 +84,21 @@
     return _myHUDManager;
 }
 
+- (EnemyManager *)enemyManager {
+    
+    if (!_enemyManager) {
+        _enemyManager = [[EnemyManager alloc] initWithScene:self];
+    }
+    
+    return _enemyManager;
+}
+
 
 -(void)update:(CFTimeInterval)currentTime
 {
     /* Called before each frame is rendered */
     // Update all managers
+    [self.enemyManager update:currentTime];
     [self.myHUDManager update];
 }
 

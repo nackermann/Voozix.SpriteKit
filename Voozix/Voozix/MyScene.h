@@ -7,8 +7,8 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-
+#import "EnemyManager.h"
 
 @interface MyScene : SKScene
-
+@property (nonatomic, strong) EnemyManager *enemyManager;
 @end

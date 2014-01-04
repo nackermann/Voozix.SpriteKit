@@ -8,6 +8,7 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface EnemyBall : NSObject
-
+@interface EnemyBall : SKSpriteNode
+@property CGVector velocity;
+- (void)update:(CFTimeInterval)currentTime;
 @end
