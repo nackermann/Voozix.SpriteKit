@@ -10,6 +10,5 @@
 
 
 @interface Star : SKSpriteNode
--(void)changePosition:(CGRect)rect;
-
+- (void)changePosition;
 @end
