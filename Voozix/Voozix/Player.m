@@ -26,6 +26,8 @@
 - (void)setup
 {
     self.name = @"player";
+    SKScene *scene = [super scene];
+    self.position = CGPointMake(scene.frame.size.width/2+50, scene.frame.size.height/2+50);
 }
 
 - (NSNumber*)myScore
