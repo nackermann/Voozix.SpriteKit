@@ -10,6 +10,7 @@
 
 @interface Player()
 @property (nonatomic, strong) NSNumber *myScore;
+@property (nonatomic, weak) SKScene *myScene;
 @end
 
 @implementation Player
@@ -37,6 +38,7 @@
     }
     return _myScore;
 }
+
 
 - (void)moveToPosition:(CGPoint)position
 {
