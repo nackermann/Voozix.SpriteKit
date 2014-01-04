@@ -8,7 +8,16 @@
 
 #import "MyScene.h"
 #import "Star.h"
-#import "EnemyBall.h"
+#import "HUDManager.h"
+#import "Player.h"
+
+@interface MyScene()
+@property (nonatomic, strong) HUDManager *myHUDManager;
+@property (nonatomic, strong) Star *myStar;
+@property (nonatomic,strong) Player *myPlayer;
+
+@end
+
 
 @implementation MyScene
 
@@ -21,11 +30,14 @@
         backgroundSprite.anchorPoint = myPoint;
         backgroundSprite.position = myPoint;
         
-        Star *star = [[Star alloc] init];
-        star.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+        self.myStar = [[Star alloc] init];
+        self.myStar.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+        
+        self.myPlayer = [[Player alloc] init];
         
         [self addChild:backgroundSprite];
-        [self addChild:star];
+        [self addChild:self.myPlayer];
+        [self addChild:self.myStar];
     }
     return self;
 }
@@ -47,14 +59,19 @@
         [sprite runAction:[SKAction repeatActionForever:action]];
         
         [self addChild:sprite];*/
+
         
 
-        CGPoint position = [touch locationInNode:self];
+        CGPoint location = [touch locationInNode:self];
         
-        Star *star = (Star *)[self nodeAtPoint:position];
-        if ([star.name isEqualToString:@"star"]) {
-            [star changePosition:self.frame];
+        if ([self nodeAtPoint:location] == self.myStar)
+        {
+            [self.myStar changePosition];
             [self.enemyManager createEnemy];
+        }
+        else
+        {
+            [self.myPlayer moveToPosition:location];
         }
     }
 }
@@ -77,8 +94,8 @@
 }
 
 
--(void)update:(CFTimeInterval)currentTime {
-    
+-(void)update:(CFTimeInterval)currentTime
+{
     /* Called before each frame is rendered */
     // Update all managers
     [self.enemyManager update:currentTime];

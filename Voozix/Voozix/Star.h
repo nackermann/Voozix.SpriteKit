@@ -10,7 +10,5 @@
 
 
 @interface Star : SKSpriteNode
--(void)update:(CFTimeInterval)currentTime;
--(void)changePosition:(CGRect)rect;
-
+- (void)changePosition;
 @end

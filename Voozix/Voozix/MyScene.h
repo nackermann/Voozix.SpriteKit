@@ -7,10 +7,8 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-#import "HUDManager.h"
 #import "EnemyManager.h"
 
 @interface MyScene : SKScene
-@property (nonatomic,strong) HUDManager *myHUDManager;
 @property (nonatomic, strong) EnemyManager *enemyManager;
 @end
