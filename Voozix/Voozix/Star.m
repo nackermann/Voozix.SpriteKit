@@ -20,7 +20,8 @@ const float ROTATE_DURATION = 1.0;
 - (id) init {
     
     if (self = [super init]) {
-        self = [Star spriteNodeWithImageNamed:@"star"];
+        self.texture = [SKTexture textureWithImageNamed:@"star"];
+        self.size = self.texture.size;
         [self setup];
     }
     return self;
@@ -49,7 +50,7 @@ const float ROTATE_DURATION = 1.0;
 }
 
 - (void)changePosition:(CGRect)rect {
-
+    
     /* Get random coordinates that are within the screen bounds */
     float x = (arc4random() % (int)rect.size.width);
     float y = (arc4random() % (int)rect.size.height);
