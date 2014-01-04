@@ -9,10 +9,12 @@
 #import "MyScene.h"
 #import "Star.h"
 #import "HUDManager.h"
+#import "Player.h"
 
 @interface MyScene()
 @property (nonatomic, strong) HUDManager *myHUDManager;
 @property (nonatomic, strong) Star *myStar;
+@property (nonatomic,strong) Player *myPlayer;
 
 @end
 
@@ -30,8 +32,10 @@
         self.myStar = [[Star alloc] init];
         self.myStar.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
         
+        self.myPlayer = [[Player alloc] init];
         
         [self addChild:backgroundSprite];
+        [self addChild:self.myPlayer];
         [self addChild:self.myStar];
     }
     return self;
@@ -54,11 +58,18 @@
         [sprite runAction:[SKAction repeatActionForever:action]];
         
         [self addChild:sprite];*/
-        
 
+        
         CGPoint location = [touch locationInNode:self];
         
-        if ([self nodeAtPoint:location] == self.myStar) [self.myStar changePosition];
+        if ([self nodeAtPoint:location] == self.myStar)
+        {
+            [self.myStar changePosition];
+        }
+        else
+        {
+            [self.myPlayer moveToPosition:location];
+        }
     }
 }
 
