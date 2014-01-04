@@ -17,20 +17,18 @@ const float ROTATE_DURATION = 2.0;
 
 @implementation Star
 
-- (id) init {
+- (id)init
+{
+    self = [super init];
+    self.texture = [SKTexture textureWithImageNamed:@"star"];
+    self.size = self.texture.size;
+    [self setup];
     
-    if (self = [super init]) {
-        self.texture = [SKTexture textureWithImageNamed:@"star"];
-        self.size = self.texture.size;
-        [self setup];
-    }
     return self;
 }
 
-- (void) setup {
-    
-    self.name = @"star";
-    
+- (void)setup
+{
     self.zRotation = MIN_ROTATION;
     self.xScale = MIN_SCALE;
     self.yScale = MIN_SCALE;
@@ -46,9 +44,10 @@ const float ROTATE_DURATION = 2.0;
 }
 
 
-- (void)changePosition:(CGRect)rect {
-    
+- (void)changePosition
+{
     /* Get random coordinates that are within the screen bounds */
+    CGRect rect = [[super scene] frame];
     float x = (arc4random() % (int)rect.size.width);
     float y = (arc4random() % (int)rect.size.height);
     
