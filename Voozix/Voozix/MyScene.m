@@ -7,6 +7,13 @@
 //
 
 #import "MyScene.h"
+#import "Star.h"
+#import "HUDManager.h"
+
+@interface MyScene()
+@property (nonatomic,strong) HUDManager *myHUDManager;
+
+@end
 
 @implementation MyScene
 
@@ -19,8 +26,13 @@
         backgroundSprite.anchorPoint = myPoint;
         backgroundSprite.position = myPoint;
         
-        [self addChild:backgroundSprite];
+        Star *star = [[Star alloc] init];
+        star.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+    
         
+        
+        [self addChild:backgroundSprite];
+        [self addChild:star];
     }
     return self;
 }
@@ -43,7 +55,14 @@
         
         [self addChild:sprite];*/
         
-        NSLog(@"%@", @"test");
+
+        CGPoint position = [touch locationInNode:self];
+        
+        Star *star = (Star *)[self nodeAtPoint:position];
+        if ([star.name isEqualToString:@"star"]) {
+            [star changePosition:self.frame];
+        }
+
     }
 }
 
@@ -56,7 +75,8 @@
 }
 
 
--(void)update:(CFTimeInterval)currentTime {
+-(void)update:(CFTimeInterval)currentTime
+{
     /* Called before each frame is rendered */
     // Update all managers
     [self.myHUDManager update];
