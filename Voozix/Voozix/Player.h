@@ -8,6 +8,6 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface Player : NSObject
-
+@interface Player : SKSpriteNode
+- (void)moveToPosition:(CGPoint)position;
 @end

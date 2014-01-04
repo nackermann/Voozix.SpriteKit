@@ -9,9 +9,11 @@
 #import "MyScene.h"
 #import "Star.h"
 #import "HUDManager.h"
+#import "Player.h"
 
 @interface MyScene()
 @property (nonatomic,strong) HUDManager *myHUDManager;
+@property (nonatomic,strong) Player *myPlayer;
 
 @end
 
@@ -28,11 +30,15 @@
         
         Star *star = [[Star alloc] init];
         star.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+        
+        self.myPlayer = [[Player alloc] init];
+        self.myPlayer.position = CGPointMake(self.frame.size.width/2+50, self.frame.size.height/2+50);
     
         
         
         [self addChild:backgroundSprite];
         [self addChild:star];
+        [self addChild:self.myPlayer];
     }
     return self;
 }
@@ -56,11 +62,17 @@
         [self addChild:sprite];*/
         
 
+        
+        // hier muss einiges geaendert werden!
         CGPoint position = [touch locationInNode:self];
         
         Star *star = (Star *)[self nodeAtPoint:position];
         if ([star.name isEqualToString:@"star"]) {
             [star changePosition:self.frame];
+        }
+        else
+        {
+            [self.myPlayer moveToPosition:position];
         }
 
     }

@@ -14,12 +14,31 @@
 
 @implementation Player
 
+- (id)init
+{
+    self = [super init];
+    self.texture = [SKTexture textureWithImageNamed:@"player"];
+    self.size = self.texture.size;
+    [self setup];
+    return self;
+}
+
+- (void)setup
+{
+    self.name = @"player";
+}
+
 - (NSNumber*)myScore
 {
     if (_myScore == nil) {
         _myScore = [NSNumber numberWithInt:0];
     }
     return _myScore;
+}
+
+- (void)moveToPosition:(CGPoint)position
+{
+    [self runAction:[SKAction moveTo:position duration:0.4]];
 }
 
 @end
