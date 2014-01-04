@@ -10,8 +10,8 @@ const float MAX_SCALE = 1.2;
 const float MIN_SCALE = 0.8;
 const float MAX_ROTATION = 0.5;
 const float MIN_ROTATION = -0.5;
-const float SCALE_DURATION = 0.5;
-const float ROTATE_DURATION = 1.0;
+const float SCALE_DURATION = 1.0;
+const float ROTATE_DURATION = 2.0;
 
 #import "Star.h"
 
@@ -45,9 +45,6 @@ const float ROTATE_DURATION = 1.0;
     
 }
 
--(void)update:(CFTimeInterval)currentTime {
-    
-}
 
 - (void)changePosition:(CGRect)rect {
     
