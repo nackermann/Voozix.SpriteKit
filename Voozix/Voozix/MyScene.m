@@ -33,7 +33,6 @@
         
         self.myPlayer = [[Player alloc] init];
         //self.myPlayer.position = CGPointMake(self.frame.size.width/2+50, self.frame.size.height/2+50);
-    
         
         [self addChild:backgroundSprite];
         [self addChild:star];

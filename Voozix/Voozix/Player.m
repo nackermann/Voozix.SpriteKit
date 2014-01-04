@@ -39,10 +39,9 @@
     return _myScore;
 }
 
-
 - (void)moveToPosition:(CGPoint)position
 {
-    [self runAction:[SKAction moveTo:position duration:0.4]];
+    [self runAction:[SKAction moveTo:position duration:0.4]]; // stub
 }
 
 // contact delegate
