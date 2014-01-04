@@ -8,9 +8,9 @@
 
 #import "HUDManager.h"
 
-#define FONTSIZE 30
-#define LABELXOFFSET 100
-#define LABELYOFFSET 30
+static const CGFloat fontSize = 30;
+static const CGFloat labelXOffset = 100;
+static const CGFloat labelYOffset = 30;
 
 @interface HUDManager()
 @property (nonatomic, weak) SKScene *myScene;
@@ -32,8 +32,8 @@
 {
     if (_myScoreLabel == nil) {
         _myScoreLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-        _myScoreLabel.fontSize = FONTSIZE;
-        CGPoint testPos = CGPointMake(CGRectGetMinX(self.myScene.frame)+LABELXOFFSET, CGRectGetMinY(self.myScene.frame)+LABELYOFFSET);
+        _myScoreLabel.fontSize = fontSize;
+        CGPoint testPos = CGPointMake(CGRectGetMinX(self.myScene.frame)+labelXOffset, CGRectGetMinY(self.myScene.frame)+labelYOffset);
         _myScoreLabel.position = testPos;
         
         if (self.myScene) {
