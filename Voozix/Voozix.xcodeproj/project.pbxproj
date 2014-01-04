@@ -24,12 +24,10 @@
 		15A344CA1875A52B0046B117 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A344A51875A52B0046B117 /* UIKit.framework */; };
 		15A344D21875A52B0046B117 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 15A344D01875A52B0046B117 /* InfoPlist.strings */; };
 		15A344D41875A52B0046B117 /* VoozixTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A344D31875A52B0046B117 /* VoozixTests.m */; };
-		15A344DF1875ABFF0046B117 /* CollisionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A344DE1875ABFF0046B117 /* CollisionManager.m */; };
 		15A344E21875AC3B0046B117 /* ParticleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A344E11875AC3B0046B117 /* ParticleManager.m */; };
 		15A344E51875AC550046B117 /* SoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A344E41875AC550046B117 /* SoundManager.m */; };
 		15A344E81875AC870046B117 /* HUDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A344E71875AC870046B117 /* HUDManager.m */; };
 		15A344EE1875ACE50046B117 /* EnemyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A344ED1875ACE50046B117 /* EnemyManager.m */; };
-		15A344F41875AD310046B117 /* ObstacleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A344F31875AD310046B117 /* ObstacleManager.m */; };
 		15A344F71875AD5A0046B117 /* PowerUpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A344F61875AD5A0046B117 /* PowerUpManager.m */; };
 		15A344FF1875C2430046B117 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A344FE1875C2430046B117 /* Player.m */; };
 		15A345021875C28E0046B117 /* Enemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A345011875C28E0046B117 /* Enemy.m */; };
@@ -78,8 +76,6 @@
 		15A344CF1875A52B0046B117 /* VoozixTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VoozixTests-Info.plist"; sourceTree = "<group>"; };
 		15A344D11875A52B0046B117 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		15A344D31875A52B0046B117 /* VoozixTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VoozixTests.m; sourceTree = "<group>"; };
-		15A344DD1875ABFF0046B117 /* CollisionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollisionManager.h; sourceTree = "<group>"; };
-		15A344DE1875ABFF0046B117 /* CollisionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollisionManager.m; sourceTree = "<group>"; };
 		15A344E01875AC3B0046B117 /* ParticleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleManager.h; sourceTree = "<group>"; };
 		15A344E11875AC3B0046B117 /* ParticleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticleManager.m; sourceTree = "<group>"; };
 		15A344E31875AC550046B117 /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundManager.h; sourceTree = "<group>"; };
@@ -88,8 +84,6 @@
 		15A344E71875AC870046B117 /* HUDManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUDManager.m; sourceTree = "<group>"; };
 		15A344EC1875ACE50046B117 /* EnemyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyManager.h; sourceTree = "<group>"; };
 		15A344ED1875ACE50046B117 /* EnemyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnemyManager.m; sourceTree = "<group>"; };
-		15A344F21875AD310046B117 /* ObstacleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObstacleManager.h; sourceTree = "<group>"; };
-		15A344F31875AD310046B117 /* ObstacleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObstacleManager.m; sourceTree = "<group>"; };
 		15A344F51875AD5A0046B117 /* PowerUpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PowerUpManager.h; sourceTree = "<group>"; };
 		15A344F61875AD5A0046B117 /* PowerUpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PowerUpManager.m; sourceTree = "<group>"; };
 		15A344FD1875C2430046B117 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
@@ -218,8 +212,6 @@
 		15A344F81875AD9B0046B117 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				15A344DD1875ABFF0046B117 /* CollisionManager.h */,
-				15A344DE1875ABFF0046B117 /* CollisionManager.m */,
 				15A344E01875AC3B0046B117 /* ParticleManager.h */,
 				15A344E11875AC3B0046B117 /* ParticleManager.m */,
 				15A344E31875AC550046B117 /* SoundManager.h */,
@@ -228,8 +220,6 @@
 				15A344E71875AC870046B117 /* HUDManager.m */,
 				15A344EC1875ACE50046B117 /* EnemyManager.h */,
 				15A344ED1875ACE50046B117 /* EnemyManager.m */,
-				15A344F21875AD310046B117 /* ObstacleManager.h */,
-				15A344F31875AD310046B117 /* ObstacleManager.m */,
 				15A344F51875AD5A0046B117 /* PowerUpManager.h */,
 				15A344F61875AD5A0046B117 /* PowerUpManager.m */,
 			);
@@ -390,9 +380,7 @@
 				3FAEAEC11876E74000FC7EFF /* Star.m in Sources */,
 				15A344F71875AD5A0046B117 /* PowerUpManager.m in Sources */,
 				15A344BA1875A52B0046B117 /* ViewController.m in Sources */,
-				15A344DF1875ABFF0046B117 /* CollisionManager.m in Sources */,
 				15A344E81875AC870046B117 /* HUDManager.m in Sources */,
-				15A344F41875AD310046B117 /* ObstacleManager.m in Sources */,
 				15A345081875C2DC0046B117 /* Hunter.m in Sources */,
 				15A345021875C28E0046B117 /* Enemy.m in Sources */,
 				15A344EE1875ACE50046B117 /* EnemyManager.m in Sources */,

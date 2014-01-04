@@ -9,7 +9,7 @@
 #import "Player.h"
 
 @interface Player()
-@property (nonatomic, assign) NSNumber *myScore;
+@property (nonatomic, strong) NSNumber *myScore;
 @end
 
 @implementation Player
