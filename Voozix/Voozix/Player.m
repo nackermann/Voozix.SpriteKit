@@ -8,7 +8,7 @@
 
 #import "Player.h"
 
-@interface Player()
+@interface Player() <SKPhysicsContactDelegate>
 @property (nonatomic, strong) NSNumber *myScore;
 @property (nonatomic, weak) SKScene *myScene;
 @end
@@ -43,6 +43,12 @@
 - (void)moveToPosition:(CGPoint)position
 {
     [self runAction:[SKAction moveTo:position duration:0.4]];
+}
+
+// contact delegate
+- (void)didBeginContact:(SKPhysicsContact *)contact
+{
+    NSLog(@"Contact between objects: %@ and %@", contact.bodyA, contact.bodyB);
 }
 
 @end
