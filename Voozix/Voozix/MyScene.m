@@ -8,6 +8,7 @@
 
 #import "MyScene.h"
 #import "Star.h"
+#import "EnemyBall.h"
 
 @implementation MyScene
 
@@ -22,9 +23,6 @@
         
         Star *star = [[Star alloc] init];
         star.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
-    
-        
-        
         
         [self addChild:backgroundSprite];
         [self addChild:star];
@@ -56,9 +54,8 @@
         Star *star = (Star *)[self nodeAtPoint:position];
         if ([star.name isEqualToString:@"star"]) {
             [star changePosition:self.frame];
+            [self.enemyManager createEnemy];
         }
-
-        NSLog(@"%@", @"test");
     }
 }
 
@@ -70,14 +67,21 @@
     return _myHUDManager;
 }
 
+- (EnemyManager *)enemyManager {
+    
+    if (!_enemyManager) {
+        _enemyManager = [[EnemyManager alloc] initWithScene:self];
+    }
+    
+    return _enemyManager;
+}
+
 
 -(void)update:(CFTimeInterval)currentTime {
     
-    Star *star = (Star *)[self childNodeWithName:@"star"];
-    [star update:currentTime];
-    
     /* Called before each frame is rendered */
     // Update all managers
+    [self.enemyManager update:currentTime];
     [self.myHUDManager update];
 }
 
