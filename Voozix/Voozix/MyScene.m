@@ -38,7 +38,7 @@
         
         self.myPlayer = [[Player alloc] init];
         
-        self.myCollisionManager = [[CollisionManager alloc] init];
+        self.myCollisionManager = [[CollisionManager alloc] initWithScene:self];
         self.myCollisionManager.enemyManager = self.myEnemyManager;
         self.myCollisionManager.hudManager = self.myHUDManager;
         self.physicsWorld.contactDelegate = self.myCollisionManager;

@@ -13,4 +13,5 @@
 @interface CollisionManager : NSObject <SKPhysicsContactDelegate>
 @property (nonatomic, strong) EnemyManager *enemyManager;
 @property (nonatomic, strong) HUDManager *hudManager;
+- (id)initWithScene:(SKScene*)scene;
 @end
