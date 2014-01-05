@@ -16,7 +16,8 @@
 @property (nonatomic, strong) HUDManager *myHUDManager;
 @property (nonatomic, strong) Star *myStar;
 @property (nonatomic,strong) Player *myPlayer;
-@property (nonatomic, strong) CollisionManager *collisionManager;
+@property (nonatomic, strong) CollisionManager *myCollisionManager;
+@property (nonatomic, strong) EnemyManager *myEnemyManager;
 
 @end
 
@@ -37,10 +38,10 @@
         
         self.myPlayer = [[Player alloc] init];
         
-        self.collisionManager = [[CollisionManager alloc] init];
-        self.collisionManager.enemyManager = self.enemyManager;
-        self.collisionManager.hudManager = self.myHUDManager;
-        self.physicsWorld.contactDelegate = self.collisionManager;
+        self.myCollisionManager = [[CollisionManager alloc] init];
+        self.myCollisionManager.enemyManager = self.myEnemyManager;
+        self.myCollisionManager.hudManager = self.myHUDManager;
+        self.physicsWorld.contactDelegate = self.myCollisionManager;
         self.physicsWorld.gravity = CGVectorMake(0.0, 0.0);
         
         [self addChild:backgroundSprite];
@@ -56,31 +57,10 @@
     // An einen Input Manager weitergeben?
     
     for (UITouch *touch in touches) {
-        /*CGPoint location = [touch locationInNode:self];
-        
-        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
-        
-        sprite.position = location;
-        
-        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
-        
-        [sprite runAction:[SKAction repeatActionForever:action]];
-        
-        [self addChild:sprite];*/
-
-        
 
         CGPoint location = [touch locationInNode:self];
         
-//        if ([self nodeAtPoint:location] == self.myStar)
-//        {
-//            [self.myStar changePosition];
-//            [self.enemyManager createEnemy];
-//        }
-//        else
-//        {
-            [self.myPlayer moveToPosition:location];
-        //}
+        [self.myPlayer moveToPosition:location];
     }
 }
 
@@ -92,13 +72,13 @@
     return _myHUDManager;
 }
 
-- (EnemyManager *)enemyManager {
+- (EnemyManager *)myEnemyManager {
     
-    if (!_enemyManager) {
-        _enemyManager = [[EnemyManager alloc] initWithScene:self];
+    if (!_myEnemyManager) {
+        _myEnemyManager = [[EnemyManager alloc] initWithScene:self];
     }
     
-    return _enemyManager;
+    return _myEnemyManager;
 }
 
 
@@ -106,7 +86,7 @@
 {
     /* Called before each frame is rendered */
     // Update all managers
-    [self.enemyManager update:currentTime];
+    [self.myEnemyManager update:currentTime];
     [self.myHUDManager update];
 }
 

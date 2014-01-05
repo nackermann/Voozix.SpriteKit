@@ -52,6 +52,8 @@ static const CGFloat ROTATE_DURATION = 2.0;
 
 - (void)changePosition
 {
+    self.physicsBody = nil;
+    
     /* Get random coordinates that are within the screen bounds */
     CGRect rect = [[super scene] frame];
     float x = (arc4random() % (int)rect.size.width);
@@ -73,6 +75,7 @@ static const CGFloat ROTATE_DURATION = 2.0;
     CGPoint newPosition = CGPointMake(x, y);
     self.position = newPosition;
 
+    self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.size.width/2];
     
 }
 
