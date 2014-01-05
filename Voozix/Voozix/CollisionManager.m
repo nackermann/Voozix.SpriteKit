@@ -27,55 +27,6 @@
     return self;
 }
 
-/*- (void)didBeginContact:(SKPhysicsContact *)contact {
-    
-    // Somehow the player always ends up being contact.bodyA ???
-    // So i just checked the type of contact.bodyB XD
-    
-    
-    NSLog(@"Contact between %@ and %@", contact.bodyA.node.name, contact.bodyB.node.name);
-    
-    // Collision with star
-    if ([contact.bodyB.node isKindOfClass:[Star class]]) {
-        
-        Star *star = (Star *)contact.bodyB.node;
-        
-        // Delete PhysicsBody, so object can be repositioned
-        star.physicsBody = nil;
-        [star changePosition];
-        self.hudManager.score++;
-        
-        // Recreate PhysicsBody
-        star.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:star.size.width/2];
-        star.physicsBody.dynamic = NO;
-        star.physicsBody.categoryBitMask = STAR_OBJECT;
-        star.physicsBody.contactTestBitMask = PLAYER_OBJECT;
-        
-        // Spawn enemy
-        [self.enemyManager createEnemy];
-        
-        
-    // Collision with enemy
-    }else if ([contact.bodyB.node isKindOfClass:[EnemyBall class]]){
-        
-        if ([contact.bodyA.node isKindOfClass:[Player class]]) {
-            
-            Player *player = (Player *)contact.bodyA.node;
-            
-            // Delete PhysicsBody, so object can be repositioned
-            player.physicsBody = nil;
-            player.position = CGPointMake(100, 100);    // Position will be changed in the future
-            self.hudManager.score = 0;
-            
-            // Recreate PhysicsBody
-            player.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:player.size.width/2];
-            player.physicsBody.categoryBitMask = PLAYER_OBJECT;
-            player.physicsBody.contactTestBitMask = ENEMY_OBJECT | STAR_OBJECT;
-        }
-        
-    }
-}*/
-
 - (void)didBeginContact:(SKPhysicsContact *)contact
 {
     NSLog(@"Contact between objects: %@ and %@", contact.bodyA, contact.bodyB);
@@ -108,10 +59,15 @@
         star.physicsBody.dynamic = NO;
         star.physicsBody.categoryBitMask = STAR_OBJECT;
         star.physicsBody.contactTestBitMask = PLAYER_OBJECT;
+        
     }
     else if ((firstBody.categoryBitMask & PLAYER_OBJECT) != 0 &&
              (secondBody.categoryBitMask & ENEMY_OBJECT) != 0)
     {
+        for (EnemyBall *enemy in self.enemyManager.enemies) {
+            [enemy removeFromParent];
+        }
+        
         [self.enemyManager.enemies removeAllObjects];
         
         Player *player = (Player *)firstBody.node;
@@ -124,6 +80,7 @@
         player.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:player.size.width/2];
         player.physicsBody.categoryBitMask = PLAYER_OBJECT;
         player.physicsBody.contactTestBitMask = ENEMY_OBJECT | STAR_OBJECT;
+        
     }
 }
 
