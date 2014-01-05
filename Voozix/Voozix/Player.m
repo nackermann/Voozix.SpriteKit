@@ -9,14 +9,12 @@
 #import "Player.h"
 #import "Star.h"
 #import "EnemyManager.h"
+#import "ObjectCategories.h"
 
 @interface Player()
 @property (nonatomic, strong) NSNumber *myScore;
 @property (nonatomic, weak) SKScene *myScene;
 @end
-
-static const uint32_t sprite1Category = 0x1 << 0;
-static const uint32_t sprite2Category = 0x1 << 1;
 
 @implementation Player
 
@@ -26,8 +24,8 @@ static const uint32_t sprite2Category = 0x1 << 1;
     self.texture = [SKTexture textureWithImageNamed:@"player"];
     self.size = self.texture.size;
     self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.size.width/2];
-    self.physicsBody.categoryBitMask = sprite1Category;
-    self.physicsBody.contactTestBitMask = sprite2Category;
+    self.physicsBody.categoryBitMask = PLAYER_OBJECT;
+    self.physicsBody.contactTestBitMask = ENEMY_OBJECT | STAR_OBJECT;
     [self setup];
     return self;
 }

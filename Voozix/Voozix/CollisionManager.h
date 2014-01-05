@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "EnemyManager.h"
+#import "HUDManager.h"
 
 @interface CollisionManager : NSObject <SKPhysicsContactDelegate>
 @property (nonatomic, strong) EnemyManager *enemyManager;
+@property (nonatomic, strong) HUDManager *hudManager;
 @end

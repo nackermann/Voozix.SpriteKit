@@ -13,10 +13,8 @@ static const CGFloat MIN_ROTATION = -0.5;
 static const CGFloat SCALE_DURATION = 1.0;
 static const CGFloat ROTATE_DURATION = 2.0;
 
-static const uint32_t sprite1Category = 0x1 << 0;
-static const uint32_t sprite2Category = 0x1 << 1;
-
 #import "Star.h"
+#import "ObjectCategories.h"
 
 @implementation Star
 
@@ -27,9 +25,9 @@ static const uint32_t sprite2Category = 0x1 << 1;
     self.size = self.texture.size;
     self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.size.width/2];
     self.physicsBody.dynamic = NO;
-    self.physicsBody.categoryBitMask = sprite2Category;
-    self.physicsBody.collisionBitMask = sprite1Category;
-    self.physicsBody.contactTestBitMask = sprite1Category;
+    self.physicsBody.categoryBitMask = STAR_OBJECT;
+    //self.physicsBody.collisionBitMask = PLAYER_OBJECT;
+    self.physicsBody.contactTestBitMask = PLAYER_OBJECT;
     [self setup];
     
     return self;
@@ -72,8 +70,9 @@ static const uint32_t sprite2Category = 0x1 << 1;
         y += self.frame.size.width/2;
     
     /* Create and set new position */
-    CGPoint newPosiion = CGPointMake(x, y);
-    self.position = newPosiion;
+    CGPoint newPosition = CGPointMake(x, y);
+    self.position = newPosition;
+
     
 }
 

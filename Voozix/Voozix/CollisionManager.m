@@ -7,11 +7,9 @@
 //
 
 #import "CollisionManager.h"
+#import "ObjectCategories.h"
 #import "Player.h"
 #import "Star.h"
-
-static const uint32_t sprite1Category = 0x1 << 0;
-static const uint32_t sprite2Category = 0x1 << 1;
 
 @implementation CollisionManager
 
@@ -26,36 +24,49 @@ static const uint32_t sprite2Category = 0x1 << 1;
 
 - (void)didBeginContact:(SKPhysicsContact *)contact {
     
-//    if ([contact.bodyB.node.name isEqualToString:@"star"]) {
-//        Star *star = (Star *)contact.bodyB.node;
-//        //star.hidden = YES;
-//        star.physicsBody = nil;
-//        [star changePosition];
-//        star.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:star.frame.size.width/2];
-//        NSLog(@"%g, %g", star.position.x, star.position.y);
-//        // star.hidden = NO;
-//    }
+    // Somehow the player always ends up being contact.bodyA ???
+    // So i just checked the type of contact.bodyB XD
     
-    NSLog(@"%@", contact.bodyB.node.name);
+    
+    NSLog(@"Contact between %@ and %@", contact.bodyA.node.name, contact.bodyB.node.name);
+    
+    // Collision with star
     if ([contact.bodyB.node isKindOfClass:[Star class]]) {
+        
         Star *star = (Star *)contact.bodyB.node;
+        
+        // Delete PhysicsBody, so object can be repositioned
         star.physicsBody = nil;
         [star changePosition];
-        star.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:star.frame.size.width/2];
+        self.hudManager.score++;
+        
+        // Recreate PhysicsBody
+        star.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:star.size.width/2];
         star.physicsBody.dynamic = NO;
-        star.physicsBody.categoryBitMask = sprite2Category;
-        star.physicsBody.collisionBitMask = sprite1Category;
-        star.physicsBody.contactTestBitMask = sprite1Category;
+        star.physicsBody.categoryBitMask = STAR_OBJECT;
+        star.physicsBody.contactTestBitMask = PLAYER_OBJECT;
+        
+        // Spawn enemy
         [self.enemyManager createEnemy];
+        
+        
+    // Collision with enemy
     }else if ([contact.bodyB.node isKindOfClass:[EnemyBall class]]){
         
         if ([contact.bodyA.node isKindOfClass:[Player class]]) {
+            
             Player *player = (Player *)contact.bodyA.node;
+            
+            // Delete PhysicsBody, so object can be repositioned
             player.physicsBody = nil;
-            player.position = CGPointMake(100, 100);
+            player.position = CGPointMake(100, 100);    // Position will be changed in the future
+            self.hudManager.score = 0;
+            
+            // Recreate PhysicsBody
             player.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:player.size.width/2];
-            player.physicsBody.categoryBitMask = sprite1Category;
-            player.physicsBody.contactTestBitMask = sprite2Category;        }
+            player.physicsBody.categoryBitMask = PLAYER_OBJECT;
+            player.physicsBody.contactTestBitMask = ENEMY_OBJECT | STAR_OBJECT;
+        }
         
     }
 }
@@ -64,9 +75,7 @@ static const uint32_t sprite2Category = 0x1 << 1;
 - (void)didEndContact:(SKPhysicsContact *)contact {
     
     
-    
-    
-    
+
 }
 
 @end

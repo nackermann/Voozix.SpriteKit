@@ -58,12 +58,12 @@ const int MAX_SPEED = 15;
         y += enemy.frame.size.width/2;
     
     /* Create and set new position */
-    EnemyBall *enemy2 = [[EnemyBall alloc] initAtPosition:CGPointMake(x, y)];
-    enemy2.velocity = [self createRandomVelocity];
+    enemy = [[EnemyBall alloc] initAtPosition:CGPointMake(x, y)];
+    enemy.velocity = [self createRandomVelocity];
     //enemy.position = CGPointMake(x, y);
     
-    [self.enemies addObject:enemy2];
-    [self.scene addChild:enemy2];
+    [self.enemies addObject:enemy];
+    [self.scene addChild:enemy];
     
 }
 

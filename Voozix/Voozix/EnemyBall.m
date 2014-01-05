@@ -7,9 +7,7 @@
 //
 
 #import "EnemyBall.h"
-static const uint32_t sprite1Category = 0x1 << 0;
-static const uint32_t sprite2Category = 0x1 << 1;
-
+#import "ObjectCategories.h"
 
 @implementation EnemyBall
 - (id)init {
@@ -17,10 +15,6 @@ static const uint32_t sprite2Category = 0x1 << 1;
     if (self = [super init]) {
         self.texture = [SKTexture textureWithImageNamed:@"enemy"];
         self.size = self.texture.size;
-//        self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.size.width/2];
-//        self.physicsBody.categoryBitMask = sprite2Category;
-//        self.physicsBody.collisionBitMask = sprite1Category;
-//        self.physicsBody.contactTestBitMask = sprite1Category;
         [self setup];
     }
     
@@ -35,9 +29,8 @@ static const uint32_t sprite2Category = 0x1 << 1;
         self.size = self.texture.size;
         self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.size.width/2];
         self.physicsBody.dynamic = NO;
-        self.physicsBody.categoryBitMask = sprite2Category;
-        self.physicsBody.collisionBitMask = sprite1Category;
-        self.physicsBody.contactTestBitMask = sprite1Category;
+        self.physicsBody.categoryBitMask = ENEMY_OBJECT;
+        self.physicsBody.contactTestBitMask = PLAYER_OBJECT;
         [self setup];
     }
     

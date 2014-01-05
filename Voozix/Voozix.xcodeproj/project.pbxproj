@@ -103,6 +103,7 @@
 		3FAEAECF1876EA5D00FC7EFF /* block.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block.png; sourceTree = "<group>"; };
 		3FAEAED01876EA5D00FC7EFF /* enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy.png; sourceTree = "<group>"; };
 		3FAEAED11876EA5D00FC7EFF /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player.png; sourceTree = "<group>"; };
+		3FB29D451879EEF800EFF147 /* ObjectCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectCategories.h; sourceTree = "<group>"; };
 		3FCB6F071876FB9F00A7F6AD /* StarSparks.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StarSparks.sks; sourceTree = "<group>"; };
 		3FCB6F081876FB9F00A7F6AD /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -166,6 +167,7 @@
 		15A344A91875A52B0046B117 /* Voozix */ = {
 			isa = PBXGroup;
 			children = (
+				3FB29D451879EEF800EFF147 /* ObjectCategories.h */,
 				15A344B21875A52B0046B117 /* AppDelegate.h */,
 				15A344B31875A52B0046B117 /* AppDelegate.m */,
 				15A344B51875A52B0046B117 /* Main.storyboard */,

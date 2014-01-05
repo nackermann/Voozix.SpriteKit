@@ -39,6 +39,7 @@
         
         self.collisionManager = [[CollisionManager alloc] init];
         self.collisionManager.enemyManager = self.enemyManager;
+        self.collisionManager.hudManager = self.myHUDManager;
         self.physicsWorld.contactDelegate = self.collisionManager;
         self.physicsWorld.gravity = CGVectorMake(0.0, 0.0);
         

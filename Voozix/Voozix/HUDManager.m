@@ -56,7 +56,7 @@ static const CGFloat labelYOffset = 30;
     
     // LabelView updaten, nur updaten bei Veraenderung, aendern !!!!!
     //if (das was ich hab != das was der player hat) {
-        self.myScoreLabel.text = [NSString stringWithFormat:@"%@%d", @"Score: ", 30]; // 30 ist stub bis richtig Kommuniziert wird
+        self.myScoreLabel.text = [NSString stringWithFormat:@"%@%d", @"Score: ", self.score]; // 30 ist stub bis richtig Kommuniziert wird
     //}
     
 }
