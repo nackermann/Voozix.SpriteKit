@@ -33,6 +33,7 @@
 		15A345021875C28E0046B117 /* Enemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A345011875C28E0046B117 /* Enemy.m */; };
 		15A345051875C2C20046B117 /* EnemyBall.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A345041875C2C20046B117 /* EnemyBall.m */; };
 		15A345081875C2DC0046B117 /* Hunter.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A345071875C2DC0046B117 /* Hunter.m */; };
+		3F089EFF1879B37C0073FA07 /* CollisionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F089EFE1879B37C0073FA07 /* CollisionManager.m */; };
 		3FAEAEC11876E74000FC7EFF /* Star.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FAEAEC01876E74000FC7EFF /* Star.m */; };
 		3FAEAED31876EA5D00FC7EFF /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FAEAECE1876EA5D00FC7EFF /* background.png */; };
 		3FAEAED41876EA5D00FC7EFF /* block.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FAEAECF1876EA5D00FC7EFF /* block.png */; };
@@ -94,6 +95,8 @@
 		15A345041875C2C20046B117 /* EnemyBall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnemyBall.m; sourceTree = "<group>"; };
 		15A345061875C2DC0046B117 /* Hunter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hunter.h; sourceTree = "<group>"; };
 		15A345071875C2DC0046B117 /* Hunter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hunter.m; sourceTree = "<group>"; };
+		3F089EFD1879B37C0073FA07 /* CollisionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollisionManager.h; sourceTree = "<group>"; };
+		3F089EFE1879B37C0073FA07 /* CollisionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollisionManager.m; sourceTree = "<group>"; };
 		3FAEAEBF1876E74000FC7EFF /* Star.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Star.h; sourceTree = "<group>"; };
 		3FAEAEC01876E74000FC7EFF /* Star.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Star.m; sourceTree = "<group>"; };
 		3FAEAECE1876EA5D00FC7EFF /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
@@ -222,6 +225,8 @@
 				15A344ED1875ACE50046B117 /* EnemyManager.m */,
 				15A344F51875AD5A0046B117 /* PowerUpManager.h */,
 				15A344F61875AD5A0046B117 /* PowerUpManager.m */,
+				3F089EFD1879B37C0073FA07 /* CollisionManager.h */,
+				3F089EFE1879B37C0073FA07 /* CollisionManager.m */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -388,6 +393,7 @@
 				15A344B01875A52B0046B117 /* main.m in Sources */,
 				15A344E51875AC550046B117 /* SoundManager.m in Sources */,
 				15A344FF1875C2430046B117 /* Player.m in Sources */,
+				3F089EFF1879B37C0073FA07 /* CollisionManager.m in Sources */,
 				15A344E21875AC3B0046B117 /* ParticleManager.m in Sources */,
 				15A345051875C2C20046B117 /* EnemyBall.m in Sources */,
 			);

@@ -8,6 +8,6 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface Player : SKSpriteNode
+@interface Player : SKSpriteNode <SKPhysicsContactDelegate>
 - (void)moveToPosition:(CGPoint)position;
 @end

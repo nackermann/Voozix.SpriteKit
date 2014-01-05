@@ -10,11 +10,13 @@
 #import "Star.h"
 #import "HUDManager.h"
 #import "Player.h"
+#import "CollisionManager.h"
 
 @interface MyScene()
 @property (nonatomic, strong) HUDManager *myHUDManager;
 @property (nonatomic, strong) Star *myStar;
 @property (nonatomic,strong) Player *myPlayer;
+@property (nonatomic, strong) CollisionManager *collisionManager;
 
 @end
 
@@ -34,6 +36,11 @@
         self.myStar.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
         
         self.myPlayer = [[Player alloc] init];
+        
+        self.collisionManager = [[CollisionManager alloc] init];
+        self.collisionManager.enemyManager = self.enemyManager;
+        self.physicsWorld.contactDelegate = self.collisionManager;
+        self.physicsWorld.gravity = CGVectorMake(0.0, 0.0);
         
         [self addChild:backgroundSprite];
         [self addChild:self.myPlayer];
@@ -64,15 +71,15 @@
 
         CGPoint location = [touch locationInNode:self];
         
-        if ([self nodeAtPoint:location] == self.myStar)
-        {
-            [self.myStar changePosition];
-            [self.enemyManager createEnemy];
-        }
-        else
-        {
+//        if ([self nodeAtPoint:location] == self.myStar)
+//        {
+//            [self.myStar changePosition];
+//            [self.enemyManager createEnemy];
+//        }
+//        else
+//        {
             [self.myPlayer moveToPosition:location];
-        }
+        //}
     }
 }
 
