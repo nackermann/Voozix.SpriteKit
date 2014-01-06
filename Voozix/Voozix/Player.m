@@ -7,8 +7,11 @@
 //
 
 #import "Player.h"
+#import "Star.h"
+#import "EnemyManager.h"
+#import "ObjectCategories.h"
 
-@interface Player() <SKPhysicsContactDelegate>
+@interface Player()
 @property (nonatomic, strong) NSNumber *myScore;
 @property (nonatomic, weak) SKScene *myScene;
 @end
@@ -20,6 +23,9 @@
     self = [super init];
     self.texture = [SKTexture textureWithImageNamed:@"player"];
     self.size = self.texture.size;
+    self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.size.width/2];
+    self.physicsBody.categoryBitMask = PLAYER_OBJECT;
+    self.physicsBody.contactTestBitMask = ENEMY_OBJECT | STAR_OBJECT;
     [self setup];
     return self;
 }
@@ -45,9 +51,9 @@
 }
 
 // contact delegate
-- (void)didBeginContact:(SKPhysicsContact *)contact
-{
-    NSLog(@"Contact between objects: %@ and %@", contact.bodyA, contact.bodyB);
+- (void)didBeginContact:(SKPhysicsContact *)contact {
+    
+    
 }
 
 @end

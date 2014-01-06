@@ -14,6 +14,7 @@ static const CGFloat SCALE_DURATION = 1.0;
 static const CGFloat ROTATE_DURATION = 2.0;
 
 #import "Star.h"
+#import "ObjectCategories.h"
 
 @implementation Star
 
@@ -22,6 +23,11 @@ static const CGFloat ROTATE_DURATION = 2.0;
     self = [super init];
     self.texture = [SKTexture textureWithImageNamed:@"star"];
     self.size = self.texture.size;
+    self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.size.width/2];
+    self.physicsBody.dynamic = NO;
+    self.physicsBody.categoryBitMask = STAR_OBJECT;
+    //self.physicsBody.collisionBitMask = PLAYER_OBJECT;
+    self.physicsBody.contactTestBitMask = PLAYER_OBJECT;
     [self setup];
     
     return self;
@@ -29,6 +35,7 @@ static const CGFloat ROTATE_DURATION = 2.0;
 
 - (void)setup
 {
+    self.name = @"star";
     self.zRotation = MIN_ROTATION;
     self.xScale = MIN_SCALE;
     self.yScale = MIN_SCALE;
@@ -63,9 +70,8 @@ static const CGFloat ROTATE_DURATION = 2.0;
         y += self.frame.size.width/2;
     
     /* Create and set new position */
-    CGPoint newPosiion = CGPointMake(x, y);
-    self.position = newPosiion;
-    
+    CGPoint newPosition = CGPointMake(x, y);
+    self.position = newPosition;
 }
 
 @end

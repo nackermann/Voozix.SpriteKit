@@ -11,4 +11,5 @@
 @interface EnemyBall : SKSpriteNode
 @property CGVector velocity;
 - (void)update:(CFTimeInterval)currentTime;
+- (id)initAtPosition:(CGPoint)position;
 @end
