@@ -15,12 +15,11 @@
 #import "ObjectCategories.h"
 
 @interface MyScene()
-@property (nonatomic, strong) HUDManager *myHUDManager;
-@property (nonatomic, strong) Star *myStar;
-@property (nonatomic,strong) Player *myPlayer;
-@property (nonatomic, strong) CollisionManager *myCollisionManager;
-@property (nonatomic, strong) EnemyManager *myEnemyManager;
-@property (nonatomic, strong) PlayerController *playerController;
+@property (nonatomic, strong) HUDManager *HUDManager;
+@property (nonatomic, strong) Star *star;
+@property (nonatomic,strong) Player *player;
+@property (nonatomic, strong) CollisionManager *collisionManager;
+@property (nonatomic, strong) EnemyManager *enemyManager;
 
 @end
 
@@ -41,27 +40,21 @@
         backgroundSprite.anchorPoint = myPoint;
         backgroundSprite.position = myPoint;
         
-        self.myStar = [[Star alloc] init];
-        self.myStar.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+        self.star = [[Star alloc] init];
+        self.star.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
         
-        self.myPlayer = [[Player alloc] init];
-        
-        self.playerController = [[PlayerController alloc] init];
-        self.playerController.player = self.myPlayer;
+        self.player = [[Player alloc] init];
         
         
-        
-        
-        self.myCollisionManager = [[CollisionManager alloc] initWithScene:self];
-        self.myCollisionManager.enemyManager = self.myEnemyManager;
-        self.myCollisionManager.hudManager = self.myHUDManager;
-        self.physicsWorld.contactDelegate = self.myCollisionManager;
+        self.collisionManager = [[CollisionManager alloc] initWithScene:self];
+        self.collisionManager.enemyManager = self.enemyManager;
+        self.collisionManager.hudManager = self.HUDManager;
+        self.physicsWorld.contactDelegate = self.collisionManager;
         self.physicsWorld.gravity = CGVectorMake(0.0, 0.0);
         
         [self addChild:backgroundSprite];
-        [self addChild:self.myPlayer];
-        [self addChild:self.myStar];
-        [self addChild:self.playerController];
+        [self addChild:self.player];
+        [self addChild:self.star];
     }
     return self;
 }
@@ -69,35 +62,35 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
     
-    [self.playerController touchesBegan:touches withEvent:event];
+    [self.player touchesBegan:touches withEvent:event];
     
 }
 
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     
-    [self.playerController touchesMoved:touches withEvent:event];
+    [self.player touchesMoved:touches withEvent:event];
 }
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     
-    [self.playerController touchesEnded:touches withEvent:event];
+    [self.player touchesEnded:touches withEvent:event];
 }
-- (HUDManager*)myHUDManager
+- (HUDManager*)HUDManager
 {
-    if (_myHUDManager == nil) {
-        _myHUDManager = [[HUDManager alloc] initWithScene:self];
+    if (_HUDManager == nil) {
+        _HUDManager = [[HUDManager alloc] initWithScene:self];
     }
-    return _myHUDManager;
+    return _HUDManager;
 }
 
-- (EnemyManager *)myEnemyManager {
+- (EnemyManager *)enemyManager {
     
-    if (!_myEnemyManager) {
-        _myEnemyManager = [[EnemyManager alloc] initWithScene:self];
+    if (!_enemyManager) {
+        _enemyManager = [[EnemyManager alloc] initWithScene:self];
     }
     
-    return _myEnemyManager;
+    return _enemyManager;
 }
 
 
@@ -105,8 +98,8 @@
 {
     /* Called before each frame is rendered */
     // Update all managers
-    [self.myEnemyManager update:currentTime];
-    [self.myHUDManager update];
+    [self.enemyManager update:currentTime];
+    [self.HUDManager update];
 }
 
 @end

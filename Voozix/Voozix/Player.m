@@ -18,6 +18,16 @@
 
 @implementation Player
 
+- (PlayerController *)playerController {
+    
+    if (!_playerController) {
+        _playerController = [[PlayerController alloc] init];
+        [self.parent addChild:_playerController];
+    }
+    
+    return _playerController;
+}
+
 - (id)init
 {
     self = [super init];
@@ -46,10 +56,31 @@
     return _myScore;
 }
 
-- (void)moveToPosition:(CGPoint)position
-{
-    [self runAction:[SKAction moveTo:position duration:0.4]]; // stub
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    [self.playerController touchesBegan:touches withEvent:event];
+    self.physicsBody.velocity = [self.playerController getJoystickVelocity];
+    
 }
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    [self.playerController touchesMoved:touches withEvent:event];
+    self.physicsBody.velocity = [self.playerController getJoystickVelocity];
+}
+
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    [self.playerController touchesEnded:touches withEvent:event];
+    self.physicsBody.velocity = [self.playerController getJoystickVelocity];
+    
+}
+
+
+
+
+
 
 // contact delegate
 - (void)didBeginContact:(SKPhysicsContact *)contact {

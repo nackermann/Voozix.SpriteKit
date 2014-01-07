@@ -7,7 +7,10 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-
+#import "PlayerController.h"
 @interface Player : SKSpriteNode <SKPhysicsContactDelegate>
-- (void)moveToPosition:(CGPoint)position;
+@property (nonatomic, strong) PlayerController *playerController;
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
 @end

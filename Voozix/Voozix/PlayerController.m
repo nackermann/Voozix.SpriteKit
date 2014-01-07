@@ -8,9 +8,15 @@
 
 #import "PlayerController.h"
 
+
+
+
 static float MAX_JOYSTICK_OFFSET = 20.0;
 static float VELOCITY_MUTIPLIER = 100.0;
 
+@interface PlayerController()
+@property (nonatomic, assign) SKSpriteNode *joystick;
+@end
 @implementation PlayerController
 
 
@@ -22,20 +28,6 @@ static float VELOCITY_MUTIPLIER = 100.0;
     
     return _joystick;
 }
-
-// Tried to do lazy instansiation, causes app to crash?!?
-// Fixing it some other time, too lazy now!
-
-//- (Player *)player {
-//    
-//    if (!_player) {
-//        _player = [[Player alloc] init];
-//    }
-//    _player.position = CGPointMake(CGRectGetMidX(self.parent.scene.frame),  CGRectGetMidY(self.parent.scene.frame));
-//    [self.parent addChild:_player];
-//    
-//    return _player;
-//}
 
 - (id)init {
     
@@ -83,19 +75,13 @@ static float VELOCITY_MUTIPLIER = 100.0;
         
     }
     
-    // Set player velocity
-    self.player.physicsBody.velocity = [self getJoystickVelocity];
-    
 }
 
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     
-    // Reset joystick position
+    // Reset and hide joystick position
     self.joystick.position = CGPointMake(0, 0);
-    
-    // Reset player velocity to zero
-    self.player.physicsBody.velocity = CGVectorMake(0, 0);
     self.hidden = YES;
     
     
