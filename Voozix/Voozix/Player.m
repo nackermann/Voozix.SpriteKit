@@ -26,6 +26,7 @@
     self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.size.width/2];
     self.physicsBody.categoryBitMask = PLAYER_OBJECT;
     self.physicsBody.contactTestBitMask = ENEMY_OBJECT | STAR_OBJECT;
+    self.physicsBody.allowsRotation = NO;
     [self setup];
     return self;
 }
