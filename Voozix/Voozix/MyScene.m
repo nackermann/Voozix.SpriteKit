@@ -34,7 +34,6 @@
         self.physicsBody.dynamic = NO;
         self.physicsBody.categoryBitMask = BACKGROUND_OBJECT;
         
-        
         SKSpriteNode *backgroundSprite = [SKSpriteNode spriteNodeWithImageNamed:@"background.png"];
         CGPoint myPoint = CGPointMake(0.f, 0.f);
         backgroundSprite.anchorPoint = myPoint;
@@ -42,13 +41,9 @@
         
         self.star = [[Star alloc] init];
         self.star.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
-        
-        self.player = [[Player alloc] init];
-        
-        
-        self.collisionManager = [[CollisionManager alloc] initWithScene:self];
+        self.player = [[Player alloc] initWithHUDManager:self.HUDManager];
         self.collisionManager.enemyManager = self.enemyManager;
-        self.collisionManager.hudManager = self.HUDManager;
+        
         self.physicsWorld.contactDelegate = self.collisionManager;
         self.physicsWorld.gravity = CGVectorMake(0.0, 0.0);
         
@@ -76,6 +71,15 @@
     
     [self.player touchesEnded:touches withEvent:event];
 }
+
+- (CollisionManager*)collisionManager
+{
+    if (_collisionManager == nil) {
+        _collisionManager = [[CollisionManager alloc] initWithScene:self];
+    }
+    return _collisionManager;
+}
+
 - (HUDManager*)HUDManager
 {
     if (_HUDManager == nil) {
