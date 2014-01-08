@@ -12,7 +12,7 @@
 
 
 static float MAX_JOYSTICK_OFFSET = 20.0;
-static float VELOCITY_MUTIPLIER = 100.0;
+static float VELOCITY_MULTIPLIER = 100.0;
 
 @interface PlayerController()
 @property (nonatomic, assign) SKSpriteNode *joystick;
@@ -67,8 +67,8 @@ static float VELOCITY_MUTIPLIER = 100.0;
         if (vectorLength > MAX_JOYSTICK_OFFSET) {
             
             // Mathe 2 dudez XD
-            position.x *= 1/sqrt(pow(position.x, 2) + pow(position.y, 2)) * MAX_JOYSTICK_OFFSET;
-            position.y *= 1/sqrt(pow(position.x, 2) + pow(position.y, 2)) * MAX_JOYSTICK_OFFSET;
+            position.x *= 1/vectorLength * MAX_JOYSTICK_OFFSET;
+            position.y *= 1/vectorLength * MAX_JOYSTICK_OFFSET;
         }
         
         self.joystick.position = position;
@@ -90,8 +90,8 @@ static float VELOCITY_MUTIPLIER = 100.0;
 - (CGVector)getJoystickVelocity {
     
     // Normally returns vector that has values between -1 and 1
-    // Values are multiplied by VELOCITY_MUTIPLIER to have more "force"
-    CGVector velocity = CGVectorMake(self.joystick.position.x/MAX_JOYSTICK_OFFSET *VELOCITY_MUTIPLIER , self.joystick.position.y/MAX_JOYSTICK_OFFSET *VELOCITY_MUTIPLIER);
+    // Values are multiplied by VELOCITY_MULTIPLIER to have more "force"
+    CGVector velocity = CGVectorMake(self.joystick.position.x/MAX_JOYSTICK_OFFSET *VELOCITY_MULTIPLIER , self.joystick.position.y/MAX_JOYSTICK_OFFSET *VELOCITY_MULTIPLIER);
     
     return velocity;
 }
