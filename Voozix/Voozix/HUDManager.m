@@ -7,14 +7,15 @@
 //
 
 #import "HUDManager.h"
+#import "Player.h"
 
 static const CGFloat fontSize = 30;
 static const CGFloat labelXOffset = 100;
 static const CGFloat labelYOffset = 30;
 
 @interface HUDManager()
-@property (nonatomic, weak) SKScene *myScene;
-@property (nonatomic, strong) SKLabelNode *myScoreLabel;
+@property (nonatomic, strong) SKScene *myScene;
+@property (nonatomic, strong) SKLabelNode *myScoreLabelForPlayer1;
 @end
 
 @implementation HUDManager
@@ -28,16 +29,25 @@ static const CGFloat labelYOffset = 30;
     return self;
 }
 
-- (SKLabelNode*)myScoreLabel
+- (NSMutableArray*)players
 {
-    if (_myScoreLabel == nil) {
-        _myScoreLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-        _myScoreLabel.fontSize = fontSize;
+    if (_players == nil) {
+        _players = [[NSMutableArray alloc] init];
+    }
+    return _players;
+}
+
+
+- (SKLabelNode*)myScoreLabelForPlayer1
+{
+    if (_myScoreLabelForPlayer1 == nil) {
+        _myScoreLabelForPlayer1 = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+        _myScoreLabelForPlayer1.fontSize = fontSize;
         CGPoint testPos = CGPointMake(CGRectGetMinX(self.myScene.frame)+labelXOffset, CGRectGetMinY(self.myScene.frame)+labelYOffset);
-        _myScoreLabel.position = testPos;
+        _myScoreLabelForPlayer1.position = testPos;
         
         if (self.myScene) {
-            [self.myScene addChild:self.myScoreLabel];
+            [self.myScene addChild:self.myScoreLabelForPlayer1];
         }
         else
         {
@@ -45,19 +55,16 @@ static const CGFloat labelYOffset = 30;
         }
         
     }
-    return _myScoreLabel;
+    return _myScoreLabelForPlayer1;
 }
 
 - (void)update
 {
-    // pooling, wichtig erst nach den Kollisionen!
     
-    // self.myScore updaten
-    
-    // LabelView updaten, nur updaten bei Veraenderung, aendern !!!!!
-    //if (das was ich hab != das was der player hat) {
-        self.myScoreLabel.text = [NSString stringWithFormat:@"%@%d", @"Score: ", self.score];   // Spieler hat den score nicht der HUD Manager, aendern!
-    //}
+    for (Player *player in self.players) {
+        self.myScoreLabelForPlayer1.text = [NSString stringWithFormat:@"%@%d", @"Score: ", [player.score intValue]];
+        // Im Multiplayer dann 2 Labels in nem array und einfach hier durchgehen und updaten;
+    }
     
 }
 

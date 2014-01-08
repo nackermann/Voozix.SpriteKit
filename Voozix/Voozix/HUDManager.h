@@ -9,7 +9,7 @@
 #import <SpriteKit/SpriteKit.h>
 
 @interface HUDManager : NSObject
-@property int score;
+@property (nonatomic, strong) NSMutableArray *players; // nicht vergessen Player zu loeschen wenn er stirbt !!
 - (id)initWithScene:(SKScene*)scene;
 - (void)update;
 @end

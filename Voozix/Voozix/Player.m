@@ -8,12 +8,11 @@
 
 #import "Player.h"
 #import "Star.h"
-#import "EnemyManager.h"
+#import "EnemyBall.h"
 #import "ObjectCategories.h"
 
 @interface Player()
-@property (nonatomic, strong) NSNumber *myScore;
-@property (nonatomic, weak) SKScene *myScene;
+@property (nonatomic, strong) HUDManager *myHUDManager;
 @end
 
 @implementation Player
@@ -28,15 +27,19 @@
     return _playerController;
 }
 
-- (id)init
+- (id)initWithHUDManager:(HUDManager*)hudmanager
 {
     self = [super init];
+    self.myHUDManager = hudmanager;
+    
     self.texture = [SKTexture textureWithImageNamed:@"player"];
     self.size = self.texture.size;
     self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.size.width/2];
     self.physicsBody.categoryBitMask = PLAYER_OBJECT;
     self.physicsBody.contactTestBitMask = ENEMY_OBJECT | STAR_OBJECT;
     self.physicsBody.allowsRotation = NO;
+    
+    
     [self setup];
     return self;
 }
@@ -44,16 +47,19 @@
 - (void)setup
 {
     self.name = @"player";
-    SKScene *scene = [super scene];
-    self.position = CGPointMake(scene.frame.size.width/2+50, scene.frame.size.height/2+50);
+    // [super scene ist noch nicht gesetzt beim alloc, erst bei add child]
+    self.position = CGPointMake(50, 50);
+    
+    [self.myHUDManager.players addObject:self];
+    
 }
 
-- (NSNumber*)myScore
+- (NSNumber*)score
 {
-    if (_myScore == nil) {
-        _myScore = [NSNumber numberWithInt:0];
+    if (_score == nil) {
+        _score = [NSNumber numberWithInt:0];
     }
-    return _myScore;
+    return _score;
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -69,7 +75,6 @@
     self.physicsBody.velocity = [self.playerController getJoystickVelocity];
 }
 
-
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     
     [self.playerController touchesEnded:touches withEvent:event];
@@ -77,15 +82,26 @@
     
 }
 
-
-
-
-
-
-// contact delegate
-- (void)didBeginContact:(SKPhysicsContact *)contact {
-    
-    
+- (void)didBeginContactWith:(id)object
+{
+    if ([object isKindOfClass:[Star class]]) {
+        self.score = [NSNumber numberWithInt:[self.score intValue]+1];
+    }
+    else if ([object isKindOfClass:[EnemyBall class]])
+    {
+        self.physicsBody = nil;
+        SKScene *scene = [super scene];
+        
+        self.position = CGPointMake(scene.frame.size.width/2+50, scene.frame.size.height/2+50);
+        self.score = [NSNumber numberWithInt:0];
+        
+        // Recreate PhysicsBody
+        self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.size.width/2];
+        self.physicsBody.categoryBitMask = PLAYER_OBJECT;
+        self.physicsBody.contactTestBitMask = ENEMY_OBJECT | STAR_OBJECT;
+        
+        //[self.myHUDManager.players removeObject:self]; wieder einkommentieren bei issue #36
+    }
 }
 
 @end
