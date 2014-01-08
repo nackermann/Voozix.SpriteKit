@@ -15,7 +15,7 @@
 @interface MyScene()
 @property (nonatomic, strong) HUDManager *myHUDManager;
 @property (nonatomic, strong) Star *myStar;
-@property (nonatomic,strong) Player *myPlayer;
+@property (nonatomic, strong) Player *myPlayer;
 @property (nonatomic, strong) CollisionManager *myCollisionManager;
 @property (nonatomic, strong) EnemyManager *myEnemyManager;
 
