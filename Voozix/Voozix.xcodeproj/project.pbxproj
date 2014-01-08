@@ -41,6 +41,7 @@
 		3FAEAED61876EA5D00FC7EFF /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FAEAED11876EA5D00FC7EFF /* player.png */; };
 		3FCB6F091876FB9F00A7F6AD /* StarSparks.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3FCB6F071876FB9F00A7F6AD /* StarSparks.sks */; };
 		3FCB6F0A1876FB9F00A7F6AD /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FCB6F081876FB9F00A7F6AD /* spark.png */; };
+		3FEEA2AF187C69D500414A31 /* PlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEEA2AE187C69D500414A31 /* PlayerController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,8 @@
 		3FB29D451879EEF800EFF147 /* ObjectCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectCategories.h; sourceTree = "<group>"; };
 		3FCB6F071876FB9F00A7F6AD /* StarSparks.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StarSparks.sks; sourceTree = "<group>"; };
 		3FCB6F081876FB9F00A7F6AD /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		3FEEA2AD187C69D500414A31 /* PlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerController.h; sourceTree = "<group>"; };
+		3FEEA2AE187C69D500414A31 /* PlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -262,6 +265,8 @@
 				15A345071875C2DC0046B117 /* Hunter.m */,
 				3FAEAEBF1876E74000FC7EFF /* Star.h */,
 				3FAEAEC01876E74000FC7EFF /* Star.m */,
+				3FEEA2AD187C69D500414A31 /* PlayerController.h */,
+				3FEEA2AE187C69D500414A31 /* PlayerController.m */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -397,6 +402,7 @@
 				15A344FF1875C2430046B117 /* Player.m in Sources */,
 				3F089EFF1879B37C0073FA07 /* CollisionManager.m in Sources */,
 				15A344E21875AC3B0046B117 /* ParticleManager.m in Sources */,
+				3FEEA2AF187C69D500414A31 /* PlayerController.m in Sources */,
 				15A345051875C2C20046B117 /* EnemyBall.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
