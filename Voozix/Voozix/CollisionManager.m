@@ -69,9 +69,6 @@
         
         // Notify managers
         [self.enemyManager removeAllEnemies];
-        
-        
-        
     }
 }
 

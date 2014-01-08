@@ -10,6 +10,14 @@
 #import "EnemyManager.h"
 #import "HUDManager.h"
 
+/**
+ * @class CollisionManager
+ *
+ * @brief Handles collision events from SpriteKit and hands them over
+ *
+ * SpriteKit notifies our collision manager when collisions occur. The collision manager
+ * will then check the types of the involved SKNodes and calls the appropriate didBeginContactWith methods
+ */
 @interface CollisionManager : NSObject <SKPhysicsContactDelegate>
 @property (nonatomic, strong) EnemyManager *enemyManager;
 @property (nonatomic, strong) HUDManager *hudManager;

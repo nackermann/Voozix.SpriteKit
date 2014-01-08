@@ -23,7 +23,6 @@
 
 @end
 
-
 @implementation MyScene
 
 -(id)initWithSize:(CGSize)size {
