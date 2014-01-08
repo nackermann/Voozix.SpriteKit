@@ -8,6 +8,7 @@
 
 #import "Player.h"
 #import "Star.h"
+#import "EnemyBall.h"
 #import "EnemyManager.h"
 #import "ObjectCategories.h"
 
@@ -69,7 +70,6 @@
     self.physicsBody.velocity = [self.playerController getJoystickVelocity];
 }
 
-
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     
     [self.playerController touchesEnded:touches withEvent:event];
@@ -77,15 +77,23 @@
     
 }
 
-
-
-
-
-
-// contact delegate
-- (void)didBeginContact:(SKPhysicsContact *)contact {
-    
-    
+- (void)didBeginContactWith:(id)object
+{
+    if ([object isKindOfClass:[Star class]]) {
+        self.myScore = [NSNumber numberWithInt:[self.myScore intValue]+1];
+    }
+    else if ([object isKindOfClass:[EnemyBall class]])
+    {
+        self.physicsBody = nil;
+        
+        self.position = CGPointMake(self.myScene.frame.size.width/2+50, self.myScene.frame.size.height/2+50);
+        self.myScore = [NSNumber numberWithInt:0];
+        
+        // Recreate PhysicsBody
+        self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.size.width/2];
+        self.physicsBody.categoryBitMask = PLAYER_OBJECT;
+        self.physicsBody.contactTestBitMask = ENEMY_OBJECT | STAR_OBJECT;
+    }
 }
 
 @end

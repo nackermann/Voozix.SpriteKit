@@ -8,9 +8,12 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "PlayerController.h"
+
 @interface Player : SKSpriteNode <SKPhysicsContactDelegate>
 @property (nonatomic, strong) PlayerController *playerController;
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
+
+- (void)didBeginContactWith:(id)object;
 @end

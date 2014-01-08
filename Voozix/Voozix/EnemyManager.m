@@ -13,10 +13,20 @@ const int MAX_SPEED = 15;
 
 @interface EnemyManager()
 @property SKScene *scene;
+@property (nonatomic, strong) NSMutableArray *enemies;
 @end
 
 
 @implementation EnemyManager
+
+- (void)removeAllEnemies
+{
+    for (EnemyBall *enemy in self.enemies) {
+        [enemy removeFromParent];
+    }
+    
+    [self.enemies removeAllObjects];
+}
 
 - (NSMutableArray *)enemies {
     

@@ -10,8 +10,8 @@
 #import "EnemyBall.h"
 
 @interface EnemyManager : NSObject
-@property (nonatomic, strong) NSMutableArray *enemies;
 - (id)initWithScene:(SKScene *)scene;
 - (void)update:(CFTimeInterval)currentTime;
 - (void)createEnemy;
+- (void)removeAllEnemies;
 @end
