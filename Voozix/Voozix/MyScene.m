@@ -114,6 +114,8 @@
     // Update all managers
     [self.enemyManager update:currentTime];
     [self.HUDManager update];
+    
+    NSLog(@"%@" ,self.player);
 }
 
 @end
