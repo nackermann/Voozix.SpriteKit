@@ -11,4 +11,6 @@
 
 @interface Star : SKSpriteNode
 - (void)didBeginContactWith:(id)object;
+- (void)changePosition;
+- (void)update;
 @end

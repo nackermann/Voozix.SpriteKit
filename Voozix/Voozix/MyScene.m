@@ -16,10 +16,11 @@
 
 @interface MyScene()
 @property (nonatomic, strong) HUDManager *HUDManager;
-@property (nonatomic, strong) Star *star;
 @property (nonatomic, strong) Player *player;
 @property (nonatomic, strong) CollisionManager *collisionManager;
 @property (nonatomic, strong) EnemyManager *enemyManager;
+
+@property (nonatomic, weak) Star *star;
 
 @end
 
@@ -38,8 +39,6 @@
         backgroundSprite.anchorPoint = myPoint;
         backgroundSprite.position = myPoint;
         
-        self.star = [[Star alloc] init];
-        self.star.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
         self.player = [[Player alloc] initWithHUDManager:self.HUDManager];
         self.collisionManager.enemyManager = self.enemyManager;
         
@@ -48,9 +47,19 @@
         
         [self addChild:backgroundSprite];
         [self addChild:self.player];
-        [self addChild:self.star];
     }
     return self;
+}
+
+- (Star*)star
+{
+    if (!_star) {
+        Star *myStar = [[Star alloc] init];
+        [self addChild:myStar];
+        [myStar changePosition];
+        _star = myStar;
+    }
+    return _star;
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -100,6 +109,7 @@
     /* Called before each frame is rendered */
     // Update all managers
     [self.enemyManager update:currentTime];
+    [self.star update];
     [self.HUDManager update];
 }
 
