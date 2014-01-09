@@ -18,7 +18,9 @@ const int MAX_SPEED = 15;
 
 
 @implementation EnemyManager
-
+/**
+ * Removes every enemy from the scene
+ */
 - (void)removeAllEnemies
 {
     for (EnemyBall *enemy in self.enemies) {
@@ -28,6 +30,10 @@ const int MAX_SPEED = 15;
     [self.enemies removeAllObjects];
 }
 
+/**
+ * Returns all enemies
+ * @return {NSMutableArray *}
+ */
 - (NSMutableArray *)enemies {
     
     if (!_enemies)
@@ -36,6 +42,11 @@ const int MAX_SPEED = 15;
     return _enemies;
 }
 
+/**
+ * Initializes enemy manager
+ * @param  {SKScene *} Scene that all enemies belong to
+ * @return {id}
+ */
 - (id)initWithScene:(SKScene *)scene {
     
     if  (self = [super init]){
@@ -45,7 +56,9 @@ const int MAX_SPEED = 15;
     return self;
 }
 
-
+/**
+ * Creates a enemy and adds it to the scene
+ */
 - (void)createEnemy {
     
     EnemyBall *enemy = [[EnemyBall alloc] init];

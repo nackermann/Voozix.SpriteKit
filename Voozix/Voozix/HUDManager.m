@@ -60,7 +60,6 @@ static const CGFloat labelYOffset = 30;
 
 - (void)update
 {
-    
     for (Player *player in self.players) {
         self.myScoreLabelForPlayer1.text = [NSString stringWithFormat:@"%@%d", @"Score: ", [player.score intValue]];
         // Im Multiplayer dann 2 Labels in nem array und einfach hier durchgehen und updaten;

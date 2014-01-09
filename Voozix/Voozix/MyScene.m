@@ -60,7 +60,6 @@
     
 }
 
-
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     
     [self.player touchesMoved:touches withEvent:event];
@@ -95,7 +94,6 @@
     
     return _enemyManager;
 }
-
 
 -(void)update:(CFTimeInterval)currentTime
 {

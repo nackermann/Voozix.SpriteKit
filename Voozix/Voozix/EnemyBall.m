@@ -10,6 +10,10 @@
 #import "ObjectCategories.h"
 
 @implementation EnemyBall
+/**
+ * Initialize the enemy ball and require assets
+ * @return {id}
+ */
 - (id)init {
     
     if (self = [super init]) {
