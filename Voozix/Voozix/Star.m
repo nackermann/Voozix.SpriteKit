@@ -82,4 +82,9 @@ static const CGFloat ROTATE_DURATION = 2.0;
     }
 }
 
+- (void)update
+{
+    
+}
+
 @end

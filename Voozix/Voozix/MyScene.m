@@ -111,8 +111,8 @@
     /* Called before each frame is rendered */
     // Update all managers
     [self.enemyManager update:currentTime];
+    [self.star update];
     [self.HUDManager update];
-    NSLog(@"%@", self.star);
 }
 
 @end
