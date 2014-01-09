@@ -16,10 +16,10 @@
 
 @interface MyScene()
 @property (nonatomic, strong) HUDManager *HUDManager;
-@property (nonatomic, strong) Player *player;
 @property (nonatomic, strong) CollisionManager *collisionManager;
 @property (nonatomic, strong) EnemyManager *enemyManager;
 
+@property (nonatomic, weak) Player *player;
 @property (nonatomic, weak) Star *star;
 
 @end
@@ -39,19 +39,28 @@
         backgroundSprite.anchorPoint = myPoint;
         backgroundSprite.position = myPoint;
         
-        self.player = [[Player alloc] initWithHUDManager:self.HUDManager];
         self.collisionManager.enemyManager = self.enemyManager;
-        
         self.physicsWorld.contactDelegate = self.collisionManager;
         self.physicsWorld.gravity = CGVectorMake(0.0, 0.0);
         
+        
         [self addChild:backgroundSprite];
-        [self addChild:self.player];
     }
     return self;
 }
 
-- (Star*)star
+-(Player*)player
+{
+    if (!_player) {
+        Player *myPlayer = [[Player alloc] initWithHUDManager:self.HUDManager];
+        myPlayer.position = CGPointMake(50.f, 50.f);
+        [self addChild:myPlayer];
+        _player = myPlayer;
+    }
+    return _player;
+}
+
+-(Star*)star
 {
     if (!_star) {
         Star *myStar = [[Star alloc] init];
@@ -109,8 +118,10 @@
     /* Called before each frame is rendered */
     // Update all managers
     [self.enemyManager update:currentTime];
+    [self.player update];
     [self.star update];
     [self.HUDManager update];
+    
 }
 
 @end
