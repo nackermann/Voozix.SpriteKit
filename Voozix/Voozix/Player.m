@@ -48,7 +48,6 @@
 {
     self.name = @"player";
     // [super scene ist noch nicht gesetzt beim alloc, erst bei add child]
-    self.position = CGPointMake(50, 50);
     
     [self.myHUDManager.players addObject:self];
     
@@ -89,18 +88,8 @@
     }
     else if ([object isKindOfClass:[EnemyBall class]])
     {
-        self.physicsBody = nil;
-        SKScene *scene = [super scene];
-        
-        self.position = CGPointMake(scene.frame.size.width/2+50, scene.frame.size.height/2+50);
-        self.score = [NSNumber numberWithInt:0];
-        
-        // Recreate PhysicsBody
-        self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.size.width/2];
-        self.physicsBody.categoryBitMask = PLAYER_OBJECT;
-        self.physicsBody.contactTestBitMask = ENEMY_OBJECT | STAR_OBJECT;
-        
-        //[self.myHUDManager.players removeObject:self]; wieder einkommentieren bei issue #36
+        [self.myHUDManager.players removeObject:self];
+        [self removeFromParent];
     }
 }
 
