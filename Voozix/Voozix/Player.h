@@ -21,4 +21,6 @@
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
 
 - (void)didBeginContactWith:(id)object;
+
+- (void)update;
 @end
