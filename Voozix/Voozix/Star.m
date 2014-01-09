@@ -78,18 +78,7 @@ static const CGFloat ROTATE_DURATION = 2.0;
 - (void)didBeginContactWith:(id)object
 {
     if ([object isKindOfClass:[Player class]]) {
-        
-        // loeschen statt physic body aendern
-        
-        self.physicsBody = nil;
-        
-        [self changePosition];
-        
-        // Recreate PhysicsBody
-        self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.size.width/2];
-        self.physicsBody.dynamic = NO;
-        self.physicsBody.categoryBitMask = STAR_OBJECT;
-        self.physicsBody.contactTestBitMask = PLAYER_OBJECT;
+        [self removeFromParent];
     }
 }
 
