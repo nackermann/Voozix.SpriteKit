@@ -17,7 +17,11 @@
 @end
 
 @implementation CollisionManager
-
+/**
+ * Initializes collision manager
+ * @param  {SKScene*} Scene which contains all physics bodies
+ * @return {id}
+ */
 - (id)initWithScene:(SKScene*)scene
 {
     self = [super init];
@@ -27,6 +31,11 @@
     return self;
 }
 
+/**
+ * Handles every collision event by checking for object types and then
+ * properly notifying the colliding objects
+ * @param {SKPhysicsContact *} contact
+ */
 - (void)didBeginContact:(SKPhysicsContact *)contact
 {
     NSLog(@"Contact between objects: %@ and %@", contact.bodyA, contact.bodyB);

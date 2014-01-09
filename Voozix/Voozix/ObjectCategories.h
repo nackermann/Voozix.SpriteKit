@@ -8,6 +8,9 @@
 
 #import <SpriteKit/SpriteKit.h>
 
+/**
+ * Collision categories for object categories
+ */
 static const uint32_t PLAYER_OBJECT = 0x1 << 0;
 static const uint32_t STAR_OBJECT = 0x1 << 1;
 static const uint32_t ENEMY_OBJECT = 0x1 << 2;

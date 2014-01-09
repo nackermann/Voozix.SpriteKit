@@ -13,3 +13,4 @@
 - (void)update:(CFTimeInterval)currentTime;
 - (id)initAtPosition:(CGPoint)position;
 @end
+
