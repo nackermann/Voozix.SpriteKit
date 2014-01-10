@@ -29,7 +29,7 @@
 </g>
 <!-- Node3 -->
 <g id="node3" class="node"><title>Node3</title>
-<g id="a_node3"><a xlink:href="interface_enemy.html" target="_top" xlink:title="Enemy">
+<g id="a_node3"><a xlink:href="interface_enemy.html" target="_top" xlink:title="Represents any game obstacle for the player. ">
 <polygon fill="white" stroke="black" points="209.5,-418.5 209.5,-437.5 256.5,-437.5 256.5,-418.5 209.5,-418.5"/>
 <text text-anchor="middle" x="233" y="-425.5" font-family="Helvetica,sans-Serif" font-size="10.00">Enemy</text>
 </a>
@@ -55,7 +55,7 @@
 </g>
 <!-- Node5 -->
 <g id="node5" class="node"><title>Node5</title>
-<g id="a_node5"><a xlink:href="interface_h_u_d_manager.html" target="_top" xlink:title="HUDManager">
+<g id="a_node5"><a xlink:href="interface_h_u_d_manager.html" target="_top" xlink:title="Displays information for the player. ">
 <polygon fill="white" stroke="black" points="196,-342.5 196,-361.5 270,-361.5 270,-342.5 196,-342.5"/>
 <text text-anchor="middle" x="233" y="-349.5" font-family="Helvetica,sans-Serif" font-size="10.00">HUDManager</text>
 </a>
@@ -68,7 +68,7 @@
 </g>
 <!-- Node6 -->
 <g id="node6" class="node"><title>Node6</title>
-<g id="a_node6"><a xlink:href="interface_hunter.html" target="_top" xlink:title="Hunter">
+<g id="a_node6"><a xlink:href="interface_hunter.html" target="_top" xlink:title="Advanced enemy that tries to catch the player. ">
 <polygon fill="white" stroke="black" points="210.5,-304.5 210.5,-323.5 255.5,-323.5 255.5,-304.5 210.5,-304.5"/>
 <text text-anchor="middle" x="233" y="-311.5" font-family="Helvetica,sans-Serif" font-size="10.00">Hunter</text>
 </a>
@@ -81,7 +81,7 @@
 </g>
 <!-- Node7 -->
 <g id="node7" class="node"><title>Node7</title>
-<g id="a_node7"><a xlink:href="interface_particle_manager.html" target="_top" xlink:title="ParticleManager">
+<g id="a_node7"><a xlink:href="interface_particle_manager.html" target="_top" xlink:title="Responsible for updating and drawing anything related to particles. ">
 <polygon fill="white" stroke="black" points="189.5,-266.5 189.5,-285.5 276.5,-285.5 276.5,-266.5 189.5,-266.5"/>
 <text text-anchor="middle" x="233" y="-273.5" font-family="Helvetica,sans-Serif" font-size="10.00">ParticleManager</text>
 </a>
@@ -94,7 +94,7 @@
 </g>
 <!-- Node8 -->
 <g id="node8" class="node"><title>Node8</title>
-<g id="a_node8"><a xlink:href="interface_power_up_manager.html" target="_top" xlink:title="PowerUpManager">
+<g id="a_node8"><a xlink:href="interface_power_up_manager.html" target="_top" xlink:title="Responsible for updating and drawing anything related to power ups. ">
 <polygon fill="white" stroke="black" points="186.5,-228.5 186.5,-247.5 279.5,-247.5 279.5,-228.5 186.5,-228.5"/>
 <text text-anchor="middle" x="233" y="-235.5" font-family="Helvetica,sans-Serif" font-size="10.00">PowerUpManager</text>
 </a>
@@ -107,7 +107,7 @@
 </g>
 <!-- Node9 -->
 <g id="node9" class="node"><title>Node9</title>
-<g id="a_node9"><a xlink:href="interface_sound_manager.html" target="_top" xlink:title="SoundManager">
+<g id="a_node9"><a xlink:href="interface_sound_manager.html" target="_top" xlink:title="Responsible for playing sound effects and music. ">
 <polygon fill="white" stroke="black" points="192,-190.5 192,-209.5 274,-209.5 274,-190.5 192,-190.5"/>
 <text text-anchor="middle" x="233" y="-197.5" font-family="Helvetica,sans-Serif" font-size="10.00">SoundManager</text>
 </a>
@@ -130,7 +130,7 @@
 </g>
 <!-- Node11 -->
 <g id="node11" class="node"><title>Node11</title>
-<g id="a_node11"><a xlink:href="interface_player.html" target="_top" xlink:title="Player">
+<g id="a_node11"><a xlink:href="interface_player.html" target="_top" xlink:title="Player object that the user is actually controlling. ">
 <polygon fill="white" stroke="black" points="211,-114.5 211,-133.5 255,-133.5 255,-114.5 211,-114.5"/>
 <text text-anchor="middle" x="233" y="-121.5" font-family="Helvetica,sans-Serif" font-size="10.00">Player</text>
 </a>
@@ -153,7 +153,7 @@
 </g>
 <!-- Node13 -->
 <g id="node13" class="node"><title>Node13</title>
-<g id="a_node13"><a xlink:href="interface_enemy_ball.html" target="_top" xlink:title="EnemyBall">
+<g id="a_node13"><a xlink:href="interface_enemy_ball.html" target="_top" xlink:title="Standard ball enemy which moves in a straight pattern. ">
 <polygon fill="white" stroke="black" points="201,-76.5 201,-95.5 265,-95.5 265,-76.5 201,-76.5"/>
 <text text-anchor="middle" x="233" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">EnemyBall</text>
 </a>
@@ -166,7 +166,7 @@
 </g>
 <!-- Node14 -->
 <g id="node14" class="node"><title>Node14</title>
-<g id="a_node14"><a xlink:href="interface_player_controller.html" target="_top" xlink:title="PlayerController">
+<g id="a_node14"><a xlink:href="interface_player_controller.html" target="_top" xlink:title="Visual joystick which controls the player. ">
 <polygon fill="white" stroke="black" points="190,-38.5 190,-57.5 276,-57.5 276,-38.5 190,-38.5"/>
 <text text-anchor="middle" x="233" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">PlayerController</text>
 </a>
@@ -179,7 +179,7 @@
 </g>
 <!-- Node15 -->
 <g id="node15" class="node"><title>Node15</title>
-<g id="a_node15"><a xlink:href="interface_star.html" target="_top" xlink:title="Star">
+<g id="a_node15"><a xlink:href="interface_star.html" target="_top" xlink:title="Goal object, player needs to collect this. ">
 <polygon fill="white" stroke="black" points="215.5,-0.5 215.5,-19.5 250.5,-19.5 250.5,-0.5 215.5,-0.5"/>
 <text text-anchor="middle" x="233" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Star</text>
 </a>

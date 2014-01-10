@@ -16,7 +16,7 @@
 </g>
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
-<g id="a_node2"><a xlink:href="interface_view_controller.html" target="_top" xlink:title="ViewController">
+<g id="a_node2"><a xlink:href="interface_view_controller.html" target="_top" xlink:title="Standard view controller for our app. ">
 <polygon fill="white" stroke="black" points="124.5,-0.5 124.5,-19.5 203.5,-19.5 203.5,-0.5 124.5,-0.5"/>
 <text text-anchor="middle" x="164" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">ViewController</text>
 </a>
