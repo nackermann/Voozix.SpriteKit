@@ -13,11 +13,13 @@
 #import "CollisionManager.h"
 #import "PlayerController.h"
 #import "ObjectCategories.h"
+#import "SoundManager.h"
 
 @interface MyScene()
 @property (nonatomic, strong) HUDManager *HUDManager;
 @property (nonatomic, strong) CollisionManager *collisionManager;
 @property (nonatomic, strong) EnemyManager *enemyManager;
+@property (nonatomic, strong) SoundManager *soundManager;
 
 @property (nonatomic, weak) Player *player;
 @property (nonatomic, weak) Star *star;
@@ -40,11 +42,22 @@
         backgroundSprite.position = myPoint;
         
         self.collisionManager.enemyManager = self.enemyManager;
+        
+        // Tried lazy instansiation, but somehow theres a delay, maybe its just my VM
+        self.soundManager = [[SoundManager alloc] init];
+        [self addChild:self.soundManager];
+        self.collisionManager.soundManager = self.soundManager;
+        
         self.physicsWorld.contactDelegate = self.collisionManager;
         self.physicsWorld.gravity = CGVectorMake(0.0, 0.0);
         
         
+        
+        
         [self addChild:backgroundSprite];
+        
+        [self.soundManager playSong:BACKGROUND_MUSIC];
+
     }
     return self;
 }
@@ -75,6 +88,9 @@
     /* Called when a touch begins */
     
     [self.player touchesBegan:touches withEvent:event];
+    
+    
+    
     
 }
 
@@ -112,6 +128,7 @@
     
     return _enemyManager;
 }
+
 
 -(void)update:(CFTimeInterval)currentTime
 {

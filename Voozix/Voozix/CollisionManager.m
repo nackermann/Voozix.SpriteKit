@@ -56,6 +56,9 @@
     if ((firstBody.categoryBitMask & PLAYER_OBJECT) != 0 &&
         (secondBody.categoryBitMask & STAR_OBJECT) != 0)
     {
+        
+        [self.soundManager playSound:STAR_COLLECTED_SOUND];
+        
         Player *player = (Player *)firstBody.node;
         Star *star = (Star *)secondBody.node;
         
@@ -70,6 +73,8 @@
     else if ((firstBody.categoryBitMask & PLAYER_OBJECT) != 0 &&
              (secondBody.categoryBitMask & ENEMY_OBJECT) != 0)
     {
+        [self.soundManager playSound:EXPLOSION_SOUND];
+        
         Player *player = (Player *)firstBody.node;
         EnemyBall *enemyBall = (EnemyBall *)secondBody.node;
         
