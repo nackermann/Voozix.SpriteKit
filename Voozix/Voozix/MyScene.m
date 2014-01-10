@@ -51,9 +51,6 @@
         self.physicsWorld.contactDelegate = self.collisionManager;
         self.physicsWorld.gravity = CGVectorMake(0.0, 0.0);
         
-        
-        
-        
         [self addChild:backgroundSprite];
         
         [self.soundManager playSong:BACKGROUND_MUSIC];
@@ -88,9 +85,6 @@
     /* Called when a touch begins */
     
     [self.player touchesBegan:touches withEvent:event];
-    
-    
-    
     
 }
 

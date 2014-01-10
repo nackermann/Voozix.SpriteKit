@@ -30,7 +30,7 @@
 - (NSMutableDictionary *)songs {
     
     
-    if (_songs) {
+    if (!_songs) {
         _songs = [[NSMutableDictionary alloc] init];
     }
     
@@ -57,7 +57,6 @@
         
         // add keys to corresponding sounds and songs
         // keys are wrapped around NSNumbers because only objects can act as keys
-        
         [self.sounds setObject:explosionSound forKey:[NSNumber numberWithInt:EXPLOSION_SOUND]];
         [self.sounds setObject:starCollectedSound forKey:[NSNumber numberWithInt:STAR_COLLECTED_SOUND]];
         [self.sounds setObject:powerupSound forKey:[NSNumber numberWithInt:POWER_UP_SOUND]];
