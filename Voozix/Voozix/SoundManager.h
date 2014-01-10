@@ -8,6 +8,13 @@
 
 #import <SpriteKit/SpriteKit.h>
 
+/**
+ * @class SoundManager
+ *
+ * @brief Responsible for playing sound effects and music
+ *
+ * Detailed doc
+ */
 @interface SoundManager : NSObject
 
 @end

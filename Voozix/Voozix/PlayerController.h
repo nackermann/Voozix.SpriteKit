@@ -6,6 +6,13 @@
 //  Copyright (c) 2014 Norman Ackermann. All rights reserved.
 //
 
+/**
+ * @class PlayerController
+ *
+ * @brief Visual joystick which controls the player
+ *
+ * Detailed doc
+ */
 #import <SpriteKit/SpriteKit.h>
 @interface PlayerController : SKSpriteNode
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;

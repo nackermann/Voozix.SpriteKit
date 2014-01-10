@@ -43,9 +43,12 @@ static float VELOCITY_MULTIPLIER = 100.0;
     return self;
 }
 
+/**
+ * Place the joystick at the position of the touch
+ * @param {NSSet   *} touches [description]
+ * @param {UIEvent *} event   [description]
+ */
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    
-    // Place joystick at position of touch
     UITouch *touch = [touches anyObject];
     CGPoint position = [touch locationInNode:self.parent];
     self.position = position;
@@ -53,7 +56,11 @@ static float VELOCITY_MULTIPLIER = 100.0;
     self.hidden = NO;
 }
 
-
+/**
+ * If the finger moves during the touch, we adjust the joystick's position and calculate the speed
+ * @param {NSSet   *} touches [description]
+ * @param {UIEvent *} event   [description]
+ */
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     
     UITouch *touch = [touches anyObject];
@@ -66,7 +73,6 @@ static float VELOCITY_MULTIPLIER = 100.0;
         float vectorLength = sqrt(pow(position.x, 2) + pow(position.y, 2));
         if (vectorLength > MAX_JOYSTICK_OFFSET) {
             
-            // Mathe 2 dudez XD
             position.x *= 1/vectorLength * MAX_JOYSTICK_OFFSET;
             position.y *= 1/vectorLength * MAX_JOYSTICK_OFFSET;
         }

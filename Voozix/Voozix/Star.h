@@ -8,7 +8,13 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-
+/**
+ * @class Star
+ *
+ * @brief Goal object, player needs to collect this
+ *
+ * Detailed doc
+ */
 @interface Star : SKSpriteNode
 - (void)didBeginContactWith:(id)object;
 - (void)changePosition;

@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ * @class AppDelegate
+ *
+ * @brief Standard delegate for our app
+ *
+ * Detailed doc
+ */
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

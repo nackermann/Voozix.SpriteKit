@@ -1,0 +1,14 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node2" href="$interface_collision_manager.html" title="Handles collision events from SpriteKit and hands them over. " alt="" coords="255,360,377,387"/>
+<area shape="rect" id="node3" href="$interface_enemy.html" title="Enemy" alt="" coords="285,5,347,32"/>
+<area shape="rect" id="node4" href="$interface_enemy_manager.html" title="Responsible for handling all enemies. " alt="" coords="259,56,373,83"/>
+<area shape="rect" id="node5" href="$interface_h_u_d_manager.html" title="HUDManager" alt="" coords="267,107,365,133"/>
+<area shape="rect" id="node6" href="$interface_hunter.html" title="Hunter" alt="" coords="286,157,346,184"/>
+<area shape="rect" id="node7" href="$interface_particle_manager.html" title="ParticleManager" alt="" coords="258,208,374,235"/>
+<area shape="rect" id="node8" href="$interface_power_up_manager.html" title="PowerUpManager" alt="" coords="254,259,378,285"/>
+<area shape="rect" id="node9" href="$interface_sound_manager.html" title="SoundManager" alt="" coords="261,309,371,336"/>
+<area shape="rect" id="node11" href="$interface_player.html" title="Player" alt="" coords="287,411,345,437"/>
+<area shape="rect" id="node13" href="$interface_enemy_ball.html" title="EnemyBall" alt="" coords="273,461,359,488"/>
+<area shape="rect" id="node14" href="$interface_player_controller.html" title="PlayerController" alt="" coords="259,512,373,539"/>
+<area shape="rect" id="node15" href="$interface_star.html" title="Star" alt="" coords="293,563,339,589"/>
+</map>

@@ -8,6 +8,13 @@
 
 #import <SpriteKit/SpriteKit.h>
 
+/**
+ * @class Enemy
+ *
+ * @brief Represents any game obstacle for the player
+ *
+ * Detailed doc
+ */
 @interface Enemy : NSObject
 
 @end

@@ -1,0 +1,8 @@
+<map id="MyScene()" name="MyScene()">
+<area shape="rect" id="node2" href="$interface_h_u_d_manager.html" title="{HUDManager\n|+ players\l|+ initWithScene:\l+ update\l}" alt="" coords="53,149,171,241"/>
+<area shape="rect" id="node9" href="$interface_collision_manager.html" title="Handles collision events from SpriteKit and hands them over. " alt="" coords="281,448,402,525"/>
+<area shape="rect" id="node4" href="$interface_enemy_manager.html" title="Responsible for handling all enemies. " alt="" coords="197,134,338,255"/>
+<area shape="rect" id="node5" href="$interface_player.html" title="{Player\n|+ score\l|+ initWithHUDManager:\l+ touchesBegan:withEvent:\l+ touchesMoved:withEvent:\l+ touchesEnded:withEvent:\l+ didBeginContactWith:\l+ update\l}" alt="" coords="536,411,715,562"/>
+<area shape="rect" id="node8" href="$interface_player_controller.html" title="{PlayerController\n||+ touchesBegan:withEvent:\l+ touchesMoved:withEvent:\l+ touchesEnded:withEvent:\l+ getJoystickVelocity\l}" alt="" coords="695,134,874,255"/>
+<area shape="rect" id="node10" href="$interface_star.html" title="{Star\n||+ didBeginContactWith:\l+ changePosition\l+ update\l}" alt="" coords="826,280,986,387"/>
+</map>

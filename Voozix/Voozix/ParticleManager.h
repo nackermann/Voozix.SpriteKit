@@ -8,6 +8,13 @@
 
 #import <SpriteKit/SpriteKit.h>
 
+/**
+ * @class ParticleManager
+ *
+ * @brief Responsible for updating and drawing anything related to particles
+ *
+ * Detailed doc
+ */
 @interface ParticleManager : NSObject
 
 @end

@@ -49,42 +49,25 @@
     return self;
 }
 
--(Player*)player
-{
-    if (!_player) {
-        Player *myPlayer = [[Player alloc] initWithHUDManager:self.HUDManager];
-        myPlayer.position = CGPointMake(50.f, 50.f);
-        [self addChild:myPlayer];
-        _player = myPlayer;
-    }
-    return _player;
-}
-
--(Star*)star
-{
-    if (!_star) {
-        Star *myStar = [[Star alloc] init];
-        [self addChild:myStar];
-        [myStar changePosition];
-        _star = myStar;
-    }
-    return _star;
-}
-
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    /* Called when a touch begins */
-    
+/**
+ * This gets called when a touch begins and then notifies all objects
+ */
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {    
     [self.player touchesBegan:touches withEvent:event];
     
 }
 
+/**
+ * This gets called during a touch and then notifies all objects
+ */
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    
     [self.player touchesMoved:touches withEvent:event];
 }
 
+/**
+ * This gets called when a touch ends and then notifies all objects
+ */
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    
     [self.player touchesEnded:touches withEvent:event];
 }
 
@@ -113,6 +96,31 @@
     return _enemyManager;
 }
 
+-(Player*)player
+{
+    if (!_player) {
+        Player *myPlayer = [[Player alloc] initWithHUDManager:self.HUDManager];
+        myPlayer.position = CGPointMake(50.f, 50.f);
+        [self addChild:myPlayer];
+        _player = myPlayer;
+    }
+    return _player;
+}
+
+-(Star*)star
+{
+    if (!_star) {
+        Star *myStar = [[Star alloc] init];
+        [self addChild:myStar];
+        [myStar changePosition];
+        _star = myStar;
+    }
+    return _star;
+}
+
+/**
+ * Update all objects that belong to the scene
+ */
 -(void)update:(CFTimeInterval)currentTime
 {
     /* Called before each frame is rendered */

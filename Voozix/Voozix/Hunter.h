@@ -8,6 +8,13 @@
 
 #import <SpriteKit/SpriteKit.h>
 
+/**
+ * @class Hunter
+ *
+ * @brief Advanced enemy that tries to catch the player
+ *
+ * Detailed doc
+ */
 @interface Hunter : NSObject
 
 @end

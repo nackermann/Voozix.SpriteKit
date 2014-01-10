@@ -8,6 +8,13 @@
 
 #import <SpriteKit/SpriteKit.h>
 
+/**
+ * @class EnemyBall
+ *
+ * @brief Standard ball enemy which moves in a straight pattern
+ *
+ * Detailed doc
+ */
 @interface EnemyBall : SKSpriteNode
 @property CGVector velocity;
 - (void)update:(CFTimeInterval)currentTime;

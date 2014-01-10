@@ -1,0 +1,3 @@
+<map id="Player" name="Player">
+<area shape="rect" id="node4" href="$interface_player_controller.html" title="{PlayerController\n||+ touchesBegan:withEvent:\l+ touchesMoved:withEvent:\l+ touchesEnded:withEvent:\l+ getJoystickVelocity\l}" alt="" coords="55,134,235,255"/>
+</map>

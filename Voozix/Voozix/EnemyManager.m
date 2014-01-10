@@ -57,7 +57,7 @@ const int MAX_SPEED = 15;
 }
 
 /**
- * Creates a enemy and adds it to the scene
+ * Creates an enemy and adds it to the scene
  */
 - (void)createEnemy {
     

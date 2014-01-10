@@ -9,6 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <SpriteKit/SpriteKit.h>
 
+/**
+ * @class ViewController
+ *
+ * @brief Standard view controller for our app
+ *
+ * Detailed doc
+ */
 @interface ViewController : UIViewController
 
 @end
