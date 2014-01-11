@@ -42,16 +42,13 @@
         backgroundSprite.position = myPoint;
         
         self.collisionManager.enemyManager = self.enemyManager;
-        
-        // Tried lazy instansiation, but somehow theres a delay, maybe its just my VM
-        self.soundManager = [[SoundManager alloc] init];
-        [self addChild:self.soundManager];
         self.collisionManager.soundManager = self.soundManager;
         
         self.physicsWorld.contactDelegate = self.collisionManager;
         self.physicsWorld.gravity = CGVectorMake(0.0, 0.0);
         
         [self addChild:backgroundSprite];
+        [self addChild:self.soundManager];
         
         [self.soundManager playSong:BACKGROUND_MUSIC];
 
@@ -121,6 +118,15 @@
     }
     
     return _enemyManager;
+}
+
+- (SoundManager *)soundManager {
+    
+    if (!_soundManager) {
+        _soundManager = [[SoundManager alloc] init];
+    }
+    
+    return _soundManager;
 }
 
 

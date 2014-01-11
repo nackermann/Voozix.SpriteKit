@@ -61,7 +61,7 @@
         [self.sounds setObject:starCollectedSound forKey:[NSNumber numberWithInt:STAR_COLLECTED_SOUND]];
         [self.sounds setObject:powerupSound forKey:[NSNumber numberWithInt:POWER_UP_SOUND]];
         
-        [self.sounds setObject:backgroundMusicSong forKey:[NSNumber numberWithInt:BACKGROUND_MUSIC]];
+        [self.songs setObject:backgroundMusicSong forKey:[NSNumber numberWithInt:BACKGROUND_MUSIC]];
         
     }
     
@@ -84,7 +84,7 @@
     
     NSNumber *key = [NSNumber numberWithInt:songKey];
     
-    [self runAction:[self.sounds objectForKey:key]];
+    [self runAction:[self.songs objectForKey:key]];
     
 }
 

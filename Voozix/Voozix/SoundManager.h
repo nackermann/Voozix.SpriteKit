@@ -11,7 +11,7 @@
 
 typedef NS_ENUM(NSInteger, SoundKey) {
     
-    EXPLOSION_SOUND = 0,
+    EXPLOSION_SOUND,
     POWER_UP_SOUND,
     STAR_COLLECTED_SOUND,
     
@@ -21,7 +21,7 @@ typedef NS_ENUM(NSInteger, SoundKey) {
 
 typedef NS_ENUM(NSInteger, SongKey) {
     
-    BACKGROUND_MUSIC = 100
+    BACKGROUND_MUSIC
     
 };
 
