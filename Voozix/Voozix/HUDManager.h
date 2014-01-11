@@ -8,6 +8,13 @@
 
 #import <SpriteKit/SpriteKit.h>
 
+/**
+ * @class HUDManager
+ *
+ * @brief Displays information for the player
+ *
+ * 
+ */
 @interface HUDManager : NSObject
 @property (nonatomic, strong) NSMutableArray *players; // nicht vergessen Player zu loeschen wenn er stirbt !!
 - (id)initWithScene:(SKScene*)scene;

@@ -10,6 +10,13 @@
 #import "PlayerController.h"
 #import "HUDManager.h"
 
+/**
+ * @class Player
+ *
+ * @brief Player object that the user is actually controlling
+ *
+ * Detailed doc
+ */
 @interface Player : SKSpriteNode <SKPhysicsContactDelegate>
 @property (nonatomic, strong) PlayerController *playerController;
 @property (nonatomic, strong) NSNumber *score;

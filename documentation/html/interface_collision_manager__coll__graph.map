@@ -1,0 +1,4 @@
+<map id="CollisionManager" name="CollisionManager">
+<area shape="rect" id="node4" href="$interface_h_u_d_manager.html" title="Displays information for the player. " alt="" coords="23,86,140,114"/>
+<area shape="rect" id="node5" href="$interface_enemy_manager.html" title="Responsible for handling all enemies. " alt="" coords="164,86,295,114"/>
+</map>

@@ -9,6 +9,13 @@
 #import <SpriteKit/SpriteKit.h>
 #import "EnemyManager.h"
 
+/**
+ * @class MyScene
+ *
+ * @brief This is the actual game state
+ *
+ * Detailed doc
+ */
 @interface MyScene : SKScene
 
 @end

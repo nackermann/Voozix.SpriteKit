@@ -27,7 +27,13 @@
 @end
 
 @implementation MyScene
-
+/**
+ * @brief Initializes the full scene and most of the objects (some are intialized by lazy-initialization).
+ * @details [long description]
+ * 
+ * @param  [description]
+ * @return [description]
+ */
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
@@ -56,45 +62,31 @@
     return self;
 }
 
--(Player*)player
-{
-    if (!_player) {
-        Player *myPlayer = [[Player alloc] initWithHUDManager:self.HUDManager];
-        myPlayer.position = CGPointMake(50.f, 50.f);
-        [self addChild:myPlayer];
-        _player = myPlayer;
-    }
-    return _player;
-}
-
--(Star*)star
-{
-    if (!_star) {
-        Star *myStar = [[Star alloc] init];
-        [self addChild:myStar];
-        [myStar changePosition];
-        _star = myStar;
-    }
-    return _star;
-}
-
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    /* Called when a touch begins */
-    
+/**
+ * This gets called when a touch begins and then notifies all objects
+ */
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {    
     [self.player touchesBegan:touches withEvent:event];
     
 }
 
+/**
+ * This gets called during a touch and then notifies all objects
+ */
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    
     [self.player touchesMoved:touches withEvent:event];
 }
 
+/**
+ * This gets called when a touch ends and then notifies all objects
+ */
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    
     [self.player touchesEnded:touches withEvent:event];
 }
 
+/**
+ * Returns the collision manager which is responsible for the scene
+ */
 - (CollisionManager*)collisionManager
 {
     if (_collisionManager == nil) {
@@ -103,6 +95,9 @@
     return _collisionManager;
 }
 
+/**
+ * Returns the HUD manager which is responsible for the scene
+ */
 - (HUDManager*)HUDManager
 {
     if (_HUDManager == nil) {
@@ -111,6 +106,12 @@
     return _HUDManager;
 }
 
+/**
+ * @brief Returns the enemy manager which is responsible for the scene
+ * @details [long description]
+ * 
+ * @return [description]
+ */
 - (EnemyManager *)enemyManager {
     
     if (!_enemyManager) {
@@ -129,7 +130,44 @@
     return _soundManager;
 }
 
+/**
+ * @brief Returns the real player object (the one the player is controlling)
+ * @details [long description]
+ * 
+ * @return [description]
+ */
+-(Player*)player
+{
+    if (!_player) {
+        Player *myPlayer = [[Player alloc] initWithHUDManager:self.HUDManager];
+        myPlayer.position = CGPointMake(50.f, 50.f);
+        [self addChild:myPlayer];
+        _player = myPlayer;
+    }
+    return _player;
+}
 
+/**
+ * @brief Returns the current star object the player has to collect. There's only one - always!
+ * @details [long description]
+ * 
+ * @param  [description]
+ * @return [description]
+ */
+-(Star*)star
+{
+    if (!_star) {
+        Star *myStar = [[Star alloc] init];
+        [self addChild:myStar];
+        [myStar changePosition];
+        _star = myStar;
+    }
+    return _star;
+}
+
+/**
+ * Update all objects that belong to the scene
+ */
 -(void)update:(CFTimeInterval)currentTime
 {
     /* Called before each frame is rendered */

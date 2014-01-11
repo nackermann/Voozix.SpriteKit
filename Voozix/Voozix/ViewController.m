@@ -31,11 +31,17 @@
     }
 }
 
+/**
+ * Our app automatically rotates to left landscape
+ */
 - (BOOL)shouldAutorotate
 {
     return YES;
 }
 
+/**
+ * We only support left landscape
+ */
 - (NSUInteger)supportedInterfaceOrientations
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {

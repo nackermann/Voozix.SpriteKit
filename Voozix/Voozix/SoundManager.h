@@ -8,7 +8,6 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-
 typedef NS_ENUM(NSInteger, SoundKey) {
     
     EXPLOSION_SOUND,
@@ -25,14 +24,16 @@ typedef NS_ENUM(NSInteger, SongKey) {
     
 };
 
-
-
-
+/**
+ * @class SoundManager
+ *
+ * @brief Responsible for playing sound effects and music
+ *
+ * Detailed doc
+ */
 @interface SoundManager : SKNode
 
 - (void)playSound:(SoundKey)soundKey;
 - (void)playSong:(SongKey)songKey;
-
-
 
 @end

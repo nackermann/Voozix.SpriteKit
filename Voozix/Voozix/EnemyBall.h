@@ -8,6 +8,13 @@
 
 #import <SpriteKit/SpriteKit.h>
 
+/**
+ * @class EnemyBall
+ *
+ * @brief Standard ball enemy which moves in a straight pattern
+ *
+ * Spawns when the player collects a star. It receives a random direction (up, down, left, right) and velocity.
+ */
 @interface EnemyBall : SKSpriteNode
 @property CGVector velocity;
 - (void)update:(CFTimeInterval)currentTime;

@@ -32,8 +32,7 @@
 }
 
 /**
- * Handles every collision event by checking for object types and then
- * properly notifying the colliding objects
+ * Handles every collision event by checking for object types and then properly notifying the colliding objects
  * @param {SKPhysicsContact *} contact
  */
 - (void)didBeginContact:(SKPhysicsContact *)contact

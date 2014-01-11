@@ -8,6 +8,13 @@
 
 #import <SpriteKit/SpriteKit.h>
 
+/**
+ * @class PowerUpManager
+ *
+ * @brief Responsible for updating and drawing anything related to power ups
+ *
+ * Detailed doc
+ */
 @interface PowerUpManager : NSObject
 
 @end
