@@ -8,9 +8,6 @@
 
 #import "PlayerController.h"
 
-
-
-
 static float MAX_JOYSTICK_OFFSET = 20.0;
 static float VELOCITY_MULTIPLIER = 100.0;
 
