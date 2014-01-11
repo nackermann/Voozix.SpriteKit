@@ -42,9 +42,9 @@
         self.position = position;
         self.size = self.texture.size;
         self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.size.width/2];
-        self.physicsBody.dynamic = NO;
         self.physicsBody.categoryBitMask = ENEMY_OBJECT;
-        self.physicsBody.contactTestBitMask = PLAYER_OBJECT;
+        self.physicsBody.collisionBitMask = PLAYER_OBJECT;
+        self.physicsBody.contactTestBitMask = PLAYER_OBJECT | BACKGROUND_OBJECT;
         [self setup];
     }
     
@@ -68,11 +68,9 @@
  */
 - (void)update:(CFTimeInterval)currentTime {
     
-    CGPoint newPosition = self.position;
-    newPosition.x += self.velocity.dx;
-    newPosition.y += self.velocity.dy;
-    
-    self.position = newPosition;
+    // Needs to be done so enemy doesn't lose velocity
+    // Maybe theres a better solution, haven't found one yet
+    self.physicsBody.velocity = self.velocity;
     
 }
 

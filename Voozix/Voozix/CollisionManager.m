@@ -83,6 +83,15 @@
         // Notify managers
         [self.enemyManager removeAllEnemies];
     }
+    
+    else if ((firstBody.categoryBitMask & ENEMY_OBJECT) != 0 &&
+             (secondBody.categoryBitMask & BACKGROUND_OBJECT) != 0)
+    {
+        EnemyBall *enemy = (EnemyBall *)firstBody.node;
+        
+        enemy.velocity = CGVectorMake(-enemy.velocity.dx, -enemy.velocity.dy);
+        enemy.physicsBody.velocity = enemy.velocity;
+    }
 }
 
 
