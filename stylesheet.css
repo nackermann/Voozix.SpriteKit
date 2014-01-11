@@ -1,0 +1,40 @@
+#projectbrief {
+	margin-bottom: 0.75em;
+}
+
+.textblock p {
+	margin-top: 0;
+	margin-bottom: 0;
+	line-height: 1.5em;
+}
+
+p {
+	font-family: 'Segoe WP Semibold', 'Segoe UI Semibold', 'Segoe UI Web Semibold', 'Segoe UI', Segoe, 'Helvetica Neue', Helvetica, Roboto, Arial, FreeSans, sans-serif;
+	font-weight: normal;
+}
+
+.header {
+	font-size: 12px;
+
+}
+
+.memproto {
+	background-image: none;
+
+}
+
+.footer {
+	display: none;
+}
+
+#top li, #top .tablist a {
+	text-shadow: none;
+	font-size: 1.1em;
+	font-family: 'Segoe WP Semibold', 'Segoe UI Semibold', 'Segoe UI Web Semibold', 'Segoe UI', Segoe, 'Helvetica Neue', Helvetica, Roboto, Arial, FreeSans, sans-serif;
+	font-weight: normal;
+}
+
+.directory td {
+	font-family: 'Segoe WP Semibold', 'Segoe UI Semibold', 'Segoe UI Web Semibold', 'Segoe UI', Segoe, 'Helvetica Neue', Helvetica, Roboto, Arial, FreeSans, sans-serif;
+	font-weight: normal;	
+}

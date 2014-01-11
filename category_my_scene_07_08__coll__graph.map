@@ -1,0 +1,8 @@
+<map id="MyScene()" name="MyScene()">
+<area shape="rect" id="node2" href="$interface_h_u_d_manager.html" title="Displays information for the player. " alt="" coords="41,86,159,114"/>
+<area shape="rect" id="node9" href="$interface_collision_manager.html" title="Handles collision events from SpriteKit and hands them over. " alt="" coords="263,193,405,221"/>
+<area shape="rect" id="node4" href="$interface_enemy_manager.html" title="Responsible for handling all enemies. " alt="" coords="183,86,313,114"/>
+<area shape="rect" id="node5" href="$interface_player.html" title="Player object that the user is actually controlling. " alt="" coords="607,193,672,221"/>
+<area shape="rect" id="node8" href="$interface_player_controller.html" title="Visual joystick which controls the player. " alt="" coords="707,86,841,114"/>
+<area shape="rect" id="node10" href="$interface_star.html" title="Goal object, player needs to collect this. " alt="" coords="849,139,900,167"/>
+</map>
