@@ -8,8 +8,8 @@
 
 #import "EnemyManager.h"
 
-const int MIN_SPEED = 4;
-const int MAX_SPEED = 15;
+const int MIN_SPEED = 100;
+const int MAX_SPEED = 200;
 
 @interface EnemyManager()
 @property SKScene *scene;
@@ -90,7 +90,7 @@ const int MAX_SPEED = 15;
     /* Create and set new position */
     enemy = [[EnemyBall alloc] initAtPosition:CGPointMake(x, y)];
     enemy.velocity = [self createRandomVelocity];
-    //enemy.position = CGPointMake(x, y);
+    enemy.physicsBody.velocity = enemy.velocity;
     
     [self.enemies addObject:enemy];
     [self.scene addChild:enemy];
@@ -107,14 +107,7 @@ const int MAX_SPEED = 15;
 - (void)update:(CFTimeInterval)currentTime {
     
     for (EnemyBall *enemy in self.enemies) {
-        
-        if ((enemy.position.x - enemy.size.width/2 <= 0) ||
-            (enemy.position.y - enemy.size.height/2 <= 0) ||
-            (enemy.position.x + enemy.size.width/2 >= self.scene.frame.size.width) ||
-            (enemy.position.y + enemy.size.height/2 >= self.scene.frame.size.height)){
-                enemy.velocity = CGVectorMake( - enemy.velocity.dx, -enemy.velocity.dy);
-        }
-        
+
         [enemy update:currentTime];
     }
     
