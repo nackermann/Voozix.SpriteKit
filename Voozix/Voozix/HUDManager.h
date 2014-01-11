@@ -16,7 +16,7 @@
  * 
  */
 @interface HUDManager : NSObject
-@property (nonatomic, strong) NSMutableArray *players; // nicht vergessen Player zu loeschen wenn er stirbt !!
+@property (nonatomic, strong) NSMutableArray *players;
 - (id)initWithScene:(SKScene*)scene;
 - (void)update;
 @end
