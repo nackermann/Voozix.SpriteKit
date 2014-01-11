@@ -27,7 +27,7 @@
 	
 	if (!_playerController) {
 		_playerController = [[PlayerController alloc] init];
-		[self.parent addChild:_playerController];
+		[self addChild:_playerController];
 	}
 	
 	return _playerController;
