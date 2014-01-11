@@ -27,7 +27,7 @@
 	
 	if (!_playerController) {
 		_playerController = [[PlayerController alloc] init];
-		[self addChild:_playerController];
+        [self.parent addChild:_playerController];
 	}
 	
 	return _playerController;
@@ -49,6 +49,7 @@
 	self.size = self.texture.size;
 	self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.size.width/2];
 	self.physicsBody.categoryBitMask = PLAYER_OBJECT;
+    self.physicsBody.collisionBitMask = BACKGROUND_OBJECT;
 	self.physicsBody.contactTestBitMask = ENEMY_OBJECT | STAR_OBJECT;
 	self.physicsBody.allowsRotation = NO;
 	
@@ -141,6 +142,7 @@
 	{
 		[self.myHUDManager.players removeObject:self];
 		[self removeFromParent];
+        [self.playerController removeFromParent];
 	}
 }
 
