@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,14 +101,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
 <div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="interface_star.html">   18</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="interface_star.html">Star</a> : SKSpriteNode</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;- (void)didBeginContactWith:(<span class="keywordtype">id</span>)object;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;- (void)changePosition;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;- (void)update;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;- (void)<a class="code" href="interface_star.html#ae39e8cc7d8e8b315937169b3363c5c19">changePosition</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;- (void)<a class="code" href="interface_star.html#aca2fa3b0b251bd8977f84671191106fa">update</a>;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">@end</span></div>
 <div class="ttc" id="interface_star_html"><div class="ttname"><a href="interface_star.html">Star</a></div><div class="ttdoc">Goal object, player needs to collect this. </div><div class="ttdef"><b>Definition:</b> Star.h:18</div></div>
+<div class="ttc" id="interface_star_html_aca2fa3b0b251bd8977f84671191106fa"><div class="ttname"><a href="interface_star.html#aca2fa3b0b251bd8977f84671191106fa">-[Star update]</a></div><div class="ttdeci">void update()</div><div class="ttdef"><b>Definition:</b> Star.m:104</div></div>
+<div class="ttc" id="interface_star_html_ae39e8cc7d8e8b315937169b3363c5c19"><div class="ttname"><a href="interface_star.html#ae39e8cc7d8e8b315937169b3363c5c19">-[Star changePosition]</a></div><div class="ttdeci">void changePosition()</div><div class="ttdoc">Moves the star to another position within the screen. </div><div class="ttdef"><b>Definition:</b> Star.m:63</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jan 11 2014 13:48:07 for Voozix by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jan 11 2014 14:11:39 for Voozix by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

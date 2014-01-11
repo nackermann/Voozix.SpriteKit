@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['removeallenemies',['removeAllEnemies',['../interface_enemy_manager.html#ac4cec91140a978ad50ca385d63670bd6',1,'EnemyManager']]]
+  ['getjoystickvelocity',['getJoystickVelocity',['../interface_player_controller.html#a9b7e6ef4258c3540d0f10511965c4952',1,'PlayerController']]]
 ];

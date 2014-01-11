@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['myscene',['MyScene',['../interface_my_scene.html',1,'']]]
+  ['hudmanager',['HUDManager',['../interface_h_u_d_manager.html',1,'']]],
+  ['hunter',['Hunter',['../interface_hunter.html',1,'']]]
 ];

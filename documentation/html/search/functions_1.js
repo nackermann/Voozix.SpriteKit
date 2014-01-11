@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['initwithscene_3a',['initWithScene:',['../interface_collision_manager.html#a7e193d0684e4f0b80d56bbc37144c3d4',1,'CollisionManager::initWithScene:()'],['../interface_enemy_manager.html#a70afb1eece24c622ad63eaec5d22b3f7',1,'EnemyManager::initWithScene:()']]]
+  ['didbegincontactwith_3a',['didBeginContactWith:',['../interface_player.html#a44d0a12259c88c6efc0915e08e5299fb',1,'Player::didBeginContactWith:()'],['../interface_star.html#a76648649ef3eee410d7d236ff24c7a0b',1,'Star::didBeginContactWith:()']]]
 ];

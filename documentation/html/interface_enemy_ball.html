@@ -73,7 +73,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -110,11 +110,11 @@ Collaboration diagram for EnemyBall:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Instance Methods</h2></td></tr>
-<tr class="memitem:a7b342ca9ccb983d7c6a3897767319cb1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7b342ca9ccb983d7c6a3897767319cb1"></a>
-(void)&#160;</td><td class="memItemRight" valign="bottom">- <b>update:</b></td></tr>
+<tr class="memitem:a7b342ca9ccb983d7c6a3897767319cb1"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_enemy_ball.html#a7b342ca9ccb983d7c6a3897767319cb1">update:</a></td></tr>
+<tr class="memdesc:a7b342ca9ccb983d7c6a3897767319cb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles movement of the enemy ball.  <a href="#a7b342ca9ccb983d7c6a3897767319cb1">More...</a><br/></td></tr>
 <tr class="separator:a7b342ca9ccb983d7c6a3897767319cb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c018478ab7ce2f134f907a6ad50dc78"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3c018478ab7ce2f134f907a6ad50dc78"></a>
-(id)&#160;</td><td class="memItemRight" valign="bottom">- <b>initAtPosition:</b></td></tr>
+<tr class="memitem:a3c018478ab7ce2f134f907a6ad50dc78"><td class="memItemLeft" align="right" valign="top">(id)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_enemy_ball.html#a3c018478ab7ce2f134f907a6ad50dc78">initAtPosition:</a></td></tr>
+<tr class="memdesc:a3c018478ab7ce2f134f907a6ad50dc78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Completely initializes the enemy ball and also sets the physics body.  <a href="#a3c018478ab7ce2f134f907a6ad50dc78">More...</a><br/></td></tr>
 <tr class="separator:a3c018478ab7ce2f134f907a6ad50dc78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
@@ -125,11 +125,64 @@ CGVector&#160;</td><td class="memItemRight" valign="bottom"><b>velocity</b></td>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Standard ball enemy which moves in a straight pattern. </p>
-<p>Detailed doc </p>
-</div></div><!-- contents -->
+<p>Spawns when the player collects a star. It receives a random direction (up, down, left, right) and velocity. </p>
+</div><h2 class="groupheader">Method Documentation</h2>
+<a class="anchor" id="a3c018478ab7ce2f134f907a6ad50dc78"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (id) initAtPosition: </td>
+          <td></td>
+          <td class="paramtype">(CGPoint)&#160;</td>
+          <td class="paramname"><em>position</em></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Completely initializes the enemy ball and also sets the physics body. </p>
+<p>[long description]</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[description]</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>[description] </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a7b342ca9ccb983d7c6a3897767319cb1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void) update: </td>
+          <td></td>
+          <td class="paramtype">(CFTimeInterval)&#160;</td>
+          <td class="paramname"><em>currentTime</em></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Handles movement of the enemy ball. </p>
+<p>[long description]</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[description]</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>[description] </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jan 11 2014 13:48:07 for Voozix by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jan 11 2014 14:11:39 for Voozix by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

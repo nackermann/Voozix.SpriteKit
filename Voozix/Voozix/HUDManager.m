@@ -20,6 +20,13 @@ static const CGFloat labelYOffset = 30;
 
 @implementation HUDManager
 
+/**
+ * @brief Initializes the HUD Manager
+ * @details [long description]
+ * 
+ * @param  [description]
+ * @return [description]
+ */
 - (id)initWithScene:(SKScene*)scene
 {
     self = [super init];
@@ -29,6 +36,9 @@ static const CGFloat labelYOffset = 30;
     return self;
 }
 
+/**
+ * Returns all player from which scores are displayed
+ */
 - (NSMutableArray*)players
 {
     if (_players == nil) {
@@ -37,7 +47,13 @@ static const CGFloat labelYOffset = 30;
     return _players;
 }
 
-
+/**
+ * @brief [brief description]
+ * @details [long description]
+ * 
+ * @param  [description]
+ * @return [description]
+ */
 - (SKLabelNode*)myScoreLabelForPlayer1
 {
     if (_myScoreLabelForPlayer1 == nil) {
@@ -58,6 +74,13 @@ static const CGFloat labelYOffset = 30;
     return _myScoreLabelForPlayer1;
 }
 
+/**
+ * @brief Updates every information on the screen
+ * @details [long description]
+ * 
+ * @param player [description]
+ * @return [description]
+ */
 - (void)update
 {
     for (Player *player in self.players) {

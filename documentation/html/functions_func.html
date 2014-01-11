@@ -72,6 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="functions.html"><span>All</span></a></li>
       <li class="current"><a href="functions_func.html"><span>Functions</span></a></li>
+      <li><a href="functions_prop.html"><span>Properties</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -80,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -91,27 +92,59 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div class="contents">
 &#160;<ul>
+<li>changePosition
+: <a class="el" href="interface_star.html#ae39e8cc7d8e8b315937169b3363c5c19">Star</a>
+</li>
 <li>createEnemy
 : <a class="el" href="interface_enemy_manager.html#acc8ce6c15754a5a1041614ffdd3f40d9">EnemyManager</a>
+</li>
+<li>didBeginContactWith:
+: <a class="el" href="interface_player.html#a44d0a12259c88c6efc0915e08e5299fb">Player</a>
+, <a class="el" href="interface_star.html#a76648649ef3eee410d7d236ff24c7a0b">Star</a>
+</li>
+<li>getJoystickVelocity
+: <a class="el" href="interface_player_controller.html#a9b7e6ef4258c3540d0f10511965c4952">PlayerController</a>
+</li>
+<li>initAtPosition:
+: <a class="el" href="interface_enemy_ball.html#a3c018478ab7ce2f134f907a6ad50dc78">EnemyBall</a>
+</li>
+<li>initWithHUDManager:
+: <a class="el" href="interface_player.html#a5dbb47a34b2017a24d8fd2ce6c0cb509">Player</a>
 </li>
 <li>initWithScene:
 : <a class="el" href="interface_collision_manager.html#a7e193d0684e4f0b80d56bbc37144c3d4">CollisionManager</a>
 , <a class="el" href="interface_enemy_manager.html#a70afb1eece24c622ad63eaec5d22b3f7">EnemyManager</a>
+, <a class="el" href="interface_h_u_d_manager.html#a73927a1db29a43032675e6efefe9cc58">HUDManager</a>
 </li>
 <li>removeAllEnemies
 : <a class="el" href="interface_enemy_manager.html#ac4cec91140a978ad50ca385d63670bd6">EnemyManager</a>
 </li>
 <li>touchesBegan:withEvent:
-: <a class="el" href="interface_player_controller.html#ab596cd01d3e8ed14ee50d927459fec42">PlayerController</a>
+: <a class="el" href="interface_player.html#a927164859e0727288af2f10dd6ae05aa">Player</a>
+, <a class="el" href="interface_player_controller.html#ab596cd01d3e8ed14ee50d927459fec42">PlayerController</a>
+</li>
+<li>touchesEnded:withEvent:
+: <a class="el" href="interface_player.html#a1a1d0771447f434a3e5c42ac1d9cc90c">Player</a>
+, <a class="el" href="interface_player_controller.html#a9ced7a3897b6e9fdb765dcfa7b25b7a6">PlayerController</a>
 </li>
 <li>touchesMoved:withEvent:
-: <a class="el" href="interface_player_controller.html#a3c9f3949725aae4a9815ce668b9570e5">PlayerController</a>
+: <a class="el" href="interface_player.html#a1277bedb36aa7c700c8ea9b39dc1851d">Player</a>
+, <a class="el" href="interface_player_controller.html#a3c9f3949725aae4a9815ce668b9570e5">PlayerController</a>
+</li>
+<li>update
+: <a class="el" href="interface_h_u_d_manager.html#a9efa5a417d03ac25447e3e033388f8bf">HUDManager</a>
+, <a class="el" href="interface_player.html#a82c3476f3e65a4e2ac6bcd040771bdd4">Player</a>
+, <a class="el" href="interface_star.html#aca2fa3b0b251bd8977f84671191106fa">Star</a>
+</li>
+<li>update:
+: <a class="el" href="interface_enemy_ball.html#a7b342ca9ccb983d7c6a3897767319cb1">EnemyBall</a>
+, <a class="el" href="interface_enemy_manager.html#ae55c2d6aafb965ad9ec1034006ff9cc2">EnemyManager</a>
 </li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jan 11 2014 13:48:07 for Voozix by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jan 11 2014 14:11:39 for Voozix by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

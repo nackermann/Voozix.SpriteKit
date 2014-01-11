@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['hudmanager',['HUDManager',['../interface_h_u_d_manager.html',1,'']]],
-  ['hunter',['Hunter',['../interface_hunter.html',1,'']]]
+  ['enemy',['Enemy',['../interface_enemy.html',1,'']]],
+  ['enemyball',['EnemyBall',['../interface_enemy_ball.html',1,'']]],
+  ['enemymanager',['EnemyManager',['../interface_enemy_manager.html',1,'']]]
 ];

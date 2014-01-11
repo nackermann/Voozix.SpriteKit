@@ -19,7 +19,11 @@ const int MAX_SPEED = 15;
 
 @implementation EnemyManager
 /**
- * Removes every enemy from the scene
+ * @brief Removes all enemies from the scene
+ * @details [long description]
+ * 
+ * @param enemy [description]
+ * @return [description]
  */
 - (void)removeAllEnemies
 {
@@ -30,10 +34,13 @@ const int MAX_SPEED = 15;
     [self.enemies removeAllObjects];
 }
 
-/**
- * Returns all enemies
- * @return {NSMutableArray *}
- */
+ /**
+  * @brief Returns all enemies in the scene
+  * @details [long description]
+  * 
+  * @param e [description]
+  * @return [description]
+  */
 - (NSMutableArray *)enemies {
     
     if (!_enemies)
@@ -90,6 +97,13 @@ const int MAX_SPEED = 15;
     
 }
 
+/**
+ * @brief Updates all enemies: Movement and border collision
+ * @details [long description]
+ * 
+ * @param  [description]
+ * @return [description]
+ */
 - (void)update:(CFTimeInterval)currentTime {
     
     for (EnemyBall *enemy in self.enemies) {
@@ -106,6 +120,11 @@ const int MAX_SPEED = 15;
     
 }
 
+/**
+ * @brief Creates a velocity vector by first choosing a random direction (up, down, left, right) and then generating a random velocity
+ * @details The range of the random velocity can be configured by setting MIN_SPEED and MAX_SPEED
+ * @return [description]
+ */
 - (CGVector)createRandomVelocity {
     
     CGVector velocity;

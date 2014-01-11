@@ -18,7 +18,9 @@ static const CGFloat ROTATE_DURATION = 2.0;
 #import "Player.h"
 
 @implementation Star
-
+/**
+ * Initializes the star and requires assets. Also sets physics body.
+ */
 - (id)init
 {
     self = [super init];
@@ -34,6 +36,9 @@ static const CGFloat ROTATE_DURATION = 2.0;
     return self;
 }
 
+/**
+ * \todo
+ */
 - (void)setup
 {
     self.name = @"star";
@@ -50,7 +55,11 @@ static const CGFloat ROTATE_DURATION = 2.0;
     [self runAction:[SKAction repeatActionForever:[SKAction sequence:@[scaleLarge, scaleSmall]]]];
 }
 
-
+/**
+ * @brief Moves the star to another position within the screen.
+ * @details [long description]
+ * @return [description]
+ */
 - (void)changePosition
 {
     /* Get random coordinates that are within the screen bounds */
@@ -75,6 +84,13 @@ static const CGFloat ROTATE_DURATION = 2.0;
     self.position = newPosition;
 }
 
+/**
+ * @brief Collision event which is called by the collision manager wheneve rsomething collides with the star
+ * @details [long description]
+ * 
+ * @param d [description]
+ * @return [description]
+ */
 - (void)didBeginContactWith:(id)object
 {
     if ([object isKindOfClass:[Player class]]) {
@@ -82,6 +98,9 @@ static const CGFloat ROTATE_DURATION = 2.0;
     }
 }
 
+/**
+ * Updates the star
+ */
 - (void)update
 {
     

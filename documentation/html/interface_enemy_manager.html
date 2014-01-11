@@ -73,7 +73,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -111,12 +111,13 @@ Collaboration diagram for EnemyManager:</div>
 Instance Methods</h2></td></tr>
 <tr class="memitem:a70afb1eece24c622ad63eaec5d22b3f7"><td class="memItemLeft" align="right" valign="top">(id)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_enemy_manager.html#a70afb1eece24c622ad63eaec5d22b3f7">initWithScene:</a></td></tr>
 <tr class="separator:a70afb1eece24c622ad63eaec5d22b3f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae55c2d6aafb965ad9ec1034006ff9cc2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae55c2d6aafb965ad9ec1034006ff9cc2"></a>
-(void)&#160;</td><td class="memItemRight" valign="bottom">- <b>update:</b></td></tr>
+<tr class="memitem:ae55c2d6aafb965ad9ec1034006ff9cc2"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_enemy_manager.html#ae55c2d6aafb965ad9ec1034006ff9cc2">update:</a></td></tr>
+<tr class="memdesc:ae55c2d6aafb965ad9ec1034006ff9cc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates all enemies: Movement and border collision.  <a href="#ae55c2d6aafb965ad9ec1034006ff9cc2">More...</a><br/></td></tr>
 <tr class="separator:ae55c2d6aafb965ad9ec1034006ff9cc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc8ce6c15754a5a1041614ffdd3f40d9"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_enemy_manager.html#acc8ce6c15754a5a1041614ffdd3f40d9">createEnemy</a></td></tr>
 <tr class="separator:acc8ce6c15754a5a1041614ffdd3f40d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac4cec91140a978ad50ca385d63670bd6"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_enemy_manager.html#ac4cec91140a978ad50ca385d63670bd6">removeAllEnemies</a></td></tr>
+<tr class="memdesc:ac4cec91140a978ad50ca385d63670bd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes all enemies from the scene.  <a href="#ac4cec91140a978ad50ca385d63670bd6">More...</a><br/></td></tr>
 <tr class="separator:ac4cec91140a978ad50ca385d63670bd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -175,14 +176,49 @@ Instance Methods</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Removes every enemy from the scene </p>
+
+<p>Removes all enemies from the scene. </p>
+<p>[long description]</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">enemy</td><td>[description] </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>[description] </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ae55c2d6aafb965ad9ec1034006ff9cc2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void) update: </td>
+          <td></td>
+          <td class="paramtype">(CFTimeInterval)&#160;</td>
+          <td class="paramname"><em>currentTime</em></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Updates all enemies: Movement and border collision. </p>
+<p>[long description]</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[description]</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>[description] </dd></dl>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jan 11 2014 13:48:07 for Voozix by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jan 11 2014 14:11:39 for Voozix by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -11,8 +11,11 @@
 
 @implementation EnemyBall
 /**
- * Initialize the enemy ball and require assets
- * @return {id}
+ * @brief Initializes the ball and requires assets. Does NOT initialize a physics body
+ * @details [long description]
+ * 
+ * @param  [description]
+ * @return [description]
  */
 - (id)init {
     
@@ -25,6 +28,13 @@
     return self;
 }
 
+/**
+ * @brief Completely initializes the enemy ball and also sets the physics body
+ * @details [long description]
+ * 
+ * @param  [description]
+ * @return [description]
+ */
 - (id)initAtPosition:(CGPoint)position {
     
     if (self = [super init]) {
@@ -41,14 +51,21 @@
     return self;
 }
 
-
+/**
+ * Sets properties to identify itself
+ */
 - (void)setup {
     
     self.name = @"enemy";
 }
 
-
-
+/**
+ * @brief Handles movement of the enemy ball
+ * @details [long description]
+ * 
+ * @param  [description]
+ * @return [description]
+ */
 - (void)update:(CFTimeInterval)currentTime {
     
     CGPoint newPosition = self.position;

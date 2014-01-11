@@ -13,7 +13,7 @@
  *
  * @brief Standard delegate for our app
  *
- * Detailed doc
+ * We actually do not use the app delegate right now, which is why we have empty standard methods
  */
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

@@ -25,7 +25,13 @@
 @end
 
 @implementation MyScene
-
+/**
+ * @brief Initializes the full scene and most of the objects (some are intialized by lazy-initialization).
+ * @details [long description]
+ * 
+ * @param  [description]
+ * @return [description]
+ */
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
@@ -71,6 +77,9 @@
     [self.player touchesEnded:touches withEvent:event];
 }
 
+/**
+ * Returns the collision manager which is responsible for the scene
+ */
 - (CollisionManager*)collisionManager
 {
     if (_collisionManager == nil) {
@@ -79,6 +88,9 @@
     return _collisionManager;
 }
 
+/**
+ * Returns the HUD manager which is responsible for the scene
+ */
 - (HUDManager*)HUDManager
 {
     if (_HUDManager == nil) {
@@ -87,6 +99,12 @@
     return _HUDManager;
 }
 
+/**
+ * @brief Returns the enemy manager which is responsible for the scene
+ * @details [long description]
+ * 
+ * @return [description]
+ */
 - (EnemyManager *)enemyManager {
     
     if (!_enemyManager) {
@@ -96,6 +114,12 @@
     return _enemyManager;
 }
 
+/**
+ * @brief Returns the real player object (the one the player is controlling)
+ * @details [long description]
+ * 
+ * @return [description]
+ */
 -(Player*)player
 {
     if (!_player) {
@@ -107,6 +131,13 @@
     return _player;
 }
 
+/**
+ * @brief Returns the current star object the player has to collect. There's only one - always!
+ * @details [long description]
+ * 
+ * @param  [description]
+ * @return [description]
+ */
 -(Star*)star
 {
     if (!_star) {

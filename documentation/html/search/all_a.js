@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['voozix',['Voozix',['../index.html',1,'']]],
-  ['viewcontroller',['ViewController',['../interface_view_controller.html',1,'']]]
+  ['score',['score',['../interface_player.html#a80990c90b90acf7a5cae7f4858cbc129',1,'Player']]],
+  ['soundmanager',['SoundManager',['../interface_sound_manager.html',1,'']]],
+  ['star',['Star',['../interface_star.html',1,'']]]
 ];

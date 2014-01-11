@@ -13,7 +13,7 @@
  *
  * @brief Displays information for the player
  *
- * Detailed doc
+ * 
  */
 @interface HUDManager : NSObject
 @property (nonatomic, strong) NSMutableArray *players; // nicht vergessen Player zu loeschen wenn er stirbt !!

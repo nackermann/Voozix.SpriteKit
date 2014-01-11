@@ -13,7 +13,7 @@
  *
  * @brief Standard ball enemy which moves in a straight pattern
  *
- * Detailed doc
+ * Spawns when the player collects a star. It receives a random direction (up, down, left, right) and velocity.
  */
 @interface EnemyBall : SKSpriteNode
 @property CGVector velocity;

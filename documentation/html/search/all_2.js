@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['enemy',['Enemy',['../interface_enemy.html',1,'']]],
-  ['enemyball',['EnemyBall',['../interface_enemy_ball.html',1,'']]],
-  ['enemymanager',['EnemyManager',['../interface_enemy_manager.html',1,'']]]
+  ['didbegincontactwith_3a',['didBeginContactWith:',['../interface_player.html#a44d0a12259c88c6efc0915e08e5299fb',1,'Player::didBeginContactWith:()'],['../interface_star.html#a76648649ef3eee410d7d236ff24c7a0b',1,'Star::didBeginContactWith:()']]]
 ];
