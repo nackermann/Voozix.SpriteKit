@@ -33,6 +33,7 @@
 		15A345051875C2C20046B117 /* EnemyBall.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A345041875C2C20046B117 /* EnemyBall.m */; };
 		15A345081875C2DC0046B117 /* Hunter.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A345071875C2DC0046B117 /* Hunter.m */; };
 		3F089EFF1879B37C0073FA07 /* CollisionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F089EFE1879B37C0073FA07 /* CollisionManager.m */; };
+		3F131AE51881D55D00D34CA3 /* MenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F131AE41881D55D00D34CA3 /* MenuScene.m */; };
 		3F139B9118805216007C6AA5 /* ds1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3F139B8D18805216007C6AA5 /* ds1.mp3 */; };
 		3F139B9218805216007C6AA5 /* explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3F139B8E18805216007C6AA5 /* explosion.wav */; };
 		3F139B9318805216007C6AA5 /* powerup.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3F139B8F18805216007C6AA5 /* powerup.wav */; };
@@ -100,6 +101,8 @@
 		15A345071875C2DC0046B117 /* Hunter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hunter.m; sourceTree = "<group>"; };
 		3F089EFD1879B37C0073FA07 /* CollisionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollisionManager.h; sourceTree = "<group>"; };
 		3F089EFE1879B37C0073FA07 /* CollisionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollisionManager.m; sourceTree = "<group>"; };
+		3F131AE31881D55D00D34CA3 /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
+		3F131AE41881D55D00D34CA3 /* MenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuScene.m; sourceTree = "<group>"; };
 		3F139B8D18805216007C6AA5 /* ds1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ds1.mp3; sourceTree = "<group>"; };
 		3F139B8E18805216007C6AA5 /* explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explosion.wav; sourceTree = "<group>"; };
 		3F139B8F18805216007C6AA5 /* powerup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = powerup.wav; sourceTree = "<group>"; };
@@ -186,6 +189,8 @@
 				15A344B91875A52B0046B117 /* ViewController.m */,
 				15A344BB1875A52B0046B117 /* MyScene.h */,
 				15A344BC1875A52B0046B117 /* MyScene.m */,
+				3F131AE31881D55D00D34CA3 /* MenuScene.h */,
+				3F131AE41881D55D00D34CA3 /* MenuScene.m */,
 				15A3450C1875C3830046B117 /* Objects */,
 				15A344F81875AD9B0046B117 /* Managers */,
 				15A344FB1875BB900046B117 /* Data */,
@@ -425,6 +430,7 @@
 				15A344FF1875C2430046B117 /* Player.m in Sources */,
 				3F089EFF1879B37C0073FA07 /* CollisionManager.m in Sources */,
 				15A344E21875AC3B0046B117 /* ParticleManager.m in Sources */,
+				3F131AE51881D55D00D34CA3 /* MenuScene.m in Sources */,
 				3F139B97188052B8007C6AA5 /* SoundManager.m in Sources */,
 				3FEEA2AF187C69D500414A31 /* PlayerController.m in Sources */,
 				15A345051875C2C20046B117 /* EnemyBall.m in Sources */,
