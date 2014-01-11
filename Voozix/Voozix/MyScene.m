@@ -13,11 +13,13 @@
 #import "CollisionManager.h"
 #import "PlayerController.h"
 #import "ObjectCategories.h"
+#import "SoundManager.h"
 
 @interface MyScene()
 @property (nonatomic, strong) HUDManager *HUDManager;
 @property (nonatomic, strong) CollisionManager *collisionManager;
 @property (nonatomic, strong) EnemyManager *enemyManager;
+@property (nonatomic, strong) SoundManager *soundManager;
 
 @property (nonatomic, weak) Player *player;
 @property (nonatomic, weak) Star *star;
@@ -46,11 +48,16 @@
         backgroundSprite.position = myPoint;
         
         self.collisionManager.enemyManager = self.enemyManager;
+        self.collisionManager.soundManager = self.soundManager;
+        
         self.physicsWorld.contactDelegate = self.collisionManager;
         self.physicsWorld.gravity = CGVectorMake(0.0, 0.0);
         
-        
         [self addChild:backgroundSprite];
+        [self addChild:self.soundManager];
+        
+        [self.soundManager playSong:BACKGROUND_MUSIC];
+
     }
     return self;
 }
@@ -112,6 +119,15 @@
     }
     
     return _enemyManager;
+}
+
+- (SoundManager *)soundManager {
+    
+    if (!_soundManager) {
+        _soundManager = [[SoundManager alloc] init];
+    }
+    
+    return _soundManager;
 }
 
 /**
