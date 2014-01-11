@@ -40,6 +40,7 @@
         
         self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
         self.physicsBody.dynamic = NO;
+        self.physicsBody.restitution = 0.0;
         self.physicsBody.categoryBitMask = BACKGROUND_OBJECT;
         
         SKSpriteNode *backgroundSprite = [SKSpriteNode spriteNodeWithImageNamed:@"background.png"];
