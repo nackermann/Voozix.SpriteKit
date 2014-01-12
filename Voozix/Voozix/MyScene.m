@@ -158,6 +158,7 @@
 -(Star*)star
 {
     if (!_star) {
+        
         Star *myStar = [[Star alloc] init];
         [self addChild:myStar];
         [myStar changePosition];
