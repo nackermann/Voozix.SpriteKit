@@ -82,6 +82,7 @@
         
         // Notify managers
         [self.enemyManager removeAllEnemies];
+        
     }
     
     else if ((firstBody.categoryBitMask & ENEMY_OBJECT) != 0 &&

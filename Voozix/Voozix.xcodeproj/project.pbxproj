@@ -32,6 +32,7 @@
 		15A345021875C28E0046B117 /* Enemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A345011875C28E0046B117 /* Enemy.m */; };
 		15A345051875C2C20046B117 /* EnemyBall.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A345041875C2C20046B117 /* EnemyBall.m */; };
 		15A345081875C2DC0046B117 /* Hunter.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A345071875C2DC0046B117 /* Hunter.m */; };
+		3F0806041882C9BD001E007B /* GameOverScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0806031882C9BD001E007B /* GameOverScene.m */; };
 		3F089EFF1879B37C0073FA07 /* CollisionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F089EFE1879B37C0073FA07 /* CollisionManager.m */; };
 		3F131AE51881D55D00D34CA3 /* MenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F131AE41881D55D00D34CA3 /* MenuScene.m */; };
 		3F139B9118805216007C6AA5 /* ds1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3F139B8D18805216007C6AA5 /* ds1.mp3 */; };
@@ -99,6 +100,8 @@
 		15A345041875C2C20046B117 /* EnemyBall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnemyBall.m; sourceTree = "<group>"; };
 		15A345061875C2DC0046B117 /* Hunter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hunter.h; sourceTree = "<group>"; };
 		15A345071875C2DC0046B117 /* Hunter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hunter.m; sourceTree = "<group>"; };
+		3F0806021882C9BD001E007B /* GameOverScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverScene.h; sourceTree = "<group>"; };
+		3F0806031882C9BD001E007B /* GameOverScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverScene.m; sourceTree = "<group>"; };
 		3F089EFD1879B37C0073FA07 /* CollisionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollisionManager.h; sourceTree = "<group>"; };
 		3F089EFE1879B37C0073FA07 /* CollisionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollisionManager.m; sourceTree = "<group>"; };
 		3F131AE31881D55D00D34CA3 /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
@@ -189,6 +192,8 @@
 				15A344B91875A52B0046B117 /* ViewController.m */,
 				15A344BB1875A52B0046B117 /* MyScene.h */,
 				15A344BC1875A52B0046B117 /* MyScene.m */,
+				3F0806021882C9BD001E007B /* GameOverScene.h */,
+				3F0806031882C9BD001E007B /* GameOverScene.m */,
 				3F131AE31881D55D00D34CA3 /* MenuScene.h */,
 				3F131AE41881D55D00D34CA3 /* MenuScene.m */,
 				15A3450C1875C3830046B117 /* Objects */,
@@ -427,6 +432,7 @@
 				15A344EE1875ACE50046B117 /* EnemyManager.m in Sources */,
 				15A344B41875A52B0046B117 /* AppDelegate.m in Sources */,
 				15A344B01875A52B0046B117 /* main.m in Sources */,
+				3F0806041882C9BD001E007B /* GameOverScene.m in Sources */,
 				15A344FF1875C2430046B117 /* Player.m in Sources */,
 				3F089EFF1879B37C0073FA07 /* CollisionManager.m in Sources */,
 				15A344E21875AC3B0046B117 /* ParticleManager.m in Sources */,

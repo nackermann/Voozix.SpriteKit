@@ -140,9 +140,13 @@
 	}
 	else if ([object isKindOfClass:[EnemyBall class]])
 	{
-		[self.myHUDManager.players removeObject:self];
-		[self removeFromParent];
-        [self.playerController removeFromParent];
+        self.dead = YES;
+        self.physicsBody.velocity = CGVectorMake(0, 0);
+        
+        // Probably not needed? If player dies and retries, a new scene is created anyway
+            //[self.myHUDManager.players removeObject:self];
+            //[self removeFromParent];
+            //[self.playerController removeFromParent];
 	}
 }
 
