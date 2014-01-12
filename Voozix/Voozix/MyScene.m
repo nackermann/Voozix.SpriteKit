@@ -57,7 +57,7 @@
         [self addChild:backgroundSprite];
         [self addChild:self.soundManager];
         
-        [self.soundManager playSong:BACKGROUND_MUSIC];
+        //[self.soundManager playSong:BACKGROUND_MUSIC];
 
     }
     return self;

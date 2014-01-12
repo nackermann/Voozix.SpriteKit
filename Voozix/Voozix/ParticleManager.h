@@ -16,5 +16,6 @@
  * Detailed doc
  */
 @interface ParticleManager : NSObject
-
+- (id)initWithScene:(SKScene *)scene;
+- (void)createStarSparksAtPosition:(CGPoint)position;
 @end
