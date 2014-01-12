@@ -71,12 +71,7 @@
  */
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
-    if (self.player.dead) {
-        [self gameOver];
-    }else {
-        
-        [self.player touchesBegan:touches withEvent:event];
-    }
+    [self.player touchesBegan:touches withEvent:event];
 }
 
 /**
@@ -84,9 +79,8 @@
  */
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     
-    if (!self.player.dead) {
-        [self.player touchesMoved:touches withEvent:event];
-    }
+    [self.player touchesMoved:touches withEvent:event];
+
 }
 
 /**
@@ -191,11 +185,7 @@
     
     if (self.player.dead) {
         
-        // Meant to call [self gameOver], but it's not working?! (scene still calls update after transition?)
-        // Instead a game over message is displayed, scene transition occurs in touchesBegan-method
-        if ([self childNodeWithName:@"GameOver"] != self.gameOverMessage) {
-            [self addChild:self.gameOverMessage];
-        }
+        [self gameOver];
 
     }
     
@@ -206,25 +196,8 @@
     SKView * skView = (SKView *)self.view;
     GameOverScene *gameOver = [GameOverScene sceneWithSize:skView.bounds.size];
     gameOver.scaleMode = SKSceneScaleModeAspectFill;
-    [skView presentScene:gameOver transition:[SKTransition doorsOpenHorizontalWithDuration:1.0]];
+    [skView presentScene:gameOver];
 
 }
-
-- (SKLabelNode *)gameOverMessage {
-    
-    if (!_gameOverMessage) {
-        _gameOverMessage = [SKLabelNode labelNodeWithFontNamed:@"Menlo-Bold"];
-        _gameOverMessage.name = @"GameOver";
-        _gameOverMessage.fontColor = [SKColor yellowColor];
-        _gameOverMessage.fontSize = 70;
-        _gameOverMessage.text = @"GAME OVER";
-        _gameOverMessage.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
-    }
-    
-    return _gameOverMessage;
-}
-
-
-
 
 @end

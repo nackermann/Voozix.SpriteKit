@@ -10,22 +10,15 @@
 #import "MyScene.h"
 #import "MenuScene.h"
 
-@interface GameOverScene()
-@property (nonatomic, strong) SKLabelNode *title;
-@property (nonatomic, strong) SKLabelNode *score;
-@property (nonatomic, strong) SKLabelNode *retryButton;
-@property (nonatomic, strong) SKLabelNode *quitButton;
-@end
 
 @implementation GameOverScene
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
-        /* Setup your scene here */
         
-        [self addChild:self.title];
-        [self addChild:self.score];
-        [self addChild:self.retryButton];
-        [self addChild:self.quitButton];
+        [self createTitle];
+        [self createScore];
+        [self createRetryButton];
+        [self createQuitButton];
         
         
     }
@@ -42,14 +35,14 @@
     
     SKNode *node = [self nodeAtPoint:position];
     
-    if (node == self.retryButton) {
+    if ([node.name isEqualToString:@"retry"]) {
         
         SKView * skView = (SKView *)self.view;
         MyScene *myScene = [MyScene sceneWithSize:skView.bounds.size];
         myScene.scaleMode = SKSceneScaleModeAspectFill;
         [skView presentScene:myScene transition:[SKTransition doorsOpenHorizontalWithDuration:1.0]];
         
-    }else if (node == self.quitButton) {
+    }else if ([node.name isEqualToString:@"quit"]) {
         
         SKView * skView = (SKView *)self.view;
         MenuScene *menuScene = [MenuScene sceneWithSize:skView.bounds.size];
@@ -74,57 +67,52 @@
     
 }
 
--(void)update:(NSTimeInterval)currentTime {
+
+- (void)createScore {
     
+    SKLabelNode *score= [SKLabelNode labelNodeWithFontNamed:@"Menlo-Bold"];
+    score.fontSize = 50;
+    score.text = @"YOUR SCORE:";
+    score.position = CGPointMake(self.frame.size.width/2, self.frame.size.height - 2 * self.frame.size.height/7);
+    
+    [self addChild:score];
     
 }
 
-- (SKLabelNode *)title {
+- (void)createRetryButton{
     
-    if (!_title) {
-        _title = [SKLabelNode labelNodeWithFontNamed:@"Menlo-Bold"];
-        _title.fontSize = 70;
-        _title.text = @"THANK YOU FOR PLAYING!";
-        _title.fontColor = [SKColor yellowColor];
-        _title.position = CGPointMake(self.frame.size.width/2, self.frame.size.height - self.frame.size.height/8);
-    }
+    SKLabelNode *retryButton = [SKLabelNode labelNodeWithFontNamed:@"Menlo-Bold"];
+    retryButton.fontSize = 50;
+    retryButton.name = @"retry";
+    retryButton.text = @"RETRY";
+    retryButton.position = CGPointMake(self.frame.size.width/2, self.frame.size.height - 3 * self.frame.size.height/7);
     
-    return _title;
+    [self addChild:retryButton];
+    
 }
 
-- (SKLabelNode *)score {
+- (void)createQuitButton {
     
-    if (!_score) {
-        _score = [SKLabelNode labelNodeWithFontNamed:@"Menlo-Bold"];
-        _score.fontSize = 50;
-        _score.text = @"Your Score:";
-        _score.position = CGPointMake(self.frame.size.width/2, self.title.position.y - self.frame.size.height/5);
-    }
+    SKLabelNode *quitButton = [SKLabelNode labelNodeWithFontNamed:@"Menlo-Bold"];
+    quitButton.fontSize = 50;
+    quitButton.name = @"quit";
+    quitButton.text = @"QUIT";
+    quitButton.position = CGPointMake(self.frame.size.width/2, self.frame.size.height - 4 * self.frame.size.height/7);
     
-    return _score;
+    [self addChild:quitButton];
+    
 }
 
-- (SKLabelNode *)retryButton {
+- (void)createTitle {
     
-    if (!_retryButton) {
-        _retryButton = [SKLabelNode labelNodeWithFontNamed:@"Menlo-Bold"];
-        _retryButton.fontSize = 50;
-        _retryButton.text = @"RETRY";
-        _retryButton.position = CGPointMake(self.frame.size.width/2, self.score.position.y - self.frame.size.height/5);
-    }
+    SKLabelNode *title = [SKLabelNode labelNodeWithFontNamed:@"Menlo-Bold"];
+    title.fontSize = 70;
+    title.text = @"GAME OVER";
+    title.fontColor = [SKColor yellowColor];
+    title.position = CGPointMake(self.frame.size.width/2, self.frame.size.height - self.frame.size.height/8);
     
-    return _retryButton;
+    [self addChild:title];
+    
 }
-- (SKLabelNode *)quitButton {
-    
-    if (!_quitButton) {
-        _quitButton = [SKLabelNode labelNodeWithFontNamed:@"Menlo-Bold"];
-        _quitButton.fontSize = 50;
-        _quitButton.text = @"QUIT";
-        _quitButton.position = CGPointMake(self.frame.size.width/2, self.retryButton.position.y - self.frame.size.height/5);
 
-    }
-    
-    return _quitButton;
-}
 @end
