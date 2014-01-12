@@ -196,8 +196,12 @@
     SKView * skView = (SKView *)self.view;
     GameOverScene *gameOver = [GameOverScene sceneWithSize:skView.bounds.size];
     gameOver.scaleMode = SKSceneScaleModeAspectFill;
+    gameOver.score = [self.player.score intValue];
+    
+    // Why no transition you ask? Because it doesn't work!
     [skView presentScene:gameOver];
 
 }
+
 
 @end

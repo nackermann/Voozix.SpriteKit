@@ -9,15 +9,6 @@
 #import "MenuScene.h"
 #import "MyScene.h"
 
-@interface MenuScene()
-//@property (nonatomic, strong) SKLabelNode *title;
-//@property (nonatomic, strong) SKLabelNode *playButton;
-//@property (nonatomic, strong) SKLabelNode *optionsButton;
-@end
-
-
-
-
 @implementation MenuScene
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {

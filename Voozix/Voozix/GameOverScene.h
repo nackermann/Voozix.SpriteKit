@@ -9,5 +9,5 @@
 #import <SpriteKit/SpriteKit.h>
 
 @interface GameOverScene : SKScene
-
+@property (nonatomic) int score;
 @end

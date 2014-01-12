@@ -12,6 +12,7 @@
 
 
 @implementation GameOverScene
+
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
         
@@ -72,7 +73,8 @@
     
     SKLabelNode *score= [SKLabelNode labelNodeWithFontNamed:@"Menlo-Bold"];
     score.fontSize = 50;
-    score.text = @"YOUR SCORE:";
+    score.name =  @"score";
+    score.text = [NSString stringWithFormat: @"YOUR SCORE: %i", self.score];
     score.position = CGPointMake(self.frame.size.width/2, self.frame.size.height - 2 * self.frame.size.height/7);
     
     [self addChild:score];
@@ -112,6 +114,22 @@
     title.position = CGPointMake(self.frame.size.width/2, self.frame.size.height - self.frame.size.height/8);
     
     [self addChild:title];
+    
+}
+
+- (void)setScore:(int)score {
+    
+    if (_score != score) {
+        _score = score;
+        [self updateScore];
+    }
+    
+}
+
+- (void)updateScore {
+    
+    SKLabelNode *score = (SKLabelNode *)[self childNodeWithName:@"score"];
+    score.text = [NSString stringWithFormat:@"YOUR SCORE: %i", self.score];
     
 }
 
