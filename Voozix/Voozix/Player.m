@@ -51,6 +51,7 @@
 	self.physicsBody.categoryBitMask = PLAYER_OBJECT;
     self.physicsBody.collisionBitMask = BACKGROUND_OBJECT;
 	self.physicsBody.contactTestBitMask = ENEMY_OBJECT | STAR_OBJECT;
+    self.physicsBody.restitution = 0.0;
 	self.physicsBody.allowsRotation = NO;
 	
 	

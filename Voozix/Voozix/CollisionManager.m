@@ -11,9 +11,11 @@
 #import "Player.h"
 #import "Star.h"
 #import "EnemyBall.h"
+#import "ParticleManager.h"
 
 @interface CollisionManager()
 @property(nonatomic, strong) SKScene *myScene;
+@property (nonatomic, strong) ParticleManager *particleManager;
 @end
 
 @implementation CollisionManager
@@ -61,6 +63,8 @@
         Player *player = (Player *)firstBody.node;
         Star *star = (Star *)secondBody.node;
         
+        [self.particleManager createStarSparksAtPosition:star.position];
+        
         // Notify objects
         [player didBeginContactWith:star];
         [star didBeginContactWith:player];
@@ -93,6 +97,15 @@
         enemy.velocity = CGVectorMake(-enemy.velocity.dx, -enemy.velocity.dy);
         enemy.physicsBody.velocity = enemy.velocity;
     }
+}
+
+- (ParticleManager *)particleManager {
+    
+    if (!_particleManager) {
+        _particleManager = [[ParticleManager alloc] initWithScene:self.myScene];
+    }
+    
+    return _particleManager;
 }
 
 
