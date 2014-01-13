@@ -16,5 +16,8 @@
  * Detailed doc
  */
 @interface PowerUpManager : NSObject
+- (id)initWithScene:(SKScene *)scene;
+- (void)createPowerUp;
+- (void)update;
 
 @end

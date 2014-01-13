@@ -48,6 +48,7 @@
 		3FCB6F091876FB9F00A7F6AD /* StarSparks.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3FCB6F071876FB9F00A7F6AD /* StarSparks.sks */; };
 		3FCB6F0A1876FB9F00A7F6AD /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FCB6F081876FB9F00A7F6AD /* spark.png */; };
 		3FEEA2AF187C69D500414A31 /* PlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEEA2AE187C69D500414A31 /* PlayerController.m */; };
+		94F681E118847D200026BF2C /* PowerUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F681E018847D200026BF2C /* PowerUp.m */; };
 		EFA6B61D1883D7AE008C7253 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA6B61C1883D7AE008C7253 /* star.png */; };
 /* End PBXBuildFile section */
 
@@ -124,6 +125,8 @@
 		3FCB6F081876FB9F00A7F6AD /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		3FEEA2AD187C69D500414A31 /* PlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerController.h; sourceTree = "<group>"; };
 		3FEEA2AE187C69D500414A31 /* PlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerController.m; sourceTree = "<group>"; };
+		94F681DF18847D200026BF2C /* PowerUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PowerUp.h; sourceTree = "<group>"; };
+		94F681E018847D200026BF2C /* PowerUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PowerUp.m; sourceTree = "<group>"; };
 		EFA6B61C1883D7AE008C7253 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -198,6 +201,7 @@
 				3F0806031882C9BD001E007B /* GameOverScene.m */,
 				3F131AE31881D55D00D34CA3 /* MenuScene.h */,
 				3F131AE41881D55D00D34CA3 /* MenuScene.m */,
+				94F681E2188481600026BF2C /* PowerUps */,
 				15A3450C1875C3830046B117 /* Objects */,
 				15A344F81875AD9B0046B117 /* Managers */,
 				15A344FB1875BB900046B117 /* Data */,
@@ -317,6 +321,15 @@
 			path = sprites;
 			sourceTree = "<group>";
 		};
+		94F681E2188481600026BF2C /* PowerUps */ = {
+			isa = PBXGroup;
+			children = (
+				94F681DF18847D200026BF2C /* PowerUp.h */,
+				94F681E018847D200026BF2C /* PowerUp.m */,
+			);
+			name = PowerUps;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -428,6 +441,7 @@
 			files = (
 				15A344BD1875A52B0046B117 /* MyScene.m in Sources */,
 				3FAEAEC11876E74000FC7EFF /* Star.m in Sources */,
+				94F681E118847D200026BF2C /* PowerUp.m in Sources */,
 				15A344F71875AD5A0046B117 /* PowerUpManager.m in Sources */,
 				15A344BA1875A52B0046B117 /* ViewController.m in Sources */,
 				15A344E81875AC870046B117 /* HUDManager.m in Sources */,
