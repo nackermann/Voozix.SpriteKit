@@ -14,7 +14,7 @@
 {
     if ([object isKindOfClass:[Player class]]) {
         Player *player = object;
-        player.score = [NSNumber numberWithInt:[player.score intValue]+1];
+        player.score = [NSNumber numberWithInt:[player.score intValue]+5];
     }
     
     NSLog(@"%@",@"Speedboost");

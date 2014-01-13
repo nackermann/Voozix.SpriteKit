@@ -19,7 +19,7 @@
 @property (nonatomic, strong) NSMutableArray *powerUps;
 
 - (id)initWithScene:(SKScene *)scene;
-- (void)createPowerUp:(id)powerUpType;
+//- (void)createPowerUp:(id)powerUpType;
 - (void)update;
 
 @end

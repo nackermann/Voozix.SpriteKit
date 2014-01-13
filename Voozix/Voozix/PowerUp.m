@@ -27,8 +27,6 @@
     self.physicsBody.restitution = 0.0;
 	self.physicsBody.allowsRotation = NO;
     
-    self.position = CGPointMake(100.f, 200.f); // zum testen, wegmachen
-    
     return self;
 }
 
@@ -43,5 +41,28 @@
     
 }
 
+- (void)changePosition
+{
+    /* Get random coordinates that are within the screen bounds */
+    CGRect rect = [[super scene] frame];
+    float x = (arc4random() % (int)rect.size.width);
+    float y = (arc4random() % (int)rect.size.height);
+    
+    /*Take object width into consideration */
+    if (x + self.frame.size.width/2 > rect.size.width)
+        x -= self.frame.size.width/2;
+    else if (x - self.frame.size.width/2 < 0)
+        x += self.frame.size.width/2;
+    
+    /* Take object height into consideration */
+    if (y + self.frame.size.height/2 > rect.size.height )
+        y -= self.frame.size.height/2;
+    else if (y - self.frame.size.height/2 < 0)
+        y += self.frame.size.width/2;
+    
+    /* Create and set new position */
+    CGPoint newPosition = CGPointMake(x, y);
+    self.position = newPosition;
+}
 
 @end

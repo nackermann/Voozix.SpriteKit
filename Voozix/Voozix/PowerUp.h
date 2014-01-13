@@ -14,5 +14,6 @@
 
 - (void)didBeginContactWith:(id)object;
 - (void)update;
+- (void)changePosition;
 
 @end
