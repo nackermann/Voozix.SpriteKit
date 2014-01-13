@@ -16,8 +16,10 @@
  * Detailed doc
  */
 @interface PowerUpManager : NSObject
+@property (nonatomic, strong) NSMutableArray *powerUps;
+
 - (id)initWithScene:(SKScene *)scene;
-- (void)createPowerUp;
+- (void)createPowerUp:(id)powerUpType;
 - (void)update;
 
 @end

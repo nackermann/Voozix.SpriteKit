@@ -8,10 +8,9 @@
 
 #import "PowerUpManager.h"
 #import "PowerUp.h"
+#import "Speedboost.h"
 
 @interface PowerUpManager()
-@property (nonatomic, strong) NSMutableArray *powerUps; // wie immer auch hier wieder austragen, manu check das ich das spaeter gemacht hab xD
-
 @property (nonatomic, strong) SKScene *myScene;
 
 @end
@@ -23,16 +22,16 @@
     self = [super init];
     self.myScene = scene;
     
-    [self createPowerUp]; // ma eins machen zum testen
+    [self createPowerUp:[Speedboost class]]; // ma eins machen zum testen
     
     return self;
 }
 
-- (void)createPowerUp
+- (void)createPowerUp:(id)powerUpType
 {
     // ggf. was fuer ein powerUp soll es werden? wird erstmal random
     
-    PowerUp *powerUp = [[PowerUp alloc] init];
+    PowerUp *powerUp = [[powerUpType alloc] init];
     [self.myScene addChild:powerUp];
     [self.powerUps addObject:powerUp];
 }

@@ -27,14 +27,15 @@
     self.physicsBody.restitution = 0.0;
 	self.physicsBody.allowsRotation = NO;
     
-    self.position = CGPointMake(100.f, 100.f); // zum testen, wegmachen
+    self.position = CGPointMake(100.f, 200.f); // zum testen, wegmachen
     
     return self;
 }
 
 - (void)didBeginContactWith:(id)object
 {
-    NSLog(@"%@",@"Du bist voll gegenmich geflogen");
+    NSLog(@"%@",@"generisch");
+    [self removeFromParent];
 }
 
 - (void)update

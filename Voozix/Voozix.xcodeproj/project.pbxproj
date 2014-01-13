@@ -49,6 +49,7 @@
 		3FCB6F0A1876FB9F00A7F6AD /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FCB6F081876FB9F00A7F6AD /* spark.png */; };
 		3FEEA2AF187C69D500414A31 /* PlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEEA2AE187C69D500414A31 /* PlayerController.m */; };
 		94F681E118847D200026BF2C /* PowerUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F681E018847D200026BF2C /* PowerUp.m */; };
+		94F681E518848C8E0026BF2C /* Speedboost.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F681E418848C8E0026BF2C /* Speedboost.m */; };
 		EFA6B61D1883D7AE008C7253 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA6B61C1883D7AE008C7253 /* star.png */; };
 /* End PBXBuildFile section */
 
@@ -127,6 +128,8 @@
 		3FEEA2AE187C69D500414A31 /* PlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerController.m; sourceTree = "<group>"; };
 		94F681DF18847D200026BF2C /* PowerUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PowerUp.h; sourceTree = "<group>"; };
 		94F681E018847D200026BF2C /* PowerUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PowerUp.m; sourceTree = "<group>"; };
+		94F681E318848C8E0026BF2C /* Speedboost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Speedboost.h; sourceTree = "<group>"; };
+		94F681E418848C8E0026BF2C /* Speedboost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Speedboost.m; sourceTree = "<group>"; };
 		EFA6B61C1883D7AE008C7253 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -326,6 +329,8 @@
 			children = (
 				94F681DF18847D200026BF2C /* PowerUp.h */,
 				94F681E018847D200026BF2C /* PowerUp.m */,
+				94F681E318848C8E0026BF2C /* Speedboost.h */,
+				94F681E418848C8E0026BF2C /* Speedboost.m */,
 			);
 			name = PowerUps;
 			sourceTree = "<group>";
@@ -454,6 +459,7 @@
 				15A344FF1875C2430046B117 /* Player.m in Sources */,
 				3F089EFF1879B37C0073FA07 /* CollisionManager.m in Sources */,
 				15A344E21875AC3B0046B117 /* ParticleManager.m in Sources */,
+				94F681E518848C8E0026BF2C /* Speedboost.m in Sources */,
 				3F131AE51881D55D00D34CA3 /* MenuScene.m in Sources */,
 				3F139B97188052B8007C6AA5 /* SoundManager.m in Sources */,
 				3FEEA2AF187C69D500414A31 /* PlayerController.m in Sources */,

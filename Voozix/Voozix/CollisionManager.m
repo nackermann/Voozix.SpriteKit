@@ -103,8 +103,11 @@
         Player *player = (Player *)firstBody.node;
         PowerUp *powerUp = (PowerUp*)secondBody.node;
         
-        [player didBeginContactWith:powerUp];
+        [player didBeginContactWith:powerUp]; // does he need to be notified? check it !
+        
         [powerUp didBeginContactWith:player];
+        [self.powerUpManager.powerUps removeObject:powerUp];
+        
     }
     else
     {

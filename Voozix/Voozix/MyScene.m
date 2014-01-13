@@ -55,6 +55,7 @@
         
         self.collisionManager.enemyManager = self.enemyManager;
         self.collisionManager.soundManager = self.soundManager;
+        self.collisionManager.powerUpManager = self.powerUpManager;
         
         self.physicsWorld.contactDelegate = self.collisionManager;
         self.physicsWorld.gravity = CGVectorMake(0.0, 0.0);
