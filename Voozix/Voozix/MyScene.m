@@ -14,12 +14,14 @@
 #import "PlayerController.h"
 #import "ObjectCategories.h"
 #import "SoundManager.h"
+#import "GameOverScene.h"
 
 @interface MyScene()
 @property (nonatomic, strong) HUDManager *HUDManager;
 @property (nonatomic, strong) CollisionManager *collisionManager;
 @property (nonatomic, strong) EnemyManager *enemyManager;
 @property (nonatomic, strong) SoundManager *soundManager;
+@property (nonatomic, strong) SKLabelNode *gameOverMessage;
 
 @property (nonatomic, weak) Player *player;
 @property (nonatomic, weak) Star *star;
@@ -57,6 +59,7 @@
         [self addChild:backgroundSprite];
         [self addChild:self.soundManager];
         
+        // Currently disabled, music not stopping when changing to a scene, no solution found yet
         //[self.soundManager playSong:BACKGROUND_MUSIC];
 
     }
@@ -66,16 +69,18 @@
 /**
  * This gets called when a touch begins and then notifies all objects
  */
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {    
-    [self.player touchesBegan:touches withEvent:event];
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
+    [self.player touchesBegan:touches withEvent:event];
 }
 
 /**
  * This gets called during a touch and then notifies all objects
  */
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    
     [self.player touchesMoved:touches withEvent:event];
+
 }
 
 /**
@@ -179,6 +184,25 @@
     [self.star update];
     [self.HUDManager update];
     
+    if (self.player.dead) {
+        
+        [self gameOver];
+
+    }
+    
 }
+
+- (void)gameOver {
+    
+    SKView * skView = (SKView *)self.view;
+    GameOverScene *gameOver = [GameOverScene sceneWithSize:skView.bounds.size];
+    gameOver.scaleMode = SKSceneScaleModeAspectFill;
+    gameOver.score = [self.player.score intValue];
+    
+    // Why no transition you ask? Because it doesn't work!
+    [skView presentScene:gameOver];
+
+}
+
 
 @end

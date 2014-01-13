@@ -20,6 +20,7 @@
 @interface Player : SKSpriteNode <SKPhysicsContactDelegate>
 @property (nonatomic, strong) PlayerController *playerController;
 @property (nonatomic, strong) NSNumber *score;
+@property BOOL dead;
 
 - (id)initWithHUDManager:(HUDManager*)hudmanager;
 

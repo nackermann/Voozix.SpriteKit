@@ -9,23 +9,14 @@
 #import "MenuScene.h"
 #import "MyScene.h"
 
-@interface MenuScene()
-@property (nonatomic, strong) SKLabelNode *title;
-@property (nonatomic, strong) SKLabelNode *playButton;
-@property (nonatomic, strong) SKLabelNode *optionsButton;
-@end
-
-
-
-
 @implementation MenuScene
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
         
-        [self addChild:self.title];
-        [self addChild:self.playButton];
-        [self addChild:self.optionsButton];
+        [self createTitle];
+        [self createPlayButton];
+        [self createOptionsButton];
         
         
     }
@@ -42,14 +33,14 @@
     
     SKNode *node = [self nodeAtPoint:position];
     
-    if (node == self.playButton) {
+    if ([node.name isEqualToString:@"play"]) {
         
         SKView * skView = (SKView *)self.view;
         MyScene *myScene = [MyScene sceneWithSize:skView.bounds.size];
         myScene.scaleMode = SKSceneScaleModeAspectFill;
         [skView presentScene:myScene transition:[SKTransition doorsOpenHorizontalWithDuration:1.0]];
         
-    }else if (node == self.optionsButton) {
+    }else if ([node.name isEqualToString:@"options"]) {
         
         NSLog(@"%@", @"options button pressed and do some shit!");
     }
@@ -75,43 +66,41 @@
     
 }
 
-- (SKLabelNode *)title {
+- (void)createTitle {
     
-    if (!_title) {
-        _title = [SKLabelNode labelNodeWithFontNamed:@"Menlo-Bold"];
-        _title.fontSize = 70;
-        _title.text = @"VOOZIX";
-        _title.fontColor = [SKColor yellowColor];
-        _title.position = CGPointMake(self.frame.size.width/2, self.frame.size.height - self.frame.size.height/8);
-    }
+    SKLabelNode *title = [SKLabelNode labelNodeWithFontNamed:@"Menlo-Bold"];
+    title.fontSize = 70;
+    title.text = @"VOOZIX";
+    title.fontColor = [SKColor yellowColor];
+    title.position = CGPointMake(self.frame.size.width/2, self.frame.size.height - self.frame.size.height/8);
     
-    return _title;
+    [self addChild:title];
+    
 }
 
-- (SKLabelNode *)playButton {
+- (void)createPlayButton {
     
-    if (!_playButton) {
-        _playButton = [SKLabelNode labelNodeWithFontNamed:@"Menlo-Bold"];
-        _playButton.fontSize = 50;
-        _playButton.text = @"PLAY";
-        _playButton.position = CGPointMake(self.frame.size.width/2, self.frame.size.height - self.frame.size.height/3);
-    }
+    SKLabelNode *playButton = [SKLabelNode labelNodeWithFontNamed:@"Menlo-Bold"];
+    playButton.fontSize = 50;
+    playButton.name = @"play";
+    playButton.text = @"PLAY";
+    playButton.position = CGPointMake(self.frame.size.width/2, self.frame.size.height - 2 * self.frame.size.height/7);
     
-    return _playButton;
+    [self addChild:playButton];
+    
 }
 
-- (SKLabelNode *)optionsButton {
+- (void)createOptionsButton {
     
-    if (!_optionsButton) {
-        _optionsButton = [SKLabelNode labelNodeWithFontNamed:@"Menlo-Bold"];
-        _optionsButton.fontSize = 50;
-        _optionsButton.text = @"OPTIONS";
-        _optionsButton.position = CGPointMake(self.frame.size.width/2, self.playButton.position.y - self.frame.size.height/5);
-    }
+    SKLabelNode *optionsButton = [SKLabelNode labelNodeWithFontNamed:@"Menlo-Bold"];
+    optionsButton.fontSize = 50;
+    optionsButton.name = @"options";
+    optionsButton.text = @"OPTIONS";
+    optionsButton.position = CGPointMake(self.frame.size.width/2, self.frame.size.height - 3 * self.frame.size.height/7);
     
-    return _optionsButton;
+    [self addChild:optionsButton];
+    
 }
-
 
 
 
