@@ -9,7 +9,7 @@
 #import "PlayerController.h"
 
 static float MAX_JOYSTICK_OFFSET = 20.0;
-static float VELOCITY_MULTIPLIER = 100.0;
+static float VELOCITY_MULTIPLIER = 300.0;
 
 @interface PlayerController()
 @property (nonatomic, assign) SKSpriteNode *joystick;

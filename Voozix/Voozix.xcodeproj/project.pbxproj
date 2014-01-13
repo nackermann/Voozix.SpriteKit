@@ -48,6 +48,7 @@
 		3FCB6F091876FB9F00A7F6AD /* StarSparks.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3FCB6F071876FB9F00A7F6AD /* StarSparks.sks */; };
 		3FCB6F0A1876FB9F00A7F6AD /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FCB6F081876FB9F00A7F6AD /* spark.png */; };
 		3FEEA2AF187C69D500414A31 /* PlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEEA2AE187C69D500414A31 /* PlayerController.m */; };
+		EFA6B61D1883D7AE008C7253 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA6B61C1883D7AE008C7253 /* star.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +124,7 @@
 		3FCB6F081876FB9F00A7F6AD /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		3FEEA2AD187C69D500414A31 /* PlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerController.h; sourceTree = "<group>"; };
 		3FEEA2AE187C69D500414A31 /* PlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerController.m; sourceTree = "<group>"; };
+		EFA6B61C1883D7AE008C7253 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -304,6 +306,7 @@
 		3FAEAECD1876EA5D00FC7EFF /* sprites */ = {
 			isa = PBXGroup;
 			children = (
+				EFA6B61C1883D7AE008C7253 /* star.png */,
 				3FAEAECE1876EA5D00FC7EFF /* background.png */,
 				3FAEAECF1876EA5D00FC7EFF /* block.png */,
 				3FAEAED01876EA5D00FC7EFF /* enemy.png */,
@@ -401,6 +404,7 @@
 				3F139B9318805216007C6AA5 /* powerup.wav in Resources */,
 				3FAEAED31876EA5D00FC7EFF /* background.png in Resources */,
 				15A344C11875A52B0046B117 /* Images.xcassets in Resources */,
+				EFA6B61D1883D7AE008C7253 /* star.png in Resources */,
 				15A344BF1875A52B0046B117 /* Spaceship.png in Resources */,
 				15A344B71875A52B0046B117 /* Main.storyboard in Resources */,
 				3FCB6F091876FB9F00A7F6AD /* StarSparks.sks in Resources */,

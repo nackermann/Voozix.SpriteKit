@@ -28,10 +28,9 @@
     NSString *sparkPath = [[NSBundle mainBundle] pathForResource:@"StarSparks" ofType:@"sks"];
     SKEmitterNode *spark = [NSKeyedUnarchiver unarchiveObjectWithFile:sparkPath];
     spark.position = position;
-    spark.xScale = spark.yScale = 0.5f;
     [self.scene addChild:spark];
     
-    SKAction *fadeOut = [SKAction fadeOutWithDuration:0.5f];
+    SKAction *fadeOut = [SKAction fadeOutWithDuration:0.8f];
     SKAction *remove = [SKAction removeFromParent];
     SKAction *sequence = [SKAction sequence:@[fadeOut, remove]];
     [spark runAction:sequence];
