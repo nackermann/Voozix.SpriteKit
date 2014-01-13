@@ -23,6 +23,7 @@
 	self.size = self.texture.size;
 	self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.size.width/2];
 	self.physicsBody.categoryBitMask = POWERUP_OBJECT;
+    self.physicsBody.collisionBitMask = PLAYER_OBJECT;
     self.physicsBody.contactTestBitMask = PLAYER_OBJECT;
     self.physicsBody.restitution = 0.0;
 	self.physicsBody.allowsRotation = NO;
