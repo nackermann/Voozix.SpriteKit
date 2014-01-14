@@ -39,15 +39,6 @@
     [NSTimer scheduledTimerWithTimeInterval:4.0 target:self selector:@selector(deletePowerUp:) userInfo:powerUp repeats:NO];
 }
 
-/*- (void)createPowerUp:(id)powerUpType
-{
-    // ggf. was fuer ein powerUp soll es werden? wird erstmal random
-    
-    PowerUp *powerUp = [[powerUpType alloc] init];
-    [self.myScene addChild:powerUp];
-    [self.powerUps addObject:powerUp];
-}*/
-
 - (NSMutableArray*)powerUps
 {
     if (!_powerUps) {
