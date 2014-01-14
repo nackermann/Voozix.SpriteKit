@@ -11,7 +11,7 @@
 #import "EnemyBall.h"
 #import "ObjectCategories.h"
 
-static int PLAYER_SPEED = 300;
+static const int PLAYER_SPEED = 300;
 
 @interface Player()
 @property (nonatomic, strong) HUDManager *myHUDManager;
