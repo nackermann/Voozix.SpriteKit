@@ -11,6 +11,8 @@
 #import "EnemyBall.h"
 #import "ObjectCategories.h"
 
+static int PLAYER_SPEED = 300;
+
 @interface Player()
 @property (nonatomic, strong) HUDManager *myHUDManager;
 @end
@@ -53,8 +55,7 @@
 	self.physicsBody.contactTestBitMask = ENEMY_OBJECT | STAR_OBJECT;
     self.physicsBody.restitution = 0.0;
 	self.physicsBody.allowsRotation = NO;
-	
-	
+    
 	[self setup];
 	return self;
 }
@@ -66,8 +67,10 @@
 {
 	self.name = @"player";
 	// [super scene ist noch nicht gesetzt beim alloc, erst bei add child]
-	
 	[self.myHUDManager.players addObject:self];
+    
+    self.playerSpeed = PLAYER_SPEED;
+    
 	
 }
 
@@ -96,7 +99,8 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	
 	[self.playerController touchesBegan:touches withEvent:event];
-	self.physicsBody.velocity = [self.playerController getJoystickVelocity];
+    CGVector joystickVelocity = [self.playerController getJoystickVelocity];
+	self.physicsBody.velocity = CGVectorMake(joystickVelocity.dx * self.playerSpeed, joystickVelocity.dy * self.playerSpeed);
 	
 }
 
@@ -110,7 +114,9 @@
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
 	
 	[self.playerController touchesMoved:touches withEvent:event];
-	self.physicsBody.velocity = [self.playerController getJoystickVelocity];
+	CGVector joystickVelocity = [self.playerController getJoystickVelocity];
+	self.physicsBody.velocity = CGVectorMake(joystickVelocity.dx * self.playerSpeed, joystickVelocity.dy * self.playerSpeed);
+
 }
 
 /**
@@ -123,8 +129,8 @@
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
 	
 	[self.playerController touchesEnded:touches withEvent:event];
-	self.physicsBody.velocity = [self.playerController getJoystickVelocity];
-	
+	CGVector joystickVelocity = [self.playerController getJoystickVelocity];
+	self.physicsBody.velocity = CGVectorMake(joystickVelocity.dx * self.playerSpeed, joystickVelocity.dy * self.playerSpeed);
 }
 
 /**
@@ -150,6 +156,14 @@
             //[self.playerController removeFromParent];
 	}
 }
+
+- (void)setPlayerSpeed:(int)playerSpeed {
+    
+    if (_playerSpeed != playerSpeed) {
+        _playerSpeed = playerSpeed;
+    }
+}
+
 
 /**
  * Updates the player

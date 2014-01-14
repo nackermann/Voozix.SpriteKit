@@ -9,7 +9,6 @@
 #import "PlayerController.h"
 
 static float MAX_JOYSTICK_OFFSET = 20.0;
-static float VELOCITY_MULTIPLIER = 300.0;
 
 @interface PlayerController()
 @property (nonatomic, assign) SKSpriteNode *joystick;
@@ -111,9 +110,10 @@ static float VELOCITY_MULTIPLIER = 300.0;
  */
 - (CGVector)getJoystickVelocity {
     
-    // Normally returns vector that has values between -1 and 1
-    // Values are multiplied by VELOCITY_MULTIPLIER to have more "force"
-    CGVector velocity = CGVectorMake(self.joystick.position.x/MAX_JOYSTICK_OFFSET *VELOCITY_MULTIPLIER , self.joystick.position.y/MAX_JOYSTICK_OFFSET *VELOCITY_MULTIPLIER);
+    // Returns vector that has values between -1 and 1
+    CGVector velocity = CGVectorMake(self.joystick.position.x/MAX_JOYSTICK_OFFSET, self.joystick.position.y/MAX_JOYSTICK_OFFSET);
+    
+    NSLog(@"%g", velocity.dx);
     
     return velocity;
 }
