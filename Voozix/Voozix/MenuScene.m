@@ -9,6 +9,8 @@
 #import "MenuScene.h"
 #import "MyScene.h"
 
+#import "MultiplayerManager.h"
+
 @implementation MenuScene
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
@@ -17,7 +19,7 @@
         [self createTitle];
         [self createPlayButton];
         [self createOptionsButton];
-        
+        [self createMultiplayerButton];
         
     }
     return self;
@@ -43,6 +45,8 @@
     }else if ([node.name isEqualToString:@"options"]) {
         
         NSLog(@"%@", @"options button pressed and do some shit!");
+    }else if([node.name isEqualToString:@"multiplayer"]){
+        [[MultiplayerManager sharedInstance] findMatchWithMinPlayers:2 maxPlayers:2 viewController:self delegate:nil];
     }
     
     
@@ -102,6 +106,17 @@
     
 }
 
+- (void)createMultiplayerButton {
+    
+    SKLabelNode *optionsButton = [SKLabelNode labelNodeWithFontNamed:@"Menlo-Bold"];
+    optionsButton.fontSize = 50;
+    optionsButton.name = @"multiplayer";
+    optionsButton.text = @"MULTIPLAYER";
+    optionsButton.position = CGPointMake(self.frame.size.width/2, self.frame.size.height - 4 * self.frame.size.height/7);
+    
+    [self addChild:optionsButton];
+    
+}
 
 
 @end
