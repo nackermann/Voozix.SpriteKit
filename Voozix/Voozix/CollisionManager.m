@@ -12,6 +12,7 @@
 #import "Star.h"
 #import "EnemyBall.h"
 #import "ParticleManager.h"
+#import "PowerUp.h"
 
 @interface CollisionManager()
 @property(nonatomic, strong) SKScene *myScene;
@@ -39,7 +40,7 @@
  */
 - (void)didBeginContact:(SKPhysicsContact *)contact
 {
-    NSLog(@"Contact between objects: %@ and %@", contact.bodyA, contact.bodyB);
+    //NSLog(@"Contact between objects: %@ and %@", contact.bodyA, contact.bodyB);
     
     SKPhysicsBody *firstBody, *secondBody;
     if (contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask)
@@ -88,7 +89,6 @@
         [self.enemyManager removeAllEnemies];
         
     }
-    
     else if ((firstBody.categoryBitMask & ENEMY_OBJECT) != 0 &&
              (secondBody.categoryBitMask & BACKGROUND_OBJECT) != 0)
     {
@@ -96,6 +96,22 @@
         
         enemy.velocity = CGVectorMake(-enemy.velocity.dx, -enemy.velocity.dy);
         enemy.physicsBody.velocity = enemy.velocity;
+    }
+    else if ((firstBody.categoryBitMask & PLAYER_OBJECT) != 0 &&
+             (secondBody.categoryBitMask & POWERUP_OBJECT) != 0)
+    {
+        Player *player = (Player *)firstBody.node;
+        PowerUp *powerUp = (PowerUp*)secondBody.node;
+        
+        [player didBeginContactWith:powerUp]; // does he need to be notified? check it !
+        
+        [powerUp didBeginContactWith:player];
+        [self.powerUpManager.powerUps removeObject:powerUp];
+        
+    }
+    else
+    {
+        NSLog(@"%@",@"Something went wrong! CollisionManager.m");
     }
 }
 

@@ -9,7 +9,11 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIdentifier</key>
+<<<<<<< HEAD
 	<string>65V86286Z3.de.h-da.fbi.${PRODUCT_NAME:rfc1034identifier}</string>
+=======
+	<string>de.h-da.fbi.voozix</string>
+>>>>>>> origin/issue-8-powerUps
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>

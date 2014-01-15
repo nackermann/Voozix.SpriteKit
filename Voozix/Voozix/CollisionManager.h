@@ -10,6 +10,7 @@
 #import "EnemyManager.h"
 #import "HUDManager.h"
 #import "SoundManager.h"
+#import "PowerUpManager.h"
 
 /**
  * @class CollisionManager
@@ -22,6 +23,7 @@
 @interface CollisionManager : NSObject <SKPhysicsContactDelegate>
 @property (nonatomic, strong) EnemyManager *enemyManager;
 @property (nonatomic, strong) HUDManager *hudManager;
-@property (nonatomic, strong) SoundManager * soundManager;
+@property (nonatomic, strong) SoundManager *soundManager;
+@property (nonatomic, strong) PowerUpManager *powerUpManager;
 - (id)initWithScene:(SKScene*)scene;
 @end

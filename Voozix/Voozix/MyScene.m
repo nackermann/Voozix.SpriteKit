@@ -15,12 +15,14 @@
 #import "ObjectCategories.h"
 #import "SoundManager.h"
 #import "GameOverScene.h"
+#import "PowerUpManager.h"
 
 @interface MyScene()
 @property (nonatomic, strong) HUDManager *HUDManager;
 @property (nonatomic, strong) CollisionManager *collisionManager;
 @property (nonatomic, strong) EnemyManager *enemyManager;
 @property (nonatomic, strong) SoundManager *soundManager;
+@property (nonatomic, strong) PowerUpManager *powerUpManager;
 @property (nonatomic, strong) SKLabelNode *gameOverMessage;
 
 @property (nonatomic, weak) Player *player;
@@ -49,14 +51,15 @@
         CGPoint myPoint = CGPointMake(0.f, 0.f);
         backgroundSprite.anchorPoint = myPoint;
         backgroundSprite.position = myPoint;
+        [self addChild:backgroundSprite]; // don't move this line ! background needs to be drawn first
         
         self.collisionManager.enemyManager = self.enemyManager;
         self.collisionManager.soundManager = self.soundManager;
+        self.collisionManager.powerUpManager = self.powerUpManager;
         
         self.physicsWorld.contactDelegate = self.collisionManager;
         self.physicsWorld.gravity = CGVectorMake(0.0, 0.0);
         
-        [self addChild:backgroundSprite];
         [self addChild:self.soundManager];
         
         // Currently disabled, music not stopping when changing to a scene, no solution found yet
@@ -127,6 +130,15 @@
     return _enemyManager;
 }
 
+- (PowerUpManager *)powerUpManager {
+    
+    if (!_powerUpManager) {
+        _powerUpManager = [[PowerUpManager alloc] initWithScene:self];
+    }
+    
+    return _powerUpManager;
+}
+
 - (SoundManager *)soundManager {
     
     if (!_soundManager) {
@@ -182,6 +194,7 @@
     [self.enemyManager update:currentTime];
     [self.player update];
     [self.star update];
+    [self.powerUpManager update];
     [self.HUDManager update];
     
     if (self.player.dead) {

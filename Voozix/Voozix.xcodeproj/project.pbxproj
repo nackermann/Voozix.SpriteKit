@@ -48,8 +48,14 @@
 		3FCB6F091876FB9F00A7F6AD /* StarSparks.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3FCB6F071876FB9F00A7F6AD /* StarSparks.sks */; };
 		3FCB6F0A1876FB9F00A7F6AD /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FCB6F081876FB9F00A7F6AD /* spark.png */; };
 		3FEEA2AF187C69D500414A31 /* PlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEEA2AE187C69D500414A31 /* PlayerController.m */; };
+<<<<<<< HEAD
 		941C5E7E1885B2840049A5B4 /* MultiplayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 941C5E7D1885B2840049A5B4 /* MultiplayerManager.m */; };
 		9434D8821886FB1C00E74744 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9434D8811886FB1C00E74744 /* GameKit.framework */; };
+=======
+		94DB99A81886F80F00625ABE /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94DB99A71886F80F00625ABE /* GameKit.framework */; };
+		94F681E118847D200026BF2C /* PowerUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F681E018847D200026BF2C /* PowerUp.m */; };
+		94F681E518848C8E0026BF2C /* Speedboost.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F681E418848C8E0026BF2C /* Speedboost.m */; };
+>>>>>>> origin/issue-8-powerUps
 		EFA6B61D1883D7AE008C7253 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA6B61C1883D7AE008C7253 /* star.png */; };
 /* End PBXBuildFile section */
 
@@ -125,10 +131,12 @@
 		3FCB6F071876FB9F00A7F6AD /* StarSparks.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StarSparks.sks; sourceTree = "<group>"; };
 		3FCB6F081876FB9F00A7F6AD /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		3FEEA2AD187C69D500414A31 /* PlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerController.h; sourceTree = "<group>"; };
-		3FEEA2AE187C69D500414A31 /* PlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerController.m; sourceTree = "<group>"; };
-		941C5E7C1885B2840049A5B4 /* MultiplayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiplayerManager.h; sourceTree = "<group>"; };
-		941C5E7D1885B2840049A5B4 /* MultiplayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiplayerManager.m; sourceTree = "<group>"; };
-		9434D8811886FB1C00E74744 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		3FEEA2AE187C69D500414A31 /* PlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerController.m; sourceTree = "<group>"; }
+		94DB99A71886F80F00625ABE /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		94F681DF18847D200026BF2C /* PowerUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PowerUp.h; sourceTree = "<group>"; };
+		94F681E018847D200026BF2C /* PowerUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PowerUp.m; sourceTree = "<group>"; };
+		94F681E318848C8E0026BF2C /* Speedboost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Speedboost.h; sourceTree = "<group>"; };
+		94F681E418848C8E0026BF2C /* Speedboost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Speedboost.m; sourceTree = "<group>"; };
 		EFA6B61C1883D7AE008C7253 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,7 +149,11 @@
 				15A344A61875A52B0046B117 /* UIKit.framework in Frameworks */,
 				15A344A81875A52B0046B117 /* SpriteKit.framework in Frameworks */,
 				15A344A21875A52B0046B117 /* Foundation.framework in Frameworks */,
+<<<<<<< HEAD
 				9434D8821886FB1C00E74744 /* GameKit.framework in Frameworks */,
+=======
+				94DB99A81886F80F00625ABE /* GameKit.framework in Frameworks */,
+>>>>>>> origin/issue-8-powerUps
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,7 +192,7 @@
 		15A344A01875A52B0046B117 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9434D8811886FB1C00E74744 /* GameKit.framework */,
+				94DB99A71886F80F00625ABE /* GameKit.framework */,
 				15A344A11875A52B0046B117 /* Foundation.framework */,
 				15A344A31875A52B0046B117 /* CoreGraphics.framework */,
 				15A344A51875A52B0046B117 /* UIKit.framework */,
@@ -205,6 +217,7 @@
 				3F0806031882C9BD001E007B /* GameOverScene.m */,
 				3F131AE31881D55D00D34CA3 /* MenuScene.h */,
 				3F131AE41881D55D00D34CA3 /* MenuScene.m */,
+				94F681E2188481600026BF2C /* PowerUps */,
 				15A3450C1875C3830046B117 /* Objects */,
 				15A344F81875AD9B0046B117 /* Managers */,
 				15A344FB1875BB900046B117 /* Data */,
@@ -326,6 +339,17 @@
 			path = sprites;
 			sourceTree = "<group>";
 		};
+		94F681E2188481600026BF2C /* PowerUps */ = {
+			isa = PBXGroup;
+			children = (
+				94F681DF18847D200026BF2C /* PowerUp.h */,
+				94F681E018847D200026BF2C /* PowerUp.m */,
+				94F681E318848C8E0026BF2C /* Speedboost.h */,
+				94F681E418848C8E0026BF2C /* Speedboost.m */,
+			);
+			name = PowerUps;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -374,7 +398,10 @@
 				ORGANIZATIONNAME = "Norman Ackermann";
 				TargetAttributes = {
 					15A3449D1875A52B0046B117 = {
+<<<<<<< HEAD
 						DevelopmentTeam = 65V86286Z3;
+=======
+>>>>>>> origin/issue-8-powerUps
 						SystemCapabilities = {
 							com.apple.GameCenter = {
 								enabled = 1;
@@ -445,6 +472,7 @@
 			files = (
 				15A344BD1875A52B0046B117 /* MyScene.m in Sources */,
 				3FAEAEC11876E74000FC7EFF /* Star.m in Sources */,
+				94F681E118847D200026BF2C /* PowerUp.m in Sources */,
 				15A344F71875AD5A0046B117 /* PowerUpManager.m in Sources */,
 				15A344BA1875A52B0046B117 /* ViewController.m in Sources */,
 				15A344E81875AC870046B117 /* HUDManager.m in Sources */,
@@ -458,6 +486,7 @@
 				15A344FF1875C2430046B117 /* Player.m in Sources */,
 				3F089EFF1879B37C0073FA07 /* CollisionManager.m in Sources */,
 				15A344E21875AC3B0046B117 /* ParticleManager.m in Sources */,
+				94F681E518848C8E0026BF2C /* Speedboost.m in Sources */,
 				3F131AE51881D55D00D34CA3 /* MenuScene.m in Sources */,
 				3F139B97188052B8007C6AA5 /* SoundManager.m in Sources */,
 				3FEEA2AF187C69D500414A31 /* PlayerController.m in Sources */,
@@ -591,12 +620,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Voozix/Voozix-Prefix.pch";
 				INFOPLIST_FILE = "Voozix/Voozix-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "77A992C8-F1D7-4CE3-AB9A-F2D434CF78E6";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -608,12 +637,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Voozix/Voozix-Prefix.pch";
 				INFOPLIST_FILE = "Voozix/Voozix-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "77A992C8-F1D7-4CE3-AB9A-F2D434CF78E6";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
 			};
