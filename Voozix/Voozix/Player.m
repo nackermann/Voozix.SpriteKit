@@ -11,8 +11,6 @@
 #import "EnemyBall.h"
 #import "ObjectCategories.h"
 
-static const int PLAYER_SPEED = 300;
-
 @interface Player()
 @property (nonatomic, strong) HUDManager *myHUDManager;
 @end
@@ -55,7 +53,8 @@ static const int PLAYER_SPEED = 300;
 	self.physicsBody.contactTestBitMask = ENEMY_OBJECT | STAR_OBJECT;
     self.physicsBody.restitution = 0.0;
 	self.physicsBody.allowsRotation = NO;
-    
+	
+	
 	[self setup];
 	return self;
 }
@@ -67,10 +66,8 @@ static const int PLAYER_SPEED = 300;
 {
 	self.name = @"player";
 	// [super scene ist noch nicht gesetzt beim alloc, erst bei add child]
+	
 	[self.myHUDManager.players addObject:self];
-    
-    self.playerSpeed = PLAYER_SPEED;
-    
 	
 }
 
@@ -99,8 +96,7 @@ static const int PLAYER_SPEED = 300;
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	
 	[self.playerController touchesBegan:touches withEvent:event];
-    CGVector joystickVelocity = [self.playerController getJoystickVelocity];
-	self.physicsBody.velocity = CGVectorMake(joystickVelocity.dx * self.playerSpeed, joystickVelocity.dy * self.playerSpeed);
+	self.physicsBody.velocity = [self.playerController getJoystickVelocity];
 	
 }
 
@@ -114,9 +110,7 @@ static const int PLAYER_SPEED = 300;
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
 	
 	[self.playerController touchesMoved:touches withEvent:event];
-	CGVector joystickVelocity = [self.playerController getJoystickVelocity];
-	self.physicsBody.velocity = CGVectorMake(joystickVelocity.dx * self.playerSpeed, joystickVelocity.dy * self.playerSpeed);
-
+	self.physicsBody.velocity = [self.playerController getJoystickVelocity];
 }
 
 /**
@@ -129,8 +123,8 @@ static const int PLAYER_SPEED = 300;
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
 	
 	[self.playerController touchesEnded:touches withEvent:event];
-	CGVector joystickVelocity = [self.playerController getJoystickVelocity];
-	self.physicsBody.velocity = CGVectorMake(joystickVelocity.dx * self.playerSpeed, joystickVelocity.dy * self.playerSpeed);
+	self.physicsBody.velocity = [self.playerController getJoystickVelocity];
+	
 }
 
 /**
@@ -156,14 +150,6 @@ static const int PLAYER_SPEED = 300;
             //[self.playerController removeFromParent];
 	}
 }
-
-- (void)setPlayerSpeed:(int)playerSpeed {
-    
-    if (_playerSpeed != playerSpeed) {
-        _playerSpeed = playerSpeed;
-    }
-}
-
 
 /**
  * Updates the player

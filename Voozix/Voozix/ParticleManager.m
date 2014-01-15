@@ -30,10 +30,9 @@
     spark.position = position;
     [self.scene addChild:spark];
     
-    // Particle stays on screen for 2 seconds and is then removed
-    SKAction *wait = [SKAction waitForDuration:2.0];
+    SKAction *fadeOut = [SKAction fadeOutWithDuration:0.8f];
     SKAction *remove = [SKAction removeFromParent];
-    SKAction *sequence = [SKAction sequence:@[wait, remove]];
+    SKAction *sequence = [SKAction sequence:@[fadeOut, remove]];
     [spark runAction:sequence];
     
     
