@@ -48,6 +48,7 @@
 		3FCB6F091876FB9F00A7F6AD /* StarSparks.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3FCB6F071876FB9F00A7F6AD /* StarSparks.sks */; };
 		3FCB6F0A1876FB9F00A7F6AD /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FCB6F081876FB9F00A7F6AD /* spark.png */; };
 		3FEEA2AF187C69D500414A31 /* PlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEEA2AE187C69D500414A31 /* PlayerController.m */; };
+		94DB99A81886F80F00625ABE /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94DB99A71886F80F00625ABE /* GameKit.framework */; };
 		94F681E118847D200026BF2C /* PowerUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F681E018847D200026BF2C /* PowerUp.m */; };
 		94F681E518848C8E0026BF2C /* Speedboost.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F681E418848C8E0026BF2C /* Speedboost.m */; };
 		EFA6B61D1883D7AE008C7253 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA6B61C1883D7AE008C7253 /* star.png */; };
@@ -126,6 +127,7 @@
 		3FCB6F081876FB9F00A7F6AD /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		3FEEA2AD187C69D500414A31 /* PlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerController.h; sourceTree = "<group>"; };
 		3FEEA2AE187C69D500414A31 /* PlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerController.m; sourceTree = "<group>"; };
+		94DB99A71886F80F00625ABE /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		94F681DF18847D200026BF2C /* PowerUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PowerUp.h; sourceTree = "<group>"; };
 		94F681E018847D200026BF2C /* PowerUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PowerUp.m; sourceTree = "<group>"; };
 		94F681E318848C8E0026BF2C /* Speedboost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Speedboost.h; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				15A344A61875A52B0046B117 /* UIKit.framework in Frameworks */,
 				15A344A81875A52B0046B117 /* SpriteKit.framework in Frameworks */,
 				15A344A21875A52B0046B117 /* Foundation.framework in Frameworks */,
+				94DB99A81886F80F00625ABE /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,6 +183,7 @@
 		15A344A01875A52B0046B117 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				94DB99A71886F80F00625ABE /* GameKit.framework */,
 				15A344A11875A52B0046B117 /* Foundation.framework */,
 				15A344A31875A52B0046B117 /* CoreGraphics.framework */,
 				15A344A51875A52B0046B117 /* UIKit.framework */,
@@ -382,6 +386,13 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Norman Ackermann";
 				TargetAttributes = {
+					15A3449D1875A52B0046B117 = {
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+						};
+					};
 					15A344C51875A52B0046B117 = {
 						TestTargetID = 15A3449D1875A52B0046B117;
 					};
@@ -592,10 +603,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Voozix/Voozix-Prefix.pch";
 				INFOPLIST_FILE = "Voozix/Voozix-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "77A992C8-F1D7-4CE3-AB9A-F2D434CF78E6";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -606,10 +620,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Voozix/Voozix-Prefix.pch";
 				INFOPLIST_FILE = "Voozix/Voozix-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "77A992C8-F1D7-4CE3-AB9A-F2D434CF78E6";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
 			};
