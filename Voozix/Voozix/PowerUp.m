@@ -33,7 +33,6 @@
 
 - (void)didBeginContactWith:(id)object
 {
-    NSLog(@"%@",@"generisch");
     [self removeFromParent];
 }
 
