@@ -48,6 +48,7 @@
 		3FCB6F091876FB9F00A7F6AD /* StarSparks.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3FCB6F071876FB9F00A7F6AD /* StarSparks.sks */; };
 		3FCB6F0A1876FB9F00A7F6AD /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FCB6F081876FB9F00A7F6AD /* spark.png */; };
 		3FEEA2AF187C69D500414A31 /* PlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEEA2AE187C69D500414A31 /* PlayerController.m */; };
+		941BE499188804BA00C51DE7 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 941BE498188804BA00C51DE7 /* Message.m */; };
 		941C5E7E1885B2840049A5B4 /* MultiplayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 941C5E7D1885B2840049A5B4 /* MultiplayerManager.m */; };
 		9434D8821886FB1C00E74744 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9434D8811886FB1C00E74744 /* GameKit.framework */; };
 		EFA6B61D1883D7AE008C7253 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA6B61C1883D7AE008C7253 /* star.png */; };
@@ -126,6 +127,8 @@
 		3FCB6F081876FB9F00A7F6AD /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		3FEEA2AD187C69D500414A31 /* PlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerController.h; sourceTree = "<group>"; };
 		3FEEA2AE187C69D500414A31 /* PlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerController.m; sourceTree = "<group>"; };
+		941BE497188804BA00C51DE7 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
+		941BE498188804BA00C51DE7 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		941C5E7C1885B2840049A5B4 /* MultiplayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiplayerManager.h; sourceTree = "<group>"; };
 		941C5E7D1885B2840049A5B4 /* MultiplayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiplayerManager.m; sourceTree = "<group>"; };
 		9434D8811886FB1C00E74744 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
@@ -297,6 +300,8 @@
 				3FAEAEC01876E74000FC7EFF /* Star.m */,
 				3FEEA2AD187C69D500414A31 /* PlayerController.h */,
 				3FEEA2AE187C69D500414A31 /* PlayerController.m */,
+				941BE497188804BA00C51DE7 /* Message.h */,
+				941BE498188804BA00C51DE7 /* Message.m */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -459,6 +464,7 @@
 				15A344E21875AC3B0046B117 /* ParticleManager.m in Sources */,
 				3F131AE51881D55D00D34CA3 /* MenuScene.m in Sources */,
 				3F139B97188052B8007C6AA5 /* SoundManager.m in Sources */,
+				941BE499188804BA00C51DE7 /* Message.m in Sources */,
 				3FEEA2AF187C69D500414A31 /* PlayerController.m in Sources */,
 				15A345051875C2C20046B117 /* EnemyBall.m in Sources */,
 			);

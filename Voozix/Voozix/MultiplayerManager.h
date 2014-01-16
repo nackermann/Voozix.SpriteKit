@@ -8,15 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import <GameKit/GameKit.h>
-
+#import "Message.h"
 @protocol MultiplayerManagerDelegate
 -(void)matchStarted;
 -(void)matchEnded;
--(void)match:(GKMatch *)match didReceiveData:(NSData *)data fromPlayer:(NSString *)PlayerID;
 -(void)inviteReceived;
+-(void)receicedMessage:(Message *)message;
 @end
 
-@interface MultiplayerManager : NSObject <GKMatchDelegate, GKMatchmakerViewControllerDelegate, GKLocalPlayerListener>
+@interface MultiplayerManager : NSObject <GKMatchDelegate, GKMatchmakerViewControllerDelegate, GKLocalPlayerListener, GKLocalPlayerListener>
 
 @property (nonatomic, strong)id<MultiplayerManagerDelegate> delegate;
 @property (nonatomic, strong)UIViewController *viewController;
@@ -28,6 +28,12 @@
                     maxPlayers:(int)maxPlayers
                 viewController:(UIViewController *)viewController
                       delegate:(id<MultiplayerManagerDelegate>)theDelegate;
+
+
+-(bool)sendMessage:(Message *)message;
+
 -(void)authenticateLocalUser;
+-(bool)gameCenterisAvailable;
+
 
 @end

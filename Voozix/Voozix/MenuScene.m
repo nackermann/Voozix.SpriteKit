@@ -56,13 +56,13 @@
  * This gets called during a touch and then notifies all objects
  */
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-   }
+}
 
 /**
  * This gets called when a touch ends and then notifies all objects
  */
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-   
+    
 }
 
 -(void)update:(NSTimeInterval)currentTime {
@@ -108,14 +108,12 @@
 
 - (void)createMultiplayerButton {
     
-    SKLabelNode *optionsButton = [SKLabelNode labelNodeWithFontNamed:@"Menlo-Bold"];
-    optionsButton.fontSize = 50;
-    optionsButton.name = @"multiplayer";
-    optionsButton.text = @"MULTIPLAYER";
-    optionsButton.position = CGPointMake(self.frame.size.width/2, self.frame.size.height - 4 * self.frame.size.height/7);
-    
-    [self addChild:optionsButton];
-    
+        SKLabelNode *optionsButton = [SKLabelNode labelNodeWithFontNamed:@"Menlo-Bold"];
+        optionsButton.fontSize = 50;
+        optionsButton.name = @"multiplayer";
+        optionsButton.text = @"MULTIPLAYER";
+        optionsButton.position = CGPointMake(self.frame.size.width/2, self.frame.size.height - 4 * self.frame.size.height/7);
+        [self addChild:optionsButton];
 }
 
 

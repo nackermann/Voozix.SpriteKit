@@ -12,6 +12,7 @@
 @property (nonatomic)bool userIsAuthenticated;
 @property (nonatomic, strong)NSArray *pendingPlayersToInvite;
 @property (nonatomic)bool matchStarted;
+@property (nonatomic, strong)GKInvite* pendingInvite;
 @end
 
 @implementation MultiplayerManager
@@ -40,6 +41,7 @@ static MultiplayerManager *sharedMultiplayerManger = nil;
  */
 -(id)init{
     self = [super init];
+    self.userIsAuthenticated = false;
     if(self){
         NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
         [nc addObserver:self
@@ -48,6 +50,11 @@ static MultiplayerManager *sharedMultiplayerManger = nil;
                  object:nil];
     }
     return self;
+}
+
+-(bool)gameCenterisAvailable
+{
+    return self.userIsAuthenticated;
 }
 
 /**
@@ -60,7 +67,12 @@ static MultiplayerManager *sharedMultiplayerManger = nil;
     if([GKLocalPlayer localPlayer].isAuthenticated && self.userIsAuthenticated){
         
         NSLog(@"Player was authenticated");
-        
+        [GKMatchmaker sharedMatchmaker].inviteHandler = ^(GKInvite *acceptedInvite, NSArray *playersToInvite) {
+            
+            self.pendingInvite = acceptedInvite;
+            self.pendingPlayersToInvite = playersToInvite;
+            [self.delegate inviteReceived];
+        };
         self.userIsAuthenticated = true;
         [[GKLocalPlayer localPlayer] registerListener:self];
         
@@ -68,17 +80,11 @@ static MultiplayerManager *sharedMultiplayerManger = nil;
     }
 }
 
--(void)player:(GKPlayer *)player didRequestMatchWithPlayers:(NSArray *)playerIDsToInvite
-{
-    NSLog(@"Received Invitation from %@", player.playerID);
-    [self.delegate inviteReceived];
-}
-
 -(void)authenticateLocalUser {
     NSLog(@"Authenticating local user ...");
     
     [GKLocalPlayer localPlayer].authenticateHandler = ^(UIViewController *viewController, NSError *error){
-        NSLog(@"authenticateHandler");
+        
         if (viewController != nil)
         {
             NSLog(@"viewController != nil");
@@ -91,7 +97,10 @@ static MultiplayerManager *sharedMultiplayerManger = nil;
         }
         else
         {
-            NSLog(@"local player not authenticated");        }
+            NSLog(@"local player not authenticated");
+            self.userIsAuthenticated = false;
+            
+        }
     };
 }
 
@@ -102,17 +111,23 @@ static MultiplayerManager *sharedMultiplayerManger = nil;
 {
     self.viewController = viewController;
     self.matchStarted = NO;
+    self.delegate = theDelegate;
+    self.match = nil;
+    
     [viewController dismissViewControllerAnimated:YES completion:nil];
+    
+    
     GKMatchmakerViewController *mmvc;
     
     if(self.pendingPlayersToInvite != nil){  //Compare against Invite
-        mmvc = [[GKMatchmakerViewController alloc] initWithInvite:nil]; //ToDo get the Invite?!
+        mmvc = [[GKMatchmakerViewController alloc] initWithInvite:self.pendingInvite]; //ToDo get the Invite?!
         
     }else{
         GKMatchRequest *request = [[GKMatchRequest alloc]init];
         request.minPlayers = minPlayers;
         request.maxPlayers = maxPlayers;
         request.playersToInvite = self.pendingPlayersToInvite;
+        
         mmvc = [[GKMatchmakerViewController alloc] initWithMatchRequest:request];
     }
     
@@ -151,6 +166,7 @@ static MultiplayerManager *sharedMultiplayerManger = nil;
 }
 
 #pragma mark GKMatchMakerViewControllerDelegate
+
 -(void)matchmakerViewControllerWasCancelled:(GKMatchmakerViewController *)viewController
 {
     [self.viewController dismissViewControllerAnimated:YES completion:nil];
@@ -162,6 +178,7 @@ static MultiplayerManager *sharedMultiplayerManger = nil;
     NSLog(@"Error finding match: %@", error.localizedDescription);
 }
 
+
 -(void)matchmakerViewController:(GKMatchmakerViewController *)viewController didFindMatch:(GKMatch *)match
 {
     [self.viewController dismissViewControllerAnimated:YES completion:nil];
@@ -169,17 +186,31 @@ static MultiplayerManager *sharedMultiplayerManger = nil;
     match.delegate = self;
     if(!self.matchStarted && match.expectedPlayerCount == 0){
         NSLog(@"Ready to start the Game");
+        self.matchStarted = true;
         [self lookupPlayers];
     }
 }
+//Hosted game
+-(void)matchmakerViewController:(GKMatchmakerViewController *)viewController didFindPlayers:(NSArray *)playerIDs
+{
+    NSLog(@"Found an hosted game");
+}
 
+-(bool)sendMessage:(Message *)message
+{
+    NSError *error;
+    NSData *data = [NSData dataWithBytes:&message length:sizeof(message)];
+    return [self.match sendDataToAllPlayers:data withDataMode:GKSendDataReliable error:&error];
+}
 #pragma mark GKMatchDelegate
 
 -(void)match:(GKMatch *)match didReceiveData:(NSData *)data fromPlayer:(NSString *)playerID
 {
-    if(self.match != match) return;
+    if(self.match != match) return; //Any other matcher
     
-    [self.delegate match:match didReceiveData:data fromPlayer:playerID];
+    id receivedMessage = [data bytes];
+    
+    if([receivedMessage isKindOfClass:[Message class]]) [self.delegate receicedMessage:(Message *)receivedMessage];
 }
 
 -(void)match:(GKMatch *)match player:(NSString *)playerID didChangeState:(GKPlayerConnectionState)state
@@ -203,5 +234,14 @@ static MultiplayerManager *sharedMultiplayerManger = nil;
     }
 }
 
+-(void)player:(GKPlayer *)player didAcceptInvite:(GKInvite *)invite
+{
+    NSLog(@"%@ accepted invite", player.playerID);
+}
+
+-(void)player:(GKPlayer *)player didRequestMatchWithPlayers:(NSArray *)playerIDsToInvite
+{
+    NSLog(@"%@ requested a match", player.playerID);
+}
 
 @end
