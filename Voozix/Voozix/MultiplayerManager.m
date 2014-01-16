@@ -100,6 +100,7 @@ static MultiplayerManager *sharedMultiplayerManger = nil;
                 viewController:(UIViewController *)viewController
                       delegate:(id<MultiplayerManagerDelegate>)theDelegate
 {
+    self.viewController = viewController;
     self.matchStarted = NO;
     [viewController dismissViewControllerAnimated:YES completion:nil];
     GKMatchmakerViewController *mmvc;
