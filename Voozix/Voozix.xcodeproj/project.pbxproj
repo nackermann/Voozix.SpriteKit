@@ -374,7 +374,6 @@
 				ORGANIZATIONNAME = "Norman Ackermann";
 				TargetAttributes = {
 					15A3449D1875A52B0046B117 = {
-						DevelopmentTeam = 65V86286Z3;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
 								enabled = 1;

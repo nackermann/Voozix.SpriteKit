@@ -7,12 +7,14 @@
 //
 
 #import "AppDelegate.h"
-
+#import "MultiplayerManager.h"
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    // Override point for customization after application launcher
+    
+    [[MultiplayerManager sharedInstance] authenticateLocalUser];
     return YES;
 }
 							

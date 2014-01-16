@@ -8,7 +8,6 @@
 
 #import "MenuScene.h"
 #import "MyScene.h"
-
 #import "MultiplayerManager.h"
 
 @implementation MenuScene
@@ -46,7 +45,8 @@
         
         NSLog(@"%@", @"options button pressed and do some shit!");
     }else if([node.name isEqualToString:@"multiplayer"]){
-        [[MultiplayerManager sharedInstance] findMatchWithMinPlayers:2 maxPlayers:2 viewController:self delegate:nil];
+        
+        [[MultiplayerManager sharedInstance] findMatchWithMinPlayers:2 maxPlayers:2 viewController:self.view.window.rootViewController delegate:nil];
     }
     
     

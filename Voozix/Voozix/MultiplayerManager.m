@@ -101,7 +101,7 @@ static MultiplayerManager *sharedMultiplayerManger = nil;
                       delegate:(id<MultiplayerManagerDelegate>)theDelegate
 {
     self.matchStarted = NO;
-    [self.viewController dismissViewControllerAnimated:YES completion:nil];
+    [viewController dismissViewControllerAnimated:YES completion:nil];
     GKMatchmakerViewController *mmvc;
     
     if(self.pendingPlayersToInvite != nil){  //Compare against Invite
@@ -116,7 +116,7 @@ static MultiplayerManager *sharedMultiplayerManger = nil;
     }
     
     mmvc.matchmakerDelegate = self;
-    [self.viewController presentViewController:mmvc animated:YES completion:nil];
+    [viewController presentViewController:mmvc animated:YES completion:nil];
     self.pendingPlayersToInvite = nil;
     //Clear Invite
     
@@ -132,7 +132,7 @@ static MultiplayerManager *sharedMultiplayerManger = nil;
             self.matchStarted = NO;
             [self.delegate matchEnded];
         } else {
-            
+        
             // Populate players dict
             self.playerDictonary = [NSMutableDictionary dictionaryWithCapacity:players.count];
             for (GKPlayer *player in players) {
