@@ -9,7 +9,7 @@
 #import "MenuScene.h"
 #import "MyScene.h"
 #import "MultiplayerManager.h"
-
+#import <GameKit/GameKit.h>
 @implementation MenuScene
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
@@ -18,11 +18,23 @@
         [self createTitle];
         [self createPlayButton];
         [self createOptionsButton];
-        [self createMultiplayerButton];
+        
+        NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+        [nc addObserver:self
+               selector:@selector(authenticationChanged)
+                   name:GKPlayerAuthenticationDidChangeNotificationName
+                 object:nil];
         
     }
     return self;
 }
+
+
+-(void)authenticationChanged
+{
+    if([GKLocalPlayer localPlayer].isAuthenticated) [self createMultiplayerButton];
+}
+
 
 /**
  * This gets called when a touch begins and then notifies all objects
