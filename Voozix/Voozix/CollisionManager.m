@@ -86,7 +86,7 @@
         [player didBeginContactWith:enemyBall];
         
         // Notify managers
-        [self.enemyManager removeAllEnemies]; // das hier soll/muss jemand anderes machen, eigentlich wird/sollte das ausgeführt werden wenn die Scene wechselt, besprechung !
+        //[self.enemyManager removeAllEnemies]; // scene does this for us? if not check for memoy leaks
         
     }
     else if ((firstBody.categoryBitMask & ENEMY_OBJECT) != 0 &&

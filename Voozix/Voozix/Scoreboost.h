@@ -11,5 +11,6 @@
 #import "PowerUp.h"
 
 @interface Scoreboost : PowerUp
+@property (nonatomic,strong) NSNumber *chanceToSpawn;
 
 @end

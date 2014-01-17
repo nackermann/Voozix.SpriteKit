@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Norman Ackermann. All rights reserved.
 //
 
+static const int spawnChance = 20;
+
 #import "Immortal.h"
 
 @implementation Immortal
@@ -26,6 +28,14 @@
 {
     Player *player = theTimer.userInfo;
     player.immortal = NO;
+}
+
+- (NSNumber*)chanceToSpawn
+{
+    if (_chanceToSpawn == nil) {
+        _chanceToSpawn = [NSNumber numberWithInt:spawnChance];
+    }
+    return _chanceToSpawn;
 }
 
 @end

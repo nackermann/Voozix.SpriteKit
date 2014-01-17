@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Norman Ackermann. All rights reserved.
 //
 
+static const int spawnChance = 20;
+
 #import "Scoreboost.h"
 
 @implementation Scoreboost
@@ -14,10 +16,25 @@
 {
     if ([object isKindOfClass:[Player class]]) {
         Player *player = object;
-        player.score = [NSNumber numberWithInt:[player.score intValue]+5];
+        player.scoreBoost = YES;
+        
+        [NSTimer scheduledTimerWithTimeInterval:8.0 target:self selector:@selector(removeScoreBoost:) userInfo:player repeats:NO];
     }
     [super didBeginContactWith:object]; // remove etc.
 }
 
+- (void)removeScoreBoost:(NSTimer*)theTimer
+{
+    Player *player = theTimer.userInfo;
+    player.scoreBoost = NO;
+}
+
+- (NSNumber*)chanceToSpawn
+{
+    if (_chanceToSpawn == nil) {
+        _chanceToSpawn = [NSNumber numberWithInt:spawnChance];
+    }
+    return _chanceToSpawn;
+}
 
 @end

@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Norman Ackermann. All rights reserved.
 //
 
+static const int spawnChance = 20;
+
 #import "Speedboost.h"
 
 @implementation Speedboost
@@ -23,7 +25,15 @@
 - (void)removeSpeedBoost:(NSTimer*)theTimer
 {
     Player *player = theTimer.userInfo;
-    player.playerSpeed = 300; // default hier irgendwie rausfinden ?
+    player.playerSpeed = player.playerSpeed * 0.6666666; // I hope that it is correct, manuel check this !
+}
+
+- (NSNumber*)chanceToSpawn
+{
+    if (_chanceToSpawn == nil) {
+        _chanceToSpawn = [NSNumber numberWithInt:spawnChance];
+    }
+    return _chanceToSpawn;
 }
 
 @end

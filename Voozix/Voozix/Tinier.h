@@ -11,5 +11,6 @@
 #import "PowerUp.h"
 
 @interface Tinier : PowerUp
+@property (nonatomic,strong) NSNumber *chanceToSpawn;
 
 @end

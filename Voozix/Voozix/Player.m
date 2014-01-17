@@ -71,7 +71,9 @@ static const int PLAYER_SPEED = 300;
 	[self.myHUDManager.players addObject:self];
     
     self.playerSpeed = PLAYER_SPEED;
+    self.dead = NO;
     self.immortal = NO;
+    self.scoreBoost = NO;
 	
 }
 
@@ -88,6 +90,14 @@ static const int PLAYER_SPEED = 300;
 		_score = [NSNumber numberWithInt:0];
 	}
 	return _score;
+}
+
+- (NSNumber*)starCount
+{
+	if (_starCount == nil) {
+		_starCount = [NSNumber numberWithInt:0];
+	}
+	return _starCount;
 }
 
 /**
@@ -144,7 +154,15 @@ static const int PLAYER_SPEED = 300;
 - (void)didBeginContactWith:(id)object
 {
 	if ([object isKindOfClass:[Star class]]) {
-		self.score = [NSNumber numberWithInt:[self.score intValue]+1];
+        if (self.scoreBoost)
+        {
+            self.score = [NSNumber numberWithInt:[self.score intValue]+2];
+        }
+        else
+        {
+            self.score = [NSNumber numberWithInt:[self.score intValue]+1];
+        }
+        self.starCount = [NSNumber numberWithInt:[self.score intValue]+1];
 	}
 	else if ([object isKindOfClass:[EnemyBall class]] && self.immortal == NO)
 	{
@@ -156,13 +174,13 @@ static const int PLAYER_SPEED = 300;
             //[self removeFromParent];
             //[self.playerController removeFromParent];
 	}
-    else if ([object isKindOfClass:[PowerUp class]])
+    else if ([object isKindOfClass:[EnemyBall class]] && self.immortal == YES)
     {
-        NSLog(@"%s", "Player.m received notify that he collided with a PowerUp");
+        NSLog(@"%s", "Player.m: I'm immortal! Fuck YES");
     }
     else
     {
-        NSLog(@"%s%@", "Undefinied Contact with: ", object);
+        //NSLog(@"%s%@", "Undefinied Contact with: ", object);
     }
 }
 

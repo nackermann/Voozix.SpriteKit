@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Norman Ackermann. All rights reserved.
 //
 
+static const int spawnChance = 20;
+
 #import "Tinier.h"
 
 @implementation Tinier
@@ -24,6 +26,14 @@
 - (void)growPlayer:(NSTimer*)theTimer
 {
     [theTimer.userInfo runAction:[SKAction scaleTo:1.0 duration:2]];
+}
+
+- (NSNumber*)chanceToSpawn
+{
+    if (_chanceToSpawn == nil) {
+        _chanceToSpawn = [NSNumber numberWithInt:spawnChance];
+    }
+    return _chanceToSpawn;
 }
 
 @end

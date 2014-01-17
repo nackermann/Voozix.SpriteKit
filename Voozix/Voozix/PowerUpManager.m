@@ -25,6 +25,8 @@
     self = [super init];
     self.myScene = scene;
     
+    
+    
     // Creates PowerUps in the given TimeInterval
     [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(createPowerUp:) userInfo:nil repeats:YES];
     
@@ -44,11 +46,14 @@
     {
         powerUp = [[Tinier alloc] init];
     }
+    else if (randomNumber >= 20)
+    {
+        powerUp = [[Scoreboost alloc] init]; // TODO no Score boost in early game !
+    }
     else
     {
-        powerUp = [[Scoreboost alloc] init];
+        powerUp = [[Immortal alloc] init];
     }
-    // no immortal yet before we changed removeAllPlayers in collisionManager
     
     [self.myScene addChild:powerUp];
     [self.powerUps addObject:powerUp];
