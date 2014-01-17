@@ -22,6 +22,7 @@
 @property (nonatomic, strong) NSNumber *score;
 @property (nonatomic) int playerSpeed;
 @property BOOL dead;
+@property BOOL immortal;
 
 - (id)initWithHUDManager:(HUDManager*)hudmanager;
 

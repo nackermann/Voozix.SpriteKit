@@ -7,7 +7,6 @@
 //
 
 #import "PowerUp.h"
-#import "ObjectCategories.h"
 
 @interface PowerUp()
 

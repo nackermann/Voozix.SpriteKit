@@ -10,6 +10,7 @@
 #import "Star.h"
 #import "EnemyBall.h"
 #import "ObjectCategories.h"
+#import "PowerUp.h"
 
 static const int PLAYER_SPEED = 300;
 
@@ -70,7 +71,7 @@ static const int PLAYER_SPEED = 300;
 	[self.myHUDManager.players addObject:self];
     
     self.playerSpeed = PLAYER_SPEED;
-    
+    self.immortal = NO;
 	
 }
 
@@ -145,7 +146,7 @@ static const int PLAYER_SPEED = 300;
 	if ([object isKindOfClass:[Star class]]) {
 		self.score = [NSNumber numberWithInt:[self.score intValue]+1];
 	}
-	else if ([object isKindOfClass:[EnemyBall class]])
+	else if ([object isKindOfClass:[EnemyBall class]] && self.immortal == NO)
 	{
         self.dead = YES;
         self.physicsBody.velocity = CGVectorMake(0, 0);
@@ -155,6 +156,14 @@ static const int PLAYER_SPEED = 300;
             //[self removeFromParent];
             //[self.playerController removeFromParent];
 	}
+    else if ([object isKindOfClass:[PowerUp class]])
+    {
+        NSLog(@"%s", "Player.m received notify that he collided with a PowerUp");
+    }
+    else
+    {
+        NSLog(@"%s%@", "Undefinied Contact with: ", object);
+    }
 }
 
 - (void)setPlayerSpeed:(int)playerSpeed {

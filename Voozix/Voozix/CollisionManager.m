@@ -83,10 +83,10 @@
         EnemyBall *enemyBall = (EnemyBall *)secondBody.node;
         
         // Notify objects
-        [player didBeginContactWith:enemyBall]; // auch hier player loeschen statt veraendern
+        [player didBeginContactWith:enemyBall];
         
         // Notify managers
-        [self.enemyManager removeAllEnemies];
+        [self.enemyManager removeAllEnemies]; // das hier soll/muss jemand anderes machen, eigentlich wird/sollte das ausgeführt werden wenn die Scene wechselt, besprechung !
         
     }
     else if ((firstBody.categoryBitMask & ENEMY_OBJECT) != 0 &&

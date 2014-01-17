@@ -49,6 +49,8 @@
 		3FCB6F0A1876FB9F00A7F6AD /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FCB6F081876FB9F00A7F6AD /* spark.png */; };
 		3FEEA2AF187C69D500414A31 /* PlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEEA2AE187C69D500414A31 /* PlayerController.m */; };
 		94B34EFB1887E88000853913 /* Scoreboost.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B34EFA1887E88000853913 /* Scoreboost.m */; };
+		94B34EFE1889796400853913 /* Immortal.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B34EFD1889796400853913 /* Immortal.m */; };
+		94B34F0118897D4300853913 /* Tinier.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B34F0018897D4300853913 /* Tinier.m */; };
 		94DB99A81886F80F00625ABE /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94DB99A71886F80F00625ABE /* GameKit.framework */; };
 		94F681E118847D200026BF2C /* PowerUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F681E018847D200026BF2C /* PowerUp.m */; };
 		94F681E518848C8E0026BF2C /* Speedboost.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F681E418848C8E0026BF2C /* Speedboost.m */; };
@@ -130,6 +132,10 @@
 		3FEEA2AE187C69D500414A31 /* PlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerController.m; sourceTree = "<group>"; };
 		94B34EF91887E88000853913 /* Scoreboost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scoreboost.h; sourceTree = "<group>"; };
 		94B34EFA1887E88000853913 /* Scoreboost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Scoreboost.m; sourceTree = "<group>"; };
+		94B34EFC1889796400853913 /* Immortal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Immortal.h; sourceTree = "<group>"; };
+		94B34EFD1889796400853913 /* Immortal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Immortal.m; sourceTree = "<group>"; };
+		94B34EFF18897D4300853913 /* Tinier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tinier.h; sourceTree = "<group>"; };
+		94B34F0018897D4300853913 /* Tinier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tinier.m; sourceTree = "<group>"; };
 		94DB99A71886F80F00625ABE /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		94F681DF18847D200026BF2C /* PowerUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PowerUp.h; sourceTree = "<group>"; };
 		94F681E018847D200026BF2C /* PowerUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PowerUp.m; sourceTree = "<group>"; };
@@ -340,6 +346,10 @@
 				94F681E418848C8E0026BF2C /* Speedboost.m */,
 				94B34EF91887E88000853913 /* Scoreboost.h */,
 				94B34EFA1887E88000853913 /* Scoreboost.m */,
+				94B34EFC1889796400853913 /* Immortal.h */,
+				94B34EFD1889796400853913 /* Immortal.m */,
+				94B34EFF18897D4300853913 /* Tinier.h */,
+				94B34F0018897D4300853913 /* Tinier.m */,
 			);
 			name = PowerUps;
 			sourceTree = "<group>";
@@ -470,8 +480,10 @@
 				15A345021875C28E0046B117 /* Enemy.m in Sources */,
 				15A344EE1875ACE50046B117 /* EnemyManager.m in Sources */,
 				15A344B41875A52B0046B117 /* AppDelegate.m in Sources */,
+				94B34EFE1889796400853913 /* Immortal.m in Sources */,
 				15A344B01875A52B0046B117 /* main.m in Sources */,
 				3F0806041882C9BD001E007B /* GameOverScene.m in Sources */,
+				94B34F0118897D4300853913 /* Tinier.m in Sources */,
 				15A344FF1875C2430046B117 /* Player.m in Sources */,
 				3F089EFF1879B37C0073FA07 /* CollisionManager.m in Sources */,
 				15A344E21875AC3B0046B117 /* ParticleManager.m in Sources */,

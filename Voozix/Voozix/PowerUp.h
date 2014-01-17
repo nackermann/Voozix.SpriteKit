@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <SpriteKit/SpriteKit.h>
 #import "Player.h"
+#import "ObjectCategories.h"
 
 @interface PowerUp : SKSpriteNode   // Base Class
 

@@ -9,6 +9,8 @@
 #import "PowerUpManager.h"
 #import "PowerUp.h"
 #import "Speedboost.h"
+#import "Immortal.h"
+#import "Tinier.h"
 
 @interface PowerUpManager()
 @property (nonatomic, strong) SKScene *myScene;
