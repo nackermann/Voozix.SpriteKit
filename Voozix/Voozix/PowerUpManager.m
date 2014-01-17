@@ -11,6 +11,7 @@
 #import "Speedboost.h"
 #import "Immortal.h"
 #import "Tinier.h"
+#import "Scoreboost.h"
 
 @interface PowerUpManager()
 @property (nonatomic, strong) SKScene *myScene;
@@ -24,20 +25,36 @@
     self = [super init];
     self.myScene = scene;
     
-    //[self createPowerUp:[Speedboost class]]; // ma eins machen zum testen
-    
-    [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(createPowerUp:) userInfo:[Speedboost class] repeats:YES];
+    // Creates PowerUps in the given TimeInterval
+    [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(createPowerUp:) userInfo:nil repeats:YES];
     
     return self;
 }
 
 - (void)createPowerUp:(NSTimer*)theTimer
 {
+    u_int32_t randomNumber = arc4random() % 101; // number 0-100 for rouletteWheelSelection
+    PowerUp *powerUp;
     
-    PowerUp *powerUp = [[theTimer.userInfo alloc] init];
+    if (randomNumber >= 60)
+    {
+        powerUp = [[Speedboost alloc] init];
+    }
+    else if (randomNumber >= 30)
+    {
+        powerUp = [[Tinier alloc] init];
+    }
+    else
+    {
+        powerUp = [[Scoreboost alloc] init];
+    }
+    // no immortal yet before we changed removeAllPlayers in collisionManager
+    
     [self.myScene addChild:powerUp];
     [self.powerUps addObject:powerUp];
     [powerUp changePosition]; // only works after he is in his scene
+    
+    // Player has only limited time to collect the PowerUp
     [NSTimer scheduledTimerWithTimeInterval:4.0 target:self selector:@selector(deletePowerUp:) userInfo:powerUp repeats:NO];
 }
 
