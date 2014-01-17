@@ -40,22 +40,23 @@
     
     powerUp = [[Scoreboost alloc] init];
     
-    /*if (randomNumber >= 60)
+    // TODO Manuel, use objects chance to spawn
+    if (randomNumber >= 80)
     {
         powerUp = [[Speedboost alloc] init];
     }
-    else if (randomNumber >= 30)
+    else if (randomNumber >= 60)
     {
         powerUp = [[Tinier alloc] init];
     }
-    else if (randomNumber >= 20)
+    else if (randomNumber >= 40)
     {
         powerUp = [[Scoreboost alloc] init]; // TODO no Score boost in early game !
     }
     else
     {
         powerUp = [[Immortal alloc] init];
-    }*/
+    }
     
     [self.myScene addChild:powerUp];
     [self.powerUps addObject:powerUp];
