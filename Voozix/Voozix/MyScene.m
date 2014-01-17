@@ -15,6 +15,8 @@
 #import "ObjectCategories.h"
 #import "SoundManager.h"
 #import "GameOverScene.h"
+#import "PeerToPeerManager.h"
+
 
 @interface MyScene()
 @property (nonatomic, strong) HUDManager *HUDManager;
@@ -22,6 +24,8 @@
 @property (nonatomic, strong) EnemyManager *enemyManager;
 @property (nonatomic, strong) SoundManager *soundManager;
 @property (nonatomic, strong) SKLabelNode *gameOverMessage;
+
+@property (nonatomic, strong) NSDictionary *enemyPlayers;
 
 @property (nonatomic, weak) Player *player;
 @property (nonatomic, weak) Star *star;
@@ -153,6 +157,21 @@
     return _player;
 }
 
+-(NSDictionary *)enemyPlayers
+{
+    if(!_enemyPlayers){
+        NSArray *playerIDs = [PeerToPeerManager sharedInstance].getConnectedPeers;
+        NSMutableDictionary *players = [NSMutableDictionary dictionary];
+        for(NSString *playerID in playerIDs){
+            Player *p = [[Player alloc]initWithHUDManager:self.HUDManager];
+            p.playerID = playerID;
+            [players setObject:p forKey:playerID];
+        }
+    }
+    return _enemyPlayers;
+}
+
+
 /**
  * @brief Returns the current star object the player has to collect. There's only one - always!
  * @details [long description]
@@ -165,8 +184,13 @@
     if (!_star) {
         
         Star *myStar = [[Star alloc] init];
-        [self addChild:myStar];
-        [myStar changePosition];
+        
+        if([PeerToPeerManager sharedInstance].isHost || ![PeerToPeerManager sharedInstance].isMatchActive)
+        {
+            [self addChild:myStar];
+            [myStar changePosition];
+        }
+
         _star = myStar;
     }
     return _star;
@@ -204,5 +228,40 @@
 
 }
 
+#pragma mark Delegate Methods
+
+-(void)matchEnded
+{
+    [self gameOver];
+}
+
+-(void)receicedMessage:(Message *)message fromPlayerID:(NSString *)playerID
+{
+    Player *sendFromPlayer = (Player *)[self.enemyPlayers objectForKey:playerID];
+    
+    NSLog(@"Received %i Message from %@",message.messageType, playerID);
+    
+    switch(message.messageType){
+        case matchEnded: [self gameOver]; break;
+        case matchStarted: break;
+        case StarCollected: [self.star removeFromParent]; break;
+        case StarSpawned:
+            self.star.position = *((__bridge CGPoint *)message.Object);
+            [self addChild:self.star];
+            break;
+        case PowerUpSpawned:
+            sendFromPlayer.position = *((__bridge CGPoint *)message.Object);
+            break;
+        case PowerUpCollected: break;
+        case playerMoved:
+            
+            break;
+            
+        default: break;
+    }
+    
+   
+    
+}
 
 @end

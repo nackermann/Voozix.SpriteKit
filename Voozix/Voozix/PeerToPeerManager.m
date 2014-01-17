@@ -14,7 +14,7 @@
 @property(nonatomic, strong) MCSession *session;
 @property(nonatomic, strong) MCAdvertiserAssistant* advertiser;
 @property(nonatomic, strong) MCBrowserViewController *browserVC;
-
+@property(nonatomic, readwrite)bool isMatchActive;
 @property(nonatomic, readwrite)bool isHost;
 @end
 
@@ -23,7 +23,10 @@
 -(MCPeerID *)peerID
 {
     if(!_peerID){
-        _peerID = [[MCPeerID alloc] initWithDisplayName: [[UIDevice currentDevice] name]];
+     //   NSString *deviceID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+        NSString *deviceName = [[UIDevice currentDevice] name];
+        
+        _peerID = [[MCPeerID alloc] initWithDisplayName: deviceName];
     }
     return _peerID;
 }
@@ -96,8 +99,12 @@ static PeerToPeerManager *sharedPeerToPeerManager = nil;
     [self.browserVC dismissViewControllerAnimated:YES completion:nil];
     NSLog(@"Finished Selecting.... Starting the Game!");
     self.isHost = YES;
+    self.isMatchActive = YES;
     [self.delegate matchStarted];
     
+    Message *message = [[Message alloc] init];
+    message.messageType = matchStarted;
+    [self sendMessage:message];
 }
 
 -(void)browserViewControllerWasCancelled:(MCBrowserViewController *)browserViewController
@@ -126,9 +133,25 @@ didReceiveData:(NSData *)data
 {
     if(session != self.session) return;
     
-    id receivedMessage = [data bytes];
+    id receivedMessage = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     
-    if([receivedMessage isKindOfClass:[Message class]]) [self.delegate receicedMessage:(Message *)receivedMessage fromPlayerID:peerID.displayName];
+    if([receivedMessage isKindOfClass:[Message class]]){
+        Message *message = (Message *)receivedMessage;
+        
+        if(message.messageType == matchStarted){
+            self.isMatchActive = YES;
+            self.isHost = false;
+            [self.delegate matchStarted];
+            return;
+        }else if(message.messageType == matchEnded){
+            self.isMatchActive = false;
+            [self.delegate matchEnded];
+            return;
+        }
+
+        
+        [self.delegate receicedMessage:(Message *)receivedMessage fromPlayerID:peerID.displayName];
+    }
 
     
 }
@@ -136,7 +159,7 @@ didReceiveData:(NSData *)data
 -(bool)sendMessage:(Message *)message
 {
     NSError *error;
-    NSData *data = [NSData dataWithBytes:&message length:sizeof(message)];
+    NSData *data =   [NSKeyedArchiver archivedDataWithRootObject:message]; // [NSData dataWithBytes:&message length:sizeof(message)];
     return [self.session sendData:data toPeers:[self.session connectedPeers] withMode:MCSessionSendDataReliable error:&error];
 }
 

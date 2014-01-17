@@ -21,6 +21,7 @@
 @property (nonatomic, strong) PlayerController *playerController;
 @property (nonatomic, strong) NSNumber *score;
 @property BOOL dead;
+@property (nonatomic, strong)NSString *playerID;
 
 - (id)initWithHUDManager:(HUDManager*)hudmanager;
 

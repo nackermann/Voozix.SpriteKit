@@ -11,14 +11,14 @@
 #import "Message.h"
 #import "MultiplayerDelegate.h"
 
-@interface MultiplayerManager : NSObject <GKMatchDelegate, GKMatchmakerViewControllerDelegate, GKLocalPlayerListener, GKLocalPlayerListener>
+@interface GameCenterManager : NSObject <GKMatchDelegate, GKMatchmakerViewControllerDelegate, GKLocalPlayerListener, GKLocalPlayerListener>
 
 @property (nonatomic, strong)id<MultiplayerDelegate> delegate;
 @property (nonatomic, strong)UIViewController *viewController;
 @property (nonatomic, strong)GKMatch *match;
 @property (nonatomic, strong)NSMutableDictionary *playerDictonary;
 
-+(MultiplayerManager *)sharedInstance;
++(GameCenterManager *)sharedInstance;
 -(void)findMatchWithMinPlayers:(int)minPlayers
                     maxPlayers:(int)maxPlayers
                 viewController:(UIViewController *)viewController

@@ -49,7 +49,7 @@
 		3FCB6F0A1876FB9F00A7F6AD /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FCB6F081876FB9F00A7F6AD /* spark.png */; };
 		3FEEA2AF187C69D500414A31 /* PlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEEA2AE187C69D500414A31 /* PlayerController.m */; };
 		941BE499188804BA00C51DE7 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 941BE498188804BA00C51DE7 /* Message.m */; };
-		941C5E7E1885B2840049A5B4 /* MultiplayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 941C5E7D1885B2840049A5B4 /* MultiplayerManager.m */; };
+		941C5E7E1885B2840049A5B4 /* GameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 941C5E7D1885B2840049A5B4 /* GameCenterManager.m */; };
 		9434D8821886FB1C00E74744 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9434D8811886FB1C00E74744 /* GameKit.framework */; };
 		94980A63188986FA005972AD /* PeerToPeerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 94980A62188986FA005972AD /* PeerToPeerManager.m */; };
 		EFA6B61D1883D7AE008C7253 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA6B61C1883D7AE008C7253 /* star.png */; };
@@ -130,8 +130,8 @@
 		3FEEA2AE187C69D500414A31 /* PlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerController.m; sourceTree = "<group>"; };
 		941BE497188804BA00C51DE7 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
 		941BE498188804BA00C51DE7 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
-		941C5E7C1885B2840049A5B4 /* MultiplayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiplayerManager.h; sourceTree = "<group>"; };
-		941C5E7D1885B2840049A5B4 /* MultiplayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiplayerManager.m; sourceTree = "<group>"; };
+		941C5E7C1885B2840049A5B4 /* GameCenterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenterManager.h; sourceTree = "<group>"; };
+		941C5E7D1885B2840049A5B4 /* GameCenterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCenterManager.m; sourceTree = "<group>"; };
 		9434D8811886FB1C00E74744 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		94980A60188986ED005972AD /* MultiplayerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MultiplayerDelegate.h; sourceTree = "<group>"; };
 		94980A61188986FA005972AD /* PeerToPeerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeerToPeerManager.h; sourceTree = "<group>"; };
@@ -268,8 +268,8 @@
 				3F089EFE1879B37C0073FA07 /* CollisionManager.m */,
 				3F139B95188052B8007C6AA5 /* SoundManager.h */,
 				3F139B96188052B8007C6AA5 /* SoundManager.m */,
-				941C5E7C1885B2840049A5B4 /* MultiplayerManager.h */,
-				941C5E7D1885B2840049A5B4 /* MultiplayerManager.m */,
+				941C5E7C1885B2840049A5B4 /* GameCenterManager.h */,
+				941C5E7D1885B2840049A5B4 /* GameCenterManager.m */,
 				94980A61188986FA005972AD /* PeerToPeerManager.h */,
 				94980A62188986FA005972AD /* PeerToPeerManager.m */,
 			);
@@ -465,7 +465,7 @@
 				15A344B41875A52B0046B117 /* AppDelegate.m in Sources */,
 				15A344B01875A52B0046B117 /* main.m in Sources */,
 				3F0806041882C9BD001E007B /* GameOverScene.m in Sources */,
-				941C5E7E1885B2840049A5B4 /* MultiplayerManager.m in Sources */,
+				941C5E7E1885B2840049A5B4 /* GameCenterManager.m in Sources */,
 				15A344FF1875C2430046B117 /* Player.m in Sources */,
 				3F089EFF1879B37C0073FA07 /* CollisionManager.m in Sources */,
 				15A344E21875AC3B0046B117 /* ParticleManager.m in Sources */,

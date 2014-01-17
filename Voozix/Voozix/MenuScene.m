@@ -8,7 +8,7 @@
 
 #import "MenuScene.h"
 #import "MyScene.h"
-#import "MultiplayerManager.h"
+#import "GameCenterManager.h"
 #import <GameKit/GameKit.h>
 #import "PeerToPeerManager.h"
 
@@ -51,10 +51,7 @@
     
     if ([node.name isEqualToString:@"play"]) {
         
-        SKView * skView = (SKView *)self.view;
-        MyScene *myScene = [MyScene sceneWithSize:skView.bounds.size];
-        myScene.scaleMode = SKSceneScaleModeAspectFill;
-        [skView presentScene:myScene transition:[SKTransition doorsOpenHorizontalWithDuration:1.0]];
+        [self matchStarted];
         
     }else if ([node.name isEqualToString:@"options"]) {
         
@@ -72,10 +69,9 @@
         [self CreateStartAdvertisePeerButton];
     
     }else if([node.name isEqualToString:@"peertopeer"]){
-        [[PeerToPeerManager sharedInstance] showPeerBrowserWithViewController :self.view.window.rootViewController delegate:nil];
+        [[PeerToPeerManager sharedInstance] showPeerBrowserWithViewController :self.view.window.rootViewController delegate:self];
     }else if([node.name isEqualToString:@"multiplayer"]){
-        
-        [[MultiplayerManager sharedInstance] findMatchWithMinPlayers:2 maxPlayers:2 viewController:self.view.window.rootViewController delegate:nil];
+        [[GameCenterManager sharedInstance] findMatchWithMinPlayers:2 maxPlayers:2 viewController:self.view.window.rootViewController delegate:self];
     }
     
     
@@ -101,19 +97,15 @@
 
 -(void)matchStarted
 {
+    SKView * skView = (SKView *)self.view;
+    MyScene *myScene = [MyScene sceneWithSize:skView.bounds.size];
+   
+    [PeerToPeerManager sharedInstance].delegate = myScene;
     
-}
+    myScene.scaleMode = SKSceneScaleModeAspectFill;
 
--(void)matchEnded
-{
-    
+    [skView presentScene:myScene transition:[SKTransition doorsOpenHorizontalWithDuration:1.0]];
 }
-
--(void)receicedMessage:(Message *)message fromPlayerID:(NSString *)playerID
-{
-    
-}
-
 
 - (void)createTitle {
     

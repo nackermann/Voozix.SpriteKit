@@ -6,18 +6,18 @@
 //  Copyright (c) 2014 Norman Ackermann. All rights reserved.
 //
 
-#import "MultiplayerManager.h"
+#import "GameCenterManager.h"
 
-@interface MultiplayerManager()
+@interface GameCenterManager()
 @property (nonatomic)bool userIsAuthenticated;
 @property (nonatomic, strong)NSArray *pendingPlayersToInvite;
 @property (nonatomic)bool matchStarted;
 @property (nonatomic, strong)GKInvite* pendingInvite;
 @end
 
-@implementation MultiplayerManager
+@implementation GameCenterManager
 
-static MultiplayerManager *sharedMultiplayerManger = nil;
+static GameCenterManager *sharedMultiplayerManger = nil;
 
 /**
  * @brief Returns  and Optionally Creates an Singlton Instance of the Manager
@@ -25,10 +25,10 @@ static MultiplayerManager *sharedMultiplayerManger = nil;
  *
  * @return [description]
  */
-+(MultiplayerManager *)sharedInstance
++(GameCenterManager *)sharedInstance
 {
     if(!sharedMultiplayerManger){
-        sharedMultiplayerManger = [[MultiplayerManager alloc] init];
+        sharedMultiplayerManger = [[GameCenterManager alloc] init];
     }
     return sharedMultiplayerManger;
 }

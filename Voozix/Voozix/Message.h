@@ -9,9 +9,17 @@
 #import <Foundation/Foundation.h>
 
 
-typedef enum  {playerMoved, objectSpawned} MessageType;
+typedef enum  { playerMoved,
+                StarSpawned,
+                StarCollected,
+                PowerUpSpawned,
+                PowerUpCollected,
+                matchStarted,
+                matchEnded
+              } MessageType;
 
 @interface Message : NSObject
 @property (nonatomic)MessageType messageType;
-@property (nonatomic, strong)id Object;
+@property (nonatomic)id Object;
+@property (nonatomic)CGVector velocity;
 @end

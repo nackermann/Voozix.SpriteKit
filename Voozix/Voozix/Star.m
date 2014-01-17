@@ -82,6 +82,7 @@ static const CGFloat ROTATE_DURATION = 2.0;
     /* Create and set new position */
     CGPoint newPosition = CGPointMake(x, y);
     self.position = newPosition;
+    
 }
 
 /**

@@ -7,14 +7,14 @@
 //
 
 #import "AppDelegate.h"
-#import "MultiplayerManager.h"
+#import "GameCenterManager.h"
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launcher
     
-    [[MultiplayerManager sharedInstance] authenticateLocalUser];
+    [[GameCenterManager sharedInstance] authenticateLocalUser];
     return YES;
 }
 							

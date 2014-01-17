@@ -8,7 +8,8 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "EnemyManager.h"
-
+#import "Message.h"
+#import "MultiplayerDelegate.h"
 /**
  * @class MyScene
  *
@@ -16,6 +17,6 @@
  *
  * Detailed doc
  */
-@interface MyScene : SKScene
+@interface MyScene : SKScene <MultiplayerDelegate>
 
 @end

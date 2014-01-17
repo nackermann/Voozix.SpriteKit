@@ -22,6 +22,7 @@
 -(NSArray *)getConnectedPeers;
 
 @property (nonatomic, readonly)bool isHost;
+@property (nonatomic, readonly)bool isMatchActive;
 @property(nonatomic, strong) id<MultiplayerDelegate> delegate;
 
 @end
