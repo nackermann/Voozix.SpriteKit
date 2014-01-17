@@ -9,16 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <GameKit/GameKit.h>
 #import "Message.h"
-@protocol MultiplayerManagerDelegate
--(void)matchStarted;
--(void)matchEnded;
--(void)inviteReceived;
--(void)receicedMessage:(Message *)message;
-@end
+#import "MultiplayerDelegate.h"
 
 @interface MultiplayerManager : NSObject <GKMatchDelegate, GKMatchmakerViewControllerDelegate, GKLocalPlayerListener, GKLocalPlayerListener>
 
-@property (nonatomic, strong)id<MultiplayerManagerDelegate> delegate;
+@property (nonatomic, strong)id<MultiplayerDelegate> delegate;
 @property (nonatomic, strong)UIViewController *viewController;
 @property (nonatomic, strong)GKMatch *match;
 @property (nonatomic, strong)NSMutableDictionary *playerDictonary;
@@ -27,7 +22,7 @@
 -(void)findMatchWithMinPlayers:(int)minPlayers
                     maxPlayers:(int)maxPlayers
                 viewController:(UIViewController *)viewController
-                      delegate:(id<MultiplayerManagerDelegate>)theDelegate;
+                      delegate:(id<MultiplayerDelegate>)theDelegate;
 
 
 -(bool)sendMessage:(Message *)message;

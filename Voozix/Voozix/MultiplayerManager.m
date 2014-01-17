@@ -118,7 +118,7 @@ static MultiplayerManager *sharedMultiplayerManger = nil;
 -(void)findMatchWithMinPlayers:(int)minPlayers
                     maxPlayers:(int)maxPlayers
                 viewController:(UIViewController *)viewController
-                      delegate:(id<MultiplayerManagerDelegate>)theDelegate
+                      delegate:(id<MultiplayerDelegate>)theDelegate
 {
     self.viewController = viewController;
     self.matchStarted = NO;
@@ -221,7 +221,7 @@ static MultiplayerManager *sharedMultiplayerManger = nil;
     
     id receivedMessage = [data bytes];
     
-    if([receivedMessage isKindOfClass:[Message class]]) [self.delegate receicedMessage:(Message *)receivedMessage];
+    if([receivedMessage isKindOfClass:[Message class]]) [self.delegate receicedMessage:(Message *)receivedMessage fromPlayerID:playerID];
 }
 
 
