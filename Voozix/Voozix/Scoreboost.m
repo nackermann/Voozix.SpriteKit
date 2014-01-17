@@ -18,6 +18,9 @@ static const int spawnChance = 20;
         Player *player = object;
         player.scoreBoost = YES;
         
+        player.color = [SKColor colorWithRed:0.8 green:0.5 blue:0.0 alpha:1];
+        player.colorBlendFactor = 1.0;
+        
         [NSTimer scheduledTimerWithTimeInterval:8.0 target:self selector:@selector(removeScoreBoost:) userInfo:player repeats:NO];
     }
     [super didBeginContactWith:object]; // remove etc.
@@ -27,6 +30,7 @@ static const int spawnChance = 20;
 {
     Player *player = theTimer.userInfo;
     player.scoreBoost = NO;
+    player.colorBlendFactor = 0.0;
 }
 
 - (NSNumber*)chanceToSpawn

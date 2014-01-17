@@ -21,7 +21,8 @@ static const int spawnChance = 20;
         [NSTimer scheduledTimerWithTimeInterval:8.0 target:self selector:@selector(removeImmortal:) userInfo:player repeats:NO];
         SKAction *fadeAlphaDown = [SKAction fadeAlphaTo:0.5 duration:1];
         SKAction *fadeAlphaUp = [SKAction fadeAlphaTo:1.0 duration:1];
-        [player runAction:[SKAction repeatActionForever:[SKAction sequence:@[fadeAlphaDown, fadeAlphaUp]]]];
+        SKAction *immortalAnimation = [SKAction repeatActionForever:[SKAction sequence:@[fadeAlphaDown, fadeAlphaUp]]];
+        [player runAction:immortalAnimation withKey:@"immortalAnimation"];
         
     }
     [super didBeginContactWith:object]; // remove etc.
@@ -31,7 +32,7 @@ static const int spawnChance = 20;
 {
     Player *player = theTimer.userInfo;
     player.immortal = NO;
-    [player removeAllActions];
+    [player removeActionForKey:@"immortalAnimation"];
     [player runAction:[SKAction fadeAlphaTo:1.0 duration:1]];
 }
 

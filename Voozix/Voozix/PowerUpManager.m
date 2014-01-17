@@ -38,7 +38,9 @@
     u_int32_t randomNumber = arc4random() % 101; // number 0-100 for rouletteWheelSelection
     PowerUp *powerUp;
     
-    if (randomNumber >= 60)
+    powerUp = [[Scoreboost alloc] init];
+    
+    /*if (randomNumber >= 60)
     {
         powerUp = [[Speedboost alloc] init];
     }
@@ -53,7 +55,7 @@
     else
     {
         powerUp = [[Immortal alloc] init];
-    }
+    }*/
     
     [self.myScene addChild:powerUp];
     [self.powerUps addObject:powerUp];
