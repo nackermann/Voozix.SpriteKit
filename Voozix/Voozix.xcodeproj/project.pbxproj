@@ -40,11 +40,13 @@
 		3F139B9318805216007C6AA5 /* powerup.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3F139B8F18805216007C6AA5 /* powerup.wav */; };
 		3F139B9418805216007C6AA5 /* star_collected.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3F139B9018805216007C6AA5 /* star_collected.wav */; };
 		3F139B97188052B8007C6AA5 /* SoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F139B96188052B8007C6AA5 /* SoundManager.m */; };
+		3FA7CB3D1889C3790065CFC7 /* StarTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3FA7CB3C1889C3790065CFC7 /* StarTrail.sks */; };
 		3FAEAEC11876E74000FC7EFF /* Star.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FAEAEC01876E74000FC7EFF /* Star.m */; };
 		3FAEAED31876EA5D00FC7EFF /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FAEAECE1876EA5D00FC7EFF /* background.png */; };
 		3FAEAED41876EA5D00FC7EFF /* block.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FAEAECF1876EA5D00FC7EFF /* block.png */; };
 		3FAEAED51876EA5D00FC7EFF /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FAEAED01876EA5D00FC7EFF /* enemy.png */; };
 		3FAEAED61876EA5D00FC7EFF /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FAEAED11876EA5D00FC7EFF /* player.png */; };
+		3FC034A51889B8EA00DB3EE2 /* ShootingStar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC034A41889B8EA00DB3EE2 /* ShootingStar.m */; };
 		3FCB6F091876FB9F00A7F6AD /* StarSparks.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3FCB6F071876FB9F00A7F6AD /* StarSparks.sks */; };
 		3FCB6F0A1876FB9F00A7F6AD /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FCB6F081876FB9F00A7F6AD /* spark.png */; };
 		3FEEA2AF187C69D500414A31 /* PlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEEA2AE187C69D500414A31 /* PlayerController.m */; };
@@ -115,6 +117,7 @@
 		3F139B9018805216007C6AA5 /* star_collected.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = star_collected.wav; sourceTree = "<group>"; };
 		3F139B95188052B8007C6AA5 /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundManager.h; sourceTree = "<group>"; };
 		3F139B96188052B8007C6AA5 /* SoundManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundManager.m; sourceTree = "<group>"; };
+		3FA7CB3C1889C3790065CFC7 /* StarTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StarTrail.sks; sourceTree = "<group>"; };
 		3FAEAEBF1876E74000FC7EFF /* Star.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Star.h; sourceTree = "<group>"; };
 		3FAEAEC01876E74000FC7EFF /* Star.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Star.m; sourceTree = "<group>"; };
 		3FAEAECE1876EA5D00FC7EFF /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
@@ -122,6 +125,8 @@
 		3FAEAED01876EA5D00FC7EFF /* enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy.png; sourceTree = "<group>"; };
 		3FAEAED11876EA5D00FC7EFF /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player.png; sourceTree = "<group>"; };
 		3FB29D451879EEF800EFF147 /* ObjectCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectCategories.h; sourceTree = "<group>"; };
+		3FC034A31889B8EA00DB3EE2 /* ShootingStar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShootingStar.h; sourceTree = "<group>"; };
+		3FC034A41889B8EA00DB3EE2 /* ShootingStar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShootingStar.m; sourceTree = "<group>"; };
 		3FCB6F071876FB9F00A7F6AD /* StarSparks.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StarSparks.sks; sourceTree = "<group>"; };
 		3FCB6F081876FB9F00A7F6AD /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		3FEEA2AD187C69D500414A31 /* PlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerController.h; sourceTree = "<group>"; };
@@ -283,6 +288,8 @@
 		15A3450C1875C3830046B117 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				3FC034A31889B8EA00DB3EE2 /* ShootingStar.h */,
+				3FC034A41889B8EA00DB3EE2 /* ShootingStar.m */,
 				15A344FD1875C2430046B117 /* Player.h */,
 				15A344FE1875C2430046B117 /* Player.m */,
 				15A345001875C28E0046B117 /* Enemy.h */,
@@ -313,6 +320,7 @@
 		3FAEAECD1876EA5D00FC7EFF /* sprites */ = {
 			isa = PBXGroup;
 			children = (
+				3FA7CB3C1889C3790065CFC7 /* StarTrail.sks */,
 				EFA6B61C1883D7AE008C7253 /* star.png */,
 				3FAEAECE1876EA5D00FC7EFF /* background.png */,
 				3FAEAECF1876EA5D00FC7EFF /* block.png */,
@@ -413,6 +421,7 @@
 			files = (
 				3F139B9118805216007C6AA5 /* ds1.mp3 in Resources */,
 				3FCB6F0A1876FB9F00A7F6AD /* spark.png in Resources */,
+				3FA7CB3D1889C3790065CFC7 /* StarTrail.sks in Resources */,
 				15A344AE1875A52B0046B117 /* InfoPlist.strings in Resources */,
 				3FAEAED41876EA5D00FC7EFF /* block.png in Resources */,
 				3F139B9418805216007C6AA5 /* star_collected.wav in Resources */,
@@ -452,6 +461,7 @@
 				15A344E81875AC870046B117 /* HUDManager.m in Sources */,
 				15A345081875C2DC0046B117 /* Hunter.m in Sources */,
 				15A345021875C28E0046B117 /* Enemy.m in Sources */,
+				3FC034A51889B8EA00DB3EE2 /* ShootingStar.m in Sources */,
 				15A344EE1875ACE50046B117 /* EnemyManager.m in Sources */,
 				15A344B41875A52B0046B117 /* AppDelegate.m in Sources */,
 				15A344B01875A52B0046B117 /* main.m in Sources */,

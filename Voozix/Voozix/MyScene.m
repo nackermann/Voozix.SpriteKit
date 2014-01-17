@@ -16,6 +16,7 @@
 #import "SoundManager.h"
 #import "GameOverScene.h"
 #import "PowerUpManager.h"
+#import "ShootingStar.h"
 
 @interface MyScene()
 @property (nonatomic, strong) HUDManager *HUDManager;
@@ -27,6 +28,7 @@
 
 @property (nonatomic, weak) Player *player;
 @property (nonatomic, weak) Star *star;
+@property BOOL shootinStarSpawned;
 
 @end
 
@@ -56,6 +58,12 @@
         self.collisionManager.enemyManager = self.enemyManager;
         self.collisionManager.soundManager = self.soundManager;
         self.collisionManager.powerUpManager = self.powerUpManager;
+        
+//        ShootingStar *star = [[ShootingStar alloc] initWithScene:self];
+//       //star.position = CGPointMake(100, 100);
+//        
+//        [self addChild:star];
+    
         
         self.physicsWorld.contactDelegate = self.collisionManager;
         self.physicsWorld.gravity = CGVectorMake(0.0, 0.0);
@@ -203,6 +211,14 @@
 
     }
     
+    float shootingStarSpawnChance = arc4random() % 100;
+    
+    if (shootingStarSpawnChance == 1) {
+        ShootingStar *star = [[ShootingStar alloc] initWithScene:self];
+        [self addChild:star];
+    }
+    
+        
 }
 
 - (void)gameOver {

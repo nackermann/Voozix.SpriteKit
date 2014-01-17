@@ -113,7 +113,7 @@ static float MAX_JOYSTICK_OFFSET = 20.0;
     // Returns vector that has values between -1 and 1
     CGVector velocity = CGVectorMake(self.joystick.position.x/MAX_JOYSTICK_OFFSET, self.joystick.position.y/MAX_JOYSTICK_OFFSET);
     
-    NSLog(@"%g", velocity.dx);
+    //NSLog(@"%g", velocity.dx);
     
     return velocity;
 }
