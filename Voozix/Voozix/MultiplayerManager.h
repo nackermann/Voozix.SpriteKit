@@ -33,7 +33,7 @@
 -(bool)sendMessage:(Message *)message;
 
 -(void)authenticateLocalUser;
--(bool)gameCenterisAvailable;
+//-(bool)gameCenterisAvailable;
 
 
 @end
