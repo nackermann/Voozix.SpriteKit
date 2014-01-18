@@ -16,9 +16,20 @@
 @property(nonatomic, strong) MCBrowserViewController *browserVC;
 @property(nonatomic, readwrite)bool isMatchActive;
 @property(nonatomic, readwrite)bool isHost;
+@property(nonatomic, readwrite) int waitForPeers;
 @end
 
 @implementation PeerToPeerManager
+
+
+-(void)setWaitForPeers:(int)waitForPlayers
+{
+    _waitForPeers = waitForPlayers;
+    if(_waitForPeers == 0)
+    {
+        [self.delegate matchStarted];
+    }
+}
 
 -(MCPeerID *)peerID
 {
@@ -60,19 +71,25 @@ static PeerToPeerManager *sharedPeerToPeerManager = nil;
 }
 
 
--(void)startAdvertising
+-(void)startAdvertisingWithDelegate:(id<MultiplayerDelegate>)delegate
 {
     if(self.advertiser == nil){
         NSString *serviceName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
         self.advertiser = [[MCAdvertiserAssistant alloc] initWithServiceType:serviceName discoveryInfo:nil session:self.session];
     }
+    self.delegate = delegate;
     [self.advertiser start];
     
 }
 
--(NSArray *)getConnectedPeers
+-(NSArray *)ConnectedPeers
 {
-    return [self.session connectedPeers];
+    NSMutableArray *peers = [NSMutableArray array];
+    for(MCPeerID *peer in [self.session connectedPeers]){
+        [peers addObject:peer.displayName];
+    }
+    
+    return peers;
 }
 
 -(void)stopAdvertising
@@ -86,7 +103,7 @@ static PeerToPeerManager *sharedPeerToPeerManager = nil;
                       delegate:(id<MultiplayerDelegate>)theDelegate
 {
     self.delegate = theDelegate;
-    [self startAdvertising];
+    [self startAdvertisingWithDelegate:theDelegate];
     NSString *serviceName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
     self.browserVC = [[MCBrowserViewController alloc] initWithServiceType:serviceName session:self.session];
     self.browserVC.delegate = self;
@@ -97,20 +114,27 @@ static PeerToPeerManager *sharedPeerToPeerManager = nil;
 -(void)browserViewControllerDidFinish:(MCBrowserViewController *)browserViewController
 {
     [self.browserVC dismissViewControllerAnimated:YES completion:nil];
-    NSLog(@"Finished Selecting.... Starting the Game!");
-    self.isHost = YES;
-    self.isMatchActive = YES;
-    [self.delegate matchStarted];
-    
-    Message *message = [[Message alloc] init];
-    message.messageType = matchStarted;
-    [self sendMessage:message];
+    if( [self.session connectedPeers] && [[self.session connectedPeers] count] > 0)
+    {
+        NSLog(@"Finished Selecting.... Starting the Game!");
+        self.isHost = YES;
+        self.isMatchActive = YES;
+        self.waitForPeers = [[self.session connectedPeers] count];
+        
+        [self stopAdvertising];
+        [self.delegate readyToStartMatch];
+        
+        Message *message = [[Message alloc] init];
+        message.messageType = ReadyToStartMatch;
+        [self sendMessage:message];
+    }
 }
 
 -(void)browserViewControllerWasCancelled:(MCBrowserViewController *)browserViewController
 {
     [self.browserVC dismissViewControllerAnimated:YES completion:nil];
     NSLog(@"Cancelled Selecting...");
+    self.isHost = false;
 }
 
 -(void)session:(MCSession *)session peer:(MCPeerID *)peerID didChangeState:(MCSessionState)state
@@ -120,7 +144,7 @@ static PeerToPeerManager *sharedPeerToPeerManager = nil;
             NSLog(@"Peer %@ connected", peerID.displayName);
             break;
         case MCSessionStateNotConnected:
-            NSLog(@"Peer %@ didn't connect", peerID.displayName);
+            NSLog(@"Peer %@ disconnected.", peerID.displayName);
             break;
         default: break;
             
@@ -137,20 +161,46 @@ didReceiveData:(NSData *)data
     
     if([receivedMessage isKindOfClass:[Message class]]){
         Message *message = (Message *)receivedMessage;
+    
+        NSLog(@"Received Message %i", message.messageType);
         
-        if(message.messageType == matchStarted){
-            self.isMatchActive = YES;
-            self.isHost = false;
-            [self.delegate matchStarted];
-            return;
-        }else if(message.messageType == matchEnded){
-            self.isMatchActive = false;
-            [self.delegate matchEnded];
-            return;
-        }
 
         
-        [self.delegate receicedMessage:(Message *)receivedMessage fromPlayerID:peerID.displayName];
+        switch (message.messageType) {
+            case ReadyToStartMatch:
+                [self stopAdvertising];
+                
+                if(self.waitForPeers != 0){
+                    self.waitForPeers--;
+                }else{
+                    self.isHost = false;
+                }
+                
+                self.isMatchActive = YES;
+                if(self.browserVC) [self.browserVC dismissViewControllerAnimated:YES completion:nil];
+              
+                if([self.delegate respondsToSelector:@selector(readyToStartMatch)])
+                {
+                    [self.delegate readyToStartMatch];
+                }
+                
+                return;
+                break;
+            case matchStarted:
+                [self.delegate matchStarted];
+                break;
+                return;
+            case matchEnded:
+                self.isMatchActive = false;
+                [self.session disconnect];
+                [self.delegate matchEnded];
+                break;
+                return;
+            default:
+                break;
+        }
+        
+        [self.delegate receivedMessage:(Message *)receivedMessage fromPlayerID:peerID.displayName];
     }
 
     
@@ -158,6 +208,7 @@ didReceiveData:(NSData *)data
 
 -(bool)sendMessage:(Message *)message
 {
+    NSLog(@"Send Message: %i", message.messageType);
     NSError *error;
     NSData *data =   [NSKeyedArchiver archivedDataWithRootObject:message]; // [NSData dataWithBytes:&message length:sizeof(message)];
     return [self.session sendData:data toPeers:[self.session connectedPeers] withMode:MCSessionSendDataReliable error:&error];

@@ -17,12 +17,12 @@
 +(PeerToPeerManager *)sharedInstance;
 -(void)showPeerBrowserWithViewController:(UIViewController *)viewController
                       delegate:(id<MultiplayerDelegate>)theDelegate;
--(void)startAdvertising;
+-(void)startAdvertisingWithDelegate:(id<MultiplayerDelegate>)delegate;
 -(void)stopAdvertising;
--(NSArray *)getConnectedPeers;
+-(NSArray *)ConnectedPeers;
 
 @property (nonatomic, readonly)bool isHost;
 @property (nonatomic, readonly)bool isMatchActive;
-@property(nonatomic, strong) id<MultiplayerDelegate> delegate;
-
+@property (nonatomic, strong) id<MultiplayerDelegate> delegate;
+@property (nonatomic, readonly)int waitForPeers;
 @end

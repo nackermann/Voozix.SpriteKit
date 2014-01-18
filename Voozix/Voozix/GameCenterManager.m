@@ -221,7 +221,7 @@ static GameCenterManager *sharedMultiplayerManger = nil;
     
     id receivedMessage = [data bytes];
     
-    if([receivedMessage isKindOfClass:[Message class]]) [self.delegate receicedMessage:(Message *)receivedMessage fromPlayerID:playerID];
+    if([receivedMessage isKindOfClass:[Message class]]) [self.delegate receivedMessage:(Message *)receivedMessage fromPlayerID:playerID];
 }
 
 

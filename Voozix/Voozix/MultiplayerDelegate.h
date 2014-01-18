@@ -9,13 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "Message.h"
 
-@protocol MultiplayerDelegate
+@protocol MultiplayerDelegate <NSObject>
 
 @optional
 -(void)matchStarted;
+-(void)readyToStartMatch;
 -(void)matchEnded;
--(void)receicedMessage:(Message *)message fromPlayerID:(NSString *)playerID;
-
+-(void)receivedMessage:(Message *)message fromPlayerID:(NSString *)playerID;
 -(void)inviteReceived; //Maybe remove it
 
 @end

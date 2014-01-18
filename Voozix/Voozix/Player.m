@@ -10,6 +10,8 @@
 #import "Star.h"
 #import "EnemyBall.h"
 #import "ObjectCategories.h"
+#import "Message.h"
+#import "PeerToPeerManager.h"
 
 @interface Player()
 @property (nonatomic, strong) HUDManager *myHUDManager;
@@ -97,6 +99,11 @@
 	
 	[self.playerController touchesBegan:touches withEvent:event];
 	self.physicsBody.velocity = [self.playerController getJoystickVelocity];
+    
+    Message *m = [[Message alloc] init];
+    m.messageType = playerMoved;
+    m.velocity = self.physicsBody.velocity;
+    [[PeerToPeerManager sharedInstance] sendMessage:m];
 	
 }
 
@@ -111,6 +118,12 @@
 	
 	[self.playerController touchesMoved:touches withEvent:event];
 	self.physicsBody.velocity = [self.playerController getJoystickVelocity];
+    
+    Message *m = [[Message alloc] init];
+    m.messageType = playerMoved;
+    m.velocity = self.physicsBody.velocity;
+    [[PeerToPeerManager sharedInstance] sendMessage:m];
+    
 }
 
 /**
@@ -124,6 +137,11 @@
 	
 	[self.playerController touchesEnded:touches withEvent:event];
 	self.physicsBody.velocity = [self.playerController getJoystickVelocity];
+    
+    Message *m = [[Message alloc] init];
+    m.messageType = playerMoved;
+    m.velocity = self.physicsBody.velocity;
+    [[PeerToPeerManager sharedInstance] sendMessage:m];
 	
 }
 

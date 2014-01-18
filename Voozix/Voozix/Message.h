@@ -14,12 +14,15 @@ typedef enum  { playerMoved,
                 StarCollected,
                 PowerUpSpawned,
                 PowerUpCollected,
+                ReadyToStartMatch,
                 matchStarted,
-                matchEnded
+                matchEnded,
+                EnemyBallSpawned
               } MessageType;
 
 @interface Message : NSObject
 @property (nonatomic)MessageType messageType;
-@property (nonatomic)id Object;
+@property (nonatomic)CGPoint position;
 @property (nonatomic)CGVector velocity;
+
 @end

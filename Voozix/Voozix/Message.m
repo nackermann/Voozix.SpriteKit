@@ -15,13 +15,17 @@
     self = [super init];
     if(self)
     {
-        self.messageType = [decoder decodeIntegerForKey:@"messageType"];
-        self.Object = [decoder decodeObjectForKey:@"object"];
+        self.messageType = [decoder decodeIntegerForKey:@"messageType"];        
+        CGFloat positionX = [decoder decodeFloatForKey:@"posX"];
+        CGFloat positionY = [decoder decodeFloatForKey:@"posY"];
+        
+        self.position = CGPointMake(positionX, positionY);
         
         
         CGFloat dx = [decoder decodeFloatForKey:@"velocityDx"];
         CGFloat dy = [decoder decodeFloatForKey:@"velocityDy"];
         self.velocity = CGVectorMake(dx, dy);
+        
     }
     return self;
 }
@@ -29,7 +33,8 @@
 -(void)encodeWithCoder:(NSCoder *)encoder
 {
     [encoder encodeInteger:self.messageType forKey:@"messageType"];
-    [encoder encodeObject:self.Object forKey:@"object"];
+    [encoder encodeFloat:self.position.x forKey:@"posX"];
+    [encoder encodeFloat:self.position.y forKey:@"posY"];
     [encoder encodeFloat:self.velocity.dx forKey:@"velocityDx"];
     [encoder encodeFloat:self.velocity.dy forKey:@"velocityDy"];
 }

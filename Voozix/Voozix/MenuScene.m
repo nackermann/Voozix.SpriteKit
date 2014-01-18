@@ -57,7 +57,7 @@
         
         NSLog(@"%@", @"options button pressed and do some shit!");
     }else if([node.name isEqualToString:@"startadvertise"]){
-        [[PeerToPeerManager sharedInstance] startAdvertising];
+        [[PeerToPeerManager sharedInstance] startAdvertisingWithDelegate:self];
         [node removeFromParent];
         [self CreateStopAdvertisePeerButton];
         
@@ -95,7 +95,7 @@
     
 }
 
--(void)matchStarted
+-(void)readyToStartMatch
 {
     SKView * skView = (SKView *)self.view;
     MyScene *myScene = [MyScene sceneWithSize:skView.bounds.size];

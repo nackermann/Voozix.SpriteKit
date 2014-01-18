@@ -28,15 +28,16 @@
 @property (nonatomic, strong) NSDictionary *enemyPlayers;
 
 @property (nonatomic, weak) Player *player;
-@property (nonatomic, weak) Star *star;
+@property (nonatomic, strong) Star *star;
 
+@property (nonatomic, strong) SKLabelNode *waitForOtherPlayersLabel;
 @end
 
 @implementation MyScene
 /**
  * @brief Initializes the full scene and most of the objects (some are intialized by lazy-initialization).
  * @details [long description]
- * 
+ *
  * @param  [description]
  * @return [description]
  */
@@ -63,11 +64,48 @@
         [self addChild:backgroundSprite];
         [self addChild:self.soundManager];
         
+        
+        if([PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstance].waitForPeers > 0)
+        {
+            self.waitForOtherPlayersLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+            self.waitForOtherPlayersLabel.fontSize = 30;
+            [self.waitForOtherPlayersLabel setVerticalAlignmentMode:SKLabelVerticalAlignmentModeCenter];
+            self.waitForOtherPlayersLabel.text = [NSString stringWithFormat:@"Wait for other Players. %i left.", [PeerToPeerManager sharedInstance].waitForPeers];
+            
+            CGPoint mid = CGPointMake( CGRectGetMidX(self.frame) , CGRectGetMidY(self.frame));
+            self.waitForOtherPlayersLabel.position = mid;
+            
+            [self addChild:self.waitForOtherPlayersLabel];
+        }
+        
+        if([PeerToPeerManager sharedInstance].isMatchActive)
+        {
+            NSArray *peerNames = [[PeerToPeerManager sharedInstance] ConnectedPeers];
+            NSMutableDictionary *enemyPlayerDictonary = [NSMutableDictionary dictionary];
+            for(NSString *peerName in peerNames){
+                Player *p = [[Player alloc]initWithHUDManager:self.HUDManager];
+                p.position = CGPointMake(50.f, 50.f);
+                p.name = peerName;
+                [enemyPlayerDictonary setObject:p forKey:p.name];
+                [self addChild:p];
+            }
+            self.enemyPlayers = enemyPlayerDictonary;
+        }
+        
         // Currently disabled, music not stopping when changing to a scene, no solution found yet
         //[self.soundManager playSong:BACKGROUND_MUSIC];
-
+        
     }
     return self;
+}
+
+-(void)didMoveToView:(SKView *)view
+{
+    if([PeerToPeerManager sharedInstance].isMatchActive){
+        Message *m = [[Message alloc] init];
+        m.messageType = ReadyToStartMatch;
+        [[PeerToPeerManager sharedInstance] sendMessage:m];
+    }
 }
 
 /**
@@ -75,7 +113,11 @@
  */
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
-    [self.player touchesBegan:touches withEvent:event];
+    
+    if( ([PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstance].waitForPeers == 0) || ![PeerToPeerManager sharedInstance].isMatchActive)
+    {
+        [self.player touchesBegan:touches withEvent:event];
+    }
 }
 
 /**
@@ -83,15 +125,21 @@
  */
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     
-    [self.player touchesMoved:touches withEvent:event];
-
+    if( ([PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstance].waitForPeers == 0) || ![PeerToPeerManager sharedInstance].isMatchActive)
+    {
+        [self.player touchesMoved:touches withEvent:event];
+    }
+    
 }
 
 /**
  * This gets called when a touch ends and then notifies all objects
  */
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self.player touchesEnded:touches withEvent:event];
+    if( ([PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstance].waitForPeers == 0) || ![PeerToPeerManager sharedInstance].isMatchActive)
+    {
+        [self.player touchesEnded:touches withEvent:event];
+    }
 }
 
 /**
@@ -119,7 +167,7 @@
 /**
  * @brief Returns the enemy manager which is responsible for the scene
  * @details [long description]
- * 
+ *
  * @return [description]
  */
 - (EnemyManager *)enemyManager {
@@ -143,7 +191,7 @@
 /**
  * @brief Returns the real player object (the one the player is controlling)
  * @details [long description]
- * 
+ *
  * @return [description]
  */
 -(Player*)player
@@ -157,25 +205,11 @@
     return _player;
 }
 
--(NSDictionary *)enemyPlayers
-{
-    if(!_enemyPlayers){
-        NSArray *playerIDs = [PeerToPeerManager sharedInstance].getConnectedPeers;
-        NSMutableDictionary *players = [NSMutableDictionary dictionary];
-        for(NSString *playerID in playerIDs){
-            Player *p = [[Player alloc]initWithHUDManager:self.HUDManager];
-            p.playerID = playerID;
-            [players setObject:p forKey:playerID];
-        }
-    }
-    return _enemyPlayers;
-}
-
 
 /**
  * @brief Returns the current star object the player has to collect. There's only one - always!
  * @details [long description]
- * 
+ *
  * @param  [description]
  * @return [description]
  */
@@ -189,8 +223,17 @@
         {
             [self addChild:myStar];
             [myStar changePosition];
+            
+            
+            if([PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstance].isHost){
+                Message *m =[[Message alloc]init];
+                m.messageType = StarSpawned;
+                m.position = myStar.position;
+                [[PeerToPeerManager sharedInstance] sendMessage:m];
+            }
+            
         }
-
+        
         _star = myStar;
     }
     return _star;
@@ -203,20 +246,35 @@
 {
     /* Called before each frame is rendered */
     // Update all managers
-    [self.enemyManager update:currentTime];
-    [self.player update];
-    [self.star update];
-    [self.HUDManager update];
+    
+    
+    if(([PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstance].waitForPeers == 0) ||
+       ![PeerToPeerManager sharedInstance].isMatchActive)
+    {
+        [self.enemyManager update:currentTime];
+        [self.player update];
+        [self.star update];
+        [self.HUDManager update];
+    }else{
+        self.waitForOtherPlayersLabel.text = [NSString stringWithFormat:@"Wait for other Players. %i left.", [PeerToPeerManager sharedInstance].waitForPeers];
+        
+    }
     
     if (self.player.dead) {
         
         [self gameOver];
-
+        
     }
     
 }
 
 - (void)gameOver {
+    
+    if([PeerToPeerManager sharedInstance].isMatchActive){
+        Message *m = [[Message alloc]init];
+        m.messageType = matchEnded;
+        [[PeerToPeerManager sharedInstance] sendMessage:m];
+    }
     
     SKView * skView = (SKView *)self.view;
     GameOverScene *gameOver = [GameOverScene sceneWithSize:skView.bounds.size];
@@ -225,7 +283,7 @@
     
     // Why no transition you ask? Because it doesn't work!
     [skView presentScene:gameOver];
-
+    
 }
 
 #pragma mark Delegate Methods
@@ -235,7 +293,7 @@
     [self gameOver];
 }
 
--(void)receicedMessage:(Message *)message fromPlayerID:(NSString *)playerID
+-(void)receivedMessage:(Message *)message fromPlayerID:(NSString *)playerID
 {
     Player *sendFromPlayer = (Player *)[self.enemyPlayers objectForKey:playerID];
     
@@ -246,22 +304,24 @@
         case matchStarted: break;
         case StarCollected: [self.star removeFromParent]; break;
         case StarSpawned:
-            self.star.position = *((__bridge CGPoint *)message.Object);
+            self.star.position = message.position;
             [self addChild:self.star];
             break;
         case PowerUpSpawned:
-            sendFromPlayer.position = *((__bridge CGPoint *)message.Object);
+            
             break;
         case PowerUpCollected: break;
         case playerMoved:
-            
+            sendFromPlayer.physicsBody.velocity = message.velocity;
             break;
-            
+        case EnemyBallSpawned:
+            [self.enemyManager createEnemyWithMessage:message];
         default: break;
     }
-    
-   
-    
+}
+-(void)matchStarted
+{
+    if(self.waitForOtherPlayersLabel) [self.waitForOtherPlayersLabel removeFromParent];
 }
 
 @end
