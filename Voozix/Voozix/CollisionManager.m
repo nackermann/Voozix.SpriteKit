@@ -86,7 +86,7 @@
 //        [star didBeginContactWith:player];
         
         // Notify managers
-        [self.enemyManager createEnemy];
+        [self.enemyManager createEnemyWithPlayerPostion:player.position];
         
     }
     else if ((firstBody.categoryBitMask & PLAYER_OBJECT) != 0 &&

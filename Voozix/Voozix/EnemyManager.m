@@ -7,6 +7,7 @@
 //
 
 #import "EnemyManager.h"
+#import "ParticleManager.h"
 
 const int MIN_SPEED = 100;
 const int MAX_SPEED = 200;
@@ -14,10 +15,23 @@ const int MAX_SPEED = 200;
 @interface EnemyManager()
 @property SKScene *scene;
 @property (nonatomic, strong) NSMutableArray *enemies;
+@property (nonatomic, strong) ParticleManager *particleManager;
 @end
 
 
 @implementation EnemyManager
+
+- (ParticleManager *)particleManager {
+    
+    if (!_particleManager) {
+        _particleManager = [[ParticleManager alloc] initWithScene:self.scene];
+    }
+    
+    return _particleManager;
+}
+
+
+
 /**
  * @brief Removes all enemies from the scene
  * @details [long description]
@@ -66,35 +80,46 @@ const int MAX_SPEED = 200;
 /**
  * Creates an enemy and adds it to the scene
  */
-- (void)createEnemy {
+- (void)createEnemyWithPlayerPostion:(CGPoint)playerPosition {
     
-    EnemyBall *enemy = [[EnemyBall alloc] init];
-    enemy.velocity = [self createRandomVelocity];
-    
-    /* Get random coordinates that are within the screen bounds */
-    float x = (arc4random() % (int)self.scene.frame.size.width);
-    float y = (arc4random() % (int)self.scene.frame.size.height);
-    
-    /*Take object width into consideration */
-    if (x + enemy.frame.size.width/2 > self.scene.frame.size.width)
-        x -= enemy.frame.size.width/2;
-    else if (x - enemy.frame.size.width/2 < 0)
-        x += enemy.frame.size.width/2;
-    
-    /* Take object height into consideration */
-    if (y + enemy.frame.size.height/2 > self.scene.frame.size.height )
-        y -= enemy.frame.size.height/2;
-    else if (y - enemy.frame.size.height/2 < 0)
-        y += enemy.frame.size.width/2;
-    
+//    EnemyBall *enemy = [[EnemyBall alloc] init];
+//    enemy.velocity = [self createRandomVelocity];
+//    
+//    /* Get random coordinates that are within the screen bounds */
+//    float x = (arc4random() % (int)self.scene.frame.size.width);
+//    float y = (arc4random() % (int)self.scene.frame.size.height);
+//    
+//    /*Take object width into consideration */
+//    if (x + enemy.frame.size.width/2 > self.scene.frame.size.width)
+//        x -= enemy.frame.size.width/2;
+//    else if (x - enemy.frame.size.width/2 < 0)
+//        x += enemy.frame.size.width/2;
+//    
+//    /* Take object height into consideration */
+//    if (y + enemy.frame.size.height/2 > self.scene.frame.size.height )
+//        y -= enemy.frame.size.height/2;
+//    else if (y - enemy.frame.size.height/2 < 0)
+//        y += enemy.frame.size.width/2;
+//    
     /* Create and set new position */
-    enemy = [[EnemyBall alloc] initAtPosition:CGPointMake(x, y)];
+    
+    CGPoint enemyPosition = [self createRandomPosition];
+    
+    while (sqrt(pow(enemyPosition.x - playerPosition.x, 2) + pow(enemyPosition.y - playerPosition.y, 2)) < 300) {
+        enemyPosition = [self createRandomPosition];
+    }
+    
+    [self.particleManager createEnemySparksAtPosition:enemyPosition];
+    
+    EnemyBall *enemy = [[EnemyBall alloc] initAtPosition:enemyPosition];
     enemy.velocity = [self createRandomVelocity];
     enemy.physicsBody.velocity = enemy.velocity;
     
     [self.enemies addObject:enemy];
     [self.scene addChild:enemy];
     
+    
+    NSLog(@"%g", sqrt(pow(enemyPosition.x - playerPosition.x, 2) + pow(enemyPosition.y - playerPosition.y, 2)));
 }
 
 /**
@@ -147,6 +172,28 @@ const int MAX_SPEED = 200;
     
     return velocity;
     
+}
+
+- (CGPoint)createRandomPosition {
+    
+    EnemyBall *enemy = [[EnemyBall alloc] init];
+    /* Get random coordinates that are within the screen bounds */
+    float x = (arc4random() % (int)self.scene.frame.size.width);
+    float y = (arc4random() % (int)self.scene.frame.size.height);
+    
+    /*Take object width into consideration */
+    if (x + enemy.frame.size.width/2 > self.scene.frame.size.width)
+        x -= enemy.frame.size.width/2;
+    else if (x - enemy.frame.size.width/2 < 0)
+        x += enemy.frame.size.width/2;
+    
+    /* Take object height into consideration */
+    if (y + enemy.frame.size.height/2 > self.scene.frame.size.height )
+        y -= enemy.frame.size.height/2;
+    else if (y - enemy.frame.size.height/2 < 0)
+        y += enemy.frame.size.width/2;
+    
+    return CGPointMake(x, y);
 }
 
 
