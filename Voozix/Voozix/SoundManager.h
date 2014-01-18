@@ -17,13 +17,6 @@ typedef NS_ENUM(NSInteger, SoundKey) {
 };
 
 
-
-typedef NS_ENUM(NSInteger, SongKey) {
-    
-    BACKGROUND_MUSIC
-    
-};
-
 /**
  * @class SoundManager
  *
@@ -34,6 +27,7 @@ typedef NS_ENUM(NSInteger, SongKey) {
 @interface SoundManager : SKNode
 
 - (void)playSound:(SoundKey)soundKey;
-- (void)playSong:(SongKey)songKey;
+- (void)playBackgroundMusic;
+- (void)stop;
 
 @end
