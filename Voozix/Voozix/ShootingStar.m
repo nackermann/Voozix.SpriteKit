@@ -43,7 +43,7 @@ static const CGFloat SPEED = 280.0;
         self.size = self.texture.size;
         self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.size.width/2];
         self.physicsBody.categoryBitMask = STAR_OBJECT;
-        self.physicsBody.collisionBitMask = STAR_OBJECT;
+        self.physicsBody.collisionBitMask = NO_COLLISION;
         self.physicsBody.contactTestBitMask = PLAYER_OBJECT;
         [self setup];
         
