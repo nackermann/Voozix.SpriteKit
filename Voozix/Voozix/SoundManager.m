@@ -24,7 +24,8 @@
     
     if (!_player) {
         NSError *err;
-        NSURL *file = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"ds1.mp3" ofType:nil]];
+        NSString *fileName = @"background";
+        NSURL *file = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@%@", fileName, @".mp3"] ofType:nil]];
         _player = [[AVAudioPlayer alloc] initWithContentsOfURL:file error:&err];
         
         if (err) {
