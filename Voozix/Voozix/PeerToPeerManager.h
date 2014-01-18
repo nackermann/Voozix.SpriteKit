@@ -23,6 +23,7 @@
 
 @property (nonatomic, readonly)bool isHost;
 @property (nonatomic, readonly)bool isMatchActive;
+@property (nonatomic, readonly)bool advertiserIsAdvertising;
 @property (nonatomic, strong) id<MultiplayerDelegate> delegate;
 @property (nonatomic, readonly)int waitForPeers;
 @end

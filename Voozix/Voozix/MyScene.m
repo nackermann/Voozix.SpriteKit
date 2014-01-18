@@ -260,6 +260,26 @@
         
     }
     
+    if(!self.star.parent)
+    {
+        if(([PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstance].waitForPeers == 0) ||
+           ![PeerToPeerManager sharedInstance].isMatchActive)
+        {
+            [self addChild:self.star];
+            [self.star changePosition];
+            
+            if([PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstance].isHost)
+            {
+                Message *m = [[Message alloc] init];
+                m.messageType = StarSpawned;
+                m.position = self.star.position;
+                [[PeerToPeerManager sharedInstance] sendMessage:m];
+            }
+            
+        }
+    }
+    
+    
     if (self.player.dead) {
         
         [self gameOver];
@@ -296,6 +316,7 @@
         case matchStarted: break;
         case StarCollected: [self.star removeFromParent]; break;
         case StarSpawned:
+            if(self.star.parent) [self.star removeFromParent];
             self.star.position = message.position;
             [self addChild:self.star];
             break;

@@ -12,6 +12,10 @@
 #import <GameKit/GameKit.h>
 #import "PeerToPeerManager.h"
 
+@interface MenuScene()
+@property (nonatomic, strong)SKLabelNode *waitingForHostLabel;
+@end
+
 @implementation MenuScene
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
@@ -51,22 +55,30 @@
     
     if ([node.name isEqualToString:@"play"]) {
         
-        [self matchStarted];
+        if([PeerToPeerManager sharedInstance].advertiserIsAdvertising){
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Advertiser is running!" message:@"You are advertising yourself. Do you want to continue and stop advertising yourself?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+            [alert show];
+        }else{
+            [self readyToStartMatch];
+        }
         
     }else if ([node.name isEqualToString:@"options"]) {
         
         NSLog(@"%@", @"options button pressed and do some shit!");
     }else if([node.name isEqualToString:@"startadvertise"]){
-        [[PeerToPeerManager sharedInstance] startAdvertisingWithDelegate:self];
+        
         [node removeFromParent];
         [self CreateStopAdvertisePeerButton];
+        [[PeerToPeerManager sharedInstance] startAdvertisingWithDelegate:self];
         
     }else if([node.name isEqualToString:@"stopadvertise"]){
         
-        [[PeerToPeerManager sharedInstance]stopAdvertising];
-        
         [node removeFromParent];
         [self CreateStartAdvertisePeerButton];
+        
+        [[PeerToPeerManager sharedInstance]stopAdvertising];
+        
+
     
     }else if([node.name isEqualToString:@"peertopeer"]){
         [[PeerToPeerManager sharedInstance] showPeerBrowserWithViewController :self.view.window.rootViewController delegate:self];
@@ -75,6 +87,15 @@
     }
     
     
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex !=0)
+    {
+        [[PeerToPeerManager sharedInstance] stopAdvertising];
+        [self readyToStartMatch];
+    }
 }
 
 /**
@@ -91,8 +112,6 @@
 }
 
 -(void)update:(NSTimeInterval)currentTime {
-    
-    
 }
 
 -(void)readyToStartMatch
@@ -105,6 +124,19 @@
     myScene.scaleMode = SKSceneScaleModeAspectFill;
 
     [skView presentScene:myScene transition:[SKTransition doorsOpenHorizontalWithDuration:1.0]];
+}
+
+-(void)peerConnected:(NSString *)peerName{
+    if( ![PeerToPeerManager sharedInstance].isHost && (!self.waitingForHostLabel || (self.waitingForHostLabel && !self.waitingForHostLabel.parent)))
+    {
+        self.waitingForHostLabel = [SKLabelNode labelNodeWithFontNamed:@"Menlo-Bold"];
+        self.waitingForHostLabel.fontSize = 30;
+        self.waitingForHostLabel.text = @"Waiting for Host, to start match";
+        self.waitingForHostLabel.fontColor = [SKColor yellowColor];
+        self.waitingForHostLabel.position = CGPointMake(CGRectGetMidX(self.frame), 100);
+        [self addChild:self.waitingForHostLabel];
+    }
+    
 }
 
 - (void)createTitle {

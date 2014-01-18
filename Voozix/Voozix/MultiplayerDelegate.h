@@ -16,6 +16,5 @@
 -(void)readyToStartMatch;
 -(void)matchEnded;
 -(void)receivedMessage:(Message *)message fromPlayerID:(NSString *)playerID;
--(void)inviteReceived; //Maybe remove it
-
+-(void)peerConnected:(NSString *)peerName;
 @end

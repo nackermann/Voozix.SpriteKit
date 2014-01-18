@@ -8,7 +8,7 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "MultiplayerDelegate.h"
-@interface MenuScene : SKScene <MultiplayerDelegate>
+@interface MenuScene : SKScene <MultiplayerDelegate, UIAlertViewDelegate>
 
 
 @end

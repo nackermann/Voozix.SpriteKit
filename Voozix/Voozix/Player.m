@@ -21,7 +21,7 @@
 /**
  * @brief Returns the player controller
  * @details [long description]
- * 
+ *
  * @param  [description]
  * @return [description]
  */
@@ -38,7 +38,7 @@
 /**
  * @brief Initializes the player itself and the HUD manager that is responsible for drawing his information
  * @details [long description]
- * 
+ *
  * @param  [description]
  * @return [description]
  */
@@ -76,7 +76,7 @@
 /**
  * @brief Returns the player's current score
  * @details [long description]
- * 
+ *
  * @param t [description]
  * @return [description]
  */
@@ -89,9 +89,9 @@
 }
 
 /**
- * @brief Gets called when a touch begins and then notifies other objects 
+ * @brief Gets called when a touch begins and then notifies other objects
  * @details [long description]
- * 
+ *
  * @param t [description]
  * @return [description]
  */
@@ -100,17 +100,21 @@
 	[self.playerController touchesBegan:touches withEvent:event];
 	self.physicsBody.velocity = [self.playerController getJoystickVelocity];
     
-    Message *m = [[Message alloc] init];
-    m.messageType = playerMoved;
-    m.velocity = self.physicsBody.velocity;
-    [[PeerToPeerManager sharedInstance] sendMessage:m];
+    if([PeerToPeerManager sharedInstance].isMatchActive)
+    {
+        Message *m = [[Message alloc] init];
+        m.messageType = playerMoved;
+        m.velocity = self.physicsBody.velocity;
+        [[PeerToPeerManager sharedInstance] sendMessage:m];
+    }
+    
 	
 }
 
 /**
- * @brief Gets called when during touch and then notifies other objects 
+ * @brief Gets called when during touch and then notifies other objects
  * @details [long description]
- * 
+ *
  * @param t [description]
  * @return [description]
  */
@@ -119,17 +123,21 @@
 	[self.playerController touchesMoved:touches withEvent:event];
 	self.physicsBody.velocity = [self.playerController getJoystickVelocity];
     
-    Message *m = [[Message alloc] init];
-    m.messageType = playerMoved;
-    m.velocity = self.physicsBody.velocity;
-    [[PeerToPeerManager sharedInstance] sendMessage:m];
+    if([PeerToPeerManager sharedInstance].isMatchActive)
+    {
+        Message *m = [[Message alloc] init];
+        m.messageType = playerMoved;
+        m.velocity = self.physicsBody.velocity;
+        [[PeerToPeerManager sharedInstance] sendMessage:m];
+    }
+    
     
 }
 
 /**
- * @brief Gets called when a touch ends and then notifies other objects 
+ * @brief Gets called when a touch ends and then notifies other objects
  * @details [long description]
- * 
+ *
  * @param t [description]
  * @return [description]
  */
@@ -137,18 +145,21 @@
 	
 	[self.playerController touchesEnded:touches withEvent:event];
 	self.physicsBody.velocity = [self.playerController getJoystickVelocity];
+    if([PeerToPeerManager sharedInstance].isMatchActive)
+    {
+        Message *m = [[Message alloc] init];
+        m.messageType = playerMoved;
+        m.velocity = self.physicsBody.velocity;
+        [[PeerToPeerManager sharedInstance] sendMessage:m];
+    }
     
-    Message *m = [[Message alloc] init];
-    m.messageType = playerMoved;
-    m.velocity = self.physicsBody.velocity;
-    [[PeerToPeerManager sharedInstance] sendMessage:m];
 	
 }
 
 /**
  * @brief On collision event that is called by the collision manager when something collides with the player
  * @details [long description]
- * 
+ *
  * @param d [description]
  * @return [description]
  */
@@ -163,9 +174,9 @@
         self.physicsBody.velocity = CGVectorMake(0, 0);
         
         // Probably not needed? If player dies and retries, a new scene is created anyway
-            //[self.myHUDManager.players removeObject:self];
-            //[self removeFromParent];
-            //[self.playerController removeFromParent];
+        //[self.myHUDManager.players removeObject:self];
+        //[self removeFromParent];
+        //[self.playerController removeFromParent];
 	}
 }
 

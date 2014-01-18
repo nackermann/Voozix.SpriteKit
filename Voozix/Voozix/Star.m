@@ -81,7 +81,10 @@ static const CGFloat ROTATE_DURATION = 2.0;
     
     /* Create and set new position */
     CGPoint newPosition = CGPointMake(x, y);
+    
     self.position = newPosition;
+    
+    
     
 }
 
@@ -95,7 +98,7 @@ static const CGFloat ROTATE_DURATION = 2.0;
 - (void)didBeginContactWith:(id)object
 {
     if ([object isKindOfClass:[Player class]]) {
-        [self removeFromParent];
+       [self removeFromParent];
     }
 }
 

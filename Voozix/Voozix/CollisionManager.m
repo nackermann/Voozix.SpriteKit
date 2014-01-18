@@ -65,6 +65,14 @@
         Player *player = (Player *)firstBody.node;
         Star *star = (Star *)secondBody.node;
         
+        
+        if([PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstance].isHost)
+        {
+            Message *m = [[Message alloc] init];
+            m.messageType = StarCollected;
+            [[PeerToPeerManager sharedInstance] sendMessage:m];
+        }
+        
         [self.particleManager createStarSparksAtPosition:star.position];
         
         // Notify objects
