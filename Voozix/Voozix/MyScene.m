@@ -65,7 +65,7 @@
         
         [self addChild:self.soundManager];
         
-        self.starTimer = arc4random() % 20 + 20;
+        self.starTimer = arc4random() % 10 + 5;
         
         // Currently disabled, music not stopping when changing to a scene, no solution found yet
         //[self.soundManager playSong:BACKGROUND_MUSIC];
@@ -211,12 +211,13 @@
 
     }
     
-    self.starTimer -= 1/currentTime * 100;
+    self.starTimer -= 1/currentTime * 10;
+    NSLog(@"%g", self.starTimer);
     
     if (self.starTimer <= 0) {
         ShootingStar *star = [[ShootingStar alloc] initWithScene:self];
         [self addChild:star];
-        self.starTimer = arc4random() % 20 + 20;
+        self.starTimer = arc4random() % 10 + 5;
     }
         
 }
