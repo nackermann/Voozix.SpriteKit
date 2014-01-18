@@ -16,6 +16,7 @@
 #import "SoundManager.h"
 #import "GameOverScene.h"
 #import "PowerUpManager.h"
+#import "ShootingStar.h"
 
 @interface MyScene()
 @property (nonatomic, strong) HUDManager *HUDManager;
@@ -27,6 +28,7 @@
 
 @property (nonatomic, weak) Player *player;
 @property (nonatomic, weak) Star *star;
+@property (nonatomic) float starTimer;
 
 @end
 
@@ -56,11 +58,14 @@
         self.collisionManager.enemyManager = self.enemyManager;
         self.collisionManager.soundManager = self.soundManager;
         self.collisionManager.powerUpManager = self.powerUpManager;
+
         
         self.physicsWorld.contactDelegate = self.collisionManager;
         self.physicsWorld.gravity = CGVectorMake(0.0, 0.0);
         
         [self addChild:self.soundManager];
+        
+        self.starTimer = arc4random() % 2 + 2;
         
         // Currently disabled, music not stopping when changing to a scene, no solution found yet
         //[self.soundManager playSong:BACKGROUND_MUSIC];
@@ -179,6 +184,9 @@
         Star *myStar = [[Star alloc] init];
         [self addChild:myStar];
         [myStar changePosition];
+        while (sqrt(pow(self.player.position.x - myStar.position.x, 2)+ pow(self.player.position.y - myStar.position.y, 2)) < 300) {
+            [myStar changePosition];
+        }
         _star = myStar;
     }
     return _star;
@@ -203,6 +211,15 @@
 
     }
     
+    self.starTimer -= 1/currentTime * 10;
+    NSLog(@"%g", self.starTimer);
+    
+    if (self.starTimer <= 0) {
+        ShootingStar *star = [[ShootingStar alloc] initWithScene:self];
+        [self addChild:star];
+        self.starTimer = arc4random() % 2 + 2;
+    }
+        
 }
 
 - (void)gameOver {

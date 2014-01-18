@@ -38,4 +38,19 @@
     
     
 }
+
+- (void)createEnemySparksAtPosition:(CGPoint)position {
+    
+    NSString *sparkPath = [[NSBundle mainBundle] pathForResource:@"EnemyParticle" ofType:@"sks"];
+    SKEmitterNode *spark = [NSKeyedUnarchiver unarchiveObjectWithFile:sparkPath];
+    spark.position = position;
+    [self.scene addChild:spark];
+    
+    // Particle stays on screen for 2 seconds and is then removed
+    SKAction *wait = [SKAction waitForDuration:2.0];
+    SKAction *remove = [SKAction removeFromParent];
+    SKAction *sequence = [SKAction sequence:@[wait, remove]];
+    [spark runAction:sequence];
+    
+}
 @end

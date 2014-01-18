@@ -19,6 +19,6 @@
 @interface EnemyManager : NSObject
 - (id)initWithScene:(SKScene *)scene;
 - (void)update:(CFTimeInterval)currentTime;
-- (void)createEnemy;
+- (void)createEnemyWithPlayerPostion:(CGPoint)playerPosition;
 - (void)removeAllEnemies;
 @end

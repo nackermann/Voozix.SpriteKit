@@ -13,6 +13,7 @@
 #import "EnemyBall.h"
 #import "ParticleManager.h"
 #import "PowerUp.h"
+#import "ShootingStar.h"
 
 @interface CollisionManager()
 @property(nonatomic, strong) SKScene *myScene;
@@ -62,16 +63,30 @@
         [self.soundManager playSound:STAR_COLLECTED_SOUND];
         
         Player *player = (Player *)firstBody.node;
-        Star *star = (Star *)secondBody.node;
         
-        [self.particleManager createStarSparksAtPosition:star.position];
+        if ([secondBody.node isKindOfClass:[Star class]]) {
+            Star *star = (Star *)secondBody.node;
+            
+            [player didBeginContactWith:star];
+            [star didBeginContactWith:player];
+            
+        }else if([secondBody.node isKindOfClass:[ShootingStar class]]) {
+            ShootingStar *star = (ShootingStar *)secondBody.node;
+            
+            [player didBeginContactWith:star];
+            [star didBeginContactWith:player];
+        }
+        
+        
+        
+        [self.particleManager createStarSparksAtPosition:contact.contactPoint];
         
         // Notify objects
-        [player didBeginContactWith:star];
-        [star didBeginContactWith:player];
+//        [player didBeginContactWith:star];
+//        [star didBeginContactWith:player];
         
         // Notify managers
-        [self.enemyManager createEnemy];
+        [self.enemyManager createEnemyWithPlayerPostion:player.position];
         
     }
     else if ((firstBody.categoryBitMask & PLAYER_OBJECT) != 0 &&
