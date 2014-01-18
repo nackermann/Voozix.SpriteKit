@@ -34,7 +34,7 @@
 -(MCPeerID *)peerID
 {
     if(!_peerID){
-     //   NSString *deviceID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+        //   NSString *deviceID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
         NSString *deviceName = [[UIDevice currentDevice] name];
         
         _peerID = [[MCPeerID alloc] initWithDisplayName: deviceName];
@@ -100,7 +100,7 @@ static PeerToPeerManager *sharedPeerToPeerManager = nil;
 }
 
 -(void)showPeerBrowserWithViewController:(UIViewController *)viewController
-                      delegate:(id<MultiplayerDelegate>)theDelegate
+                                delegate:(id<MultiplayerDelegate>)theDelegate
 {
     self.delegate = theDelegate;
     [self startAdvertisingWithDelegate:theDelegate];
@@ -145,6 +145,12 @@ static PeerToPeerManager *sharedPeerToPeerManager = nil;
             break;
         case MCSessionStateNotConnected:
             NSLog(@"Peer %@ disconnected.", peerID.displayName);
+            if([[self.session connectedPeers] count] == 0)
+            {
+                NSLog(@"No more peers connected... Ending Session");
+                [self.session disconnect];
+                self.session = nil;
+            }
             break;
         default: break;
             
@@ -161,10 +167,8 @@ didReceiveData:(NSData *)data
     
     if([receivedMessage isKindOfClass:[Message class]]){
         Message *message = (Message *)receivedMessage;
-    
-        NSLog(@"Received Message %i", message.messageType);
         
-
+        NSLog(@"Received Message from Type %i from %@", message.messageType, peerID.displayName);
         
         switch (message.messageType) {
             case ReadyToStartMatch:
@@ -178,23 +182,20 @@ didReceiveData:(NSData *)data
                 
                 self.isMatchActive = YES;
                 if(self.browserVC) [self.browserVC dismissViewControllerAnimated:YES completion:nil];
-              
+                
                 if([self.delegate respondsToSelector:@selector(readyToStartMatch)])
                 {
                     [self.delegate readyToStartMatch];
                 }
-                
                 return;
-                break;
             case matchStarted:
                 [self.delegate matchStarted];
-                break;
                 return;
             case matchEnded:
                 self.isMatchActive = false;
                 [self.session disconnect];
+                self.session = nil;
                 [self.delegate matchEnded];
-                break;
                 return;
             default:
                 break;
@@ -202,7 +203,7 @@ didReceiveData:(NSData *)data
         
         [self.delegate receivedMessage:(Message *)receivedMessage fromPlayerID:peerID.displayName];
     }
-
+    
     
 }
 
@@ -210,7 +211,7 @@ didReceiveData:(NSData *)data
 {
     NSLog(@"Send Message: %i", message.messageType);
     NSError *error;
-    NSData *data =   [NSKeyedArchiver archivedDataWithRootObject:message]; // [NSData dataWithBytes:&message length:sizeof(message)];
+    NSData *data =   [NSKeyedArchiver archivedDataWithRootObject:message];
     return [self.session sendData:data toPeers:[self.session connectedPeers] withMode:MCSessionSendDataReliable error:&error];
 }
 

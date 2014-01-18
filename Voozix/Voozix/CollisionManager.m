@@ -12,6 +12,8 @@
 #import "Star.h"
 #import "EnemyBall.h"
 #import "ParticleManager.h"
+#import "Message.h"
+#import "PeerToPeerManager.h"
 
 @interface CollisionManager()
 @property(nonatomic, strong) SKScene *myScene;
@@ -80,6 +82,14 @@
         
         Player *player = (Player *)firstBody.node;
         EnemyBall *enemyBall = (EnemyBall *)secondBody.node;
+        
+        
+        if([PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstance].isHost)
+        {
+            Message *m = [[Message alloc] init];
+            m.messageType = matchEnded;
+            [[PeerToPeerManager sharedInstance] sendMessage:m];
+        }
         
         // Notify objects
         [player didBeginContactWith:enemyBall]; // auch hier player loeschen statt veraendern

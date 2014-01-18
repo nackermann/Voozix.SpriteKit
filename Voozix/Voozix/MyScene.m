@@ -269,13 +269,7 @@
 }
 
 - (void)gameOver {
-    
-    if([PeerToPeerManager sharedInstance].isMatchActive){
-        Message *m = [[Message alloc]init];
-        m.messageType = matchEnded;
-        [[PeerToPeerManager sharedInstance] sendMessage:m];
-    }
-    
+
     SKView * skView = (SKView *)self.view;
     GameOverScene *gameOver = [GameOverScene sceneWithSize:skView.bounds.size];
     gameOver.scaleMode = SKSceneScaleModeAspectFill;
@@ -296,8 +290,6 @@
 -(void)receivedMessage:(Message *)message fromPlayerID:(NSString *)playerID
 {
     Player *sendFromPlayer = (Player *)[self.enemyPlayers objectForKey:playerID];
-    
-    NSLog(@"Received %i Message from %@",message.messageType, playerID);
     
     switch(message.messageType){
         case matchEnded: [self gameOver]; break;
