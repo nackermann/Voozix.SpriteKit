@@ -45,6 +45,7 @@
         self.physicsBody.categoryBitMask = ENEMY_OBJECT;
         self.physicsBody.collisionBitMask = PLAYER_OBJECT;
         self.physicsBody.contactTestBitMask = PLAYER_OBJECT | BACKGROUND_OBJECT;
+        self.physicsBody.allowsRotation = NO;
         [self setup];
     }
     

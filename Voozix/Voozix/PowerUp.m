@@ -7,7 +7,6 @@
 //
 
 #import "PowerUp.h"
-#import "ObjectCategories.h"
 
 @interface PowerUp()
 
@@ -31,9 +30,16 @@
     return self;
 }
 
+- (NSNumber*)spawnChance
+{
+	if (_spawnChance == nil) {
+		_spawnChance = [NSNumber numberWithInt:0];
+	}
+	return _spawnChance;
+}
+
 - (void)didBeginContactWith:(id)object
 {
-    NSLog(@"%@",@"generisch");
     [self removeFromParent];
 }
 

@@ -10,6 +10,7 @@
 #import "Star.h"
 #import "EnemyBall.h"
 #import "ObjectCategories.h"
+#import "PowerUp.h"
 #import "ShootingStar.h"
 
 static const int PLAYER_SPEED = 300;
@@ -71,7 +72,9 @@ static const int PLAYER_SPEED = 300;
 	[self.myHUDManager.players addObject:self];
     
     self.playerSpeed = PLAYER_SPEED;
-    
+    self.dead = NO;
+    self.immortal = NO;
+    self.scoreBoost = NO;
 	
 }
 
@@ -88,6 +91,14 @@ static const int PLAYER_SPEED = 300;
 		_score = [NSNumber numberWithInt:0];
 	}
 	return _score;
+}
+
+- (NSNumber*)starCount
+{
+	if (_starCount == nil) {
+		_starCount = [NSNumber numberWithInt:0];
+	}
+	return _starCount;
 }
 
 /**
@@ -144,21 +155,35 @@ static const int PLAYER_SPEED = 300;
 - (void)didBeginContactWith:(id)object
 {
 	if ([object isKindOfClass:[Star class]]) {
+        if (self.scoreBoost)
+        {
+            self.score = [NSNumber numberWithInt:[self.score intValue]+2];
+        }
+        else
+        {
+            self.score = [NSNumber numberWithInt:[self.score intValue]+1];
+        }
+        self.starCount = [NSNumber numberWithInt:[self.score intValue]+1];
+	}
+	else if ([object isKindOfClass:[EnemyBall class]] && self.immortal == NO)
+	{
 		self.score = [NSNumber numberWithInt:[self.score intValue]+1];
         
 	}else if ([object isKindOfClass:[ShootingStar class]]){
         self.score = [NSNumber numberWithInt:[self.score intValue]+10];
         
-    }else if ([object isKindOfClass:[EnemyBall class]]){
-        
+    }else if ([object isKindOfClass:[EnemyBall class]]){    
         self.dead = YES;
         self.physicsBody.velocity = CGVectorMake(0, 0);
-        
-        // Probably not needed? If player dies and retries, a new scene is created anyway
-            //[self.myHUDManager.players removeObject:self];
-            //[self removeFromParent];
-            //[self.playerController removeFromParent];
 	}
+    else if ([object isKindOfClass:[EnemyBall class]] && self.immortal == YES)
+    {
+        NSLog(@"%s", "Player.m: I'm immortal! Fuck YES");
+    }
+    else
+    {
+        //NSLog(@"%s%@", "Undefinied Contact with: ", object);
+    }
 }
 
 - (void)setPlayerSpeed:(int)playerSpeed {

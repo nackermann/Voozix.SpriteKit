@@ -1,8 +1,8 @@
 //
-//  Speedboost.h
+//  Immortal.h
 //  Voozix
 //
-//  Created by Norman Ackermann on 13.01.14.
+//  Created by Norman Ackermann on 17.01.14.
 //  Copyright (c) 2014 Norman Ackermann. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 #import "PowerUp.h"
 
-@interface Speedboost : PowerUp
+@interface Immortal : PowerUp
 @property (nonatomic,strong) NSNumber *chanceToSpawn;
 
 @end

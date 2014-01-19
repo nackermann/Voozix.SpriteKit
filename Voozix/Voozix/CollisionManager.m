@@ -98,10 +98,10 @@
         EnemyBall *enemyBall = (EnemyBall *)secondBody.node;
         
         // Notify objects
-        [player didBeginContactWith:enemyBall]; // auch hier player loeschen statt veraendern
+        [player didBeginContactWith:enemyBall];
         
         // Notify managers
-        [self.enemyManager removeAllEnemies];
+        //[self.enemyManager removeAllEnemies]; // scene does this for us? if not check for memoy leaks
         
     }
     else if ((firstBody.categoryBitMask & ENEMY_OBJECT) != 0 &&
