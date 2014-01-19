@@ -68,7 +68,7 @@
         self.starTimer = arc4random() % 2 + 2;
         
         // Currently disabled, music not stopping when changing to a scene, no solution found yet
-        //[self.soundManager playSong:BACKGROUND_MUSIC];
+        [self.soundManager playBackgroundMusic];
 
     }
     return self;
@@ -232,6 +232,12 @@
     // Why no transition you ask? Because it doesn't work!
     [skView presentScene:gameOver];
 
+}
+
+- (void)willMoveFromView:(SKView *)view {
+    
+    NSLog(@"%@", @"bam");
+    [self.soundManager stop];
 }
 
 
