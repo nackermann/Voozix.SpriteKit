@@ -12,6 +12,14 @@ static const int spawnChance = 20;
 
 @implementation Speedboost
 
+- (id)init
+{
+    self = [super init];
+    self.spawnChance = [NSNumber numberWithInt: 40];
+    
+    return self;
+}
+
 - (void)didBeginContactWith:(id)object
 {
     if ([object isKindOfClass:[Player class]]) {
@@ -25,7 +33,13 @@ static const int spawnChance = 20;
 - (void)removeSpeedBoost:(NSTimer*)theTimer
 {
     Player *player = theTimer.userInfo;
-    player.playerSpeed = player.playerSpeed * 0.6666666; // I hope that it is correct, manuel check this !
+    // Restore old speed, currently using:
+    // 300 * 1.5 = 450;
+    // 450 * x = 300;
+    // 300/450 = 2/3
+    
+    // In the near future, we should use the player's default velocity.
+    player.playerSpeed = player.playerSpeed * 0.66666667;
 }
 
 - (NSNumber*)chanceToSpawn

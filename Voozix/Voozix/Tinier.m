@@ -12,6 +12,14 @@ static const int spawnChance = 20;
 
 @implementation Tinier
 
+- (id)init
+{
+    self = [super init];
+    self.spawnChance = [NSNumber numberWithInt: 20];
+    
+    return self;
+}
+
 - (void)didBeginContactWith:(id)object
 {
     if ([object isKindOfClass:[Player class]]) {
