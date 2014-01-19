@@ -16,3 +16,4 @@ static const uint32_t STAR_OBJECT = 0x1 << 1;
 static const uint32_t ENEMY_OBJECT = 0x1 << 2;
 static const uint32_t BACKGROUND_OBJECT = 0x1 << 3;
 static const uint32_t POWERUP_OBJECT = 0x1 << 4;
+static const uint32_t NO_COLLISION = 0x1 << 5;

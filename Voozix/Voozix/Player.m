@@ -11,6 +11,7 @@
 #import "EnemyBall.h"
 #import "ObjectCategories.h"
 #import "PowerUp.h"
+#import "ShootingStar.h"
 
 static const int PLAYER_SPEED = 300;
 
@@ -166,13 +167,14 @@ static const int PLAYER_SPEED = 300;
 	}
 	else if ([object isKindOfClass:[EnemyBall class]] && self.immortal == NO)
 	{
+		self.score = [NSNumber numberWithInt:[self.score intValue]+1];
+        
+	}else if ([object isKindOfClass:[ShootingStar class]]){
+        self.score = [NSNumber numberWithInt:[self.score intValue]+10];
+        
+    }else if ([object isKindOfClass:[EnemyBall class]]){    
         self.dead = YES;
         self.physicsBody.velocity = CGVectorMake(0, 0);
-        
-        // Probably not needed? If player dies and retries, a new scene is created anyway
-            //[self.myHUDManager.players removeObject:self];
-            //[self removeFromParent];
-            //[self.playerController removeFromParent];
 	}
     else if ([object isKindOfClass:[EnemyBall class]] && self.immortal == YES)
     {
