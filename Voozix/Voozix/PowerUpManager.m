@@ -13,6 +13,16 @@
 #import "Tinier.h"
 #import "Scoreboost.h"
 
+#import "Message.h"
+#import "PeerToPeerManager.h"
+
+typedef enum  {
+    SpeedboostPowerUp,
+    TinierPowerUp,
+    ScoreboostPowerUp,
+    ImmortalPowerUp,
+} PowerUpType;
+
 @interface PowerUpManager()
 @property (nonatomic, strong) SKScene *myScene;
 
@@ -25,11 +35,10 @@
     self = [super init];
     self.myScene = scene;
     
-    
-    
+    if(![PeerToPeerManager sharedInstance].isMatchActive || ( [PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstance].isHost)){
     // Creates PowerUps in the given TimeInterval
-    [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(createPowerUp:) userInfo:nil repeats:YES];
-    
+        [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(createPowerUp:) userInfo:nil repeats:YES];
+    }
     return self;
 }
 
@@ -39,31 +48,76 @@
     PowerUp *powerUp;
     
     powerUp = [[Scoreboost alloc] init];
+    int type;
     
     // TODO Manuel, use objects chance to spawn
     if (randomNumber >= 80)
     {
         powerUp = [[Speedboost alloc] init];
+        type = SpeedboostPowerUp;
+    
     }
     else if (randomNumber >= 60)
     {
         powerUp = [[Tinier alloc] init];
+        type =TinierPowerUp;
     }
     else if (randomNumber >= 40)
     {
         powerUp = [[Scoreboost alloc] init]; // TODO no Score boost in early game !
+        type =ScoreboostPowerUp;
     }
     else
     {
         powerUp = [[Immortal alloc] init];
+        type =ImmortalPowerUp;
     }
     
     [self.myScene addChild:powerUp];
     [self.powerUps addObject:powerUp];
     [powerUp changePosition]; // only works after he is in his scene
     
+    if([PeerToPeerManager sharedInstance].isMatchActive){
+        Message *m = [[Message alloc] init];
+        m.messageType =PowerUpSpawned;
+        m.position = powerUp.position;
+    
+        m.args = [NSArray arrayWithObject:[NSNumber numberWithInt:type]];
+        [[PeerToPeerManager sharedInstance] sendMessage:m];
+        
+    }
+    
     // Player has only limited time to collect the PowerUp
     [NSTimer scheduledTimerWithTimeInterval:4.0 target:self selector:@selector(deletePowerUp:) userInfo:powerUp repeats:NO];
+}
+
+-(void)createPowerUpWithMessage:(Message *)message
+{
+    PowerUp *powerUp;
+
+    int type = [[message.args objectAtIndex:0] intValue];
+    switch (type) {
+        case SpeedboostPowerUp:
+            powerUp = [[Speedboost alloc] init];
+            break;
+        case TinierPowerUp:
+            powerUp = [[Tinier alloc] init];
+            break;
+        case ScoreboostPowerUp:
+            powerUp = [[Scoreboost alloc] init];
+            break;
+        case ImmortalPowerUp:
+            powerUp = [[Immortal alloc] init];
+            break;
+        default:
+            break;
+    }
+    powerUp.position = message.position;
+    [self.myScene addChild:powerUp];
+    [self.powerUps addObject:powerUp];
+    
+    //Critical, better by receiving an Event
+    [NSTimer scheduledTimerWithTimeInterval:3.8 target:self selector:@selector(deletePowerUp:) userInfo:powerUp repeats:NO];
 }
 
 - (NSMutableArray*)powerUps

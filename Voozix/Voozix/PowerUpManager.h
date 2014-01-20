@@ -7,6 +7,7 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "Message.h"
 
 /**
  * @class PowerUpManager
@@ -21,5 +22,5 @@
 - (id)initWithScene:(SKScene *)scene;
 //- (void)createPowerUp:(id)powerUpType;
 - (void)update;
-
+-(void)createPowerUpWithMessage:(Message *)message;
 @end

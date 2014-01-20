@@ -14,6 +14,8 @@
 #import "ParticleManager.h"
 #import "PowerUp.h"
 #import "ShootingStar.h"
+#import "Message.h"
+#import "PeerToPeerManager.h"
 
 @interface CollisionManager()
 @property(nonatomic, strong) SKScene *myScene;
@@ -67,12 +69,27 @@
         if ([secondBody.node isKindOfClass:[Star class]]) {
             Star *star = (Star *)secondBody.node;
             
+            
+            if([PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstance].isHost)
+            {
+                Message *m = [[Message alloc] init];
+                m.messageType = StarCollected;
+                [[PeerToPeerManager sharedInstance] sendMessage:m];
+            }
+            
             [player didBeginContactWith:star];
             [star didBeginContactWith:player];
             
         }else if([secondBody.node isKindOfClass:[ShootingStar class]]) {
             ShootingStar *star = (ShootingStar *)secondBody.node;
             
+            if([PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstance].isHost)
+            {
+                Message *m = [[Message alloc] init];
+                m.messageType = ShootingStarCollected;
+                m.args = [NSArray arrayWithObject:star.name];
+                [[PeerToPeerManager sharedInstance] sendMessage:m];
+            }
             [player didBeginContactWith:star];
             [star didBeginContactWith:player];
         }
@@ -82,16 +99,26 @@
         [self.particleManager createStarSparksAtPosition:contact.contactPoint];
         
         // Notify objects
-//        [player didBeginContactWith:star];
-//        [star didBeginContactWith:player];
+        //        [player didBeginContactWith:star];
+        //        [star didBeginContactWith:player];
         
         // Notify managers
-        [self.enemyManager createEnemyWithPlayerPostion:player.position];
+        if(([PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstance].isHost) || ![PeerToPeerManager sharedInstance].isMatchActive){
+            [self.enemyManager createEnemyWithPlayerPostion:player.position];
+        }
         
     }
     else if ((firstBody.categoryBitMask & PLAYER_OBJECT) != 0 &&
              (secondBody.categoryBitMask & ENEMY_OBJECT) != 0)
     {
+        
+        if([PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstance].isHost)
+        {
+            Message *m = [[Message alloc] init];
+            m.messageType = matchEnded;
+            [[PeerToPeerManager sharedInstance] sendMessage:m];
+        }
+        
         [self.soundManager playSound:EXPLOSION_SOUND];
         
         Player *player = (Player *)firstBody.node;
@@ -115,8 +142,18 @@
     else if ((firstBody.categoryBitMask & PLAYER_OBJECT) != 0 &&
              (secondBody.categoryBitMask & POWERUP_OBJECT) != 0)
     {
+        
         Player *player = (Player *)firstBody.node;
         PowerUp *powerUp = (PowerUp*)secondBody.node;
+        if([PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstance].isHost)
+        {
+            Message *m = [[Message alloc] init];
+            m.messageType = PowerUpCollected;
+            m.args = [NSArray arrayWithObject:powerUp.name];
+            [[PeerToPeerManager sharedInstance] sendMessage:m];
+        }
+        
+        
         
         [player didBeginContactWith:powerUp]; // does he need to be notified? check it !
         

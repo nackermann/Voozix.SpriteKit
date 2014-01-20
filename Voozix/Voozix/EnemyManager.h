@@ -8,7 +8,7 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "EnemyBall.h"
-
+#import "Message.h"
 /**
  * @class EnemyManager
  *
@@ -20,5 +20,6 @@
 - (id)initWithScene:(SKScene *)scene;
 - (void)update:(CFTimeInterval)currentTime;
 - (void)createEnemyWithPlayerPostion:(CGPoint)playerPosition;
+- (void)createEnemyWithMessage:(Message *)message;
 - (void)removeAllEnemies;
 @end

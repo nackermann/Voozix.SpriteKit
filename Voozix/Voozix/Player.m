@@ -12,6 +12,8 @@
 #import "ObjectCategories.h"
 #import "PowerUp.h"
 #import "ShootingStar.h"
+#import "Message.h"
+#import "PeerToPeerManager.h"
 
 static const int PLAYER_SPEED = 300;
 
@@ -23,7 +25,7 @@ static const int PLAYER_SPEED = 300;
 /**
  * @brief Returns the player controller
  * @details [long description]
- * 
+ *
  * @param  [description]
  * @return [description]
  */
@@ -40,7 +42,7 @@ static const int PLAYER_SPEED = 300;
 /**
  * @brief Initializes the player itself and the HUD manager that is responsible for drawing his information
  * @details [long description]
- * 
+ *
  * @param  [description]
  * @return [description]
  */
@@ -81,7 +83,7 @@ static const int PLAYER_SPEED = 300;
 /**
  * @brief Returns the player's current score
  * @details [long description]
- * 
+ *
  * @param t [description]
  * @return [description]
  */
@@ -102,9 +104,9 @@ static const int PLAYER_SPEED = 300;
 }
 
 /**
- * @brief Gets called when a touch begins and then notifies other objects 
+ * @brief Gets called when a touch begins and then notifies other objects
  * @details [long description]
- * 
+ *
  * @param t [description]
  * @return [description]
  */
@@ -113,13 +115,21 @@ static const int PLAYER_SPEED = 300;
 	[self.playerController touchesBegan:touches withEvent:event];
     CGVector joystickVelocity = [self.playerController getJoystickVelocity];
 	self.physicsBody.velocity = CGVectorMake(joystickVelocity.dx * self.playerSpeed, joystickVelocity.dy * self.playerSpeed);
+    
+    if([PeerToPeerManager sharedInstance].isMatchActive)
+    {
+        Message *m = [[Message alloc] init];
+        m.messageType = playerMoved;
+        m.velocity = self.physicsBody.velocity;
+        [[PeerToPeerManager sharedInstance] sendMessage:m];
+    }
 	
 }
 
 /**
- * @brief Gets called when during touch and then notifies other objects 
+ * @brief Gets called when during touch and then notifies other objects
  * @details [long description]
- * 
+ *
  * @param t [description]
  * @return [description]
  */
@@ -128,13 +138,21 @@ static const int PLAYER_SPEED = 300;
 	[self.playerController touchesMoved:touches withEvent:event];
 	CGVector joystickVelocity = [self.playerController getJoystickVelocity];
 	self.physicsBody.velocity = CGVectorMake(joystickVelocity.dx * self.playerSpeed, joystickVelocity.dy * self.playerSpeed);
-
+    
+    if([PeerToPeerManager sharedInstance].isMatchActive)
+    {
+        Message *m = [[Message alloc] init];
+        m.messageType = playerMoved;
+        m.velocity = self.physicsBody.velocity;
+        [[PeerToPeerManager sharedInstance] sendMessage:m];
+    }
+    
 }
 
 /**
- * @brief Gets called when a touch ends and then notifies other objects 
+ * @brief Gets called when a touch ends and then notifies other objects
  * @details [long description]
- * 
+ *
  * @param t [description]
  * @return [description]
  */
@@ -143,12 +161,20 @@ static const int PLAYER_SPEED = 300;
 	[self.playerController touchesEnded:touches withEvent:event];
 	CGVector joystickVelocity = [self.playerController getJoystickVelocity];
 	self.physicsBody.velocity = CGVectorMake(joystickVelocity.dx * self.playerSpeed, joystickVelocity.dy * self.playerSpeed);
+    
+    if([PeerToPeerManager sharedInstance].isMatchActive)
+    {
+        Message *m = [[Message alloc] init];
+        m.messageType = playerMoved;
+        m.velocity = self.physicsBody.velocity;
+        [[PeerToPeerManager sharedInstance] sendMessage:m];
+    }
 }
 
 /**
  * @brief On collision event that is called by the collision manager when something collides with the player
  * @details [long description]
- * 
+ *
  * @param d [description]
  * @return [description]
  */
@@ -172,7 +198,7 @@ static const int PLAYER_SPEED = 300;
 	}else if ([object isKindOfClass:[ShootingStar class]]){
         self.score = [NSNumber numberWithInt:[self.score intValue]+10];
         
-    }else if ([object isKindOfClass:[EnemyBall class]]){    
+    }else if ([object isKindOfClass:[EnemyBall class]]){
         self.dead = YES;
         self.physicsBody.velocity = CGVectorMake(0, 0);
 	}
