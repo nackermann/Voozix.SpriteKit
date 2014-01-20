@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Norman Ackermann. All rights reserved.
 //
 
+static const int spawnChance = 0;
+
 #import "PowerUp.h"
 
 @interface PowerUp()
@@ -63,5 +65,11 @@
     CGPoint newPosition = CGPointMake(x, y);
     self.position = newPosition;
 }
+
++ (NSNumber*)chanceToSpawn
+{
+    return [NSNumber numberWithInt:spawnChance];
+}
+
 
 @end

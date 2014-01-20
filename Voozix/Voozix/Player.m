@@ -154,10 +154,11 @@ static const int PLAYER_SPEED = 300;
  */
 - (void)didBeginContactWith:(id)object
 {
-	if ([object isKindOfClass:[Star class]]) {
+	if ([object isKindOfClass:[Star class]])
+    {
         if (self.scoreBoost)
         {
-            self.score = [NSNumber numberWithInt:[self.score intValue]+2];
+            self.score = [NSNumber numberWithInt:[self.score intValue]+2]; // changen zu multiplizierer
         }
         else
         {
@@ -167,22 +168,20 @@ static const int PLAYER_SPEED = 300;
 	}
 	else if ([object isKindOfClass:[EnemyBall class]] && self.immortal == NO)
 	{
-		self.score = [NSNumber numberWithInt:[self.score intValue]+1];
-        
-	}else if ([object isKindOfClass:[ShootingStar class]]){
-        self.score = [NSNumber numberWithInt:[self.score intValue]+10];
-        
-    }else if ([object isKindOfClass:[EnemyBall class]]){    
         self.dead = YES;
         self.physicsBody.velocity = CGVectorMake(0, 0);
 	}
+    else if ([object isKindOfClass:[ShootingStar class]])
+    {
+        self.score = [NSNumber numberWithInt:[self.score intValue]+10];
+    }
     else if ([object isKindOfClass:[EnemyBall class]] && self.immortal == YES)
     {
-        NSLog(@"%s", "Player.m: I'm immortal! Fuck YES");
+        NSLog(@"%s", "Player.m: I'm immortal!");
     }
     else
     {
-        //NSLog(@"%s%@", "Undefinied Contact with: ", object);
+        NSLog(@"%@%@%@", @"Contact with: ", object, @" - probably a PowerUp");
     }
 }
 

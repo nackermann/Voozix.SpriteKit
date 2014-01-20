@@ -235,7 +235,7 @@
 
     }
     self.starTimer -= 1/currentTime * 10;
-    NSLog(@"%g", self.starTimer);
+    //NSLog(@"%g", self.starTimer);
     
     //Uncomment on Merge with Master
     if(self.starTimer <= ((arc4random() %4)+1)  && arc4random()%100 > 50 && !self.hunter /*&& (![PeerToPeerManager sharedInstance].isMatchActive || ( [PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstace].isHost */){

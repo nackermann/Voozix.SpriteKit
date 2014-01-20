@@ -12,6 +12,16 @@ static const int spawnChance = 20;
 
 @implementation Scoreboost
 
+- (id)init
+{
+    self = [super init];
+    
+    self.texture = [SKTexture textureWithImageNamed:@"powerup_multiplier2x"];
+	self.size = self.texture.size;
+    
+    return self;
+}
+
 - (void)didBeginContactWith:(id)object
 {
     if ([object isKindOfClass:[Player class]]) {
@@ -33,12 +43,9 @@ static const int spawnChance = 20;
     player.colorBlendFactor = 0.0;
 }
 
-- (NSNumber*)chanceToSpawn
++ (NSNumber*)chanceToSpawn
 {
-    if (_chanceToSpawn == nil) {
-        _chanceToSpawn = [NSNumber numberWithInt:spawnChance];
-    }
-    return _chanceToSpawn;
+    return [NSNumber numberWithInt:spawnChance];
 }
 
 @end

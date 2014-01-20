@@ -6,11 +6,21 @@
 //  Copyright (c) 2014 Norman Ackermann. All rights reserved.
 //
 
-static const int spawnChance = 20;
+static const int spawnChance = 40;
 
 #import "Tinier.h"
 
 @implementation Tinier
+
+- (id)init
+{
+    self = [super init];
+    
+    self.texture = [SKTexture textureWithImageNamed:@"powerup_shrink"];
+	self.size = self.texture.size;
+    
+    return self;
+}
 
 - (void)didBeginContactWith:(id)object
 {
@@ -28,12 +38,9 @@ static const int spawnChance = 20;
     [theTimer.userInfo runAction:[SKAction scaleTo:1.0 duration:2]];
 }
 
-- (NSNumber*)chanceToSpawn
++ (NSNumber*)chanceToSpawn
 {
-    if (_chanceToSpawn == nil) {
-        _chanceToSpawn = [NSNumber numberWithInt:spawnChance];
-    }
-    return _chanceToSpawn;
+    return [NSNumber numberWithInt:spawnChance];
 }
 
 @end
