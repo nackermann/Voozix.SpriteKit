@@ -72,7 +72,7 @@ typedef enum  {
         powerUp = [[Immortal alloc] init];
         type =ImmortalPowerUp;
     }
-    
+    powerUp.name = @"PowerUp"; //Give it an identifier! 
     [self.myScene addChild:powerUp];
     [self.powerUps addObject:powerUp];
     [powerUp changePosition]; // only works after he is in his scene
@@ -113,6 +113,7 @@ typedef enum  {
             break;
     }
     powerUp.position = message.position;
+    powerUp.name = [m.args objectAtIndex:0];
     [self.myScene addChild:powerUp];
     [self.powerUps addObject:powerUp];
     
