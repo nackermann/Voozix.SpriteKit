@@ -262,7 +262,7 @@
     
     if(!self.star.parent)
     {
-        if(([PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstance].waitForPeers == 0) ||
+        if(([PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstance].waitForPeers == 0 && [PeerToPeerManager sharedInstance].isHost) ||
            ![PeerToPeerManager sharedInstance].isMatchActive)
         {
             [self addChild:self.star];
@@ -280,7 +280,7 @@
     }
     
     
-    if (self.player.dead) {
+    if (self.player.dead && ( ([PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstance].isHost) || ![PeerToPeerManager sharedInstance].isMatchActive) ){
         
         [self gameOver];
         
@@ -289,14 +289,13 @@
 }
 
 - (void)gameOver {
-
-    SKView * skView = (SKView *)self.view;
-    GameOverScene *gameOver = [GameOverScene sceneWithSize:skView.bounds.size];
+    
+    GameOverScene *gameOver = [GameOverScene sceneWithSize:  [[UIScreen mainScreen] bounds].size ];
     gameOver.scaleMode = SKSceneScaleModeAspectFill;
     gameOver.score = [self.player.score intValue];
     
     // Why no transition you ask? Because it doesn't work!
-    [skView presentScene:gameOver];
+    [self.view presentScene:gameOver];
     
 }
 

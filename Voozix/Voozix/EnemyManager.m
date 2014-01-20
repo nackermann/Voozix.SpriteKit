@@ -120,10 +120,9 @@ const int MAX_SPEED = 200;
  */
 -(void)createEnemyWithMessage:(Message *)message
 {
-    EnemyBall *enemy = [[EnemyBall alloc] init];
+    EnemyBall *enemy = [[EnemyBall alloc] initAtPosition:message.position];
     enemy.velocity = message.velocity;
     enemy.physicsBody.velocity = message.velocity;
-    enemy.position = message.position;
     
     [self.enemies addObject:enemy];
     [self.scene addChild:enemy];

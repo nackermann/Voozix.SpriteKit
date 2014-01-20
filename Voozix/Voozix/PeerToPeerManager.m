@@ -101,6 +101,7 @@ static PeerToPeerManager *sharedPeerToPeerManager = nil;
                                 delegate:(id<MultiplayerDelegate>)theDelegate
 {
     self.delegate = theDelegate;
+    self.isHost = YES;
     NSString *serviceName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
     
     self.session = [[MCSession alloc]initWithPeer:self.peerID];
@@ -139,6 +140,7 @@ static PeerToPeerManager *sharedPeerToPeerManager = nil;
     [self.browserVC dismissViewControllerAnimated:YES completion:nil];
     NSLog(@"Cancelled Selecting...");
     self.isHost = false;
+    [self.session disconnect];
 }
 
 -(void)session:(MCSession *)session peer:(MCPeerID *)peerID didChangeState:(MCSessionState)state
@@ -157,6 +159,10 @@ static PeerToPeerManager *sharedPeerToPeerManager = nil;
             {
                 NSLog(@"No more peers connected... Ending Session");
                 [self.session disconnect];
+                if([self.delegate respondsToSelector:@selector(matchEnded)]){
+                    [self.delegate matchEnded];
+                }
+                
                 self.session = nil;
             }
             break;
