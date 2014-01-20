@@ -10,7 +10,7 @@
 #import "ObjectCategories.h"
 
 
-static const int movementSpeed = 20;
+static const float relativeSpeedToPlayer = 0.65;
 
 @interface Hunter()
 @property (nonatomic, weak)Player *followingPlayer;
@@ -75,9 +75,18 @@ static const int movementSpeed = 20;
 
 -(void)update
 {
-    CGFloat x = (self.followingPlayer.position.x-self.position.x-movementSpeed) / (2*movementSpeed);
-    CGFloat y = (self.followingPlayer.position.y-self.position.y-movementSpeed) / (2*movementSpeed);
+    //CGFloat x = (self.followingPlayer.position.x-self.position.x-self.followingPlayer.playerSpeed) / (2*self.followingPlayer.playerSpeed);
+    //CGFloat y = (self.followingPlayer.position.y-self.position.y-self.followingPlayer.playerSpeed) / (2*self.followingPlayer.playerSpeed);
   
+    CGFloat x = self.followingPlayer.position.x - self.position.x;
+    CGFloat y = self.followingPlayer.position.y - self.position.y;
+    
+    if(x < 0) x = -relativeSpeedToPlayer*self.followingPlayer.playerSpeed;
+    else if(x > 0) x = relativeSpeedToPlayer* self.followingPlayer.playerSpeed;
+    
+    if(y < 0) y = -relativeSpeedToPlayer*self.followingPlayer.playerSpeed;
+    else if(y > 0) y =relativeSpeedToPlayer* self.followingPlayer.playerSpeed;
+    
     
     self.physicsBody.velocity = CGVectorMake(x, y);
 }
