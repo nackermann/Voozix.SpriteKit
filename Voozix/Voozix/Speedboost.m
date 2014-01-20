@@ -25,7 +25,7 @@ static const int spawnChance = 35;
 - (void)removeSpeedBoost:(NSTimer*)theTimer
 {
     Player *player = theTimer.userInfo;
-    player.playerSpeed = player.playerSpeed * 0.6666666; // I hope that it is correct, manuel check this !
+    player.playerSpeed = player.playerSpeed * 0.6666666;
 }
 
 + (NSNumber*)chanceToSpawn
