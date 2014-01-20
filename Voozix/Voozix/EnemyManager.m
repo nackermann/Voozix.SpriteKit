@@ -8,6 +8,8 @@
 
 #import "EnemyManager.h"
 #import "ParticleManager.h"
+#import "PeerToPeerManager.h"
+
 
 const int MIN_SPEED = 100;
 const int MAX_SPEED = 200;
@@ -30,12 +32,10 @@ const int MAX_SPEED = 200;
     return _particleManager;
 }
 
-
-
 /**
  * @brief Removes all enemies from the scene
  * @details [long description]
- * 
+ *
  * @param enemy [description]
  * @return [description]
  */
@@ -48,13 +48,13 @@ const int MAX_SPEED = 200;
     [self.enemies removeAllObjects];
 }
 
- /**
-  * @brief Returns all enemies in the scene
-  * @details [long description]
-  * 
-  * @param e [description]
-  * @return [description]
-  */
+/**
+ * @brief Returns all enemies in the scene
+ * @details [long description]
+ *
+ * @param e [description]
+ * @return [description]
+ */
 - (NSMutableArray *)enemies {
     
     if (!_enemies)
@@ -82,25 +82,25 @@ const int MAX_SPEED = 200;
  */
 - (void)createEnemyWithPlayerPostion:(CGPoint)playerPosition {
     
-//    EnemyBall *enemy = [[EnemyBall alloc] init];
-//    enemy.velocity = [self createRandomVelocity];
-//    
-//    /* Get random coordinates that are within the screen bounds */
-//    float x = (arc4random() % (int)self.scene.frame.size.width);
-//    float y = (arc4random() % (int)self.scene.frame.size.height);
-//    
-//    /*Take object width into consideration */
-//    if (x + enemy.frame.size.width/2 > self.scene.frame.size.width)
-//        x -= enemy.frame.size.width/2;
-//    else if (x - enemy.frame.size.width/2 < 0)
-//        x += enemy.frame.size.width/2;
-//    
-//    /* Take object height into consideration */
-//    if (y + enemy.frame.size.height/2 > self.scene.frame.size.height )
-//        y -= enemy.frame.size.height/2;
-//    else if (y - enemy.frame.size.height/2 < 0)
-//        y += enemy.frame.size.width/2;
-//    
+    //    EnemyBall *enemy = [[EnemyBall alloc] init];
+    //    enemy.velocity = [self createRandomVelocity];
+    //
+    //    /* Get random coordinates that are within the screen bounds */
+    //    float x = (arc4random() % (int)self.scene.frame.size.width);
+    //    float y = (arc4random() % (int)self.scene.frame.size.height);
+    //
+    //    /*Take object width into consideration */
+    //    if (x + enemy.frame.size.width/2 > self.scene.frame.size.width)
+    //        x -= enemy.frame.size.width/2;
+    //    else if (x - enemy.frame.size.width/2 < 0)
+    //        x += enemy.frame.size.width/2;
+    //
+    //    /* Take object height into consideration */
+    //    if (y + enemy.frame.size.height/2 > self.scene.frame.size.height )
+    //        y -= enemy.frame.size.height/2;
+    //    else if (y - enemy.frame.size.height/2 < 0)
+    //        y += enemy.frame.size.width/2;
+    //
     /* Create and set new position */
     
     CGPoint enemyPosition = [self createRandomPosition];
@@ -115,24 +115,46 @@ const int MAX_SPEED = 200;
     enemy.velocity = [self createRandomVelocity];
     enemy.physicsBody.velocity = enemy.velocity;
     
+    if([PeerToPeerManager sharedInstance].isMatchActive){
+        Message *m = [[Message alloc] init];
+        m.messageType = EnemyBallSpawned;
+        m.velocity =enemy.velocity;
+        m.position = enemyPosition;
+        m.args = [NSArray arrayWithObject:enemy.name];
+        [[PeerToPeerManager sharedInstance]sendMessage:m];
+    }
+    
+    
     [self.enemies addObject:enemy];
     [self.scene addChild:enemy];
     
-    
+
     NSLog(@"%g", sqrt(pow(enemyPosition.x - playerPosition.x, 2) + pow(enemyPosition.y - playerPosition.y, 2)));
 }
+
+-(void)createEnemyWithMessage:(Message *)message
+{
+    EnemyBall *enemy = [[EnemyBall alloc] initAtPosition:message.position];
+    enemy.velocity = message.velocity;
+    enemy.physicsBody.velocity = message.velocity;
+    enemy.name = [message.args objectAtIndex:0];
+    [self.particleManager createEnemySparksAtPosition:message.position];
+    [self.enemies addObject:enemy];
+    [self.scene addChild:enemy];
+}
+
 
 /**
  * @brief Updates all enemies: Movement and border collision
  * @details [long description]
- * 
+ *
  * @param  [description]
  * @return [description]
  */
 - (void)update:(CFTimeInterval)currentTime {
     
     for (EnemyBall *enemy in self.enemies) {
-
+        
         [enemy update:currentTime];
     }
     
