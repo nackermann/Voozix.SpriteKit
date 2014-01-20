@@ -12,6 +12,16 @@ static const int spawnChance = 40;
 
 @implementation Tinier
 
+- (id)init
+{
+    self = [super init];
+    
+    self.texture = [SKTexture textureWithImageNamed:@"powerup_shrink"];
+	self.size = self.texture.size;
+    
+    return self;
+}
+
 - (void)didBeginContactWith:(id)object
 {
     if ([object isKindOfClass:[Player class]]) {

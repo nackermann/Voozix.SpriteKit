@@ -12,6 +12,16 @@ static const int spawnChance = 30;
 
 @implementation Immortal
 
+- (id)init
+{
+    self = [super init];
+    
+    self.texture = [SKTexture textureWithImageNamed:@"powerup_immortal"];
+	self.size = self.texture.size;
+    
+    return self;
+}
+
 - (void)didBeginContactWith:(id)object
 {
     if ([object isKindOfClass:[Player class]]) {

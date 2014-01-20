@@ -12,6 +12,16 @@ static const int spawnChance = 35;
 
 @implementation Speedboost
 
+- (id)init
+{
+    self = [super init];
+    
+    self.texture = [SKTexture textureWithImageNamed:@"powerup_speed"];
+	self.size = self.texture.size;
+
+    return self;
+}
+
 - (void)didBeginContactWith:(id)object
 {
     if ([object isKindOfClass:[Player class]]) {
