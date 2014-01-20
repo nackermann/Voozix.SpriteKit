@@ -33,12 +33,9 @@ static const int spawnChance = 20;
     player.colorBlendFactor = 0.0;
 }
 
-- (NSNumber*)chanceToSpawn
++ (NSNumber*)chanceToSpawn
 {
-    if (_chanceToSpawn == nil) {
-        _chanceToSpawn = [NSNumber numberWithInt:spawnChance];
-    }
-    return _chanceToSpawn;
+    return [NSNumber numberWithInt:spawnChance];
 }
 
 @end

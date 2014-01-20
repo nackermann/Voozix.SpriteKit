@@ -212,7 +212,7 @@
     }
     
     self.starTimer -= 1/currentTime * 10;
-    NSLog(@"%g", self.starTimer);
+    //NSLog(@"%g", self.starTimer);
     
     if (self.starTimer <= 0) {
         ShootingStar *star = [[ShootingStar alloc] initWithScene:self];

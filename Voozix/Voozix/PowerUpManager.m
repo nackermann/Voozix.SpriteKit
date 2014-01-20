@@ -15,10 +15,26 @@
 
 @interface PowerUpManager()
 @property (nonatomic, strong) SKScene *myScene;
+@property (nonatomic, strong) NSArray *powerUpTypes;
+@property (nonatomic, strong) NSNumber *cumulativeChanceToSpawn;
 
 @end
 
 @implementation PowerUpManager
+
+// part of the dynamic roulett wheel selection
+- (NSNumber*)cumulativeChanceToSpawn
+{
+    if (_cumulativeChanceToSpawn == nil) {
+        unsigned int temp = 0;
+        for (PowerUp *powerUpType in self.powerUpTypes) {
+            
+            temp += [[[powerUpType class] chanceToSpawn] intValue];
+        }
+        _cumulativeChanceToSpawn = [NSNumber numberWithInt:temp];
+    }
+    return _cumulativeChanceToSpawn;
+}
 
 - (id)initWithScene:(SKScene *)scene
 {
@@ -35,27 +51,19 @@
 
 - (void)createPowerUp:(NSTimer*)theTimer
 {
-    u_int32_t randomNumber = arc4random() % 101; // number 0-100 for rouletteWheelSelection
+    // dynamic roulett wheel selection
+    
     PowerUp *powerUp;
     
-    powerUp = [[Scoreboost alloc] init];
+    u_int32_t randomNumber = arc4random() % [self.cumulativeChanceToSpawn intValue]; // number 0-100 for rouletteWheelSelection
     
-    // TODO Manuel, use objects chance to spawn
-    if (randomNumber >= 80)
-    {
-        powerUp = [[Speedboost alloc] init];
-    }
-    else if (randomNumber >= 60)
-    {
-        powerUp = [[Tinier alloc] init];
-    }
-    else if (randomNumber >= 40)
-    {
-        powerUp = [[Scoreboost alloc] init]; // TODO no Score boost in early game !
-    }
-    else
-    {
-        powerUp = [[Immortal alloc] init];
+    int temp = 0;
+    for (PowerUp *powerUpType in self.powerUpTypes) {
+        temp += [[[powerUpType class] chanceToSpawn] intValue];
+        if (temp > randomNumber) {
+            powerUp = [[[powerUpType class] alloc] init];
+            break;
+        }
     }
     
     [self.myScene addChild:powerUp];
@@ -65,6 +73,18 @@
     // Player has only limited time to collect the PowerUp
     [NSTimer scheduledTimerWithTimeInterval:4.0 target:self selector:@selector(deletePowerUp:) userInfo:powerUp repeats:NO];
 }
+
+- (NSArray*)powerUpTypes
+{
+    if (_powerUpTypes == nil) {
+        _powerUpTypes = [NSArray arrayWithObjects:  [Speedboost class],
+                                                    [Scoreboost class],
+                                                    [Immortal class],
+                                                    [Tinier class],nil];
+    }
+    return _powerUpTypes;
+}
+
 
 - (NSMutableArray*)powerUps
 {

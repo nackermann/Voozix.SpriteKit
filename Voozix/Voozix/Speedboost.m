@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Norman Ackermann. All rights reserved.
 //
 
-static const int spawnChance = 20;
+static const int spawnChance = 35;
 
 #import "Speedboost.h"
 
@@ -28,12 +28,9 @@ static const int spawnChance = 20;
     player.playerSpeed = player.playerSpeed * 0.6666666; // I hope that it is correct, manuel check this !
 }
 
-- (NSNumber*)chanceToSpawn
++ (NSNumber*)chanceToSpawn
 {
-    if (_chanceToSpawn == nil) {
-        _chanceToSpawn = [NSNumber numberWithInt:spawnChance];
-    }
-    return _chanceToSpawn;
+    return [NSNumber numberWithInt:spawnChance];
 }
 
 @end

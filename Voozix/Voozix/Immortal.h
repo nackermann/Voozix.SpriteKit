@@ -11,6 +11,5 @@
 #import "PowerUp.h"
 
 @interface Immortal : PowerUp
-@property (nonatomic,strong) NSNumber *chanceToSpawn;
 
 @end
