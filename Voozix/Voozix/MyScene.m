@@ -17,6 +17,8 @@
 #import "GameOverScene.h"
 #import "PowerUpManager.h"
 #import "ShootingStar.h"
+#import "Hunter.h"
+
 
 @interface MyScene()
 @property (nonatomic, strong) HUDManager *HUDManager;
@@ -28,8 +30,8 @@
 
 @property (nonatomic, weak) Player *player;
 @property (nonatomic, weak) Star *star;
+@property (nonatomic, weak) Hunter *hunter;
 @property (nonatomic) float starTimer;
-
 @end
 
 @implementation MyScene
@@ -66,6 +68,8 @@
         [self addChild:self.soundManager];
         
         self.starTimer = arc4random() % 2 + 2;
+        
+
         
         // Currently disabled, music not stopping when changing to a scene, no solution found yet
         [self.soundManager playBackgroundMusic];
@@ -211,13 +215,22 @@
 
     }
     
+    if(self.hunter){
+        [self.hunter update];
+    }
+    
     self.starTimer -= 1/currentTime * 10;
-    NSLog(@"%g", self.starTimer);
+  //  NSLog(@"%g", self.starTimer);
     
     if (self.starTimer <= 0) {
         ShootingStar *star = [[ShootingStar alloc] initWithScene:self];
         [self addChild:star];
         self.starTimer = arc4random() % 2 + 2;
+        Hunter *h = [[Hunter alloc]initWithPlayer:self.player]; //Random Player
+        self.hunter = h;
+        [self addChild:self.hunter];
+        [self.hunter setRandomPosition];
+        
     }
         
 }
