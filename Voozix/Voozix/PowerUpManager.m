@@ -117,7 +117,7 @@ typedef enum  {
     [self.powerUps addObject:powerUp];
     
     //Critical, better by receiving an Event
-    [NSTimer scheduledTimerWithTimeInterval:4.0 target:self selector:@selector(deletePowerUp:) userInfo:powerUp repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:3.8 target:self selector:@selector(deletePowerUp:) userInfo:powerUp repeats:NO];
 }
 
 - (NSMutableArray*)powerUps
