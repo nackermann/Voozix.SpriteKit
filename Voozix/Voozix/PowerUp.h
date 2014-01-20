@@ -12,7 +12,7 @@
 #import "ObjectCategories.h"
 
 @interface PowerUp : SKSpriteNode   // Base Class
-@property NSNumber* spawnChance;
+
 - (void)didBeginContactWith:(id)object;
 - (void)update;
 - (void)changePosition;

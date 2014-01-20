@@ -15,7 +15,7 @@
 
 @interface PowerUpManager()
 @property (nonatomic, strong) SKScene *myScene;
-@property(nonatomic, strong) NSArray *prefabContainer;
+
 @end
 
 @implementation PowerUpManager
@@ -25,10 +25,7 @@
     self = [super init];
     self.myScene = scene;
     
-    self.prefabContainer = [[NSArray alloc] initWithObjects: [[Speedboost alloc] init],
-                                                             [[Tinier alloc] init],
-                                                             [[Scoreboost alloc] init],
-                                                             [[Immortal alloc] init], nil];
+    
     
     // Creates PowerUps in the given TimeInterval
     [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(createPowerUp:) userInfo:nil repeats:YES];
@@ -43,16 +40,16 @@
     
     powerUp = [[Scoreboost alloc] init];
     
-    // TODO: Put this into a loop and interate through our powerups until we find the right one
-    if ([NSNumber numberWithUnsignedInt:randomNumber] >= [[self.prefabContainer objectAtIndex:0] spawnChance])
+    // TODO Manuel, use objects chance to spawn
+    if (randomNumber >= 80)
     {
         powerUp = [[Speedboost alloc] init];
     }
-    if ([NSNumber numberWithUnsignedInt:randomNumber] >= [[self.prefabContainer objectAtIndex:1] spawnChance])
+    else if (randomNumber >= 60)
     {
         powerUp = [[Tinier alloc] init];
     }
-    if ([NSNumber numberWithUnsignedInt:randomNumber] >= [[self.prefabContainer objectAtIndex:2] spawnChance])
+    else if (randomNumber >= 40)
     {
         powerUp = [[Scoreboost alloc] init]; // TODO no Score boost in early game !
     }

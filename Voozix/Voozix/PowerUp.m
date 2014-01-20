@@ -30,14 +30,6 @@
     return self;
 }
 
-- (NSNumber*)spawnChance
-{
-	if (_spawnChance == nil) {
-		_spawnChance = [NSNumber numberWithInt:0];
-	}
-	return _spawnChance;
-}
-
 - (void)didBeginContactWith:(id)object
 {
     [self removeFromParent];
