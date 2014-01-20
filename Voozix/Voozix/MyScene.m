@@ -17,6 +17,8 @@
 #import "GameOverScene.h"
 #import "PowerUpManager.h"
 #import "ShootingStar.h"
+#import "Hunter.h"
+
 
 @interface MyScene()
 @property (nonatomic, strong) HUDManager *HUDManager;
@@ -26,10 +28,12 @@
 @property (nonatomic, strong) PowerUpManager *powerUpManager;
 @property (nonatomic, strong) SKLabelNode *gameOverMessage;
 
+@property (nonatomic, strong)NSDictionary *enemyPlayers;
+
 @property (nonatomic, weak) Player *player;
 @property (nonatomic, weak) Star *star;
 @property (nonatomic) float starTimer;
-
+@property (nonatomic, weak) Hunter *hunter;
 @end
 
 @implementation MyScene
@@ -66,6 +70,8 @@
         [self addChild:self.soundManager];
         
         self.starTimer = arc4random() % 2 + 2;
+        
+
         
         // Currently disabled, music not stopping when changing to a scene, no solution found yet
         [self.soundManager playBackgroundMusic];
@@ -170,6 +176,16 @@
     return _player;
 }
 
+-(NSDictionary *)enemyPlayers
+{
+    if(!_enemyPlayers){
+        NSMutableDictionary *enemysDict= [[NSMutableDictionary alloc]init];
+        [enemysDict setObject:self.player forKey:self.player.name];
+        _enemyPlayers = enemysDict;
+    }
+    return _enemyPlayers;
+}
+
 /**
  * @brief Returns the current star object the player has to collect. There's only one - always!
  * @details [long description]
@@ -184,10 +200,18 @@
         Star *myStar = [[Star alloc] init];
         [self addChild:myStar];
         [myStar changePosition];
+
+        
         while (sqrt(pow(self.player.position.x - myStar.position.x, 2)+ pow(self.player.position.y - myStar.position.y, 2)) < 300) {
             [myStar changePosition];
         }
         _star = myStar;
+        
+        
+        if(self.hunter){
+            [self.hunter removeFromParent];
+        }
+        
     }
     return _star;
 }
@@ -210,16 +234,41 @@
         [self gameOver];
 
     }
-    
     self.starTimer -= 1/currentTime * 10;
     NSLog(@"%g", self.starTimer);
+    
+    //Uncomment on Merge with Master
+    if(self.starTimer <= ((arc4random() %4)+1)  && arc4random()%100 > 50 && !self.hunter /*&& (![PeerToPeerManager sharedInstance].isMatchActive || ( [PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstace].isHost */){
+        
+        NSArray *allPlayers = [self.enemyPlayers allKeys];
+        NSString *choosenPlayerID = [allPlayers objectAtIndex: (arc4random()%[allPlayers count]) ];
+        Player * choosenPlayer = [self.enemyPlayers objectForKey:choosenPlayerID];
+        
+        Hunter *h = [[Hunter alloc]initWithPlayer:choosenPlayer]; //Random Player
+        self.hunter = h;
+        [self addChild:_hunter];
+        [self.hunter setRandomPosition];
+        
+        /*Uncomment on Merge with MAster must modify a bit the Message.h
+         if([PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstance].isHost){
+         Message *m = [[Message alloc]init];
+         m.position = _hunter.position;
+         m.Arguments = [NSArray arrayWithObject:choosenPlayer];
+         [[PeerToPeerManager sharedInstance] sendMessage:m];
+         }
+         */
+        
+    }else if(self.hunter){
+        [self.hunter update];
+    }
     
     if (self.starTimer <= 0) {
         ShootingStar *star = [[ShootingStar alloc] initWithScene:self];
         [self addChild:star];
         self.starTimer = arc4random() % 2 + 2;
-    }
         
+    }
+    
 }
 
 - (void)gameOver {
