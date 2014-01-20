@@ -79,6 +79,7 @@ typedef enum  {
     
     if([PeerToPeerManager sharedInstance].isMatchActive){
         Message *m = [[Message alloc] init];
+        m.messageType =PowerUpSpawned;
         m.position = powerUp.position;
     
         m.args = [NSArray arrayWithObject:[NSNumber numberWithInt:type]];
