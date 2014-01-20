@@ -290,7 +290,6 @@
                 [[PeerToPeerManager sharedInstance] sendMessage:m];
             }
             
-            
             [self addChild:star];
             self.starTimer = arc4random() % 2 + 2;
         }
@@ -380,7 +379,7 @@
             //How to remove it?!
             break;
         case PowerUpSpawned:
-            //Spawn PowerUps
+            [self.powerUpManager createPowerUpWithMessage:message];
             break;
         case PowerUpCollected:
             //Remove PowerUp
