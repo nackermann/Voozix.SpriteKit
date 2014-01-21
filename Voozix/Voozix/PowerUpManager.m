@@ -25,10 +25,26 @@ typedef enum  {
 
 @interface PowerUpManager()
 @property (nonatomic, strong) SKScene *myScene;
+@property (nonatomic, strong) NSArray *powerUpTypes;
+@property (nonatomic, strong) NSNumber *cumulativeChanceToSpawn;
 
 @end
 
 @implementation PowerUpManager
+
+// part of the dynamic roulett wheel selection
+- (NSNumber*)cumulativeChanceToSpawn
+{
+    if (_cumulativeChanceToSpawn == nil) {
+        unsigned int temp = 0;
+        for (PowerUp *powerUpType in self.powerUpTypes) {
+            
+            temp += [[[powerUpType class] chanceToSpawn] intValue];
+        }
+        _cumulativeChanceToSpawn = [NSNumber numberWithInt:temp];
+    }
+    return _cumulativeChanceToSpawn;
+}
 
 - (id)initWithScene:(SKScene *)scene
 {
@@ -44,33 +60,39 @@ typedef enum  {
 
 - (void)createPowerUp:(NSTimer*)theTimer
 {
-    u_int32_t randomNumber = arc4random() % 101; // number 0-100 for rouletteWheelSelection
+    // dynamic roulett wheel selection
+    
     PowerUp *powerUp;
     
-    powerUp = [[Scoreboost alloc] init];
+    u_int32_t randomNumber = arc4random() % [self.cumulativeChanceToSpawn intValue]; // number 0-100 for rouletteWheelSelection
     int type;
-    
-    // TODO Manuel, use objects chance to spawn
-    if (randomNumber >= 80)
-    {
-        powerUp = [[Speedboost alloc] init];
-        type = SpeedboostPowerUp;
-    
-    }
-    else if (randomNumber >= 60)
-    {
-        powerUp = [[Tinier alloc] init];
-        type =TinierPowerUp;
-    }
-    else if (randomNumber >= 40)
-    {
-        powerUp = [[Scoreboost alloc] init]; // TODO no Score boost in early game !
-        type =ScoreboostPowerUp;
-    }
-    else
-    {
-        powerUp = [[Immortal alloc] init];
-        type =ImmortalPowerUp;
+    int temp = 0;
+    for (PowerUp *powerUpType in self.powerUpTypes) {
+        temp += [[[powerUpType class] chanceToSpawn] intValue];
+        if (temp > randomNumber) {
+            powerUp = [[[powerUpType class] alloc] init];
+            if ([powerUp isKindOfClass:[Speedboost class]])
+            {
+                type = SpeedboostPowerUp;
+            }
+            else if ([powerUp isKindOfClass:[Tinier class]])
+            {
+                type = TinierPowerUp;
+            }
+            else if ([powerUp isKindOfClass:[Scoreboost class]])
+            {
+                type = ScoreboostPowerUp;
+            }
+            else if ([powerUp isKindOfClass:[Scoreboost class]])
+            {
+                type = ImmortalPowerUp;
+            }
+            else
+            {
+                NSLog(@"undefinied behavior, check this in powerupmanager.m");
+            }
+            break;
+        }
     }
     powerUp.name = @"PowerUp"; //Give it an identifier! 
     [self.myScene addChild:powerUp];
@@ -119,6 +141,17 @@ typedef enum  {
     
     //Critical, better by receiving an Event
     [NSTimer scheduledTimerWithTimeInterval:3.8 target:self selector:@selector(deletePowerUp:) userInfo:powerUp repeats:NO];
+}
+
+- (NSArray*)powerUpTypes
+{
+    if (_powerUpTypes == nil) {
+        _powerUpTypes = [NSArray arrayWithObjects:  [Speedboost class],
+                                                    [Scoreboost class],
+                                                    [Immortal class],
+                                                    [Tinier class],nil];
+    }
+    return _powerUpTypes;
 }
 
 - (NSMutableArray*)powerUps

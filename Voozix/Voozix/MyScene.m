@@ -295,7 +295,6 @@
         }
         
     }
-    
     if(!self.star.parent)
     {
         if(([PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstance].waitForPeers == 0 && [PeerToPeerManager sharedInstance].isHost) ||

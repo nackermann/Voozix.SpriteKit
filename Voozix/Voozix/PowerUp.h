@@ -17,4 +17,6 @@
 - (void)update;
 - (void)changePosition;
 
++ (NSNumber*)chanceToSpawn;
+
 @end

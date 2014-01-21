@@ -11,6 +11,5 @@
 #import "PowerUp.h"
 
 @interface Speedboost : PowerUp
-@property (nonatomic,strong) NSNumber *chanceToSpawn;
 
 @end
