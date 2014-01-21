@@ -21,6 +21,9 @@ typedef enum  {
     PowerUpSpawned,
     PowerUpCollected,
     EnemyBallSpawned,
+    HunterSpawned,
+    HunterMoved,
+    HunterDespawned,
 } MessageType;
 
 @interface Message : NSObject

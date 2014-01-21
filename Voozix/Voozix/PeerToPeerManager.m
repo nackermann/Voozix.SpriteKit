@@ -40,7 +40,7 @@
         //   NSString *deviceID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
         NSString *deviceName = [[UIDevice currentDevice] name];
         
-        _peerID = [[MCPeerID alloc] initWithDisplayName: deviceName];
+        _peerID = [[MCPeerID alloc] initWithDisplayName: deviceName];  //If you change it, you have to change it also in the MyScene!
     }
     return _peerID;
 }

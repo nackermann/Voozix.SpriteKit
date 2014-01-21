@@ -19,6 +19,7 @@
 #import "ShootingStar.h"
 #import "Message.h"
 #import "PeerToPeerManager.h"
+#import "Hunter.h"
 
 
 @interface MyScene()
@@ -29,8 +30,8 @@
 @property (nonatomic, strong) PowerUpManager *powerUpManager;
 @property (nonatomic, strong) SKLabelNode *gameOverMessage;
 
-@property (nonatomic, strong) NSDictionary *allPlayers;
-
+@property (nonatomic, strong) NSMutableDictionary *allPlayers;
+@property (nonatomic, weak) Hunter *hunter;
 @property (nonatomic, weak) Player *player; //Also in the Dictonary
 @property (nonatomic, strong) Star *star;
 @property (nonatomic) float starTimer;
@@ -101,6 +102,10 @@
             self.allPlayers = playerDict;
         }
         
+        Hunter *h = [[Hunter alloc]initWithPlayer:self.player]; //Random Player
+        self.hunter = h;
+        [self addChild:self.hunter];
+        [self.hunter setRandomPosition];
         
         
         // Currently disabled, music not stopping when changing to a scene, no solution found yet
@@ -210,6 +215,14 @@
     return _soundManager;
 }
 
+-(NSMutableDictionary *)allPlayers
+{
+    if(!_allPlayers){
+        _allPlayers = [NSMutableDictionary dictionary];
+    }
+    return _allPlayers;
+}
+
 /**
  * @brief Returns the real player object (the one the player is controlling)
  * @details [long description]
@@ -224,7 +237,7 @@
         [self addChild:myPlayer];
         _player = myPlayer;
         
-        [self.allPlayers setValue:_player forKey: [[[UIDevice currentDevice] identifierForVendor] UUIDString]];
+        [self.allPlayers setObject:_player forKey: [[UIDevice currentDevice] name]]; //Probably change it to an UID, See Peer2PeerManager
         
     }
     return _player;
@@ -249,6 +262,18 @@
             do {
                 [myStar changePosition];
             }while (sqrt(pow(self.player.position.x - myStar.position.x, 2)+ pow(self.player.position.y - myStar.position.y, 2)) < 300);
+            
+            if(self.hunter){
+                [self.hunter removeFromParent];
+                self.hunter = nil;
+                
+                if([PeerToPeerManager sharedInstance].isMatchActive){
+                    Message *m = [[Message alloc]init];
+                    m.messageType = HunterDespawned;
+                    [[PeerToPeerManager sharedInstance] sendMessage:m];
+                }
+                
+            }
             
         }
         _star = myStar;
@@ -275,8 +300,33 @@
         [self.HUDManager update];
         
         self.starTimer -= 1/currentTime * 10;
-       // NSLog(@"%g", self.starTimer);
+        // NSLog(@"%g", self.starTimer);
         
+        
+        
+        if(self.starTimer <= 2  && arc4random()%100 > 50 && !self.hunter){
+            
+            NSArray *allPlayersArr = [self.allPlayers allKeys];
+            if(allPlayersArr){
+                NSString *choosenPlayerID = [allPlayersArr objectAtIndex: (arc4random()%[allPlayersArr count]) ];
+                Player * choosenPlayer = [self.allPlayers objectForKey:choosenPlayerID];
+                
+                Hunter *h = [[Hunter alloc]initWithPlayer:choosenPlayer]; //Random Player
+                self.hunter = h;
+                [self addChild:self.hunter];
+                [self.hunter setRandomPosition];
+                
+            
+                if([PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstance].isHost){
+                    Message *m = [[Message alloc]init];
+                    m.messageType = HunterSpawned;
+                    m.position = _hunter.position;
+                    m.args = [NSArray arrayWithObject:choosenPlayer];
+                    [[PeerToPeerManager sharedInstance] sendMessage:m];
+                }
+            }
+            
+        }
         if (self.starTimer <= 0) {
             ShootingStar *star = [[ShootingStar alloc] initWithScene:self];
             
@@ -295,6 +345,7 @@
         }
         
     }
+    
     if(!self.star.parent)
     {
         if(([PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstance].waitForPeers == 0 && [PeerToPeerManager sharedInstance].isHost) ||
@@ -315,6 +366,10 @@
             }
             
         }
+    }
+    
+    if(self.hunter){
+        [self.hunter update];  //Maybe better only on Host and send events
     }
     
     if (self.player.dead && ( ([PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstance].isHost) || ![PeerToPeerManager sharedInstance].isMatchActive) ){
@@ -373,7 +428,6 @@
             [self addChild:star];
             break;
         }
-            
         case ShootingStarCollected:
             //How to remove it?!
             break;
@@ -385,6 +439,23 @@
             break;
         case EnemyBallSpawned:
             [self.enemyManager createEnemyWithMessage:message];
+        case HunterSpawned:
+        {
+            Player *choosenPlayer = [self.allPlayers objectForKey: [message.args objectAtIndex:0]];
+            Hunter *h = [[Hunter alloc]initWithPlayer:choosenPlayer];
+            self.hunter = h;
+            self.hunter.position = message.position;
+            [self addChild:self.hunter];
+        }break;
+            
+        case HunterMoved:
+            break;
+        case HunterDespawned:
+            if(self.hunter && self.hunter.parent){
+                [self.hunter removeFromParent];
+                self.hunter = nil;
+            }
+            break;
         default:
             NSLog(@"Undefined Message %i from %@", message.messageType, playerID);
             break;

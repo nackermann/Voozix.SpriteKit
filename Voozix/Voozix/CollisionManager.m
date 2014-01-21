@@ -122,10 +122,10 @@
         [self.soundManager playSound:EXPLOSION_SOUND];
         
         Player *player = (Player *)firstBody.node;
-        EnemyBall *enemyBall = (EnemyBall *)secondBody.node;
+        
+          [player didBeginContactWith:secondBody.node];
         
         // Notify objects
-        [player didBeginContactWith:enemyBall];
         
         // Notify managers
         //[self.enemyManager removeAllEnemies]; // scene does this for us? if not check for memoy leaks

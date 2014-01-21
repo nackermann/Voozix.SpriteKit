@@ -14,6 +14,7 @@
 #import "ShootingStar.h"
 #import "Message.h"
 #import "PeerToPeerManager.h"
+#import "Hunter.h"
 
 static const int PLAYER_SPEED = 300;
 
@@ -192,7 +193,7 @@ static const int PLAYER_SPEED = 300;
         }
         self.starCount = [NSNumber numberWithInt:[self.score intValue]+1];
 	}
-	else if ([object isKindOfClass:[EnemyBall class]] && self.immortal == NO)
+	else if (([object isKindOfClass:[EnemyBall class]] || [object isKindOfClass:[Hunter class]] )&& self.immortal == NO)
 	{
         self.dead = YES;
         self.physicsBody.velocity = CGVectorMake(0, 0);
