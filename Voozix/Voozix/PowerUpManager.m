@@ -113,7 +113,7 @@ typedef enum  {
             break;
     }
     powerUp.position = message.position;
-    powerUp.name = [m.args objectAtIndex:0];
+    powerUp.name = [message.args objectAtIndex:0];
     [self.myScene addChild:powerUp];
     [self.powerUps addObject:powerUp];
     
