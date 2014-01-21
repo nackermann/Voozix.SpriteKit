@@ -8,7 +8,7 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "Message.h"
-
+#import "PowerUp.h"
 /**
  * @class PowerUpManager
  *
@@ -22,6 +22,8 @@
 //- (void)createPowerUp:(id)powerUpType;
 -(void)update;
 -(void)createPowerUpWithMessage:(Message *)message;
--(void)removePowerUpWithMessage:(Message *)message;
+-(PowerUp *)removePowerUpWithMessage:(Message *)message;
 -(void)removePowerUpWithName:(NSString *)name;
+
+
 @end

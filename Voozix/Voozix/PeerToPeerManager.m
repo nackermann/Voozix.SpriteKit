@@ -74,6 +74,7 @@ static PeerToPeerManager *sharedPeerToPeerManager = nil;
     
     self.delegate = delegate;
     [self.advertiser start];
+    self.isHost = NO;
     self.advertiserIsAdvertising = YES;
     
 }

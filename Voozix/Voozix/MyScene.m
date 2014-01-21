@@ -255,13 +255,22 @@
     if (!_star) {
         
         Star *myStar = [[Star alloc] init];
-        if([PeerToPeerManager sharedInstance].isHost || ![PeerToPeerManager sharedInstance].isMatchActive)
+        if( ([PeerToPeerManager sharedInstance].isHost && [PeerToPeerManager sharedInstance].isMatchActive) || ![PeerToPeerManager sharedInstance].isMatchActive)
         {
             [self addChild:myStar];
+            
             
             do {
                 [myStar changePosition];
             }while (sqrt(pow(self.player.position.x - myStar.position.x, 2)+ pow(self.player.position.y - myStar.position.y, 2)) < 300);
+            
+            if([PeerToPeerManager sharedInstance].isMatchActive)
+            {
+                Message *m = [[Message alloc] init];
+                m.messageType = StarSpawned;
+                m.position = myStar.position;
+                [[PeerToPeerManager sharedInstance] sendMessage:m];
+            }
             
             if(self.hunter){
                 [self.hunter removeFromParent];
@@ -275,6 +284,8 @@
                 
             }
             
+
+
         }
         _star = myStar;
     }
@@ -300,10 +311,7 @@
         [self.HUDManager update];
         
         self.starTimer -= 1/currentTime * 10;
-        // NSLog(@"%g", self.starTimer);
-        
-        
-        
+
         if(self.starTimer <= 2  && arc4random()%100 > 50 && !self.hunter){
             
             NSArray *allPlayersArr = [self.allPlayers allKeys];
@@ -434,9 +442,17 @@
         case PowerUpSpawned:
             [self.powerUpManager createPowerUpWithMessage:message];
             break;
-        case PowerUpCollected:
-            [self.powerUpManager removePowerUpWithMessage:message];
+        case PowerUpCollected:{
+            PowerUp *p =[self.powerUpManager removePowerUpWithMessage:message];
+            NSString *playerID =[message.args objectAtIndex:1];
+            if(playerID){
+                Player *pl = [self.allPlayers objectForKey: playerID];
+                [pl didBeginContactWith:p];
+                [p didBeginContactWith:pl];
+            }
             break;
+        }
+            
         case EnemyBallSpawned:
             [self.enemyManager createEnemyWithMessage:message];
         case HunterSpawned:

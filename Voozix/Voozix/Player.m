@@ -113,16 +113,20 @@ static const int PLAYER_SPEED = 300;
  */
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	
-	[self.playerController touchesBegan:touches withEvent:event];
-    CGVector joystickVelocity = [self.playerController getJoystickVelocity];
-	self.physicsBody.velocity = CGVectorMake(joystickVelocity.dx * self.playerSpeed, joystickVelocity.dy * self.playerSpeed);
-    
-    if([PeerToPeerManager sharedInstance].isMatchActive)
-    {
-        Message *m = [[Message alloc] init];
-        m.messageType = playerMoved;
-        m.velocity = self.physicsBody.velocity;
-        [[PeerToPeerManager sharedInstance] sendMessage:m];
+    if (([PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstance].waitForPeers == 0)
+        ||![PeerToPeerManager sharedInstance].isMatchActive) {
+        
+        [self.playerController touchesBegan:touches withEvent:event];
+        CGVector joystickVelocity = [self.playerController getJoystickVelocity];
+        self.physicsBody.velocity = CGVectorMake(joystickVelocity.dx * self.playerSpeed, joystickVelocity.dy * self.playerSpeed);
+        
+        if([PeerToPeerManager sharedInstance].isMatchActive)
+        {
+            Message *m = [[Message alloc] init];
+            m.messageType = playerMoved;
+            m.velocity = self.physicsBody.velocity;
+            [[PeerToPeerManager sharedInstance] sendMessage:m];
+        }
     }
 	
 }
@@ -136,16 +140,20 @@ static const int PLAYER_SPEED = 300;
  */
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
 	
-	[self.playerController touchesMoved:touches withEvent:event];
-	CGVector joystickVelocity = [self.playerController getJoystickVelocity];
-	self.physicsBody.velocity = CGVectorMake(joystickVelocity.dx * self.playerSpeed, joystickVelocity.dy * self.playerSpeed);
-    
-    if([PeerToPeerManager sharedInstance].isMatchActive)
-    {
-        Message *m = [[Message alloc] init];
-        m.messageType = playerMoved;
-        m.velocity = self.physicsBody.velocity;
-        [[PeerToPeerManager sharedInstance] sendMessage:m];
+    if (([PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstance].waitForPeers == 0)
+        ||![PeerToPeerManager sharedInstance].isMatchActive) {
+        
+        [self.playerController touchesMoved:touches withEvent:event];
+        CGVector joystickVelocity = [self.playerController getJoystickVelocity];
+        self.physicsBody.velocity = CGVectorMake(joystickVelocity.dx * self.playerSpeed, joystickVelocity.dy * self.playerSpeed);
+        
+        if([PeerToPeerManager sharedInstance].isMatchActive)
+        {
+            Message *m = [[Message alloc] init];
+            m.messageType = playerMoved;
+            m.velocity = self.physicsBody.velocity;
+            [[PeerToPeerManager sharedInstance] sendMessage:m];
+        }
     }
     
 }
@@ -159,16 +167,19 @@ static const int PLAYER_SPEED = 300;
  */
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
 	
-	[self.playerController touchesEnded:touches withEvent:event];
-	CGVector joystickVelocity = [self.playerController getJoystickVelocity];
-	self.physicsBody.velocity = CGVectorMake(joystickVelocity.dx * self.playerSpeed, joystickVelocity.dy * self.playerSpeed);
-    
-    if([PeerToPeerManager sharedInstance].isMatchActive)
-    {
-        Message *m = [[Message alloc] init];
-        m.messageType = playerMoved;
-        m.velocity = self.physicsBody.velocity;
-        [[PeerToPeerManager sharedInstance] sendMessage:m];
+    if (([PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstance].waitForPeers == 0)
+        ||![PeerToPeerManager sharedInstance].isMatchActive) {
+        [self.playerController touchesEnded:touches withEvent:event];
+        CGVector joystickVelocity = [self.playerController getJoystickVelocity];
+        self.physicsBody.velocity = CGVectorMake(joystickVelocity.dx * self.playerSpeed, joystickVelocity.dy * self.playerSpeed);
+        
+        if([PeerToPeerManager sharedInstance].isMatchActive)
+        {
+            Message *m = [[Message alloc] init];
+            m.messageType = playerMoved;
+            m.velocity = self.physicsBody.velocity;
+            [[PeerToPeerManager sharedInstance] sendMessage:m];
+        }
     }
 }
 
