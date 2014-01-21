@@ -1,4 +1,0 @@
-[submodule "code"]
-	path = code
-	url = git@github.com:Bitbridge/Voozix.git
-	branch = master
