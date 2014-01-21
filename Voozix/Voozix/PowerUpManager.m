@@ -56,8 +56,8 @@ static NSTimeInterval powerUpLiveTime = 4;
     self.myScene = scene;
     
     if(![PeerToPeerManager sharedInstance].isMatchActive || ( [PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstance].isHost)){
-    // Creates PowerUps in the given TimeInterval
-       [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(createPowerUp:) userInfo:nil repeats:YES];
+        // Creates PowerUps in the given TimeInterval
+        [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(createPowerUp:) userInfo:nil repeats:YES];
         self.powerUpID = 0;
     }
     return self;
@@ -69,9 +69,13 @@ static NSTimeInterval powerUpLiveTime = 4;
     
     NSMutableDictionary *tmpPowerUps = [self.powerUps mutableCopy];
     NSDate *now = [[NSDate date] dateByAddingTimeInterval:powerUpLiveTime];
-    for(PowerUp *p in self.powerUps)
+    for(id powerUpID in self.powerUps)
     {
-        if([now compare:p.timeToLive] == NSOrderedAscending) [tmpPowerUps removeObjectForKey:p.name];
+        PowerUp *p = [self.powerUps objectForKey:powerUpID];
+        if([now compare:p.timeToLive] == NSOrderedDescending || [now compare:p.timeToLive] == NSOrderedSame){
+            [tmpPowerUps removeObjectForKey:p.name];
+            [p removeFromParent];
+        }
     }
     self.powerUps = tmpPowerUps;
     PowerUp *powerUp;
@@ -118,7 +122,7 @@ static NSTimeInterval powerUpLiveTime = 4;
         Message *m = [[Message alloc] init];
         m.messageType =PowerUpSpawned;
         m.position = powerUp.position;
-    
+        
         m.args = [NSArray arrayWithObject:[NSNumber numberWithInt:type]];
         [[PeerToPeerManager sharedInstance] sendMessage:m];
         
@@ -126,13 +130,13 @@ static NSTimeInterval powerUpLiveTime = 4;
     //NSString *powerUpName = powerUp.name;
     
     // Player has only limited time to collect the PowerUp
-   // [NSTimer scheduledTimerWithTimeInterval:4.0 target:self selector:@selector(deletePowerUp:) userInfo:powerUp.name repeats:NO];
+    // [NSTimer scheduledTimerWithTimeInterval:4.0 target:self selector:@selector(deletePowerUp:) userInfo:powerUp.name repeats:NO];
 }
 
 -(void)createPowerUpWithMessage:(Message *)message
 {
     PowerUp *powerUp;
-
+    
     int type = [[message.args objectAtIndex:0] intValue];
     switch (type) {
         case SpeedboostPowerUp:
@@ -168,9 +172,9 @@ static NSTimeInterval powerUpLiveTime = 4;
 {
     if (_powerUpTypes == nil) {
         _powerUpTypes = [NSArray arrayWithObjects:  [Speedboost class],
-                                                    [Scoreboost class],
-                                                    [Immortal class],
-                                                    [Tinier class],nil];
+                         [Scoreboost class],
+                         [Immortal class],
+                         [Tinier class],nil];
     }
     return _powerUpTypes;
 }
@@ -189,9 +193,22 @@ static NSTimeInterval powerUpLiveTime = 4;
 
 - (void)update
 {
-    for (PowerUp *powerUp in self.powerUps) {
-        [powerUp update];
+    /*
+     for (PowerUp *powerUp in self.powerUps) {
+     [powerUp update];
+     }*/
+    
+    for(id powerUpID in self.powerUps){
+        PowerUp * p= [self.powerUps objectForKey:powerUpID];
+        [p update];
     }
+    
+    /*
+     for(id key in myDict) {
+     id value = [myDict objectForKey:key];
+     [value doStuff];
+     }
+     */
 }
 
 - (void)deletePowerUp:(NSTimer*)theTimer
