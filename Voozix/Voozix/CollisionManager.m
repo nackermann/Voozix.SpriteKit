@@ -149,15 +149,15 @@
         {
             Message *m = [[Message alloc] init];
             m.messageType = PowerUpCollected;
-            m.args = [NSArray arrayWithObject:powerUp.name];
+            m.args = [NSArray arrayWithObjects:powerUp.name, player.name, nil];
             [[PeerToPeerManager sharedInstance] sendMessage:m];
         }
         
-        
-        
         [player didBeginContactWith:powerUp]; // does he need to be notified? check it !
-        
         [powerUp didBeginContactWith:player];
+        
+
+        
         [self.powerUpManager removePowerUpWithName:powerUp.name];
         
     }

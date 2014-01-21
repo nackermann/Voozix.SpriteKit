@@ -69,10 +69,22 @@ static NSTimeInterval powerUpLiveTime = 4;
     
     NSMutableDictionary *tmpPowerUps = [self.powerUps mutableCopy];
     NSDate *now = [[NSDate date] dateByAddingTimeInterval:powerUpLiveTime];
+    
+    
     for(id powerUpID in self.powerUps)
     {
         PowerUp *p = [self.powerUps objectForKey:powerUpID];
-        if([now compare:p.timeToLive] == NSOrderedDescending || [now compare:p.timeToLive] == NSOrderedSame){
+        if([now compare:p.timeToLive] == NSOrderedAscending || [now compare:p.timeToLive] == NSOrderedSame){
+            
+            
+            if([PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstance].isHost)
+            {
+                Message *m = [[Message alloc] init];
+                m.messageType = PowerUpCollected;
+                m.args = [NSArray arrayWithObjects:p.name,[NSNull null], nil ];
+                [[PeerToPeerManager sharedInstance] sendMessage:m];
+            }
+            
             [tmpPowerUps removeObjectForKey:p.name];
             [p removeFromParent];
         }
@@ -81,7 +93,7 @@ static NSTimeInterval powerUpLiveTime = 4;
     PowerUp *powerUp;
     
     u_int32_t randomNumber = arc4random() % [self.cumulativeChanceToSpawn intValue]; // number 0-100 for rouletteWheelSelection
-    int type = 0;
+    int type;
     int temp = 0;
     for (PowerUp *powerUpType in self.powerUpTypes) {
         temp += [[[powerUpType class] chanceToSpawn] intValue];
@@ -107,14 +119,13 @@ static NSTimeInterval powerUpLiveTime = 4;
             {
                 NSLog(@"undefinied behavior, check this in powerupmanager.m");
             }
-            NSLog(@"%d", type);
             break;
         }
     }
-    powerUp.name = [NSString stringWithFormat:@"powerUp %d", self.powerUpID]; //Give it an identifier!
-    NSLog(@"%@", powerUp.name);
+    NSString *powerUpID =[NSString stringWithFormat:@"powerUp %d", self.powerUpID]; //Give it an identifier!
+    powerUp.name = powerUpID;
     self.powerUpID++;
-    [self.powerUps setObject:powerUp forKey:powerUp.name];
+    [self.powerUps setObject:powerUp forKey:powerUpID];
     [self.myScene addChild:powerUp];
     [powerUp changePosition]; // only works after he is in his scene
     
@@ -123,7 +134,7 @@ static NSTimeInterval powerUpLiveTime = 4;
         m.messageType =PowerUpSpawned;
         m.position = powerUp.position;
         
-        m.args = [NSArray arrayWithObject:[NSNumber numberWithInt:type]];
+        m.args = [NSArray arrayWithObjects:[NSNumber numberWithInt:type], powerUpID, nil];
         [[PeerToPeerManager sharedInstance] sendMessage:m];
         
     }
@@ -155,17 +166,21 @@ static NSTimeInterval powerUpLiveTime = 4;
             break;
     }
     powerUp.position = message.position;
-    powerUp.name = [message.args objectAtIndex:0];
+    NSString *powerUpID =[message.args objectAtIndex:1];
+    powerUp.name = powerUpID;
     powerUp.timeToLive = [[NSDate date] dateByAddingTimeInterval:powerUpLiveTime];
     
     [self.myScene addChild:powerUp];
-    [self.powerUps setValue:powerUp forKey:powerUp.name];
-    
+    [self.powerUps setObject:powerUp forKey:powerUpID];
 }
 
--(void)removePowerUpWithMessage:(Message *)message
+-(PowerUp *)removePowerUpWithMessage:(Message *)message
 {
-    [self.powerUps removeObjectForKey:[message.args objectAtIndex:0]];
+    NSString *powerUpID =[message.args objectAtIndex:0];
+    PowerUp *p =[self.powerUps objectForKey:powerUpID];
+    [p removeFromParent];
+    [self.powerUps removeObjectForKey:powerUpID];
+    return p;
 }
 
 - (NSArray*)powerUpTypes
@@ -193,38 +208,10 @@ static NSTimeInterval powerUpLiveTime = 4;
 
 - (void)update
 {
-    /*
-     for (PowerUp *powerUp in self.powerUps) {
-     [powerUp update];
-     }*/
     
     for(id powerUpID in self.powerUps){
         PowerUp * p= [self.powerUps objectForKey:powerUpID];
         [p update];
-    }
-    
-    /*
-     for(id key in myDict) {
-     id value = [myDict objectForKey:key];
-     [value doStuff];
-     }
-     */
-}
-
-- (void)deletePowerUp:(NSTimer*)theTimer
-{
-    if (theTimer.userInfo) {                        // Maybe it's already collected, but function call with nil pointer doesn't matter anyway in objective-c
-        [theTimer.userInfo removeFromParent];
-        //PowerUp *powerUp = (PowerUp *)theTimer.userInfo;
-        [self.powerUps removeObjectForKey:theTimer.userInfo];
-        
-        if([PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstance].isHost)
-        {
-            Message *m = [[Message alloc] init];
-            m.messageType = PowerUpCollected;
-            m.args = [NSArray arrayWithObject:theTimer.userInfo];
-        }
-        
     }
 }
 
