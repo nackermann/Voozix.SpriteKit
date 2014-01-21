@@ -381,7 +381,7 @@
             [self.powerUpManager createPowerUpWithMessage:message];
             break;
         case PowerUpCollected:
-            //Remove PowerUp
+            [self.powerUpManager removePowerUpWithMessage:message];
             break;
         case EnemyBallSpawned:
             [self.enemyManager createEnemyWithMessage:message];

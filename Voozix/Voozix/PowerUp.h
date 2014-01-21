@@ -16,7 +16,7 @@
 - (void)didBeginContactWith:(id)object;
 - (void)update;
 - (void)changePosition;
-
+@property(nonatomic, strong)NSDate *timeToLive;
 + (NSNumber*)chanceToSpawn;
 
 @end

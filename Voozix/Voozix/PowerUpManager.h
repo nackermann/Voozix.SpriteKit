@@ -17,10 +17,11 @@
  * Detailed doc
  */
 @interface PowerUpManager : NSObject
-@property (nonatomic, strong) NSMutableArray *powerUps;
 
 - (id)initWithScene:(SKScene *)scene;
 //- (void)createPowerUp:(id)powerUpType;
-- (void)update;
+-(void)update;
 -(void)createPowerUpWithMessage:(Message *)message;
+-(void)removePowerUpWithMessage:(Message *)message;
+-(void)removePowerUpWithName:(NSString *)name;
 @end

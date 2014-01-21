@@ -23,11 +23,15 @@ typedef enum  {
     ImmortalPowerUp,
 } PowerUpType;
 
+static NSTimeInterval powerUpLiveTime = 4;
+
 @interface PowerUpManager()
 @property (nonatomic, strong) SKScene *myScene;
 @property (nonatomic, strong) NSArray *powerUpTypes;
 @property (nonatomic, strong) NSNumber *cumulativeChanceToSpawn;
+@property (nonatomic)int powerUpID;
 
+@property (nonatomic, strong) NSMutableDictionary *powerUps;
 @end
 
 @implementation PowerUpManager
@@ -53,7 +57,8 @@ typedef enum  {
     
     if(![PeerToPeerManager sharedInstance].isMatchActive || ( [PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstance].isHost)){
     // Creates PowerUps in the given TimeInterval
-        [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(createPowerUp:) userInfo:nil repeats:YES];
+       [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(createPowerUp:) userInfo:nil repeats:YES];
+        self.powerUpID = 0;
     }
     return self;
 }
@@ -62,10 +67,17 @@ typedef enum  {
 {
     // dynamic roulett wheel selection
     
+    NSMutableDictionary *tmpPowerUps = [self.powerUps mutableCopy];
+    NSDate *now = [[NSDate date] dateByAddingTimeInterval:powerUpLiveTime];
+    for(PowerUp *p in self.powerUps)
+    {
+        if([now compare:p.timeToLive] == NSOrderedAscending) [tmpPowerUps removeObjectForKey:p.name];
+    }
+    self.powerUps = tmpPowerUps;
     PowerUp *powerUp;
     
     u_int32_t randomNumber = arc4random() % [self.cumulativeChanceToSpawn intValue]; // number 0-100 for rouletteWheelSelection
-    int type;
+    int type = 0;
     int temp = 0;
     for (PowerUp *powerUpType in self.powerUpTypes) {
         temp += [[[powerUpType class] chanceToSpawn] intValue];
@@ -83,7 +95,7 @@ typedef enum  {
             {
                 type = ScoreboostPowerUp;
             }
-            else if ([powerUp isKindOfClass:[Scoreboost class]])
+            else if ([powerUp isKindOfClass:[Immortal class]])
             {
                 type = ImmortalPowerUp;
             }
@@ -91,12 +103,15 @@ typedef enum  {
             {
                 NSLog(@"undefinied behavior, check this in powerupmanager.m");
             }
+            NSLog(@"%d", type);
             break;
         }
     }
-    powerUp.name = @"PowerUp"; //Give it an identifier! 
+    powerUp.name = [NSString stringWithFormat:@"powerUp %d", self.powerUpID]; //Give it an identifier!
+    NSLog(@"%@", powerUp.name);
+    self.powerUpID++;
+    [self.powerUps setObject:powerUp forKey:powerUp.name];
     [self.myScene addChild:powerUp];
-    [self.powerUps addObject:powerUp];
     [powerUp changePosition]; // only works after he is in his scene
     
     if([PeerToPeerManager sharedInstance].isMatchActive){
@@ -108,9 +123,10 @@ typedef enum  {
         [[PeerToPeerManager sharedInstance] sendMessage:m];
         
     }
+    //NSString *powerUpName = powerUp.name;
     
     // Player has only limited time to collect the PowerUp
-    [NSTimer scheduledTimerWithTimeInterval:4.0 target:self selector:@selector(deletePowerUp:) userInfo:powerUp repeats:NO];
+   // [NSTimer scheduledTimerWithTimeInterval:4.0 target:self selector:@selector(deletePowerUp:) userInfo:powerUp.name repeats:NO];
 }
 
 -(void)createPowerUpWithMessage:(Message *)message
@@ -136,11 +152,16 @@ typedef enum  {
     }
     powerUp.position = message.position;
     powerUp.name = [message.args objectAtIndex:0];
-    [self.myScene addChild:powerUp];
-    [self.powerUps addObject:powerUp];
+    powerUp.timeToLive = [[NSDate date] dateByAddingTimeInterval:powerUpLiveTime];
     
-    //Critical, better by receiving an Event
-    [NSTimer scheduledTimerWithTimeInterval:3.8 target:self selector:@selector(deletePowerUp:) userInfo:powerUp repeats:NO];
+    [self.myScene addChild:powerUp];
+    [self.powerUps setValue:powerUp forKey:powerUp.name];
+    
+}
+
+-(void)removePowerUpWithMessage:(Message *)message
+{
+    [self.powerUps removeObjectForKey:[message.args objectAtIndex:0]];
 }
 
 - (NSArray*)powerUpTypes
@@ -154,10 +175,14 @@ typedef enum  {
     return _powerUpTypes;
 }
 
-- (NSMutableArray*)powerUps
+-(void)removePowerUpWithName:(NSString *)name
+{
+    [self.powerUps removeObjectForKey:name];
+}
+- (NSMutableDictionary*)powerUps
 {
     if (!_powerUps) {
-        _powerUps = [[NSMutableArray alloc] init];
+        _powerUps = [[NSMutableDictionary alloc] init];
     }
     return _powerUps;
 }
@@ -173,7 +198,16 @@ typedef enum  {
 {
     if (theTimer.userInfo) {                        // Maybe it's already collected, but function call with nil pointer doesn't matter anyway in objective-c
         [theTimer.userInfo removeFromParent];
-        [self.powerUps removeObject:theTimer.userInfo];
+        //PowerUp *powerUp = (PowerUp *)theTimer.userInfo;
+        [self.powerUps removeObjectForKey:theTimer.userInfo];
+        
+        if([PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstance].isHost)
+        {
+            Message *m = [[Message alloc] init];
+            m.messageType = PowerUpCollected;
+            m.args = [NSArray arrayWithObject:theTimer.userInfo];
+        }
+        
     }
 }
 

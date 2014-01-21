@@ -158,7 +158,7 @@
         [player didBeginContactWith:powerUp]; // does he need to be notified? check it !
         
         [powerUp didBeginContactWith:player];
-        [self.powerUpManager.powerUps removeObject:powerUp];
+        [self.powerUpManager removePowerUpWithName:powerUp.name];
         
     }
     else
