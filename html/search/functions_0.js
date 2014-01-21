@@ -1,5 +1,5 @@
 var searchData=
 [
   ['changeposition',['changePosition',['../interface_star.html#ae39e8cc7d8e8b315937169b3363c5c19',1,'Star']]],
-  ['createenemy',['createEnemy',['../interface_enemy_manager.html#acc8ce6c15754a5a1041614ffdd3f40d9',1,'EnemyManager']]]
+  ['createenemywithplayerpostion_3a',['createEnemyWithPlayerPostion:',['../interface_enemy_manager.html#a5129cbbd0f2169958e49925133450970',1,'EnemyManager']]]
 ];

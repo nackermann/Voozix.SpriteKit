@@ -24,7 +24,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Voozix
-   &#160;<span id="projectnumber">Sprint 3</span>
+   &#160;<span id="projectnumber">Sprint 4</span>
    </div>
    <div id="projectbrief">2D iOS SpriteKit game: Collect stars and try to survive as long as possible!</div>
   </td>
@@ -100,19 +100,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#import &lt;SpriteKit/SpriteKit.h&gt;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#import &quot;Player.h&quot;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="interface_power_up.html">   13</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="interface_power_up.html">PowerUp</a> : SKSpriteNode   <span class="comment">// Base Class</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;- (void)didBeginContactWith:(<span class="keywordtype">id</span>)object;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;- (void)update;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;- (void)changePosition;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">@end</span></div>
-<div class="ttc" id="interface_power_up_html"><div class="ttname"><a href="interface_power_up.html">PowerUp</a></div><div class="ttdef"><b>Definition:</b> PowerUp.h:13</div></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#import &quot;ObjectCategories.h&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="interface_power_up.html">   14</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="interface_power_up.html">PowerUp</a> : SKSpriteNode   <span class="comment">// Base Class</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;- (void)didBeginContactWith:(<span class="keywordtype">id</span>)object;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;- (void)update;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;- (void)changePosition;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;+ (NSNumber*)chanceToSpawn;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">@end</span></div>
+<div class="ttc" id="interface_power_up_html"><div class="ttname"><a href="interface_power_up.html">PowerUp</a></div><div class="ttdef"><b>Definition:</b> PowerUp.h:14</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jan 16 2014 18:27:49 for Voozix by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jan 21 2014 22:33:37 for Voozix by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
