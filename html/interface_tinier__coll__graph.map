@@ -1,3 +1,3 @@
 <map id="Tinier" name="Tinier">
-<area shape="rect" id="node2" href="$interface_power_up.html" title="PowerUp" alt="" coords="21,83,107,111"/>
+<area shape="rect" id="node2" href="$interface_power_up.html" title="{PowerUp\n||+ didBeginContactWith:\l+ update\l+ changePosition\l+ chanceToSpawn\l}" alt="" coords="5,137,195,266"/>
 </map>
