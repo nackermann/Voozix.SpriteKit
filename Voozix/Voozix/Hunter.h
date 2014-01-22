@@ -7,7 +7,6 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-#import "Player.h"
 
 /**
  * @class Hunter
@@ -17,8 +16,4 @@
  * Detailed doc
  */
 @interface Hunter : SKSpriteNode
--(id)initWithPlayer:(Player *)player AndPosition:(CGPoint)position;
--(id)initWithPlayer:(Player *)player;
--(void)setRandomPosition;
--(void)update;
 @end
