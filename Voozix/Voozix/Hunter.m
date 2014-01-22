@@ -10,7 +10,7 @@
 #import "ObjectCategories.h"
 
 
-static const float relativeSpeedToPlayer = 0.65;
+static const float relativeSpeedToPlayer = 0.5;
 
 @interface Hunter()
 @property (nonatomic, weak)Player *followingPlayer;

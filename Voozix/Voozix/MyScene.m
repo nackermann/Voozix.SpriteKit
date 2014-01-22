@@ -102,12 +102,6 @@
             self.allPlayers = playerDict;
         }
         
-        Hunter *h = [[Hunter alloc]initWithPlayer:self.player]; //Random Player
-        self.hunter = h;
-        [self addChild:self.hunter];
-        [self.hunter setRandomPosition];
-        
-        
         // Currently disabled, music not stopping when changing to a scene, no solution found yet
         [self.soundManager playBackgroundMusic];
         
@@ -272,19 +266,6 @@
                 [[PeerToPeerManager sharedInstance] sendMessage:m];
             }
             
-            if(self.hunter){
-                [self.hunter removeFromParent];
-                self.hunter = nil;
-                
-                if([PeerToPeerManager sharedInstance].isMatchActive){
-                    Message *m = [[Message alloc]init];
-                    m.messageType = HunterDespawned;
-                    [[PeerToPeerManager sharedInstance] sendMessage:m];
-                }
-                
-            }
-            
-
 
         }
         _star = myStar;
@@ -312,7 +293,7 @@
         
         self.starTimer -= 1/currentTime * 10;
 
-        if(self.starTimer <= 2  && arc4random()%100 > 50 && !self.hunter){
+        if(self.starTimer < (arc4random()%3)+1  && arc4random()%100 > 80 && !self.hunter){
             
             NSArray *allPlayersArr = [self.allPlayers allKeys];
             if(allPlayersArr){
@@ -371,6 +352,18 @@
                 m.messageType = StarSpawned;
                 m.position = self.star.position;
                 [[PeerToPeerManager sharedInstance] sendMessage:m];
+            }
+            
+            if(self.hunter){
+                [self.hunter removeFromParent];
+                self.hunter = nil;
+                
+                if([PeerToPeerManager sharedInstance].isMatchActive){
+                    Message *m = [[Message alloc]init];
+                    m.messageType = HunterDespawned;
+                    [[PeerToPeerManager sharedInstance] sendMessage:m];
+                }
+                
             }
             
         }
