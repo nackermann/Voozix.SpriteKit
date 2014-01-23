@@ -92,10 +92,10 @@
         {
             NSArray *peerNames = [[PeerToPeerManager sharedInstance] ConnectedPeers];
             NSMutableDictionary *playerDict = [NSMutableDictionary dictionary];
-            for(NSString *peerID in peerNames){
+            for(MCPeerID *peerID in peerNames){
                 Player *p = [[Player alloc]initWithHUDManager:self.HUDManager];
                 p.position = CGPointMake(50.f, 50.f);
-                p.name = peerID;
+                p.name = peerID.displayName;
                 p.peerID = peerID;
                 [playerDict setObject:p forKey:peerID];
                 [self addChild:p];
@@ -300,7 +300,7 @@
             NSArray *allPlayersArr = [self.allPlayers allKeys];
             if(allPlayersArr){
                 int index =(arc4random()%[allPlayersArr count]) ;
-                NSString *choosenPlayerID = [allPlayersArr objectAtIndex: index];
+                MCPeerID *choosenPlayerID = [allPlayersArr objectAtIndex: index];
                 Player * choosenPlayer = [self.allPlayers objectForKey:choosenPlayerID];
                 
                 Hunter *h = [[Hunter alloc]initWithPlayer:choosenPlayer]; //Random Player
@@ -427,7 +427,7 @@
             break;
         case PowerUpCollected:{
             PowerUp *p =[self.powerUpManager removePowerUpWithMessage:message];
-            NSString *playerID =[message.args objectAtIndex:1];
+            MCPeerID *playerID =[message.args objectAtIndex:1];
             if(playerID){
                 Player *pl = [self.allPlayers objectForKey: playerID];
                 [pl didBeginContactWith:p];

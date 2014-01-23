@@ -37,16 +37,16 @@
 
 -(id)myPeerID
 {
-    return self.peerID.displayName;
+    return self.peerID;
 }
 
 -(MCPeerID *)peerID
 {
     if(!_peerID){
-        NSString *deviceID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+     //   NSString *deviceID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
         NSString *deviceName = [[UIDevice currentDevice] name];
-        NSString *peerID = [NSString stringWithFormat:@"%@ (%@)", deviceName, deviceID];
-        _peerID = [[MCPeerID alloc] initWithDisplayName: peerID];  //If you change it, you have to change it also in the MyScene!
+      //  NSString *peerID = [NSString stringWithFormat:@"%@ (%@)", deviceName, deviceID];
+        _peerID = [[MCPeerID alloc] initWithDisplayName: deviceName];  //If you change it, you have to change it also in the MyScene!
     }
     return _peerID;
 }
@@ -97,8 +97,15 @@ static PeerToPeerManager *sharedPeerToPeerManager = nil;
 }
 
 -(NSArray *)ConnectedPeers
-{
+{/*
+    NSMutableArray *peerNames = [NSMutableArray array];
+    for(MCPeerID *peerID in [self.session connectedPeers]){
+        [peerNames addObject:peerID.displayName];
+    }
+    return peerNames; */
+    
     return [self.session connectedPeers];
+    
 }
 
 -(void)showPeerBrowserWithViewController:(UIViewController *)viewController
