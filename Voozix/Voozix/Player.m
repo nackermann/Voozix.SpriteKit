@@ -70,7 +70,6 @@ static const int PLAYER_SPEED = 300;
  */
 - (void)setup
 {
-	self.name = @"player";
 	// [super scene ist noch nicht gesetzt beim alloc, erst bei add child]
 	[self.myHUDManager.players addObject:self];
     

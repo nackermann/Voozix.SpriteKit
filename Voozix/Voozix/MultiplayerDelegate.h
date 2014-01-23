@@ -15,6 +15,6 @@
 -(void)matchStarted;
 -(void)readyToStartMatch;
 -(void)matchEnded;
--(void)receivedMessage:(Message *)message fromPlayerID:(NSString *)playerID;
--(void)peerConnected:(NSString *)peerName;
+-(void)receivedMessage:(Message *)message fromPlayerID:(id)playerID;
+-(void)peerConnected:(id)peerName;
 @end

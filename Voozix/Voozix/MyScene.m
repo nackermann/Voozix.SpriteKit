@@ -92,11 +92,11 @@
         {
             NSArray *peerNames = [[PeerToPeerManager sharedInstance] ConnectedPeers];
             NSMutableDictionary *playerDict = [NSMutableDictionary dictionary];
-            for(NSString *peerName in peerNames){
+            for(MCPeerID *peerID in peerNames){
                 Player *p = [[Player alloc]initWithHUDManager:self.HUDManager];
                 p.position = CGPointMake(50.f, 50.f);
-                p.name = peerName;
-                [playerDict setObject:p forKey:p.name];
+                p.name = peerID.displayName;
+                [playerDict setObject:p forKey:peerID];
                 [self addChild:p];
             }
             self.allPlayers = playerDict;
@@ -230,12 +230,8 @@
         myPlayer.position = CGPointMake(50.f, 50.f);
         [self addChild:myPlayer];
         _player = myPlayer;
-        NSString *deviceID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
         
-        NSString *deviceName = [[UIDevice currentDevice] name];
-        NSString *peerID = [NSString stringWithFormat:@"%@ (%@)", deviceName, deviceID];
-        
-        [self.allPlayers setObject:_player forKey:peerID]; //Probably change it to an UID, See Peer2PeerManager
+        [self.allPlayers setObject:_player forKey: [PeerToPeerManager sharedInstance].myPeerID ]; //Probably change it to an UID, See Peer2PeerManager
         
     }
     return _player;
@@ -301,7 +297,8 @@
             
             NSArray *allPlayersArr = [self.allPlayers allKeys];
             if(allPlayersArr){
-                NSString *choosenPlayerID = [allPlayersArr objectAtIndex: (arc4random()%[allPlayersArr count]) ];
+                int index =(arc4random()%[allPlayersArr count]) ;
+                NSString *choosenPlayerID = [allPlayersArr objectAtIndex: index];
                 Player * choosenPlayer = [self.allPlayers objectForKey:choosenPlayerID];
                 
                 Hunter *h = [[Hunter alloc]initWithPlayer:choosenPlayer]; //Random Player
@@ -314,7 +311,7 @@
                     Message *m = [[Message alloc]init];
                     m.messageType = HunterSpawned;
                     m.position = _hunter.position;
-                    m.args = [NSArray arrayWithObject:choosenPlayer.name];
+                    m.args = [NSArray arrayWithObject:choosenPlayerID];
                     [[PeerToPeerManager sharedInstance] sendMessage:m];
                 }
             }
@@ -395,7 +392,7 @@
     [self gameOver];
 }
 
--(void)receivedMessage:(Message *)message fromPlayerID:(NSString *)playerID
+-(void)receivedMessage:(Message *)message fromPlayerID:(id)playerID
 {
     Player *sendFromPlayer = (Player *)[self.allPlayers objectForKey:playerID];
     

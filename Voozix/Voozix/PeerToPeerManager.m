@@ -10,7 +10,6 @@
 #import <MultipeerConnectivity/MultipeerConnectivity.h>
 
 @interface PeerToPeerManager()
-@property(nonatomic, strong) MCPeerID *peerID;
 @property(nonatomic, strong) MCSession *session;
 @property(nonatomic, strong) MCAdvertiserAssistant* advertiser;
 @property(nonatomic, strong) MCBrowserViewController *browserVC;
@@ -18,6 +17,8 @@
 @property(nonatomic, readwrite)bool isHost;
 @property(nonatomic, readwrite)int waitForPeers;
 @property(nonatomic, readwrite)bool advertiserIsAdvertising;
+@property(nonatomic, readwrite) MCPeerID *myPeerID;
+
 @end
 
 @implementation PeerToPeerManager
@@ -34,15 +35,15 @@
     }
 }
 
--(MCPeerID *)peerID
+-(MCPeerID *)myPeerID
 {
-    if(!_peerID){
+    if(!_myPeerID){
         NSString *deviceID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
         NSString *deviceName = [[UIDevice currentDevice] name];
         NSString *peerID = [NSString stringWithFormat:@"%@ (%@)", deviceName, deviceID];
-        _peerID = [[MCPeerID alloc] initWithDisplayName: peerID];  //If you change it, you have to change it also in the MyScene!
+        _myPeerID = [[MCPeerID alloc] initWithDisplayName: peerID];  //If you change it, you have to change it also in the MyScene!
     }
-    return _peerID;
+    return _myPeerID;
 }
 
 static PeerToPeerManager *sharedPeerToPeerManager = nil;
@@ -68,7 +69,7 @@ static PeerToPeerManager *sharedPeerToPeerManager = nil;
 {
     
     NSString *serviceName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
-    self.session = [[MCSession alloc]initWithPeer:self.peerID];
+    self.session = [[MCSession alloc]initWithPeer:self.myPeerID];
     self.session.delegate = self;
     self.advertiser = [[MCAdvertiserAssistant alloc] initWithServiceType:serviceName discoveryInfo:nil session:self.session];
     
@@ -105,7 +106,7 @@ static PeerToPeerManager *sharedPeerToPeerManager = nil;
     self.isHost = YES;
     NSString *serviceName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
     
-    self.session = [[MCSession alloc]initWithPeer:self.peerID];
+    self.session = [[MCSession alloc]initWithPeer:self.myPeerID];
     self.session.delegate = self;
     
     self.browserVC = [[MCBrowserViewController alloc] initWithServiceType:serviceName session:self.session];
@@ -183,7 +184,7 @@ didReceiveData:(NSData *)data
     if([receivedMessage isKindOfClass:[Message class]]){
         Message *message = (Message *)receivedMessage;
         
-        NSLog(@"Received Message from Type %i from %@", message.messageType, peerID.displayName);
+        NSLog(@"Received Message from Type %i from %@", message.messageType, peerID);
         
         switch (message.messageType) {
             case ReadyToStartMatch:
@@ -227,7 +228,7 @@ didReceiveData:(NSData *)data
         
         if([self.delegate respondsToSelector:@selector(receivedMessage:fromPlayerID:)])
         {
-            [self.delegate receivedMessage:(Message *)receivedMessage fromPlayerID:peerID.displayName];
+            [self.delegate receivedMessage:(Message *)receivedMessage fromPlayerID:peerID];
         }
     }
     
