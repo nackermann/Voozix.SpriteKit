@@ -10,20 +10,20 @@
 
 
 typedef enum  {
-    ReadyToStartMatch,
-    matchStarted,
-    matchEnded,
-    playerMoved,
-    StarSpawned,
-    StarCollected,
-    ShootingStarSpawned,
-    ShootingStarCollected,
-    PowerUpSpawned,
-    PowerUpCollected,
-    EnemyBallSpawned,
-    HunterSpawned,
-    HunterMoved,
-    HunterDespawned,
+    ReadyToStartMatch,          // 0
+    matchStarted,               // 1
+    matchEnded,                 // 2
+    playerMoved,                // 3
+    StarSpawned,                // 4
+    StarCollected,              // 5
+    ShootingStarSpawned,        // 6
+    ShootingStarCollected,      // 7
+    PowerUpSpawned,             // 8
+    PowerUpCollected,           // 9
+    EnemyBallSpawned,           // 10
+    HunterSpawned,              // 11
+    HunterMoved,                // 12
+    HunterDespawned,            // 13
 } MessageType;
 
 @interface Message : NSObject

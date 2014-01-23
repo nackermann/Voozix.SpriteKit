@@ -75,7 +75,11 @@
                 Message *m = [[Message alloc] init];
                 m.messageType = StarCollected;
                 [[PeerToPeerManager sharedInstance] sendMessage:m];
+                m.messageType = HunterDespawned;
+                [[PeerToPeerManager sharedInstance] sendMessage:m];
             }
+            
+            
             
             [player didBeginContactWith:star];
             [star didBeginContactWith:player];
