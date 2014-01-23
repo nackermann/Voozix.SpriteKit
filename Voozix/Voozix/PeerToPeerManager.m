@@ -91,12 +91,7 @@ static PeerToPeerManager *sharedPeerToPeerManager = nil;
 
 -(NSArray *)ConnectedPeers
 {
-    NSMutableArray *peers = [NSMutableArray array];
-    for(MCPeerID *peer in [self.session connectedPeers]){
-        [peers addObject:peer.displayName];
-    }
-    
-    return peers;
+    return [self.session connectedPeers];
 }
 
 -(void)showPeerBrowserWithViewController:(UIViewController *)viewController
