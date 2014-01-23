@@ -17,7 +17,7 @@
 @property(nonatomic, readwrite)bool isHost;
 @property(nonatomic, readwrite)int waitForPeers;
 @property(nonatomic, readwrite)bool advertiserIsAdvertising;
-@property(nonatomic, readwrite) MCPeerID *myPeerID;
+@property(nonatomic, strong)MCPeerID *peerID;
 
 @end
 
@@ -35,16 +35,23 @@
     }
 }
 
--(MCPeerID *)myPeerID
+-(id)myPeerID
 {
-    if(!_myPeerID){
-      //  NSString *deviceID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
-        NSString *deviceName = [[UIDevice currentDevice] name];
-        //NSString *peerID = [NSString stringWithFormat:@"%@ (%@)", deviceName, deviceID];
-        _myPeerID = [[MCPeerID alloc] initWithDisplayName: deviceName];  //If you change it, you have to change it also in the MyScene!
-    }
-    return _myPeerID;
+    return self.peerID.displayName;
 }
+
+-(MCPeerID *)peerID
+{
+    if(!_peerID){
+        NSString *deviceID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+        NSString *deviceName = [[UIDevice currentDevice] name];
+        NSString *peerID = [NSString stringWithFormat:@"%@ (%@)", deviceName, deviceID];
+        _peerID = [[MCPeerID alloc] initWithDisplayName: peerID];  //If you change it, you have to change it also in the MyScene!
+    }
+    return _peerID;
+}
+
+
 
 static PeerToPeerManager *sharedPeerToPeerManager = nil;
 +(PeerToPeerManager *)sharedInstance
@@ -69,7 +76,7 @@ static PeerToPeerManager *sharedPeerToPeerManager = nil;
 {
     
     NSString *serviceName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
-    self.session = [[MCSession alloc]initWithPeer:self.myPeerID];
+    self.session = [[MCSession alloc]initWithPeer:self.peerID];
     self.session.delegate = self;
     self.advertiser = [[MCAdvertiserAssistant alloc] initWithServiceType:serviceName discoveryInfo:nil session:self.session];
     
@@ -101,7 +108,7 @@ static PeerToPeerManager *sharedPeerToPeerManager = nil;
     self.isHost = YES;
     NSString *serviceName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
     
-    self.session = [[MCSession alloc]initWithPeer:self.myPeerID];
+    self.session = [[MCSession alloc]initWithPeer:self.peerID];
     self.session.delegate = self;
     
     self.browserVC = [[MCBrowserViewController alloc] initWithServiceType:serviceName session:self.session];

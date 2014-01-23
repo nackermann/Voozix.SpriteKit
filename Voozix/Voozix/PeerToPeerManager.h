@@ -20,11 +20,12 @@
 -(void)startAdvertisingWithDelegate:(id<MultiplayerDelegate>)delegate;
 -(void)stopAdvertising;
 -(NSArray *)ConnectedPeers;
+-(id)myPeerID;
+
 
 @property (nonatomic, readonly)bool isHost;
 @property (nonatomic, readonly)bool isMatchActive;
 @property (nonatomic, readonly)bool advertiserIsAdvertising;
-@property (nonatomic, readonly)MCPeerID *myPeerID;
 @property (nonatomic, strong) id<MultiplayerDelegate> delegate;
 @property (nonatomic, readonly)int waitForPeers;
 @end
