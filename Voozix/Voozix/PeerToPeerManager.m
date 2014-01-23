@@ -38,10 +38,10 @@
 -(MCPeerID *)myPeerID
 {
     if(!_myPeerID){
-        NSString *deviceID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+      //  NSString *deviceID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
         NSString *deviceName = [[UIDevice currentDevice] name];
-        NSString *peerID = [NSString stringWithFormat:@"%@ (%@)", deviceName, deviceID];
-        _myPeerID = [[MCPeerID alloc] initWithDisplayName: peerID];  //If you change it, you have to change it also in the MyScene!
+        //NSString *peerID = [NSString stringWithFormat:@"%@ (%@)", deviceName, deviceID];
+        _myPeerID = [[MCPeerID alloc] initWithDisplayName: deviceName];  //If you change it, you have to change it also in the MyScene!
     }
     return _myPeerID;
 }
