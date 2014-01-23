@@ -96,6 +96,7 @@
                 Player *p = [[Player alloc]initWithHUDManager:self.HUDManager];
                 p.position = CGPointMake(50.f, 50.f);
                 p.name = peerID.displayName;
+                p.peerID = peerID;
                 [playerDict setObject:p forKey:peerID];
                 [self addChild:p];
             }
@@ -229,8 +230,9 @@
         Player *myPlayer = [[Player alloc] initWithHUDManager:self.HUDManager];
         myPlayer.position = CGPointMake(50.f, 50.f);
         [self addChild:myPlayer];
+        myPlayer.name = [PeerToPeerManager sharedInstance].myPeerID.displayName;
+        myPlayer.peerID = [PeerToPeerManager sharedInstance].myPeerID;
         _player = myPlayer;
-        
         [self.allPlayers setObject:_player forKey: [PeerToPeerManager sharedInstance].myPeerID ]; //Probably change it to an UID, See Peer2PeerManager
         
     }
@@ -298,7 +300,7 @@
             NSArray *allPlayersArr = [self.allPlayers allKeys];
             if(allPlayersArr){
                 int index =(arc4random()%[allPlayersArr count]) ;
-                NSString *choosenPlayerID = [allPlayersArr objectAtIndex: index];
+                MCPeerID *choosenPlayerID = [allPlayersArr objectAtIndex: index];
                 Player * choosenPlayer = [self.allPlayers objectForKey:choosenPlayerID];
                 
                 Hunter *h = [[Hunter alloc]initWithPlayer:choosenPlayer]; //Random Player
@@ -425,7 +427,7 @@
             break;
         case PowerUpCollected:{
             PowerUp *p =[self.powerUpManager removePowerUpWithMessage:message];
-            NSString *playerID =[message.args objectAtIndex:1];
+            MCPeerID *playerID =[message.args objectAtIndex:1];
             if(playerID){
                 Player *pl = [self.allPlayers objectForKey: playerID];
                 [pl didBeginContactWith:p];

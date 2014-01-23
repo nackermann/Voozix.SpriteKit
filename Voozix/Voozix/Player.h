@@ -22,6 +22,7 @@
 @property (nonatomic, strong) NSNumber *score;
 @property (nonatomic, strong) NSNumber *starCount; // will be needed later
 @property (nonatomic) int playerSpeed;
+@property(nonatomic, weak)id peerID;
 @property BOOL dead;
 @property BOOL immortal;
 @property BOOL scoreBoost;

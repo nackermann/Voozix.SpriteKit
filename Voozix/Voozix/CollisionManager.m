@@ -153,7 +153,7 @@
         {
             Message *m = [[Message alloc] init];
             m.messageType = PowerUpCollected;
-            m.args = [NSArray arrayWithObjects:powerUp.name, player.name, nil];
+            m.args = [NSArray arrayWithObjects:powerUp.name, [PeerToPeerManager sharedInstance], player.peerID, nil];
             [[PeerToPeerManager sharedInstance] sendMessage:m];
         }
         
