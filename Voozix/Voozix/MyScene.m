@@ -92,10 +92,10 @@
         {
             NSArray *peerNames = [[PeerToPeerManager sharedInstance] ConnectedPeers];
             NSMutableDictionary *playerDict = [NSMutableDictionary dictionary];
-            for(MCPeerID *peerID in peerNames){
+            for(NSString *peerID in peerNames){
                 Player *p = [[Player alloc]initWithHUDManager:self.HUDManager];
                 p.position = CGPointMake(50.f, 50.f);
-                p.name = peerID.displayName;
+                p.name = peerID;
                 p.peerID = peerID;
                 [playerDict setObject:p forKey:peerID];
                 [self addChild:p];
@@ -293,56 +293,58 @@
         [self.powerUpManager update];
         [self.HUDManager update];
         
-        self.starTimer -= 1/currentTime * 10;
         
-        if(self.starTimer < (arc4random()%3)+1  && arc4random()%100 > 80 && !self.hunter){
+        if(([PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstance].isHost) ||
+           ![PeerToPeerManager sharedInstance].isMatchActive){
             
-            NSArray *allPlayersArr = [self.allPlayers allKeys];
-            if(allPlayersArr){
-                int index =(arc4random()%[allPlayersArr count]) ;
-                MCPeerID *choosenPlayerID = [allPlayersArr objectAtIndex: index];
-                Player * choosenPlayer = [self.allPlayers objectForKey:choosenPlayerID];
+            
+            self.starTimer -= 1/currentTime * 10;
+            
+            if(self.starTimer < (arc4random()%3)+1  && arc4random()%100 > 80 && !self.hunter){
                 
-                Hunter *h = [[Hunter alloc]initWithPlayer:choosenPlayer]; //Random Player
-                self.hunter = h;
-                [self addChild:self.hunter];
-                [self.hunter setRandomPosition];
+                NSArray *allPlayersArr = [self.allPlayers allKeys];
+                if(allPlayersArr){
+                    int index =(arc4random()%[allPlayersArr count]) ;
+                    NSString *choosenPlayerID = [allPlayersArr objectAtIndex: index];
+                    Player * choosenPlayer = [self.allPlayers objectForKey:choosenPlayerID];
+                    
+                    Hunter *h = [[Hunter alloc]initWithPlayer:choosenPlayer]; //Random Player
+                    self.hunter = h;
+                    [self addChild:self.hunter];
+                    [self.hunter setRandomPosition];
+                    
+                    
+                    if([PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstance].isHost){
+                        Message *m = [[Message alloc]init];
+                        m.messageType = HunterSpawned;
+                        m.position = _hunter.position;
+                        m.args = [NSArray arrayWithObject:choosenPlayerID];
+                        [[PeerToPeerManager sharedInstance] sendMessage:m];
+                    }
+                }
                 
+            }
+            if (self.starTimer <= 0) {
+                ShootingStar *star = [[ShootingStar alloc] initWithScene:self];
                 
-                if([PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstance].isHost){
-                    Message *m = [[Message alloc]init];
-                    m.messageType = HunterSpawned;
-                    m.position = _hunter.position;
-                    m.args = [NSArray arrayWithObject:choosenPlayerID];
+                if([PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstance].isHost)
+                {
+                    Message *m = [[Message alloc] init];
+                    m.messageType = ShootingStarSpawned;
+                    m.position = star.position;
+                    m.velocity = star.physicsBody.velocity;
+                    m.args = [NSArray arrayWithObject:star.name];
                     [[PeerToPeerManager sharedInstance] sendMessage:m];
                 }
+                
+                [self addChild:star];
+                self.starTimer = arc4random() % 2 + 2;
             }
             
         }
-        if (self.starTimer <= 0) {
-            ShootingStar *star = [[ShootingStar alloc] initWithScene:self];
-            
-            if([PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstance].isHost)
-            {
-                Message *m = [[Message alloc] init];
-                m.messageType = ShootingStarSpawned;
-                m.position = star.position;
-                m.velocity = star.physicsBody.velocity;
-                m.args = [NSArray arrayWithObject:star.name];
-                [[PeerToPeerManager sharedInstance] sendMessage:m];
-            }
-            
-            [self addChild:star];
-            self.starTimer = arc4random() % 2 + 2;
-        }
-        
-    }
-    
-    if(!self.star.parent)
-    {
-        if(([PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstance].waitForPeers == 0 && [PeerToPeerManager sharedInstance].isHost) ||
-           ![PeerToPeerManager sharedInstance].isMatchActive)
+        if(!self.star.parent)
         {
+            
             [self addChild:self.star];
             
             do {
@@ -356,6 +358,7 @@
                 m.position = self.star.position;
                 [[PeerToPeerManager sharedInstance] sendMessage:m];
             }
+            
         }
     }
     
@@ -427,7 +430,7 @@
             break;
         case PowerUpCollected:{
             PowerUp *p =[self.powerUpManager removePowerUpWithMessage:message];
-            MCPeerID *playerID =[message.args objectAtIndex:1];
+            NSString *playerID =[message.args objectAtIndex:1];
             if(playerID){
                 Player *pl = [self.allPlayers objectForKey: playerID];
                 [pl didBeginContactWith:p];
@@ -438,6 +441,7 @@
             
         case EnemyBallSpawned:
             [self.enemyManager createEnemyWithMessage:message];
+            break;
         case HunterSpawned:
         {
             Player *choosenPlayer = [self.allPlayers objectForKey: [message.args objectAtIndex:0]];
@@ -450,9 +454,7 @@
         case HunterMoved:
             break;
         case HunterDespawned:
-            if(self.hunter && self.hunter.parent){
-                [self.hunter removeFromParent];
-            }
+            [self.hunter removeFromParent];
             break;
         default:
             NSLog(@"Undefined Message %i from %@", message.messageType, playerID);

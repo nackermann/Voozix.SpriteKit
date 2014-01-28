@@ -75,8 +75,9 @@
                 Message *m = [[Message alloc] init];
                 m.messageType = StarCollected;
                 [[PeerToPeerManager sharedInstance] sendMessage:m];
-                m.messageType = HunterDespawned;
-                [[PeerToPeerManager sharedInstance] sendMessage:m];
+                Message *m2 =[[Message alloc] init];
+                m2.messageType = HunterDespawned;
+                [[PeerToPeerManager sharedInstance] sendMessage:m2];
             }
             
             
@@ -126,8 +127,8 @@
         [self.soundManager playSound:EXPLOSION_SOUND];
         
         Player *player = (Player *)firstBody.node;
-        
-          [player didBeginContactWith:secondBody.node];
+        EnemyBall *enemyBall = (EnemyBall *)secondBody.node;
+        [player didBeginContactWith:enemyBall];
         
         // Notify objects
         
@@ -160,7 +161,7 @@
         [player didBeginContactWith:powerUp]; // does he need to be notified? check it !
         [powerUp didBeginContactWith:player];
         
-
+        
         
         [self.powerUpManager removePowerUpWithName:powerUp.name];
         
