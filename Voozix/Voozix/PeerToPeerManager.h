@@ -10,7 +10,13 @@
 #import "Message.h"
 #import "MultiplayerDelegate.h"
 #import <MultipeerConnectivity/MultipeerConnectivity.h>
-
+/**
+ * @class PeerToPeerManager
+ *
+ * @brief Handles the network connectivity between all Players. It also finds nearby players
+ *
+ *
+ */
 @interface PeerToPeerManager : NSObject <MCBrowserViewControllerDelegate, MCSessionDelegate>
 
 -(bool)sendMessage:(Message *)message;

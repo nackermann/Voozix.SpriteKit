@@ -8,8 +8,6 @@
 
 #import "MenuScene.h"
 #import "MyScene.h"
-#import "GameCenterManager.h"
-#import <GameKit/GameKit.h>
 #import "PeerToPeerManager.h"
 
 @interface MenuScene()
@@ -23,25 +21,11 @@
         
         [self createTitle];
         [self createPlayButton];
-        [self createOptionsButton];
         [self createPeerToPeerButton];
         [self CreateStartAdvertisePeerButton];
-        NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-        [nc addObserver:self
-               selector:@selector(authenticationChanged)
-                   name:GKPlayerAuthenticationDidChangeNotificationName
-                 object:nil];
-        
     }
     return self;
 }
-
-
--(void)authenticationChanged
-{
-    if([GKLocalPlayer localPlayer].isAuthenticated) [self createMultiplayerButton];
-}
-
 
 /**
  * This gets called when a touch begins and then notifies all objects
@@ -75,17 +59,14 @@
         
         [node removeFromParent];
         [self CreateStartAdvertisePeerButton];
-        
+        [self.waitingForHostLabel removeFromParent];
         [[PeerToPeerManager sharedInstance]stopAdvertising];
         
         
         
     }else if([node.name isEqualToString:@"peertopeer"]){
         [[PeerToPeerManager sharedInstance] showPeerBrowserWithViewController :self.view.window.rootViewController delegate:self];
-    }else if([node.name isEqualToString:@"multiplayer"]){
-        [[GameCenterManager sharedInstance] findMatchWithMinPlayers:2 maxPlayers:2 viewController:self.view.window.rootViewController delegate:self];
     }
-    
     
 }
 
@@ -163,24 +144,12 @@
     
 }
 
-- (void)createOptionsButton {
-    
-    SKLabelNode *optionsButton = [SKLabelNode labelNodeWithFontNamed:@"Menlo-Bold"];
-    optionsButton.fontSize = 50;
-    optionsButton.name = @"options";
-    optionsButton.text = @"OPTIONS";
-    optionsButton.position = CGPointMake(self.frame.size.width/2, self.frame.size.height - 3 * self.frame.size.height/7);
-    
-    [self addChild:optionsButton];
-    
-}
-
 -(void)CreateStartAdvertisePeerButton{
     SKLabelNode *optionsButton = [SKLabelNode labelNodeWithFontNamed:@"Menlo-Bold"];
     optionsButton.fontSize = 50;
     optionsButton.name = @"startadvertise";
     optionsButton.text = @"ADVERTISE PEER";
-    optionsButton.position = CGPointMake(self.frame.size.width/2, self.frame.size.height - 4 * self.frame.size.height/7);
+    optionsButton.position = CGPointMake(self.frame.size.width/2, self.frame.size.height - 3 * self.frame.size.height/7);
     
     [self addChild:optionsButton];
     
@@ -191,7 +160,7 @@
     optionsButton.fontSize = 50;
     optionsButton.name = @"stopadvertise";
     optionsButton.text = @"STOP ADVERTISING";
-    optionsButton.position = CGPointMake(self.frame.size.width/2, self.frame.size.height - 4 * self.frame.size.height/7);
+    optionsButton.position = CGPointMake(self.frame.size.width/2, self.frame.size.height - 3 * self.frame.size.height/7);
     
     [self addChild:optionsButton];
     
@@ -202,19 +171,10 @@
     optionsButton.fontSize = 50;
     optionsButton.name = @"peertopeer";
     optionsButton.text = @"PEER TO PEER MULTIPLAYER";
-    optionsButton.position = CGPointMake(self.frame.size.width/2, self.frame.size.height - 5 * self.frame.size.height/7);
+    optionsButton.position = CGPointMake(self.frame.size.width/2, self.frame.size.height - 4 * self.frame.size.height/7);
     
     [self addChild:optionsButton];
     
 }
 
-- (void)createMultiplayerButton {
-    
-    SKLabelNode *optionsButton = [SKLabelNode labelNodeWithFontNamed:@"Menlo-Bold"];
-    optionsButton.fontSize = 50;
-    optionsButton.name = @"multiplayer";
-    optionsButton.text = @"MULTIPLAYER";
-    optionsButton.position = CGPointMake(self.frame.size.width/2, self.frame.size.height - 6 * self.frame.size.height/7);
-    [self addChild:optionsButton];
-}
 @end

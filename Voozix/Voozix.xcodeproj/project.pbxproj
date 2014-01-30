@@ -54,7 +54,6 @@
 		3FEEA2AF187C69D500414A31 /* PlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEEA2AE187C69D500414A31 /* PlayerController.m */; };
 		9463A253188D821000C2D8C0 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 9463A252188D821000C2D8C0 /* Message.m */; };
 		9463A257188D822500C2D8C0 /* PeerToPeerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9463A256188D822500C2D8C0 /* PeerToPeerManager.m */; };
-		9463A25A188D822E00C2D8C0 /* GameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9463A259188D822E00C2D8C0 /* GameCenterManager.m */; };
 		94B34EFB1887E88000853913 /* Scoreboost.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B34EFA1887E88000853913 /* Scoreboost.m */; };
 		94B34EFE1889796400853913 /* Immortal.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B34EFD1889796400853913 /* Immortal.m */; };
 		94B34F0118897D4300853913 /* Tinier.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B34F0018897D4300853913 /* Tinier.m */; };
@@ -147,8 +146,6 @@
 		9463A254188D821800C2D8C0 /* MultiplayerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MultiplayerDelegate.h; sourceTree = "<group>"; };
 		9463A255188D822500C2D8C0 /* PeerToPeerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeerToPeerManager.h; sourceTree = "<group>"; };
 		9463A256188D822500C2D8C0 /* PeerToPeerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeerToPeerManager.m; sourceTree = "<group>"; };
-		9463A258188D822E00C2D8C0 /* GameCenterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenterManager.h; sourceTree = "<group>"; };
-		9463A259188D822E00C2D8C0 /* GameCenterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCenterManager.m; sourceTree = "<group>"; };
 		94B34EF91887E88000853913 /* Scoreboost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scoreboost.h; sourceTree = "<group>"; };
 		94B34EFA1887E88000853913 /* Scoreboost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Scoreboost.m; sourceTree = "<group>"; };
 		94B34EFC1889796400853913 /* Immortal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Immortal.h; sourceTree = "<group>"; };
@@ -285,8 +282,6 @@
 			children = (
 				9463A255188D822500C2D8C0 /* PeerToPeerManager.h */,
 				9463A256188D822500C2D8C0 /* PeerToPeerManager.m */,
-				9463A258188D822E00C2D8C0 /* GameCenterManager.h */,
-				9463A259188D822E00C2D8C0 /* GameCenterManager.m */,
 				15A344E01875AC3B0046B117 /* ParticleManager.h */,
 				15A344E11875AC3B0046B117 /* ParticleManager.m */,
 				15A344E61875AC870046B117 /* HUDManager.h */,
@@ -506,7 +501,6 @@
 			files = (
 				9463A257188D822500C2D8C0 /* PeerToPeerManager.m in Sources */,
 				15A344BD1875A52B0046B117 /* MyScene.m in Sources */,
-				9463A25A188D822E00C2D8C0 /* GameCenterManager.m in Sources */,
 				3FAEAEC11876E74000FC7EFF /* Star.m in Sources */,
 				94F681E118847D200026BF2C /* PowerUp.m in Sources */,
 				15A344F71875AD5A0046B117 /* PowerUpManager.m in Sources */,

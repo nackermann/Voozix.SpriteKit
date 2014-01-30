@@ -344,6 +344,8 @@
         }
         if(!self.star.parent)
         {
+            [self.hunter removeFromParent];
+            self.hunter = nil;
             
             [self addChild:self.star];
             

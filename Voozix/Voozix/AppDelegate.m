@@ -7,13 +7,11 @@
 //
 
 #import "AppDelegate.h"
-#import "GameCenterManager.h"
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-   // [[GameCenterManager sharedInstance]authenticateLocalUser];
     return YES;
 }
 							
