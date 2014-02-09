@@ -1,4 +1,4 @@
 <map id="Hunter()" name="Hunter()">
-<area shape="rect" id="node2" href="$interface_player.html" title="Player object that the user is actually controlling. " alt="" coords="57,334,276,575"/>
+<area shape="rect" id="node2" href="$interface_player.html" title="Player object that the user is actually controlling. " alt="" coords="57,334,276,591"/>
 <area shape="rect" id="node5" href="$interface_player_controller.html" title="Visual joystick which controls the player. " alt="" coords="57,139,276,269"/>
 </map>

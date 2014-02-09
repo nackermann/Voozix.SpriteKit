@@ -1,0 +1,4 @@
+<map id="&lt;MultiplayerDelegate&gt;" name="&lt;MultiplayerDelegate&gt;">
+<area shape="rect" id="node3" href="$interface_menu_scene.html" title="{MenuScene\n||}" alt="" coords="25,331,127,413"/>
+<area shape="rect" id="node4" href="$interface_my_scene.html" title="This is the actual game state. " alt="" coords="151,331,235,413"/>
+</map>

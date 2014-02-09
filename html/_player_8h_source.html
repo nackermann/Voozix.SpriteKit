@@ -106,30 +106,31 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="interface_player.html#a80990c90b90acf7a5cae7f4858cbc129">   22</a></span>&#160;<span class="keyword">@property</span> (nonatomic, strong) NSNumber *<a class="code" href="interface_player.html#a80990c90b90acf7a5cae7f4858cbc129">score</a>;</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">@property</span> (nonatomic, strong) NSNumber *starCount; <span class="comment">// will be needed later</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">@property</span> (nonatomic) <span class="keywordtype">int</span> playerSpeed;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">@property</span> BOOL dead;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">@property</span> BOOL immortal;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">@property</span> BOOL scoreBoost;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;- (id)initWithHUDManager:(<a class="code" href="interface_h_u_d_manager.html">HUDManager</a>*)hudmanager;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;- (void)didBeginContactWith:(<span class="keywordtype">id</span>)object;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;- (void)<a class="code" href="interface_player.html#a82c3476f3e65a4e2ac6bcd040771bdd4">update</a>;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">@end</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">@property</span>(nonatomic, weak)<span class="keywordtype">id</span> peerID;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">@property</span> BOOL dead;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">@property</span> BOOL immortal;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">@property</span> BOOL scoreBoost;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;- (id)initWithHUDManager:(<a class="code" href="interface_h_u_d_manager.html">HUDManager</a>*)hudmanager;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;- (void)didBeginContactWith:(<span class="keywordtype">id</span>)object;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;- (void)<a class="code" href="interface_player.html#a82c3476f3e65a4e2ac6bcd040771bdd4">update</a>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">@end</span></div>
 <div class="ttc" id="interface_player_html"><div class="ttname"><a href="interface_player.html">Player</a></div><div class="ttdoc">Player object that the user is actually controlling. </div><div class="ttdef"><b>Definition:</b> Player.h:20</div></div>
 <div class="ttc" id="interface_player_html_a80990c90b90acf7a5cae7f4858cbc129"><div class="ttname"><a href="interface_player.html#a80990c90b90acf7a5cae7f4858cbc129">Player::score</a></div><div class="ttdeci">NSNumber * score</div><div class="ttdoc">Returns the player&#39;s current score. </div><div class="ttdef"><b>Definition:</b> Player.h:22</div></div>
 <div class="ttc" id="interface_player_html_a4e519c0bf3dd7f6b0b818924cc632fd3"><div class="ttname"><a href="interface_player.html#a4e519c0bf3dd7f6b0b818924cc632fd3">Player::playerController</a></div><div class="ttdeci">PlayerController * playerController</div><div class="ttdoc">Returns the player controller. </div><div class="ttdef"><b>Definition:</b> Player.h:21</div></div>
 <div class="ttc" id="interface_player_controller_html"><div class="ttname"><a href="interface_player_controller.html">PlayerController</a></div><div class="ttdoc">Visual joystick which controls the player. </div><div class="ttdef"><b>Definition:</b> PlayerController.h:17</div></div>
 <div class="ttc" id="interface_h_u_d_manager_html"><div class="ttname"><a href="interface_h_u_d_manager.html">HUDManager</a></div><div class="ttdoc">Displays information for the player. </div><div class="ttdef"><b>Definition:</b> HUDManager.h:18</div></div>
-<div class="ttc" id="interface_player_html_a82c3476f3e65a4e2ac6bcd040771bdd4"><div class="ttname"><a href="interface_player.html#a82c3476f3e65a4e2ac6bcd040771bdd4">-[Player update]</a></div><div class="ttdeci">void update()</div><div class="ttdef"><b>Definition:</b> Player.m:199</div></div>
+<div class="ttc" id="interface_player_html_a82c3476f3e65a4e2ac6bcd040771bdd4"><div class="ttname"><a href="interface_player.html#a82c3476f3e65a4e2ac6bcd040771bdd4">-[Player update]</a></div><div class="ttdeci">void update()</div><div class="ttdef"><b>Definition:</b> Player.m:236</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jan 21 2014 23:03:02 for Voozix by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Feb 9 2014 16:34:31 for Voozix by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

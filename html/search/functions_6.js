@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['update',['update',['../interface_h_u_d_manager.html#a9efa5a417d03ac25447e3e033388f8bf',1,'HUDManager::update()'],['../interface_player.html#a82c3476f3e65a4e2ac6bcd040771bdd4',1,'Player::update()'],['../interface_star.html#aca2fa3b0b251bd8977f84671191106fa',1,'Star::update()']]],
-  ['update_3a',['update:',['../interface_enemy_ball.html#a7b342ca9ccb983d7c6a3897767319cb1',1,'EnemyBall::update:()'],['../interface_enemy_manager.html#ae55c2d6aafb965ad9ec1034006ff9cc2',1,'EnemyManager::update:()']]]
+  ['sendmessage_3a',['sendMessage:',['../interface_peer_to_peer_manager.html#a1082277d5ad96fa017c0a53f20e38574',1,'PeerToPeerManager']]],
+  ['sharedinstance',['sharedInstance',['../interface_peer_to_peer_manager.html#a026ebe30e587e3061e6979b6f456ceb2',1,'PeerToPeerManager']]],
+  ['showpeerbrowserwithviewcontroller_3adelegate_3a',['showPeerBrowserWithViewController:delegate:',['../interface_peer_to_peer_manager.html#a118725f43ffe1acf4f9eb0ea8df0fd59',1,'PeerToPeerManager']]],
+  ['startadvertisingwithdelegate_3a',['startAdvertisingWithDelegate:',['../interface_peer_to_peer_manager.html#a48bc306f27ee19271e9cf8bb536815c9',1,'PeerToPeerManager']]],
+  ['stopadvertising',['stopAdvertising',['../interface_peer_to_peer_manager.html#ac6edb5191c16c177b4403f2d551426e9',1,'PeerToPeerManager']]]
 ];

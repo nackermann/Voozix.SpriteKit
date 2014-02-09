@@ -857,7 +857,16 @@ EXCLUDE_SYMBOLS        = CollisionManager() \
                          HUDManager() \
                          MyScene() \
                          Player() \
-                         PlayerController()
+                         PlayerController() \
+                         ShootingStar() \
+                         SoundManager() \
+                         PeerToPeerManager() \
+                         ParticleManager() \
+                         MenuScene() \
+                         Hunter() \
+                         PowerUpManager() \
+                         PowerUp() \
+                         VoozixTests
 
 # The EXAMPLE_PATH tag can be used to specify one or more files or directories
 # that contain example code fragments that are included (see the \include

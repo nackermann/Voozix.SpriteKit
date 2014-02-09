@@ -1,6 +1,6 @@
 <map id="CollisionManager" name="CollisionManager">
-<area shape="rect" id="node4" href="$interface_power_up_manager.html" title="Responsible for updating and drawing anything related to power ups. " alt="" coords="42,155,189,253"/>
-<area shape="rect" id="node5" href="$interface_h_u_d_manager.html" title="Displays information for the player. " alt="" coords="215,155,353,253"/>
-<area shape="rect" id="node8" href="$interface_enemy_manager.html" title="Responsible for handling all enemies. " alt="" coords="377,139,639,269"/>
-<area shape="rect" id="node6" href="$interface_sound_manager.html" title="Responsible for playing sound effects and music. " alt="" coords="917,147,1107,261"/>
+<area shape="rect" id="node4" href="$interface_power_up_manager.html" title="Responsible for updating and drawing anything related to power ups. " alt="" coords="50,139,303,301"/>
+<area shape="rect" id="node5" href="$interface_h_u_d_manager.html" title="Displays information for the player. " alt="" coords="327,171,466,269"/>
+<area shape="rect" id="node8" href="$interface_enemy_manager.html" title="Responsible for handling all enemies. " alt="" coords="490,147,751,293"/>
+<area shape="rect" id="node6" href="$interface_sound_manager.html" title="Responsible for playing sound effects and music. " alt="" coords="1029,163,1219,277"/>
 </map>

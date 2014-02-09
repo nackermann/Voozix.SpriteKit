@@ -98,20 +98,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">//</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#import &lt;SpriteKit/SpriteKit.h&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="interface_power_up_manager.html">   18</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="interface_power_up_manager.html">PowerUpManager</a> : NSObject</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">@property</span> (nonatomic, strong) NSMutableArray *powerUps;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#import &quot;Message.h&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#import &quot;PowerUp.h&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="interface_power_up_manager.html">   19</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="interface_power_up_manager.html">PowerUpManager</a> : NSObject</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;- (id)initWithScene:(SKScene *)scene;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">//- (void)createPowerUp:(id)powerUpType;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;- (void)update;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">@end</span></div>
-<div class="ttc" id="interface_power_up_manager_html"><div class="ttname"><a href="interface_power_up_manager.html">PowerUpManager</a></div><div class="ttdoc">Responsible for updating and drawing anything related to power ups. </div><div class="ttdef"><b>Definition:</b> PowerUpManager.h:18</div></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;-(void)update;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;-(void)createPowerUpWithMessage:(<a class="code" href="interface_message.html">Message</a> *)message;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;-(<a class="code" href="interface_power_up.html">PowerUp</a> *)removePowerUpWithMessage:(<a class="code" href="interface_message.html">Message</a> *)message;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;-(void)removePowerUpWithName:(NSString *)name;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;-(void)stop;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">@end</span></div>
+<div class="ttc" id="interface_power_up_html"><div class="ttname"><a href="interface_power_up.html">PowerUp</a></div><div class="ttdef"><b>Definition:</b> PowerUp.h:14</div></div>
+<div class="ttc" id="interface_message_html"><div class="ttname"><a href="interface_message.html">Message</a></div><div class="ttdef"><b>Definition:</b> Message.h:29</div></div>
+<div class="ttc" id="interface_power_up_manager_html"><div class="ttname"><a href="interface_power_up_manager.html">PowerUpManager</a></div><div class="ttdoc">Responsible for updating and drawing anything related to power ups. </div><div class="ttdef"><b>Definition:</b> PowerUpManager.h:19</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jan 21 2014 23:03:02 for Voozix by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Feb 9 2014 16:34:31 for Voozix by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

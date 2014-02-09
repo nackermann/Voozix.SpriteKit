@@ -14,7 +14,7 @@
 <polygon fill="#bfbfbf" stroke="black" points="97.5,-99 97.5,-195 240.5,-195 240.5,-99 97.5,-99"/>
 <text text-anchor="middle" x="169" y="-182.2" font-family="Segoe UI Semibold" font-size="11.00">PowerUp</text>
 <polyline fill="none" stroke="black" points="97.5,-175 240.5,-175 "/>
-<text text-anchor="middle" x="169" y="-162.2" font-family="Segoe UI Semibold" font-size="11.00"> </text>
+<text text-anchor="start" x="105.5" y="-162.2" font-family="Segoe UI Semibold" font-size="11.00">+ timeToLive</text>
 <polyline fill="none" stroke="black" points="97.5,-155 240.5,-155 "/>
 <text text-anchor="start" x="105.5" y="-142.2" font-family="Segoe UI Semibold" font-size="11.00">+ didBeginContactWith:</text>
 <text text-anchor="start" x="105.5" y="-130.2" font-family="Segoe UI Semibold" font-size="11.00">+ update</text>

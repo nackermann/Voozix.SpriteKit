@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['removeallenemies',['removeAllEnemies',['../interface_enemy_manager.html#ac4cec91140a978ad50ca385d63670bd6',1,'EnemyManager']]]
+  ['mypeerid',['myPeerID',['../interface_peer_to_peer_manager.html#a34608c5386ea70d4322f4348ce763f3f',1,'PeerToPeerManager']]]
 ];
