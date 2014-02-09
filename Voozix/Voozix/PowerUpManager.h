@@ -24,6 +24,6 @@
 -(void)createPowerUpWithMessage:(Message *)message;
 -(PowerUp *)removePowerUpWithMessage:(Message *)message;
 -(void)removePowerUpWithName:(NSString *)name;
-
+-(void)stop;
 
 @end

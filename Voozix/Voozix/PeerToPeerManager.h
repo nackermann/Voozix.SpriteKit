@@ -27,6 +27,7 @@
 -(void)stopAdvertising;
 -(NSArray *)ConnectedPeers;
 -(id)myPeerID;
+-(void)disconnect;
 
 
 @property (nonatomic, readonly)bool isHost;

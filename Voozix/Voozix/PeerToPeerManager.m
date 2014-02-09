@@ -294,8 +294,7 @@ didReceiveData:(NSData *)data
                 break;
             case matchEnded:
                 self.isMatchActive = false;
-                [self.session disconnect];
-                self.session = nil;
+                [self disconnect];
                 if([self.delegate respondsToSelector:@selector(matchEnded)])
                 {
                     [self.delegate matchEnded];
@@ -313,6 +312,14 @@ didReceiveData:(NSData *)data
     }
     
     
+}
+
+-(void)disconnect
+{
+    self.isHost = false;
+    self.isMatchActive = false;
+    [self.session disconnect];
+    self.session = nil;
 }
 
 /**

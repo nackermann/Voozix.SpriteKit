@@ -32,6 +32,7 @@ static NSTimeInterval powerUpLiveTime = 4;
 @property (nonatomic)int powerUpID;
 
 @property (nonatomic, strong) NSMutableDictionary *powerUps;
+@property (nonatomic, strong) NSTimer *spawnTimer;
 @end
 
 @implementation PowerUpManager
@@ -57,7 +58,7 @@ static NSTimeInterval powerUpLiveTime = 4;
     
     if(![PeerToPeerManager sharedInstance].isMatchActive || ( [PeerToPeerManager sharedInstance].isMatchActive && [PeerToPeerManager sharedInstance].isHost)){
         // Creates PowerUps in the given TimeInterval
-        [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(createPowerUp:) userInfo:nil repeats:YES];
+        self.spawnTimer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(createPowerUp:) userInfo:nil repeats:YES];
         self.powerUpID = 0;
     }
     return self;
@@ -213,6 +214,11 @@ static NSTimeInterval powerUpLiveTime = 4;
         PowerUp * p= [self.powerUps objectForKey:powerUpID];
         [p update];
     }
+}
+
+-(void)stop
+{
+    [self.spawnTimer invalidate];
 }
 
 @end

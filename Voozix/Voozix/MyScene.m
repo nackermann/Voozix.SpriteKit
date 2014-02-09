@@ -300,7 +300,7 @@
             
             self.starTimer -= 1/currentTime * 10;
             
-            if(self.starTimer < (arc4random()%3)+1  && arc4random()%100 > 80 && !self.hunter){
+            if(self.starTimer < (arc4random()%3)  && arc4random()%100 > 80 && !self.hunter){
                 
                 NSArray *allPlayersArr = [self.allPlayers allKeys];
                 if(allPlayersArr){
@@ -324,6 +324,7 @@
                 }
                 
             }
+            
             if (self.starTimer <= 0) {
                 ShootingStar *star = [[ShootingStar alloc] initWithScene:self];
                 
@@ -389,6 +390,7 @@
 - (void)willMoveFromView:(SKView *)view {
     
     NSLog(@"%@", @"bam");
+    [self.powerUpManager stop];
     [self.soundManager stop];
 }
 
@@ -451,8 +453,8 @@
             self.hunter = h;
             self.hunter.position = message.position;
             [self addChild:self.hunter];
-        }break;
-            
+            break;
+        }
         case HunterMoved:
             break;
         case HunterDespawned:
