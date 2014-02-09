@@ -98,7 +98,7 @@ static NSTimeInterval powerUpLiveTime = 4;
     int temp = 0;
     for (PowerUp *powerUpType in self.powerUpTypes) {
         temp += [[[powerUpType class] chanceToSpawn] intValue];
-        if (temp > randomNumber) {
+        if (temp >= randomNumber) {
             powerUp = [[[powerUpType class] alloc] init];
             if ([powerUp isKindOfClass:[Speedboost class]])
             {
