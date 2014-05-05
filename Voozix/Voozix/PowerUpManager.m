@@ -55,12 +55,12 @@
     
     PowerUp *powerUp;
     
-    u_int32_t randomNumber = arc4random() % [self.cumulativeChanceToSpawn intValue]; // number 0-100 for rouletteWheelSelection
+    u_int32_t randomNumber = arc4random() % [self.cumulativeChanceToSpawn intValue]; // number 0-cumulativeChanceToSpawn for rouletteWheelSelection
     
     int temp = 0;
     for (PowerUp *powerUpType in self.powerUpTypes) {
         temp += [[[powerUpType class] chanceToSpawn] intValue];
-        if (temp > randomNumber) {
+        if (temp >= randomNumber) {
             powerUp = [[[powerUpType class] alloc] init];
             break;
         }
