@@ -15,10 +15,14 @@
 #define CAPTION_FONT_SIZE 70.f
 #define NORMAL_FONT_SIZE 50.f
 #define IPHONE_SCALE_FACTOR 0.6f
+#define LABEL_X_OFFSET 210.f
+#define LABEL_Y_OFFSET 30.f
 
 @interface GameOverScene()
 @property (strong, nonatomic) NSNumber *captionFontSize;
 @property (strong, nonatomic) NSNumber *normalFontSize;
+@property (nonatomic, strong) NSNumber *labelXOffset;
+@property (nonatomic, strong) NSNumber *labelYOffset;
 
 @end
 
@@ -31,10 +35,30 @@
         [self createScore];
         [self createRetryButton];
         [self createQuitButton];
-        
+        [self createHighscore];
         
     }
     return self;
+}
+
+- (NSNumber*)labelXOffset
+{
+    if (!_labelXOffset)
+    {
+        _labelXOffset = [[NSNumber alloc] initWithFloat:isiPad ? LABEL_X_OFFSET : LABEL_X_OFFSET*IPHONE_SCALE_FACTOR];
+    }
+    
+    return _labelXOffset;
+}
+
+- (NSNumber*)labelYOffset
+{
+    if (!_labelYOffset)
+    {
+        _labelYOffset = [[NSNumber alloc] initWithFloat:isiPad ? LABEL_Y_OFFSET : LABEL_Y_OFFSET*IPHONE_SCALE_FACTOR];
+    }
+    
+    return _labelYOffset;
 }
 
 - (NSNumber*)captionFontSize
@@ -150,6 +174,24 @@
     
 }
 
+- (void)createHighscore {
+    
+    SKLabelNode *title = [SKLabelNode labelNodeWithFontNamed:@"Menlo-Bold"];
+    title.fontSize = self.normalFontSize.floatValue;
+    title.name = @"highscore";
+    int highscore = 0;
+    if ([[NSUserDefaults standardUserDefaults] valueForKey:@"currentHighscore"])
+    {
+        highscore = [[[NSUserDefaults standardUserDefaults] valueForKey:@"currentHighscore"] integerValue];
+    }
+    title.text = [NSString stringWithFormat: @"Highscore: %i", highscore];
+    title.fontColor = [SKColor yellowColor];
+    title.position = CGPointMake(CGRectGetMinX(self.frame)+self.labelXOffset.floatValue, CGRectGetMinY(self.frame)+self.labelYOffset.floatValue);
+    
+    [self addChild:title];
+    
+}
+
 - (void)setScore:(int)score {
     
     if (_score != score) {
@@ -163,6 +205,15 @@
     
     SKLabelNode *score = (SKLabelNode *)[self childNodeWithName:@"score"];
     score.text = [NSString stringWithFormat:@"YOUR SCORE: %i", self.score];
+    
+    int currentHighscore = [[[NSUserDefaults standardUserDefaults] valueForKey:@"currentHighscore"] integerValue];
+    
+    if (self.score > currentHighscore)
+    {
+        [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:self.score] forKey:@"currentHighscore"];
+    }
+    SKLabelNode *highscore = (SKLabelNode *)[self childNodeWithName:@"highscore"];
+    highscore.text = [NSString stringWithFormat: @"Highscore: %i", [[[NSUserDefaults standardUserDefaults] valueForKey:@"currentHighscore"] integerValue]];
     
     SKLabelNode *rank = (SKLabelNode*)[self childNodeWithName:@"title"];
     
