@@ -6,8 +6,19 @@
 //  Copyright (c) 2014 Norman Ackermann. All rights reserved.
 //
 
+#define isiPad (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? YES : NO)
+
 #import "MenuScene.h"
 #import "MyScene.h"
+
+#define CAPTION_FONT_SIZE 70.f
+#define NORMAL_FONT_SIZE 50.f
+
+@interface MenuScene()
+@property (strong, nonatomic) NSNumber *captionFontSize;
+@property (strong, nonatomic) NSNumber *normalFontSize;
+
+@end
 
 @implementation MenuScene
 -(id)initWithSize:(CGSize)size {
@@ -21,6 +32,27 @@
         
     }
     return self;
+}
+
+- (NSNumber*)captionFontSize
+{
+    if (!_captionFontSize)
+    {
+        
+        _captionFontSize = [[NSNumber alloc] initWithFloat:isiPad ? CAPTION_FONT_SIZE : CAPTION_FONT_SIZE/2.f];
+    }
+    
+    return _captionFontSize;
+}
+
+- (NSNumber*)normalFontSize
+{
+    if (!_normalFontSize)
+    {
+        _normalFontSize = [[NSNumber alloc] initWithFloat:isiPad ? NORMAL_FONT_SIZE : NORMAL_FONT_SIZE/2.f];
+    }
+    
+    return _normalFontSize;
 }
 
 /**
@@ -69,7 +101,7 @@
 - (void)createTitle {
     
     SKLabelNode *title = [SKLabelNode labelNodeWithFontNamed:@"Menlo-Bold"];
-    title.fontSize = 70;
+    title.fontSize = self.captionFontSize.floatValue;
     title.text = @"VOOZIX";
     title.fontColor = [SKColor yellowColor];
     title.position = CGPointMake(self.frame.size.width/2, self.frame.size.height - self.frame.size.height/8);
@@ -81,7 +113,7 @@
 - (void)createPlayButton {
     
     SKLabelNode *playButton = [SKLabelNode labelNodeWithFontNamed:@"Menlo-Bold"];
-    playButton.fontSize = 50;
+    playButton.fontSize = self.normalFontSize.floatValue;
     playButton.name = @"play";
     playButton.text = @"PLAY";
     playButton.position = CGPointMake(self.frame.size.width/2, self.frame.size.height - 2 * self.frame.size.height/7);
@@ -93,7 +125,7 @@
 - (void)createOptionsButton {
     
     SKLabelNode *optionsButton = [SKLabelNode labelNodeWithFontNamed:@"Menlo-Bold"];
-    optionsButton.fontSize = 50;
+    optionsButton.fontSize = self.normalFontSize.floatValue;
     optionsButton.name = @"options";
     optionsButton.text = @"OPTIONS";
     optionsButton.position = CGPointMake(self.frame.size.width/2, self.frame.size.height - 3 * self.frame.size.height/7);
