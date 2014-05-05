@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Norman Ackermann. All rights reserved.
 //
 
-static const CGFloat MAX_SCALE = 1.2;
-static const CGFloat MIN_SCALE = 0.8;
-static const CGFloat SCALE_DURATION = 1.0;
+//static const CGFloat MAX_SCALE = 1.2;
+//static const CGFloat MIN_SCALE = 0.8;
+//static const CGFloat SCALE_DURATION = 1.0;
 static const CGFloat SPEED = 280.0;
 
 
