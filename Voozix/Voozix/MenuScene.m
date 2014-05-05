@@ -13,6 +13,7 @@
 
 #define CAPTION_FONT_SIZE 70.f
 #define NORMAL_FONT_SIZE 50.f
+#define IPHONE_SCALE_FACTOR 0.6f
 
 @interface MenuScene()
 @property (strong, nonatomic) NSNumber *captionFontSize;
@@ -39,7 +40,7 @@
     if (!_captionFontSize)
     {
         
-        _captionFontSize = [[NSNumber alloc] initWithFloat:isiPad ? CAPTION_FONT_SIZE : CAPTION_FONT_SIZE/2.f];
+        _captionFontSize = [[NSNumber alloc] initWithFloat:isiPad ? CAPTION_FONT_SIZE : CAPTION_FONT_SIZE*IPHONE_SCALE_FACTOR];
     }
     
     return _captionFontSize;
@@ -49,7 +50,7 @@
 {
     if (!_normalFontSize)
     {
-        _normalFontSize = [[NSNumber alloc] initWithFloat:isiPad ? NORMAL_FONT_SIZE : NORMAL_FONT_SIZE/2.f];
+        _normalFontSize = [[NSNumber alloc] initWithFloat:isiPad ? NORMAL_FONT_SIZE : NORMAL_FONT_SIZE*IPHONE_SCALE_FACTOR];
     }
     
     return _normalFontSize;

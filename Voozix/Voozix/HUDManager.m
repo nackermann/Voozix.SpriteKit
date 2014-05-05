@@ -11,9 +11,10 @@
 
 #define isiPad (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? YES : NO)
 
-#define NORMAL_FONT_SIZE 30
-#define LABEL_X_OFFSET 100
-#define LABEL_Y_OFFSET 30
+#define IPHONE_SCALE_FACTOR 0.6f
+#define NORMAL_FONT_SIZE 30.f
+#define LABEL_X_OFFSET 100.f
+#define LABEL_Y_OFFSET 30.f
 
 @interface HUDManager()
 @property (nonatomic, strong) NSNumber *normalFontSize;
@@ -45,7 +46,7 @@
 {
     if (!_labelXOffset)
     {
-        _labelXOffset = [[NSNumber alloc] initWithFloat:isiPad ? LABEL_X_OFFSET : LABEL_X_OFFSET/2.f];
+        _labelXOffset = [[NSNumber alloc] initWithFloat:isiPad ? LABEL_X_OFFSET : LABEL_X_OFFSET*IPHONE_SCALE_FACTOR];
     }
     
     return _labelXOffset;
@@ -55,7 +56,7 @@
 {
     if (!_labelYOffset)
     {
-        _labelYOffset = [[NSNumber alloc] initWithFloat:isiPad ? LABEL_Y_OFFSET : LABEL_Y_OFFSET/2.f];
+        _labelYOffset = [[NSNumber alloc] initWithFloat:isiPad ? LABEL_Y_OFFSET : LABEL_Y_OFFSET*IPHONE_SCALE_FACTOR];
     }
     
     return _labelYOffset;
@@ -65,7 +66,7 @@
 {
     if (!_normalFontSize)
     {
-        _normalFontSize = [[NSNumber alloc] initWithFloat:isiPad ? NORMAL_FONT_SIZE : NORMAL_FONT_SIZE/2.f];
+        _normalFontSize = [[NSNumber alloc] initWithFloat:isiPad ? NORMAL_FONT_SIZE : NORMAL_FONT_SIZE*IPHONE_SCALE_FACTOR];
     }
     
     return _normalFontSize;
