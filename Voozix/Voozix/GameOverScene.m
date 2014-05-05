@@ -10,6 +10,16 @@
 #import "MyScene.h"
 #import "MenuScene.h"
 
+#define isiPad (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? YES : NO)
+
+#define CAPTION_FONT_SIZE 70.f
+#define NORMAL_FONT_SIZE 50.f
+
+@interface GameOverScene()
+@property (strong, nonatomic) NSNumber *captionFontSize;
+@property (strong, nonatomic) NSNumber *normalFontSize;
+
+@end
 
 @implementation GameOverScene
 
@@ -24,6 +34,27 @@
         
     }
     return self;
+}
+
+- (NSNumber*)captionFontSize
+{
+    if (!_captionFontSize)
+    {
+        
+        _captionFontSize = [[NSNumber alloc] initWithFloat:isiPad ? CAPTION_FONT_SIZE : CAPTION_FONT_SIZE/2.f];
+    }
+    
+    return _captionFontSize;
+}
+
+- (NSNumber*)normalFontSize
+{
+    if (!_normalFontSize)
+    {
+        _normalFontSize = [[NSNumber alloc] initWithFloat:isiPad ? NORMAL_FONT_SIZE : NORMAL_FONT_SIZE/2.f];
+    }
+    
+    return _normalFontSize;
 }
 
 /**
@@ -72,7 +103,7 @@
 - (void)createScore {
     
     SKLabelNode *score= [SKLabelNode labelNodeWithFontNamed:@"Menlo-Bold"];
-    score.fontSize = 50;
+    score.fontSize = self.normalFontSize.floatValue;
     score.name =  @"score";
     score.text = [NSString stringWithFormat: @"YOUR SCORE: %i", self.score];
     score.position = CGPointMake(self.frame.size.width/2, self.frame.size.height - 2 * self.frame.size.height/7);
@@ -84,7 +115,7 @@
 - (void)createRetryButton{
     
     SKLabelNode *retryButton = [SKLabelNode labelNodeWithFontNamed:@"Menlo-Bold"];
-    retryButton.fontSize = 50;
+    retryButton.fontSize = self.normalFontSize.floatValue;
     retryButton.name = @"retry";
     retryButton.text = @"RETRY";
     retryButton.position = CGPointMake(self.frame.size.width/2, self.frame.size.height - 3 * self.frame.size.height/7);
@@ -96,7 +127,7 @@
 - (void)createQuitButton {
     
     SKLabelNode *quitButton = [SKLabelNode labelNodeWithFontNamed:@"Menlo-Bold"];
-    quitButton.fontSize = 50;
+    quitButton.fontSize = self.normalFontSize.floatValue;
     quitButton.name = @"quit";
     quitButton.text = @"QUIT";
     quitButton.position = CGPointMake(self.frame.size.width/2, self.frame.size.height - 4 * self.frame.size.height/7);
@@ -108,7 +139,7 @@
 - (void)createTitle {
     
     SKLabelNode *title = [SKLabelNode labelNodeWithFontNamed:@"Menlo-Bold"];
-    title.fontSize = 70;
+    title.fontSize = self.captionFontSize.floatValue;
     title.text = @"GAME OVER";
     title.fontColor = [SKColor yellowColor];
     title.position = CGPointMake(self.frame.size.width/2, self.frame.size.height - self.frame.size.height/8);
