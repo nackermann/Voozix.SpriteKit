@@ -8,6 +8,10 @@
 
 static const int spawnChance = 20;
 
+#define isiPad (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? YES : NO)
+
+#define IPHONE_SCALE_FACTOR isiPad ? 1.0f : 0.6f
+
 #import "Scoreboost.h"
 
 @implementation Scoreboost
@@ -17,7 +21,14 @@ static const int spawnChance = 20;
     self = [super init];
     
     self.texture = [SKTexture textureWithImageNamed:@"powerup_multiplier2x"];
-	self.size = self.texture.size;
+    CGSize scaledSize;
+    CGFloat width = self.texture.size.width;
+    CGFloat height = self.texture.size.height;
+    width *= IPHONE_SCALE_FACTOR;
+    height *= IPHONE_SCALE_FACTOR;
+    scaledSize.width = width;
+    scaledSize.height = height;
+    self.size = scaledSize;
     
     return self;
 }

@@ -13,6 +13,10 @@
 #import "PowerUp.h"
 #import "ShootingStar.h"
 
+#define isiPad (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? YES : NO)
+
+#define IPHONE_SCALE_FACTOR isiPad ? 1.0f : 0.6f
+
 static const int PLAYER_SPEED = 300;
 
 @interface Player()
@@ -50,8 +54,15 @@ static const int PLAYER_SPEED = 300;
 	self.myHUDManager = hudmanager;
 	
 	self.texture = [SKTexture textureWithImageNamed:@"player"];
-	self.size = self.texture.size;
-	self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.size.width/2];
+    CGSize scaledSize;
+    CGFloat width = self.texture.size.width;
+    CGFloat height = self.texture.size.height;
+    width *= IPHONE_SCALE_FACTOR;
+    height *= IPHONE_SCALE_FACTOR;
+    scaledSize.width = width;
+    scaledSize.height = height;
+    self.size = scaledSize;
+    self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:scaledSize.width/2];
 	self.physicsBody.categoryBitMask = PLAYER_OBJECT;
     self.physicsBody.collisionBitMask = BACKGROUND_OBJECT;
 	self.physicsBody.contactTestBitMask = ENEMY_OBJECT | STAR_OBJECT;

@@ -6,6 +6,10 @@
 //  Copyright (c) 2014 Norman Ackermann. All rights reserved.
 //
 
+#define isiPad (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? YES : NO)
+
+#define IPHONE_SCALE_FACTOR isiPad ? 1.0f : 0.6f
+
 static const CGFloat MAX_SCALE = 1.2;
 static const CGFloat MIN_SCALE = 0.8;
 static const CGFloat MAX_ROTATION = 0.5;
@@ -25,8 +29,15 @@ static const CGFloat ROTATE_DURATION = 2.0;
 {
     self = [super init];
     self.texture = [SKTexture textureWithImageNamed:@"star"];
-    self.size = self.texture.size;
-    self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.size.width/2];
+    CGSize scaledSize;
+    CGFloat width = self.texture.size.width;
+    CGFloat height = self.texture.size.height;
+    width *= IPHONE_SCALE_FACTOR;
+    height *= IPHONE_SCALE_FACTOR;
+    scaledSize.width = width;
+    scaledSize.height = height;
+    self.size = scaledSize;
+    self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:scaledSize.width/2];
     self.physicsBody.dynamic = NO;
     self.physicsBody.categoryBitMask = STAR_OBJECT;
     //self.physicsBody.collisionBitMask = PLAYER_OBJECT;

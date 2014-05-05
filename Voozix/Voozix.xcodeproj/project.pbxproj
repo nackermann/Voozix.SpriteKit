@@ -29,7 +29,6 @@
 		15A344EE1875ACE50046B117 /* EnemyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A344ED1875ACE50046B117 /* EnemyManager.m */; };
 		15A344F71875AD5A0046B117 /* PowerUpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A344F61875AD5A0046B117 /* PowerUpManager.m */; };
 		15A344FF1875C2430046B117 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A344FE1875C2430046B117 /* Player.m */; };
-		15A345021875C28E0046B117 /* Enemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A345011875C28E0046B117 /* Enemy.m */; };
 		15A345051875C2C20046B117 /* EnemyBall.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A345041875C2C20046B117 /* EnemyBall.m */; };
 		15A345081875C2DC0046B117 /* Hunter.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A345071875C2DC0046B117 /* Hunter.m */; };
 		3F0806041882C9BD001E007B /* GameOverScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0806031882C9BD001E007B /* GameOverScene.m */; };
@@ -105,8 +104,6 @@
 		15A344F61875AD5A0046B117 /* PowerUpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PowerUpManager.m; sourceTree = "<group>"; };
 		15A344FD1875C2430046B117 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		15A344FE1875C2430046B117 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
-		15A345001875C28E0046B117 /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enemy.h; sourceTree = "<group>"; };
-		15A345011875C28E0046B117 /* Enemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Enemy.m; sourceTree = "<group>"; };
 		15A345031875C2C20046B117 /* EnemyBall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyBall.h; sourceTree = "<group>"; };
 		15A345041875C2C20046B117 /* EnemyBall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnemyBall.m; sourceTree = "<group>"; };
 		15A345061875C2DC0046B117 /* Hunter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hunter.h; sourceTree = "<group>"; };
@@ -311,8 +308,6 @@
 				3FC034A41889B8EA00DB3EE2 /* ShootingStar.m */,
 				15A344FD1875C2430046B117 /* Player.h */,
 				15A344FE1875C2430046B117 /* Player.m */,
-				15A345001875C28E0046B117 /* Enemy.h */,
-				15A345011875C28E0046B117 /* Enemy.m */,
 				15A345031875C2C20046B117 /* EnemyBall.h */,
 				15A345041875C2C20046B117 /* EnemyBall.m */,
 				15A345061875C2DC0046B117 /* Hunter.h */,
@@ -494,7 +489,6 @@
 				15A344BA1875A52B0046B117 /* ViewController.m in Sources */,
 				15A344E81875AC870046B117 /* HUDManager.m in Sources */,
 				15A345081875C2DC0046B117 /* Hunter.m in Sources */,
-				15A345021875C28E0046B117 /* Enemy.m in Sources */,
 				3FC034A51889B8EA00DB3EE2 /* ShootingStar.m in Sources */,
 				15A344EE1875ACE50046B117 /* EnemyManager.m in Sources */,
 				15A344B41875A52B0046B117 /* AppDelegate.m in Sources */,
