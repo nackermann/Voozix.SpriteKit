@@ -141,7 +141,8 @@
     
     SKLabelNode *title = [SKLabelNode labelNodeWithFontNamed:@"Menlo-Bold"];
     title.fontSize = self.captionFontSize.floatValue;
-    title.text = @"GAME OVER";
+    title.name = @"title";
+    title.text = @"";
     title.fontColor = [SKColor yellowColor];
     title.position = CGPointMake(self.frame.size.width/2, self.frame.size.height - self.frame.size.height/8);
     
@@ -163,6 +164,52 @@
     SKLabelNode *score = (SKLabelNode *)[self childNodeWithName:@"score"];
     score.text = [NSString stringWithFormat:@"YOUR SCORE: %i", self.score];
     
+    SKLabelNode *rank = (SKLabelNode*)[self childNodeWithName:@"title"];
+    
+    if (self.score >= 50)
+    {
+        rank.text = @"HOLY SHITTTTT";
+    }
+    else if (self.score >= 45)
+    {
+        rank.text = @"U SRSLY DUDE?!";
+    }
+    else if (self.score >= 40)
+    {
+        rank.text = @"ARE YOU KIDDING?!";
+    }
+    else if (self.score >= 35)
+    {
+        rank.text = @"MONSTER COLLECTER";
+    }
+    else if (self.score >= 30)
+    {
+        rank.text = @"WTF, you did that?";
+    }
+    else if (self.score >= 25)
+    {
+        rank.text = @"WOW, you're GOD!";
+    }
+    else if (self.score >= 20)
+    {
+        rank.text = @"WOW, you're good";
+    }
+    else if (self.score >= 15)
+    {
+        rank.text = @"Nice one!";
+    }
+    else if (self.score >= 10)
+    {
+        rank.text = @"Well done :)";
+    }
+    else if (self.score >= 5)
+    {
+        rank.text = @"Good";
+    }
+    else
+    {
+        rank.text = @"You can do better";
+    }
 }
 
 @end
