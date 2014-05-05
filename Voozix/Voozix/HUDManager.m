@@ -9,11 +9,16 @@
 #import "HUDManager.h"
 #import "Player.h"
 
-static const CGFloat fontSize = 30;
-static const CGFloat labelXOffset = 100;
-static const CGFloat labelYOffset = 30;
+#define isiPad (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? YES : NO)
+
+#define NORMAL_FONT_SIZE 30
+#define LABEL_X_OFFSET 100
+#define LABEL_Y_OFFSET 30
 
 @interface HUDManager()
+@property (nonatomic, strong) NSNumber *normalFontSize;
+@property (nonatomic, strong) NSNumber *labelXOffset;
+@property (nonatomic, strong) NSNumber *labelYOffset;
 @property (nonatomic, strong) SKScene *myScene;
 @property (nonatomic, strong) SKLabelNode *myScoreLabelForPlayer1;
 @end
@@ -34,6 +39,36 @@ static const CGFloat labelYOffset = 30;
     self.myScene = scene;
     
     return self;
+}
+
+- (NSNumber*)labelXOffset
+{
+    if (!_labelXOffset)
+    {
+        _labelXOffset = [[NSNumber alloc] initWithFloat:isiPad ? LABEL_X_OFFSET : LABEL_X_OFFSET/2.f];
+    }
+    
+    return _labelXOffset;
+}
+
+- (NSNumber*)labelYOffset
+{
+    if (!_labelYOffset)
+    {
+        _labelYOffset = [[NSNumber alloc] initWithFloat:isiPad ? LABEL_Y_OFFSET : LABEL_Y_OFFSET/2.f];
+    }
+    
+    return _labelYOffset;
+}
+
+- (NSNumber*)normalFontSize
+{
+    if (!_normalFontSize)
+    {
+        _normalFontSize = [[NSNumber alloc] initWithFloat:isiPad ? NORMAL_FONT_SIZE : NORMAL_FONT_SIZE/2.f];
+    }
+    
+    return _normalFontSize;
 }
 
 /**
@@ -58,8 +93,8 @@ static const CGFloat labelYOffset = 30;
 {
     if (_myScoreLabelForPlayer1 == nil) {
         _myScoreLabelForPlayer1 = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-        _myScoreLabelForPlayer1.fontSize = fontSize;
-        CGPoint testPos = CGPointMake(CGRectGetMinX(self.myScene.frame)+labelXOffset, CGRectGetMinY(self.myScene.frame)+labelYOffset);
+        _myScoreLabelForPlayer1.fontSize = self.normalFontSize.floatValue;
+        CGPoint testPos = CGPointMake(CGRectGetMinX(self.myScene.frame)+self.labelXOffset.floatValue, CGRectGetMinY(self.myScene.frame)+self.labelYOffset.floatValue);
         _myScoreLabelForPlayer1.position = testPos;
         
         if (self.myScene) {
