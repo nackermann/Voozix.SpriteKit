@@ -44,7 +44,7 @@
     
     
     // Creates PowerUps in the given TimeInterval
-    [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(createPowerUp:) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:8.0f target:self selector:@selector(createPowerUp:) userInfo:nil repeats:YES];
     
     return self;
 }

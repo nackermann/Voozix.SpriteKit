@@ -37,9 +37,9 @@ static const int spawnChance = 40;
 {
     if ([object isKindOfClass:[Player class]]) {
         Player *player = object;
-        [player runAction:[SKAction scaleTo:0.5 duration:2]];
+        [player runAction:[SKAction scaleTo:0.4 duration:1.5f]];
         
-        [NSTimer scheduledTimerWithTimeInterval:8.0 target:self selector:@selector(growPlayer:) userInfo:player repeats:NO];
+        [NSTimer scheduledTimerWithTimeInterval:6.0 target:self selector:@selector(growPlayer:) userInfo:player repeats:NO];
     }
     [super didBeginContactWith:object]; // remove etc.
 }

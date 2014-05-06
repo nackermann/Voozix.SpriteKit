@@ -39,7 +39,7 @@ static const int spawnChance = 30;
         Player *player = object;
         player.immortal = YES;
         
-        [NSTimer scheduledTimerWithTimeInterval:8.0 target:self selector:@selector(removeImmortal:) userInfo:player repeats:NO];
+        [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(removeImmortal:) userInfo:player repeats:NO];
         SKAction *fadeAlphaDown = [SKAction fadeAlphaTo:0.5 duration:1];
         SKAction *fadeAlphaUp = [SKAction fadeAlphaTo:1.0 duration:1];
         SKAction *immortalAnimation = [SKAction repeatActionForever:[SKAction sequence:@[fadeAlphaDown, fadeAlphaUp]]];

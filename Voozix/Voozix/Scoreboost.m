@@ -42,7 +42,7 @@ static const int spawnChance = 20;
         player.color = [SKColor colorWithRed:0.8 green:0.5 blue:0.0 alpha:1];
         player.colorBlendFactor = 1.0;
         
-        [NSTimer scheduledTimerWithTimeInterval:8.0 target:self selector:@selector(removeScoreBoost:) userInfo:player repeats:NO];
+        [NSTimer scheduledTimerWithTimeInterval:6.0 target:self selector:@selector(removeScoreBoost:) userInfo:player repeats:NO];
     }
     [super didBeginContactWith:object]; // remove etc.
 }
