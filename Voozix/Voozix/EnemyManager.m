@@ -9,8 +9,12 @@
 #import "EnemyManager.h"
 #import "ParticleManager.h"
 
-const int MIN_SPEED = 100;
-const int MAX_SPEED = 200;
+#define isiPad (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? YES : NO)
+
+#define IPHONE_SCALE_FACTOR isiPad ? 1.0f : 0.6f
+
+int MIN_SPEED = 100;
+int MAX_SPEED = 200;
 
 @interface EnemyManager()
 @property SKScene *scene;
@@ -149,6 +153,12 @@ const int MAX_SPEED = 200;
     
     int value = arc4random() % 4;
     
+    int oldMaxSpeed = MAX_SPEED;
+    int oldMinSpeed = MIN_SPEED;
+    
+    MAX_SPEED *= IPHONE_SCALE_FACTOR;
+    MIN_SPEED *= IPHONE_SCALE_FACTOR;
+    
     switch (value) {
         case 0:
             velocity = CGVectorMake(0.0, 1.0 * (arc4random() % MAX_SPEED) + MIN_SPEED);
@@ -169,6 +179,9 @@ const int MAX_SPEED = 200;
         default:
             break;
     }
+    
+    MAX_SPEED = oldMaxSpeed;
+    MIN_SPEED = oldMinSpeed;
     
     return velocity;
     
