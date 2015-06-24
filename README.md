@@ -4,6 +4,7 @@ Voozix is a 2D game made using SpriteKit (Objective-C). The player controls a ba
 
 # Features
 - Touch controls
+- Works on iPhone and iPad
 - Networking via internet and locally
 - Different enemies and powerups
 
@@ -20,3 +21,6 @@ Power-Ups will spawn randomly and have to be collected by the player. They will 
 - Ball: 
 - Wall
 - Hunter
+
+## Technical details
+A Doxygen documentation is available at http://mreinfurt.github.io/Voozix/html/
