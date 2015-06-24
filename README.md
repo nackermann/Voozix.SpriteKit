@@ -8,7 +8,9 @@ Voozix is a 2D game made using SpriteKit (Objective-C). The player controls a ba
 - Networking via internet and locally
 - Different enemies and powerups
 
-[SCREENSHOT]
+<p align="center">
+  <img src="https://raw.githubusercontent.com/mreinfurt/Voozix/voozix_spritekit/Voozix/Resources/preview.png">
+</p>
 
 ## Power-Ups
 Power-Ups will spawn randomly and have to be collected by the player. They will then grant a boost depending on their type.
