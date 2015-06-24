@@ -20,9 +20,8 @@ Power-Ups will spawn randomly and have to be collected by the player. They will 
 
 ## Enemy Types
 
-- Ball: 
-- Wall
-- Hunter
+- Ball: Moves in a pattern
+- Hunter: Follows the player around
 
 ## Technical details
 A Doxygen documentation is available at http://mreinfurt.github.io/Voozix/html/
