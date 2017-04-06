@@ -18,4 +18,4 @@ Power-Ups will spawn randomly and have to be collected by the player. They will 
 - Scoreboost: Increases the player's score
 
 ## Technical details
-A Doxygen documentation is available at http://mreinfurt.github.io/Voozix/html/
+A small documentation is available at https://github.com/nackermann/Voozix.SpriteKit/blob/gh-pages/presentation/Voozix.pptx
