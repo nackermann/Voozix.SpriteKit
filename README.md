@@ -8,7 +8,7 @@ Voozix is a 2D game made using SpriteKit (Objective-C). The player controls a ba
 - Power-Ups
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/mreinfurt/Voozix/voozix_spritekit/Voozix/Resources/preview.png">
+  <img src="https://github.com/nackermann/Voozix.SpriteKit/blob/voozix_spritekit/Voozix/Resources/preview.png?raw=true">
 </p>
 
 ## Power-Ups
